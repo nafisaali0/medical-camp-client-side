@@ -12,9 +12,6 @@ const SignUp = () => {
         console.log(data)
     }
 
-
-
-
     return (
         <>
             <Helmet>
