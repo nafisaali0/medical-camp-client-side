@@ -1,0 +1,2 @@
+button -1 bg-gradient-to-r from-blue-500 to-indigo-800
+button -2 bg-gradient-to-r from-indigo-900 to-green-400
