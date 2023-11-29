@@ -3,7 +3,17 @@ import logo from '../../assets/images/icon/Logo-removebg.png'
 import './navbar.css'
 import useAuth from "../../hooks/useAuth";
 const NavBar = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
+
+    const handleLogOut = () => {
+        logOut(user)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     const navOptions = <>
         <nav className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
@@ -13,6 +23,7 @@ const NavBar = () => {
             <NavLink to="/contact">Contact Us</NavLink>
         </nav>
     </>
+
     return (
         <>
             {/* <div className=" drop-shadow-lg  bg-base-100"> */}
@@ -48,13 +59,12 @@ const NavBar = () => {
                                     <li><a>{user.email}</a></li>
                                     <li><a>{user.displayName}</a></li>
                                     <Link className="ml-3" to={'/signup'}><a>Add Another Account</a></Link>
-                                    <li><a>Logout</a></li>
-                                    {/* onClick={handleLogOut} */}
+                                    <li onClick={handleLogOut}><a>Logout</a></li>
                                 </ul>
                             </div>
                             :
                             <>
-                                <div className="dropdown dropdown-end text-[#474f85] font-bold font-roboto">
+                                {/* <div className="dropdown dropdown-end text-[#474f85] font-bold font-roboto">
                                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                         <div className="w-20 lg:w-36 border-black border-2 rounded-full">
                                             <img src={user?.photoURL ? user.photoURL : ``} />
@@ -66,9 +76,8 @@ const NavBar = () => {
                                         <li><a>{user?.displayName}</a></li>
                                         <Link className="ml-3" to={'/signup'}><a>Add Another Account</a></Link>
                                         <li><a>Logout</a></li>
-                                        {/* onClick={handleLogOut} */}
                                     </ul>
-                                </div>
+                                </div> */}
                             </>
                     }
                 </div>
