@@ -54,20 +54,10 @@ const NavBar = () => {
         } */}
 
     </>
-
-
-
-
-
-
-
-
-
-
     return (
         <>
-            <div className="container mx-auto">
-                <div className="navbar bg-base-100 text-black">
+            <div className=" drop-shadow-lg  bg-base-100">
+                <div className="navbar container mx-auto text-black">
                     <div className="navbar-start ">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden ">
