@@ -64,20 +64,9 @@ const NavBar = () => {
                             </div>
                             :
                             <>
-                                {/* <div className="dropdown dropdown-end text-[#474f85] font-bold font-roboto">
-                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                        <div className="w-20 lg:w-36 border-black border-2 rounded-full">
-                                            <img src={user?.photoURL ? user.photoURL : ``} />
-
-                                        </div>
-                                    </label>
-                                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                        <li><a>{user?.email}</a></li>
-                                        <li><a>{user?.displayName}</a></li>
-                                        <Link className="ml-3" to={'/signup'}><a>Add Another Account</a></Link>
-                                        <li><a>Logout</a></li>
-                                    </ul>
-                                </div> */}
+                                <Link to={'/donate'}>
+                                    <button className="bg-gradient-to-r from-blue-500 to-indigo-800 px-3 py-1 md:px-6 lg:py-2 md:py-1  text-white font-semibold rounded-lg md:text-xl text-sm">Donate</button>
+                                </Link>
                             </>
                     }
                 </div>
