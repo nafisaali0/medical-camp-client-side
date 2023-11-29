@@ -1,8 +1,15 @@
-# React + Vite
+## Amelia Medical Camp Web Application
+This project by react + express js + mongo DB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Features : 
+1. Home
+2. 
+3. 
+4. 
+5.
+   
+### Explain about the feature of project : 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+# Live LinK In Project: <a href="#"> Click it </a>
