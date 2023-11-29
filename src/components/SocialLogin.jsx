@@ -1,8 +1,9 @@
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
-
+    const navigate = useNavigate()
     const { googleLogIn } = useAuth()
     const handleGoogle = () => {
         googleLogIn()
@@ -15,6 +16,7 @@ const SocialLogin = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate('/')
             })
             .catch(error => {
                 console.log(error)

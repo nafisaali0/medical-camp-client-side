@@ -1,15 +1,52 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
-    // reset,
-    const onSubmit = (data) => {
+    const { updateUserProfile, signUpUser } = useAuth();
+    const navigate = useNavigate();
+
+
+    // image hosting 
+    // const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    // const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
+    const onSubmit = async (data) => {
         reset();
         console.log(data)
+
+        // const imageFile = { image: data.image[0] }
+        // const res = await axiosPublic.post(image_hostion_api, imageFile, {
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     }
+        // });
+        
+        // signup authentication
+        signUpUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+                updateUserProfile(data.name, data.photo)
+                    .then(() => {
+                        console.log('user profile info updated')
+                        reset();
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "SignUp Successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/')
+                    })
+                    .catch(error => console.log(error))
+            })
     }
 
     return (

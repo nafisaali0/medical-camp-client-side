@@ -1,13 +1,44 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
 import { Helmet } from "react-helmet-async";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const Signin = () => {
 
     const { register, handleSubmit, formState: { errors }, } = useForm();//from react hook 
+    const { signInUser } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // after sign in user back desire path or page
+    const from = location.state?.from?.pathname || '/';
+    console.log("State of Login", from)
+
+
     const onSubmit = (data) => {
         console.log(data)
+        
+        // signin authentication
+        signInUser(data.email, data.password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: 'User Signin Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(from, { replace: true });
+            })
+
     }
     return (
         <>
@@ -20,7 +51,6 @@ const Signin = () => {
                         <div className="text-black my-5 font-bold text-2xl">
                             <h2>Welcome back please signin <br /> to your account</h2>
                         </div>
-                        {/* onSubmit={handleSignIn} */}
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="my-10">
                                 <SocialLogin></SocialLogin>
