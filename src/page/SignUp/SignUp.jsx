@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
+import { Helmet } from "react-helmet-async";
 
 const SignUp = () => {
 
@@ -9,38 +10,6 @@ const SignUp = () => {
     const onSubmit = (data) => {
         reset();
         console.log(data)
-        // createuser(data.email, data.password)
-        //     .then(result => {
-        //         const loggedUser = result.user;
-        //         console.log(loggedUser)
-        //         updateUserProfile(data.name, data.photo)
-        //             .then(() => {
-        //                 console.log('user profile info updated')
-        //                 //create user entry in the database
-        //                 const userInfo = {
-        //                     name: data.name,
-        //                     email: data.email,
-        //                     photo: data.photo
-        //                 }
-        //                 axiosPublic.post('/users', userInfo)
-        //                     .then(res => {
-        //                         if (res.data.insertedId) {
-        //                             console.log('user add')
-        //                             reset();
-        //                             Swal.fire({
-        //                                 position: "top-end",
-        //                                 icon: "success",
-        //                                 title: "Your work has been saved",
-        //                                 showConfirmButton: false,
-        //                                 timer: 1500
-        //                             });
-        //                             navigate('/')
-        //                         }
-        //                     })
-
-        //             })
-        //             .catch(error => console.log(error))
-        //     })
     }
 
 
@@ -48,6 +17,9 @@ const SignUp = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Amelia || Signup</title>
+            </Helmet>
             <div className="overflow-hidden" >
                 <div className='container mx-auto flex flex-col justify-center items-center drop-shadow-lg md:pt-12 lg:pt-20'>
                     <div className="bg-base-100 m-10 p-7 md:w-[700px]">

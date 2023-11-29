@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
+import { Helmet } from "react-helmet-async";
 
 const Signin = () => {
 
@@ -9,7 +10,10 @@ const Signin = () => {
         console.log(data)
     }
     return (
-        <div>
+        <>
+            <Helmet>
+                <title>Amelia || Signin</title>
+            </Helmet>
             <div className="w-[100%] lg:h-[100vh] md:h-[100%]" >
                 <div className='container mx-auto overflow-hidden flex flex-col justify-center items-center drop-shadow-lg md:pt-12 lg:pt-20'>
                     <div className="bg-base-100 m-10 p-7 md:w-[700px]">
@@ -48,7 +52,7 @@ const Signin = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 
