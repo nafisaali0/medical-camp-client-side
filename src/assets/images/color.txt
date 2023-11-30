@@ -1,2 +1,48 @@
 button -1 bg-gradient-to-r from-blue-500 to-indigo-800
 button -2 bg-gradient-to-r from-indigo-900 to-green-400
+
+
+
+/////////////////////////////////////////
+<ul className="flex flex-col gap-5 menu text-blue-900">
+                            {
+                                isAdmin && (
+                                    <>
+                                        <li>
+                                            <NavLink to={"/dashboard/add-a-camp"}>
+                                                Admin Home
+                                            </NavLink>
+                                        </li>
+                                    </>
+                                )
+                            }
+                            {
+                                isParticipant && (
+                                    <>
+                                        <li>
+                                            <NavLink to={"/dashboard/userHome"}>
+                                                User Home
+                                            </NavLink>
+                                        </li>
+
+                                    </>
+                                )
+                            }
+                            {
+                                isDoctor && (
+                                    <>
+
+                                    </>
+                                )
+                            }
+                        </ul>
+
+
+
+
+
+
+
+
+
+

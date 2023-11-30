@@ -8,6 +8,8 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
 import AddCamps from './../page/Dashboard/AddCamps/AddCamps';
 import ManageCamps from "../page/Dashboard/ManageCamps/ManageCamps";
+import AdminRegister from './../page/Dashboard/AdminRegister/AdminRegister';
+import HomeDashboard from './../page/Dashboard/HomeDashboard/HomeDashboard';
 
 
 export const router = createBrowserRouter([
@@ -35,7 +37,10 @@ export const router = createBrowserRouter([
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             // user
-            
+            {
+                path: "home-dashbord",
+                element: <HomeDashboard></HomeDashboard>,
+            },
 
             // addmin routes
             {
@@ -45,6 +50,10 @@ export const router = createBrowserRouter([
             {
                 path: "manage-camps",
                 element:<ManageCamps></ManageCamps>,
+            },
+            {
+                path: "manage-registered-camps",
+                element:<AdminRegister></AdminRegister>,
             },
 
             //doctor 
