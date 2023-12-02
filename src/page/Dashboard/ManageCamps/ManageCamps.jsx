@@ -1,71 +1,103 @@
-import useCamp from './../../../hooks/useCamp';
-import DataTable from 'react-data-table-component';
+import useCamp from "../../../hooks/useCamp";
+import updateIcon from '../../../assets/images/icon/edit.svg'
+import deleteIcon from '../../../assets/images/icon/delete.svg'
+import Swal from "sweetalert2";
+import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
+import { Link } from "react-router-dom";
 
 const ManageCamps = () => {
-    // const [camp] = useCamp();
-    const [camp, refetch] = useCamp();
 
-    const customStyles = {
-        headRow: {
-            style: {
-                backgroundColor: 'black',
-                color: 'white'
+    const [camp, refetch,loading] = useCamp();
+    const axiosLocalhost = useAxioslocalhost()
+
+
+
+    const handleDelete = id  => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete it this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosLocalhost.delete(`/camp/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your food has been deleted.',
+                                'success'
+                            )
+                            loading()
+                            refetch();                                                        
+                        }
+                    })
             }
-        },
-        headCells: {
-            style: {
-                fontSize: '16px',
-                fontWeight: '600',
-            }
-        },
-        cells: {
-            style: {
-                fontSize: '16px',
-                fontWeight: '500',
-                padding: '1rem',
-            }
-        },
+        })
+
     }
-    const columns = [
-        {
-            name: 'Serial Number',
-            selector: row => row.id
-        },
-        {
-            name: 'Camp Name',
-            selector: row => row.campName
-        },
-        {
-            name: 'Blog Owner',
-            selector: row => row.date
-        },
-        // {
-        //     name: 'Blog Owner Image',
-        //     cell: (row) => <img src={row.owner_image} alt={row.owner_name} style={{ width: '50px', height: '50px', borderRadius: '50px', margin: '3px' }} />,
-        // }
-    ]
-    // Assuming sortBlogs is an array of blog objects
-    const data = camp.map((eachCamp, index) => ({
-        id: index + 1,
-        campName: eachCamp.campName,
-        date: eachCamp.date,
-        time: eachCamp.time,
-        venue: eachCamp.venue,
-        services: eachCamp.service,
-        healthcareProfessionals: eachCamp.healthcareProfessionals,
-        shortDescription: eachCamp.shortDescription,
-    }));
     return (
         <>
-            <div className='bg-base-100 text-xl drop-shadow-2xl'>
-                <DataTable
-                    columns={columns}
-                    data={data}
-                    customStyles={customStyles}
-                    responsive
-                    pagination
-                    paginationPerPage={10}
-                    paginationRowsPerPageOptions={[10, 15, 20]} />
+            <div className="w-9/12 mx-auto bg-base-100 p-5 my-10">
+                <div className="flex justify-between">
+                    <h2 className="text-3xl">Total Items: {camp.length}</h2>
+                </div>
+                <div className="overflow-x-auto">
+                    <table className="table w-full">
+                        {/* head */}
+                        <thead className="bg-black text-white">
+                            <tr>
+                                <th>No</th>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Date</th>
+                                <th>Fees</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                camp.map((item, index) =>
+                                    <tr key={index}>
+                                        <th>
+                                            {index + 1}
+                                        </th>
+                                        <td>
+                                            <div className="flex items-center gap-3">
+                                                <div className="avatar">
+                                                    <div className="mask mask-squircle w-12 h-12">
+                                                        <img src={item.image} alt="Avatar Tailwind CSS Component" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {item.campName}
+                                        </td>
+                                        <td>{item.date}</td>
+                                        <td>{item.campFees}</td>
+                                        <th>
+                                            <Link to={`/dashboard/updatecamp/${item._id}`}>
+                                            <img
+                                                src={updateIcon}
+                                                className="w-6 h-6 cursor-pointer" alt="" />
+                                            </Link>
+
+                                        </th>
+                                        <th>
+                                            <img src={deleteIcon} onClick={() => handleDelete(item._id)} className="w-6 h-6 cursor-pointer" alt="" />
+                                        </th>
+                                    </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </>
     );

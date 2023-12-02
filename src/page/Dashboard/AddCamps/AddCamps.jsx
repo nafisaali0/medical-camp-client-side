@@ -26,7 +26,7 @@ const AddCamps = () => {
             const campDetails = {
                 image: res.data.data.display_url,
                 campName: data.campName,
-                services: data.service,
+                services: data.services,
                 healthcareProfessionals: data.healthcareProfessionals,
                 targetAudience: data.targetAudience,
                 campFees: parseFloat(data.fees),
@@ -80,7 +80,7 @@ const AddCamps = () => {
                                     className="input input-bordered w-full" />
                                 <input type="text"
                                     placeholder="service"
-                                    {...register("service")}
+                                    {...register("services")}
                                     className="input input-bordered w-full" />
                                 <div className="flex items-center gap-5">
                                     <div className="flex-1 w-1/2">
