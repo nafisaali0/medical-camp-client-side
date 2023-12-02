@@ -32,7 +32,7 @@ const AddCamps = () => {
                 campFees: parseFloat(data.fees),
                 date: data.date,
                 time: data.time,
-                venue: data.vanu,
+                venue: data.venue,
                 enroll: data.enroll,  
                 shortDescription: data.shortDescription,
                 longDescription: data.longDescription              
@@ -101,8 +101,8 @@ const AddCamps = () => {
                                     </div>
                                     <div className="flex-1 w-1/2">
                                         <input type="text"
-                                            placeholder="Vanu"
-                                            {...register("vanu")}
+                                            placeholder="venue"
+                                            {...register("venue")}
                                             className="input input-bordered w-full" />
                                     </div>
                                 </div>
