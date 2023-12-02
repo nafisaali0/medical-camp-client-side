@@ -11,6 +11,7 @@ import ManageCamps from "../page/Dashboard/ManageCamps/ManageCamps";
 import AdminRegister from './../page/Dashboard/AdminRegister/AdminRegister';
 import HomeDashboard from './../page/Dashboard/HomeDashboard/HomeDashboard';
 import UpdateCamp from './../page/Dashboard/UpdateCamp/UpdateCamp';
+import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path: "signup",
                 element: <SignUp></SignUp>,
+            },
+            {
+                path: "detail-camp/:id",
+                element: <DetailCamp></DetailCamp>,
             },
         ],
     },

@@ -81,7 +81,7 @@ const PopularCamp = () => {
                                         </div>
                                     </div>
                                     <div className="my-5 p-5">
-                                        <Link to={`/details-camp/${eachCamp._id}`}>
+                                        <Link to={`/detail-camp/${eachCamp._id}`}>
                                             <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800">See Details</button>
                                         </Link>
                                     </div>

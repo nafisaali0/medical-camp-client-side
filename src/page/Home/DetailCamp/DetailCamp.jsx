@@ -2,7 +2,7 @@
 const DetailCamp = () => {
     return (
         <div>
-            
+            Detail
         </div>
     );
 };
