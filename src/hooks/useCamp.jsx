@@ -10,7 +10,7 @@ const useCamp = () => {
             return res.data
         }
     })
-    console.log('Refetch function:', refetch);
+    // console.log('Refetch function:', refetch);
     return [camp, loading , refetch]
 };
 

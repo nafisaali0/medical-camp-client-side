@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 
 const AddCamps = () => {
+    
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
 
