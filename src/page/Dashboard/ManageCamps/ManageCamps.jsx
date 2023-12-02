@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 
 const ManageCamps = () => {
 
-    const [camp, refetch,loading] = useCamp();
+    const [camp, refetch, loading] = useCamp();
     const axiosLocalhost = useAxioslocalhost()
 
 
 
-    const handleDelete = id  => {
+    const handleDelete = id => {
 
         Swal.fire({
             title: 'Are you sure?',
@@ -33,7 +33,7 @@ const ManageCamps = () => {
                                 'success'
                             )
                             loading()
-                            refetch();                                                        
+                            refetch();
                         }
                     })
             }
@@ -82,12 +82,11 @@ const ManageCamps = () => {
                                         <td>{item.date}</td>
                                         <td>{item.campFees}</td>
                                         <th>
-                                            <Link to={`/dashboard/updatecamp/${item._id}`}>
-                                            <img
-                                                src={updateIcon}
-                                                className="w-6 h-6 cursor-pointer" alt="" />
+                                            <Link to={`/dashboard/update-camp/${item._id}`}>
+                                                <img
+                                                    src={updateIcon}
+                                                    className="w-6 h-6 cursor-pointer" alt="" />
                                             </Link>
-
                                         </th>
                                         <th>
                                             <img src={deleteIcon} onClick={() => handleDelete(item._id)} className="w-6 h-6 cursor-pointer" alt="" />
