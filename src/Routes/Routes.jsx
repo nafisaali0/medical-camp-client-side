@@ -35,6 +35,7 @@ export const router = createBrowserRouter([
             {
                 path: "detail-camp/:id",
                 element: <DetailCamp></DetailCamp>,
+                loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.id}`)
             },
         ],
     },
