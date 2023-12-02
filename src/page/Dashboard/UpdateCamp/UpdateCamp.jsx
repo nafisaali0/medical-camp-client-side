@@ -8,15 +8,17 @@ import { useLoaderData } from "react-router-dom";
 
 
 const UpdateCamp = () => {
-    const { image, campName, services, healthcareProfessionals, targetAudience, campFees, date, time, venue, enroll, shortDescription, longDescription } = useLoaderData();
+
+    const {_id, campName, services, healthcareProfessionals, targetAudience, campFees, date, time, venue, enroll, shortDescription, longDescription } = useLoaderData();
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
-
+    
+    // image hosting
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
 
         // image upload to imagbb and then get an url
         const imageFile = { image: data.image[0] }
@@ -26,6 +28,38 @@ const UpdateCamp = () => {
             }
         });
         console.log(res.data)
+        if (res.data.success) {
+            // now send the camp data to the server with the image url
+            const campItem = {
+                image: res.data.data.display_url,
+                campName: data.campName,
+                services: data.services,
+                healthcareProfessionals: data.healthcareProfessionals,
+                targetAudience: data.targetAudience,
+                campFees: parseFloat(data.campFees),
+                date: data.date,
+                time: data.time,
+                venue: data.venue,
+                enroll: data.enroll,  
+                shortDescription: data.shortDescription,
+                longDescription: data.longDescription   
+            }
+            // console.log("load")
+            const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campItem);
+            console.log(campRes.data)
+            if (campRes.data.modifiedCount > 0) {
+                // show success popup
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${data.campName} is updated to the menu.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+        // console.log('with image url', res.data);
     }
     return (
         <>
