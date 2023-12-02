@@ -4,6 +4,7 @@ import deleteIcon from '../../../assets/images/icon/delete.svg'
 import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import { Link } from "react-router-dom";
+import DashboardTitle from "../../../components/DashboardTitle";
 
 const ManageCamps = () => {
 
@@ -42,8 +43,13 @@ const ManageCamps = () => {
     }
     return (
         <>
+            <div>
+                <DashboardTitle
+                    heading={"See All Camp Information"}>
+                </DashboardTitle>
+            </div>
             <div className="w-9/12 mx-auto bg-base-100 p-5 my-10">
-                <div className="flex justify-between">
+                <div className="flex justify-between my-5">
                     <h2 className="text-3xl">Total Items: {camp.length}</h2>
                 </div>
                 <div className="overflow-x-auto">

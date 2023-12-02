@@ -5,10 +5,11 @@ import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 
 const AddCamps = () => {
     const { register, handleSubmit, reset } = useForm()
+    const axiosLocalhost = useAxioslocalhost()
 
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-    const axiosLocalhost = useAxioslocalhost()
+    
 
     const onSubmit = async (data) => {
         console.log(data)
@@ -29,7 +30,7 @@ const AddCamps = () => {
                 services: data.services,
                 healthcareProfessionals: data.healthcareProfessionals,
                 targetAudience: data.targetAudience,
-                campFees: parseFloat(data.fees),
+                campFees: parseFloat(data.campFees),
                 date: data.date,
                 time: data.time,
                 venue: data.venue,
@@ -84,16 +85,6 @@ const AddCamps = () => {
                                     className="input input-bordered w-full" />
                                 <div className="flex items-center gap-5">
                                     <div className="flex-1 w-1/2">
-                                        {/* <form>
-                                            <select placeholder="select target audience"
-                                               
-                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                                                <option>Adults</option>
-                                                <option>Children</option>
-                                                <option>Toddller</option>
-                                                <option>Older</option>
-                                            </select>
-                                        </form> */}
                                         <input type="text"
                                             placeholder="Target Audience"
                                             {...register("targetAudience")}
@@ -112,7 +103,7 @@ const AddCamps = () => {
                                 </textarea>
                                 <input type="number"
                                     placeholder="Fees"
-                                    {...register("fees")}
+                                    {...register("campFees")}
                                     className="input input-bordered w-full" />
                             </div>
                             {/* 2nd flex */}
