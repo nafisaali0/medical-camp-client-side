@@ -34,9 +34,9 @@ export const router = createBrowserRouter([
                 element: <SignUp></SignUp>,
             },
             {
-                path: "detail-camp/:id",
+                path: "camp-details/:campId",
                 element: <DetailCamp></DetailCamp>,
-                loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.campId}`)
             },
             {
                 path: "available-camps",
@@ -68,9 +68,9 @@ export const router = createBrowserRouter([
                 element:<AdminRegister></AdminRegister>,
             },
             {
-                path: "update-camp/:id",
+                path: "update-camp/:campId",
                 element:<UpdateCamp></UpdateCamp>,
-                loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.campId}`)
             },
 
             //doctor 

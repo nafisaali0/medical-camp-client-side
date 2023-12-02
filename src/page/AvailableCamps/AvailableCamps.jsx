@@ -4,7 +4,7 @@ import useCamp from "../../hooks/useCamp";
 const AvailableCamps = () => {
 
     const [camp] = useCamp()
-    console.log(camp)
+    // console.log(camp)
 
     return (
         <>
@@ -30,7 +30,7 @@ const AvailableCamps = () => {
                                                 <h1>Vanue: {eachCamp.venue}</h1>
                                             </div>
                                             <div className='flex gap-5 mt-3'>
-                                                <Link to={`/detail-camp/${eachCamp._id}`}>
+                                                <Link to={`/camp-details/${eachCamp._id}`}>
                                                     <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800">See Details</button>
                                                 </Link>
                                             </div>

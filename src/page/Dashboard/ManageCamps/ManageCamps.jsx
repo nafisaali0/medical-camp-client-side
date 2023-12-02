@@ -49,7 +49,7 @@ const ManageCamps = () => {
                 </DashboardTitle>
             </div>
             <div className="w-9/12 mx-auto bg-base-100 p-5 my-10">
-                <div className="flex justify-between my-5">
+                <div className="flex justify-between my-1">
                     <h2 className="text-3xl">Total Items: {camp.length}</h2>
                 </div>
                 <div className="overflow-x-auto">
