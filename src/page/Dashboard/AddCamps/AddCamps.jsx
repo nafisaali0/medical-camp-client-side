@@ -1,6 +1,58 @@
+import { useForm } from "react-hook-form";
 import DashboardTitle from "../../../components/DashboardTitle";
+import Swal from "sweetalert2";
+import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 
 const AddCamps = () => {
+    const { register, handleSubmit, reset } = useForm()
+
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+    const axiosLocalhost = useAxioslocalhost()
+
+    const onSubmit = async (data) => {
+        console.log(data)
+
+        // image upload to imagbb and then get an url
+        const imageFile = { image: data.image[0] }
+        const res = await axiosLocalhost.post(image_hostion_api, imageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+        console.log(res.data)
+        if (res.data.success) {
+            //now send the menu item to the server with the image url
+            const campDetails = {
+                image: res.data.data.display_url,
+                campName: data.campName,
+                services: data.service,
+                healthcareProfessionals: data.healthcareProfessionals,
+                targetAudience: data.targetAudience,
+                campFees: parseFloat(data.fees),
+                date: data.date,
+                time: data.time,
+                venue: data.vanu,
+                enroll: data.enroll,  
+                shortDescription: data.shortDescription,
+                longDescription: data.longDescription              
+            }
+            const campRes = await axiosLocalhost.post('/camp', campDetails);
+            // console.log(menuRes.data)
+            if (campRes.data.insertedId) {
+                //show success popup
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Added camp successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        }
+    }
+
     return (
         <>
             <div>
@@ -16,48 +68,84 @@ const AddCamps = () => {
                     <h1 className="text-3xl font-bold">Base Information</h1>
                 </div>
                 <div>
-                    <form>
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="flex justify-end items-end my-5">
-                            <button className="text-blue-950 font-semibold border-4 border-blue-950 px-3 py-3 rounded-full">Publish Now</button>
+                            <button type="submit" className="text-blue-950 font-semibold border-4 border-blue-950 px-3 py-3 rounded-full">Publish Now</button>
                         </div>
                         <div className="flex flex-col lg:flex-row items-center gap-10">
                             <div className="flex flex-col gap-5 flex-1">
-                                <input type="text" placeholder="Camp Name" className="input input-bordered w-full" />
-                                <input type="text" placeholder="service" className="input input-bordered w-full" />
+                                <input type="text"
+                                    placeholder="Camp Name"
+                                    {...register("campName")}
+                                    className="input input-bordered w-full" />
+                                <input type="text"
+                                    placeholder="service"
+                                    {...register("service")}
+                                    className="input input-bordered w-full" />
                                 <div className="flex items-center gap-5">
                                     <div className="flex-1 w-1/2">
-                                        <form>
-                                            <div></div>
-                                            {/* <label htmlFor="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select your country</label> */}
-                                            <select placeholder="select target audience" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                                        {/* <form>
+                                            <select placeholder="select target audience"
+                                               
+                                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                                                 <option>Adults</option>
                                                 <option>Children</option>
                                                 <option>Toddller</option>
                                                 <option>Older</option>
                                             </select>
-                                        </form>
+                                        </form> */}
+                                        <input type="text"
+                                            placeholder="Target Audience"
+                                            {...register("targetAudience")}
+                                            className="input input-bordered w-full" />
                                     </div>
                                     <div className="flex-1 w-1/2">
-                                        <input type="text" placeholder="Vanu" className="input input-bordered w-full" />
+                                        <input type="text"
+                                            placeholder="Vanu"
+                                            {...register("vanu")}
+                                            className="input input-bordered w-full" />
                                     </div>
                                 </div>
-                                <textarea placeholder="Healthcare Professionals" className="textarea textarea-bordered textarea-lg w-full" ></textarea>
-                                <input type="number" placeholder="Fees" className="input input-bordered w-full" />
+                                <textarea placeholder="Healthcare Professionals"
+                                    {...register("healthcareProfessionals")}
+                                    className="textarea textarea-bordered textarea-lg w-full">
+                                </textarea>
+                                <input type="number"
+                                    placeholder="Fees"
+                                    {...register("fees")}
+                                    className="input input-bordered w-full" />
                             </div>
                             {/* 2nd flex */}
                             <div className="flex flex-col gap-5 flex-1">
-                                <input type="file" className="input input-bordered w-full" />
+                                <input type="file"
+                                    {...register("image")}
+                                    className="input input-bordered w-full" />
                                 <div className="flex items-center gap-5">
                                     <div className="flex-1 w-1/2">
-                                        <input type="date" placeholder="Date" className="input input-bordered w-full max-w-2xl" />
+                                        <input type="date"
+                                            placeholder="Date"
+                                            {...register("date")}
+                                            className="input input-bordered w-full max-w-2xl" />
                                     </div>
                                     <div className="flex-1 w-1/2">
-                                        <input type="text" placeholder="Time" className="input input-bordered w-full" />
+                                        <input type="text"
+                                            placeholder="Time"
+                                            {...register("time")}
+                                            className="input input-bordered w-full" />
                                     </div>
                                 </div>
-                                <input type="number" placeholder="Enroll Amount" className="input input-bordered w-full" />
-                                <input type="text" placeholder="Short Description" className="input input-bordered w-full" />
-                                <textarea placeholder="Details" className="textarea textarea-bordered textarea-lg w-full" ></textarea>
+                                <input type="number"
+                                    placeholder="Enroll Amount"
+                                    {...register("enroll")}
+                                    className="input input-bordered w-full" />
+                                <input type="text"
+                                    placeholder="Short Description"
+                                    {...register("shortDescription")}
+                                    className="input input-bordered w-full" />
+                                <textarea placeholder="Details"
+                                    {...register("longDescription")}
+                                    className="textarea textarea-bordered textarea-lg w-full" >
+                                </textarea>
                             </div>
                         </div>
 
