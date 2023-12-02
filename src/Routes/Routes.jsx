@@ -12,6 +12,7 @@ import AdminRegister from './../page/Dashboard/AdminRegister/AdminRegister';
 import HomeDashboard from './../page/Dashboard/HomeDashboard/HomeDashboard';
 import UpdateCamp from './../page/Dashboard/UpdateCamp/UpdateCamp';
 import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
+import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
 
 
 export const router = createBrowserRouter([
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
                 path: "detail-camp/:id",
                 element: <DetailCamp></DetailCamp>,
                 loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.id}`)
+            },
+            {
+                path: "available-camps",
+                element: <AvailableCamps></AvailableCamps>,
             },
         ],
     },

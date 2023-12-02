@@ -91,7 +91,7 @@ const PopularCamp = () => {
                     }
                 </div>
                 <div className="my-5 p-5 flex justify-center items-center">
-                    <Link to={'/available-Camps'}>
+                    <Link to={'/available-camps'}>
                         <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800">See All Camp</button>
                     </Link>
                 </div>
