@@ -15,6 +15,7 @@ import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
 import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps';
 import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
+import OrganizerProfile from "../page/Dashboard/OrganizerProfile/OrganizerProfile";
 // import UpdateProfile from './../page/Dashboard/UpdateProfile/UpdateProfile';
 
 
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
             },
             // addmin routes
             {
+                path: "organizer-profile",
+                element: <OrganizerProfile></OrganizerProfile>,
+            },
+            {
                 path: "add-a-camp",
                 element: <AddCamps></AddCamps>,
             },
@@ -82,7 +87,7 @@ export const router = createBrowserRouter([
 
             //doctor 
 
-            
+
 
 
         ]

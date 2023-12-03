@@ -33,7 +33,6 @@ const Dashboard = () => {
                                 </div>
                             </form>
                         </div>
-
                     </div>
                 </div>
                 <div className="flex gap-10">
@@ -44,8 +43,8 @@ const Dashboard = () => {
                                     <img src={user?.photoURL} alt="Tailwind-CSS-Avatar-component" />
                                 </div>
                             </div>
-                            <div>
-                                <button className='px-2 py-2 rounded-lg bg-blue-950 text-sm font-bold text-white'>Update Profile</button>
+                            <div className="text-3xl font-bold">
+                                <h1 className="text-xl font-bold">{user.displayName}</h1>
                             </div>
                         </div>
                         <ul className="flex flex-col gap-5 menu">
@@ -57,6 +56,11 @@ const Dashboard = () => {
                                                 <li>
                                                     <NavLink to={"/dashboard/home-dashbord"}>
                                                         Dashboard Home
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={"organizer-profile"}>
+                                                        Your Profile
                                                     </NavLink>
                                                 </li>
                                                 <li>
@@ -94,6 +98,16 @@ const Dashboard = () => {
                                                 </li>
                                             </>
                                         )}
+                                        {eachUser?.role === undefined && (
+                                            <>
+                                                <li>
+                                                    <NavLink to={"organizer-profile"}>
+                                                        Your Profile
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        )}
+
                                     </React.Fragment>
                                 ))
                             }

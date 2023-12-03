@@ -34,7 +34,9 @@ const SignUp = () => {
                             name: data.name,
                             email: data.email,
                             photo: data.photo,
-                            role: data.role
+                            role: data.role,
+                            phone: data.phone,
+                            address: data.address,
                         }
                         console.log(userInfo)
                         axiosLocalhost.post('/users', userInfo)
@@ -89,6 +91,9 @@ const SignUp = () => {
                                 <option>Healthcare Professionals</option>
                                 <option>Participant</option>
                             </select>
+                            <div>
+                                <input type="number" {...register("phone")} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Phone Number" />
+                            </div>
                             <div className="relative z-0 w-full mb-6 group">
                                 <input type="email" {...register("email", { required: true })} name="email" className="block py-2 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300   focus:outline-none focus:border-blue-600 peer" placeholder="Email" />
                                 {errors.email && <span>This field is required</span>}
@@ -104,6 +109,9 @@ const SignUp = () => {
                                 {errors.password?.type === 'minLength' && <p>Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p>Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p>Password must have one Uppercase one lower case, one number and one special character.</p>}
+                            </div>
+                            <div>
+                                <textarea type="number" {...register("address")} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Address" />
                             </div>
                             <div className="flex gap-2 md:gap-5 lg:gap-10 items-center my-10">
                                 <div className="relative z-0 group">

@@ -9,10 +9,10 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdateCamp = () => {
 
-    const {_id, campName, services, healthcareProfessionals, targetAudience, campFees, date, time, venue, enroll, shortDescription, longDescription } = useLoaderData();
+    const { _id, campName, services, healthcareProfessionals, targetAudience, campFees, date, time, venue, enroll, shortDescription, longDescription } = useLoaderData();
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
-    
+
     // image hosting
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
@@ -40,9 +40,9 @@ const UpdateCamp = () => {
                 date: data.date,
                 time: data.time,
                 venue: data.venue,
-                enroll: data.enroll,  
+                enroll: data.enroll,
                 shortDescription: data.shortDescription,
-                longDescription: data.longDescription   
+                longDescription: data.longDescription
             }
             // console.log("load")
             const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campItem);
@@ -53,7 +53,7 @@ const UpdateCamp = () => {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: `${data.campName} is updated to the menu.`,
+                    title: `${data.campName} is updated camp.`,
                     showConfirmButton: false,
                     timer: 1500
                 });
