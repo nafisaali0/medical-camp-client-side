@@ -116,7 +116,15 @@ const AddCamps = () => {
                                 <input type="file"
                                     {...register("image")}
                                     className="input input-bordered w-full" />
-                                <div className="flex items-center gap-5">
+                                <input type="date"
+                                    placeholder="Date"
+                                    {...register("date")}
+                                    className="input input-bordered w-full" />
+                                    <input type="text"
+                                            placeholder="Time"
+                                            {...register("time")}
+                                            className="input input-bordered w-full" />
+                                {/* <div className="flex items-center gap-5">
                                     <div className="flex-1 w-1/2">
                                         <input type="date"
                                             placeholder="Date"
@@ -129,7 +137,7 @@ const AddCamps = () => {
                                             {...register("time")}
                                             className="input input-bordered w-full" />
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <input type="number"
                                     placeholder="Enroll Amount"
                                     {...register("enroll")}

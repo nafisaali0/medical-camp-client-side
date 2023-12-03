@@ -122,13 +122,23 @@ const UpdateCamp = () => {
                                     // defaultValue={image}
                                     {...register("image")}
                                     className="input input-bordered w-full" />
-                                <div className="flex items-center gap-5">
+                                <input type="date"
+                                    placeholder="Date"
+                                    defaultValue={date}
+                                    {...register("date")}
+                                    className="input input-bordered w-full" />
+                                <input type="text"
+                                    placeholder="Time"
+                                    defaultValue={time}
+                                    {...register("time")}
+                                    className="input input-bordered w-full" />
+                                {/* <div className="flex items-center gap-5">
                                     <div className="flex-1 w-1/2">
                                         <input type="date"
                                             placeholder="Date"
                                             defaultValue={date}
                                             {...register("date")}
-                                            className="input input-bordered w-full max-w-2xl" />
+                                            className="input input-bordered w-full" />
                                     </div>
                                     <div className="flex-1 w-1/2">
                                         <input type="text"
@@ -137,7 +147,7 @@ const UpdateCamp = () => {
                                             {...register("time")}
                                             className="input input-bordered w-full" />
                                     </div>
-                                </div>
+                                </div> */}
                                 {/* <input type="number"
                                     placeholder="Enroll Amount"
                                     defaultValue={enroll}
