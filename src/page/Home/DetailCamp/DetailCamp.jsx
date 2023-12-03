@@ -1,8 +1,77 @@
-import { useLoaderData } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
+import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
+import Swal from "sweetalert2";
+import useCamp from './../../../hooks/useCamp';
+
 
 const DetailCamp = () => {
 
-    const { image, campName, targetAudience, date, venue, shortDescription, longDescription } = useLoaderData();
+    const { register, handleSubmit } = useForm();//from react hook
+    const { user } = useAuth();
+    const axiosLocalhost = useAxioslocalhost();
+    const [loading, refetch] = useCamp();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { _id, image, campFees, campName, targetAudience, date, time, venue, services, shortDescription, longDescription } = useLoaderData();
+
+    const onSubmit = (data) => {
+        // console.log(data, user?.email)
+
+        if (user && user.email) {
+            // send cart item to the database
+            const campItem = {
+                campId: _id,
+                email: user.email,
+                campName: campName,
+                campFees: campFees,
+                date: date,
+                time: time,
+                venue: venue,
+                services: services,
+                image: image,
+                // register form
+                name: data.name,
+                age: data.age,
+                gender: data.gender,
+                address: data.address,
+            }
+            console.log(campItem)
+            axiosLocalhost.post('/registerCamps', campItem)
+                .then(res => {
+                    console.log(res.data)
+                    if (res.data.insertedId) {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: `Your ${campName} has been added to the register camp`,
+                            showConfirmButton: false,
+                            timer: 1600
+                        });
+                        // refetch the cart to update the cart items count
+                        loading()
+                        refetch()
+                    }
+                })
+        } else {
+            Swal.fire({
+                title: "You are not login",
+                text: "Please login to add to the cart",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Go to login page"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //send the user to the login page 
+                    navigate('/login', { state: { from: location } })
+                }
+            });
+        }
+
+    }
 
     return (
         <div>
@@ -13,9 +82,9 @@ const DetailCamp = () => {
                     </div>
 
                     <div className="flex justify-between items-center border-b-2 border-[#e7e7e9] drop-shadow-sm">
-                        <div>
+                        <div className="flex gap-3 flex-wrap items-center my-5">
                             <span className='px-3 py-2 bg-[#5b608b] text-xs text-white font-semibold rounded-lg'>{date}</span>
-                            <span className='px-3 py-2 bg-[#5b608b] text-xs text-white font-semibold rounded-lg mx-4'>Venue: {venue}</span>
+                            <span className='px-3 py-2 bg-[#5b608b] text-xs text-white font-semibold rounded-lg'>Venue: {venue}</span>
                             <span className='px-3 py-2 bg-[#5b608b] text-xs text-white font-semibold rounded-lg'>Target Audience: {targetAudience}</span>
                         </div>
                         <div className="flex gap-5 my-5">
@@ -23,10 +92,34 @@ const DetailCamp = () => {
                             <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Register</button>
                             <dialog id="my_modal_4" className="modal">
                                 <div className="modal-box w-11/12 max-w-5xl">
-                                    <h3 className="font-bold text-lg">Hello!</h3>
-                                    <p className="py-4">Click the button below to close</p>
+                                    <div className="text-left text-3xl font-bold my-5">
+                                        <h1>Your Information</h1>
+                                    </div>
+                                    {/* form:get information register user */}
+                                    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
+                                        <div className="mb-5">
+                                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your Name</label>
+                                            <input type="name" {...register("name")} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Your Name" required></input>
+                                        </div>
+                                        <div className="mb-5">
+                                            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
+                                            <input type="age" {...register("age")} placeholder="Age" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
+                                        </div>
+                                        <div className="mb-5">
+                                            <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
+                                            <input type="text" {...register("gender")} placeholder="Gender" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
+                                        </div>
+                                        <div className="mb-5">
+                                            <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                                            <textarea type="text" {...register("address")} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
+                                        </div>
+                                        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Confirm Register</button>
+                                    </form>
+                                    <div className="my-5">
+                                        <p className="text-lg font-bold">Camp Fees : <span className="text-lg font-semibold">{campFees} $</span></p>
+                                        <p className="text-lg font-bold">If any query contact with this number : <span className="text-lg font-semibold">01345678909</span></p>
+                                    </div>
                                     <div className="modal-action">
-                                        <button className="btn">Confirm Register</button>
                                         <form method="dialog">
                                             {/* if there is a button, it will close the modal */}
                                             <button className="btn">Close</button>

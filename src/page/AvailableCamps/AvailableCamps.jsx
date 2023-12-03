@@ -22,11 +22,14 @@ const AvailableCamps = () => {
                                                 <h1>Services: <span className="text-lg font-normal">{eachCamp.services}</span>  </h1>
                                                 <h1 className="my-5">healthcareProfessionals: <span className="text-lg font-normal">{eachCamp.healthcareProfessionals}</span></h1>
                                                 <h1 className="my-5">Target Audience: <span className="text-lg font-normal">{eachCamp.targetAudience}</span></h1>
-                                                <h1>Participent: <span className="text-lg font-normal">{eachCamp.enroll}</span></h1>
                                             </div>
-                                            <div className="grid grid-cols-2 lg:grid-cols-3 text-xl font-semibold text-left my-5">
-                                                <h1>{eachCamp.date}</h1>
-                                                <h1>{eachCamp.time}</h1>
+                                            <div className="flex items-center gap-5 text-xl font-semibold">
+                                                <h1>Participent: <span className="text-lg font-normal">{eachCamp.enroll}</span></h1>
+                                                <h1>Camp Fees: <span className="text-lg font-normal">{eachCamp.campFees} $</span></h1>
+                                            </div>
+                                            <div className="flex flex-wrap items-center gap-3 text-xl font-semibold text-left my-5">
+                                                <h1>Date :{eachCamp.date}</h1>
+                                                <h1>Time :{eachCamp.time}</h1>
                                                 <h1>Vanue: {eachCamp.venue}</h1>
                                             </div>
                                             <div className='flex gap-5 mt-3'>

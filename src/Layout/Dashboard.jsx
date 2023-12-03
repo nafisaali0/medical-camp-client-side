@@ -12,7 +12,7 @@ const Dashboard = () => {
                 <div className="bg-white p-2 drop-shadow-md">
                     <div className='flex justify-between mx-10'>
                         <div className='flex items-center gap-4'>
-                            <img className="w-16" src={logo} alt="" /> 
+                            <img className="w-16" src={logo} alt="" />
                             <h2 className='text-3xl font-bold text-[#2b355c]'>Amelia Medical Camp</h2>
                         </div>
                         <div className='w-2/5'>
@@ -63,6 +63,11 @@ const Dashboard = () => {
                             <li>
                                 <NavLink to={"/dashboard/manage-registered-camps"}>
                                     Manage Registered Camps
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink to={"/dashboard/registered-camps"}>
+                                    Registered Camps
                                 </NavLink>
                             </li>
                             {/* shared */}
