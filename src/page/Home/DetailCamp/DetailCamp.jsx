@@ -1,15 +1,18 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
 import useCamp from './../../../hooks/useCamp';
-
+import useUsers from './../../../hooks/useUsers';
+import errorIcon from '../../../assets/images/icon/error.svg'
+import React from 'react';
 
 const DetailCamp = () => {
 
     const { register, handleSubmit } = useForm();//from react hook
     const { user } = useAuth();
+    const [users] = useUsers();
     const axiosLocalhost = useAxioslocalhost();
     const [loading, refetch] = useCamp();
     const location = useLocation();
@@ -88,45 +91,116 @@ const DetailCamp = () => {
                             <span className='px-3 py-2 bg-[#5b608b] text-xs text-white font-semibold rounded-lg'>Target Audience: {targetAudience}</span>
                         </div>
                         <div className="flex gap-5 my-5">
-                            {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Register</button>
-                            <dialog id="my_modal_4" className="modal">
-                                <div className="modal-box w-11/12 max-w-5xl">
-                                    <div className="text-left text-3xl font-bold my-5">
-                                        <h1>Your Information</h1>
-                                    </div>
-                                    {/* form:get information register user */}
-                                    <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
-                                        <div className="mb-5">
-                                            <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your Name</label>
-                                            <input type="name" {...register("name")} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Your Name" required></input>
-                                        </div>
-                                        <div className="mb-5">
-                                            <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
-                                            <input type="age" {...register("age")} placeholder="Age" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
-                                        </div>
-                                        <div className="mb-5">
-                                            <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
-                                            <input type="text" {...register("gender")} placeholder="Gender" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
-                                        </div>
-                                        <div className="mb-5">
-                                            <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                            <textarea type="text" {...register("address")} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
-                                        </div>
-                                        <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Confirm Register</button>
-                                    </form>
-                                    <div className="my-5">
-                                        <p className="text-lg font-bold">Camp Fees : <span className="text-lg font-semibold">{campFees} $</span></p>
-                                        <p className="text-lg font-bold">If any query contact with this number : <span className="text-lg font-semibold">01345678909</span></p>
-                                    </div>
-                                    <div className="modal-action">
-                                        <form method="dialog">
-                                            {/* if there is a button, it will close the modal */}
-                                            <button className="btn">Close</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </dialog>
+                            {/* register button condition based on user role */}
+                            {
+                                users.map((eachUser) => (
+                                    <React.Fragment key={eachUser.id}>
+                                        {
+                                            eachUser?.role === "Participant" ? (
+                                                <>
+                                                    <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Register</button>
+                                                    <dialog id="my_modal_4" className="modal">
+                                                        <div className="modal-box w-11/12 max-w-5xl">
+                                                            <div className="text-left text-3xl font-bold my-5">
+                                                                <h1>Your Information</h1>
+                                                            </div>
+                                                            <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
+                                                                <div className="mb-5">
+                                                                    <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your Name</label>
+                                                                    <input type="name" {...register("name")} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Your Name" required></input>
+                                                                </div>
+                                                                <div className="mb-5">
+                                                                    <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
+                                                                    <input type="age" {...register("age")} placeholder="Age" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
+                                                                </div>
+                                                                <div className="mb-5">
+                                                                    <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
+                                                                    <input type="text" {...register("gender")} placeholder="Gender" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
+                                                                </div>
+                                                                <div className="mb-5">
+                                                                    <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                                                                    <textarea type="text" {...register("address")} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
+                                                                </div>
+                                                                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Confirm Register</button>
+                                                            </form>
+                                                            <div className="my-5">
+                                                                <p className="text-lg font-bold">Camp Fees : <span className="text-lg font-semibold">{campFees} $</span></p>
+                                                                <p className="text-lg font-bold">If any query contact with this number : <span className="text-lg font-semibold">01345678909</span></p>
+                                                            </div>
+                                                            <div className="modal-action">
+                                                                <form method="dialog">
+                                                                    <button className="btn">Close</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </dialog>
+                                                </>
+
+                                            ) :
+                                                <>
+                                                    <>
+                                                        <button disabled className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Register</button>
+                                                        <dialog id="my_modal_4" className="modal">
+                                                            <div className="modal-box w-11/12 max-w-5xl">
+                                                                <div className="text-left text-3xl font-bold my-5">
+                                                                    <h1>Your Information</h1>
+                                                                </div>
+                                                                <form onSubmit={handleSubmit(onSubmit)} className="max-w-sm mx-auto">
+                                                                    <div className="mb-5">
+                                                                        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 ">Your Name</label>
+                                                                        <input type="name" {...register("name")} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Your Name" required></input>
+                                                                    </div>
+                                                                    <div className="mb-5">
+                                                                        <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
+                                                                        <input type="age" {...register("age")} placeholder="Age" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
+                                                                    </div>
+                                                                    <div className="mb-5">
+                                                                        <label htmlFor="gender" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Gender</label>
+                                                                        <input type="text" {...register("gender")} placeholder="Gender" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></input>
+                                                                    </div>
+                                                                    <div className="mb-5">
+                                                                        <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
+                                                                        <textarea type="text" {...register("address")} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required></textarea>
+                                                                    </div>
+                                                                    <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Confirm Register</button>
+                                                                </form>
+                                                                <div className="my-5">
+                                                                    <p className="text-lg font-bold">Camp Fees : <span className="text-lg font-semibold">{campFees} $</span></p>
+                                                                    <p className="text-lg font-bold">If any query contact with this number : <span className="text-lg font-semibold">01345678909</span></p>
+                                                                </div>
+                                                                <div className="modal-action">
+                                                                    <form method="dialog">
+                                                                        <button className="btn">Close</button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </dialog>
+
+                                                        {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                                                        <img onClick={() => document.getElementById('my_modal_3').showModal()} className="w-5 h-5 cursor-pointer" src={errorIcon} alt="" />
+                                                        <dialog id="my_modal_3" className="modal">
+                                                            <div className="modal-box">
+                                                                <form method="dialog">
+                                                                    {/* if there is a button in form, it will close the modal */}
+                                                                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                                </form>
+                                                                <div className="text-xl font-semibold">
+                                                                    <p>Admin and HeathCare Professional not allowed to register</p>
+                                                                    <p>
+                                                                        If you have not role then edit your profile Go to this link:
+                                                                        <Link to={"/dashboard/default-Profile"}>Update Profile</Link>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </dialog>
+                                                    </>
+                                                </>
+                                        }
+
+
+                                    </React.Fragment>
+                                ))
+                            }
                         </div>
                     </div>
                     <div className="my-5">

@@ -2,34 +2,37 @@ import { useEffect, useState } from "react";
 import HomeTitle from "../../../components/HomeTitle";
 import useCamp from "../../../hooks/useCamp";
 import { Link } from "react-router-dom";
+import useRegisteredCamp from "../../../hooks/useRegisteredCamp";
 
 const PopularCamp = () => {
 
     const [camp] = useCamp()
+    const [registeredCamp] = useRegisteredCamp();
     const [camps, setCamps] = useState([])
-    const [sortOrder, setSortOrder] = useState('');
+    const [sortOrder, setSortOrder] = useState('asc'); // Default sorting order is ascending
+
+    const calculateTotalParticipation = (campId) => {
+        const participantsForCamp = registeredCamp.filter(registration => registration.campId === campId);
+        // console.log(participantsForCamp.length)
+        return participantsForCamp.length;
+    }
 
     useEffect(() => {
-        const sortedCamp = [...camp].sort((a, b) => a.enroll - b.enroll);
-        // loading()
-        setCamps(sortedCamp);
-    }, [camp]);
-    // console.log(camps)
-
-    const handleSort = () => {
-        const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-        setSortOrder(newSortOrder);
-
+        // Sort the camp data based on the number of participants and sorting order
         const sortedCamp = [...camp].sort((a, b) => {
-            if (newSortOrder === 'asc') {
-                return a.enroll - b.enroll;
-            } else {
-                return b.enroll - a.enroll;
-            }
+            const participantsA = registeredCamp.filter(registration => registration.campId === a._id).length;
+            const participantsB = registeredCamp.filter(registration => registration.campId === b._id).length;
+
+            return sortOrder === 'asc' ? participantsA - participantsB : participantsB - participantsA;
         });
 
         setCamps(sortedCamp);
-        // loading()
+    }, [camp, registeredCamp, sortOrder]);
+
+    const handleSort = () => {
+        // Toggle sorting order
+        const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
+        setSortOrder(newSortOrder);
     };
 
     return (
@@ -45,15 +48,15 @@ const PopularCamp = () => {
                         <details className="dropdown ">
                             <summary className="m-1 btn">Sort By Participant</summary>
                             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                                <li onClick={handleSort}><a>Sort By low to high</a></li>
                                 <li onClick={handleSort}><a>Sort By high to low</a></li>
+                                <li onClick={handleSort}><a>Sort By low to high</a></li>
                             </ul>
                         </details>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 m-3">
                     {
-                        camps.map(eachCamp =>
+                        camps.slice(0, 6).map(eachCamp =>
                             <>
                                 <div className="card card-compact bg-base-100 shadow-xl">
                                     <figure><img className="w-[500px] h-[300px]" src={eachCamp.image} alt="Shoes" /></figure>
@@ -70,7 +73,8 @@ const PopularCamp = () => {
                                             <h1>Services: <span className="text-lg font-normal">{eachCamp.services}</span>  </h1>
                                             <h1 className="my-5">healthcareProfessionals: <span className="text-lg font-normal">{eachCamp.healthcareProfessionals}</span></h1>
                                             <h1 className="my-5">Target Audience: <span className="text-lg font-normal">{eachCamp.targetAudience}</span></h1>
-                                            <h1>Participent: <span className="text-lg font-normal">{eachCamp.enroll}</span></h1>
+                                            {/* try hare */}
+                                            <h1>Participent: <span className="text-lg font-normal">{calculateTotalParticipation(eachCamp._id)}</span></h1>
                                         </div>
                                         <div className="flex justify-between items-center text-xl font-semibold text-left my-5">
                                             <h1>{eachCamp.date}</h1>

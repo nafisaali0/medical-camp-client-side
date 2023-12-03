@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import useCamp from "../../hooks/useCamp";
+import useRegisteredCamp from "../../hooks/useRegisteredCamp";
 
 const AvailableCamps = () => {
 
     const [camp] = useCamp()
+    const [registeredCamp] = useRegisteredCamp();
     // console.log(camp)
+    const calculateTotalParticipation = (campId) => {
+        const participantsForCamp = registeredCamp.filter(registration => registration.campId === campId);
+        return participantsForCamp.length;
+    }
+
 
     return (
         <>
@@ -24,7 +31,7 @@ const AvailableCamps = () => {
                                                 <h1 className="my-5">Target Audience: <span className="text-lg font-normal">{eachCamp.targetAudience}</span></h1>
                                             </div>
                                             <div className="flex items-center gap-5 text-xl font-semibold">
-                                                <h1>Participent: <span className="text-lg font-normal">{eachCamp.enroll}</span></h1>
+                                                <h1>Participent: <span className="text-lg font-normal">{calculateTotalParticipation(eachCamp._id)}</span></h1>
                                                 <h1>Camp Fees: <span className="text-lg font-normal">{eachCamp.campFees} $</span></h1>
                                             </div>
                                             <div className="flex flex-wrap items-center gap-3 text-xl font-semibold text-left my-5">

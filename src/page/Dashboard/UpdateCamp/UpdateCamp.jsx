@@ -9,7 +9,7 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdateCamp = () => {
 
-    const { _id, campName, services, healthcareProfessionals, targetAudience, campFees, date, time, venue, enroll, shortDescription, longDescription } = useLoaderData();
+    const { _id, campName, services, healthcareProfessionals, targetAudience, campFees, date, time, venue, shortDescription, longDescription } = useLoaderData();
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
 
@@ -40,7 +40,7 @@ const UpdateCamp = () => {
                 date: data.date,
                 time: data.time,
                 venue: data.venue,
-                enroll: data.enroll,
+                // enroll: data.enroll,
                 shortDescription: data.shortDescription,
                 longDescription: data.longDescription
             }
@@ -138,11 +138,11 @@ const UpdateCamp = () => {
                                             className="input input-bordered w-full" />
                                     </div>
                                 </div>
-                                <input type="number"
+                                {/* <input type="number"
                                     placeholder="Enroll Amount"
                                     defaultValue={enroll}
                                     {...register("enroll")}
-                                    className="input input-bordered w-full" />
+                                    className="input input-bordered w-full" /> */}
                                 <input type="text"
                                     placeholder="Short Description"
                                     defaultValue={shortDescription}

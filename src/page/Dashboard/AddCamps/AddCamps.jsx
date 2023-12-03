@@ -36,7 +36,7 @@ const AddCamps = () => {
                 date: data.date,
                 time: data.time,
                 venue: data.venue,
-                enroll: data.enroll,
+                // enroll: data.enroll,
                 shortDescription: data.shortDescription,
                 longDescription: data.longDescription
             }
@@ -130,10 +130,10 @@ const AddCamps = () => {
                                             className="input input-bordered w-full" />
                                     </div>
                                 </div>
-                                <input type="number"
+                                {/* <input type="number"
                                     placeholder="Enroll Amount"
                                     {...register("enroll")}
-                                    className="input input-bordered w-full" />
+                                    className="input input-bordered w-full" /> */}
                                 <input type="text"
                                     placeholder="Short Description"
                                     {...register("shortDescription")}
