@@ -68,7 +68,7 @@ const RegisteredCamps = () => {
             cell: (row) => <Link to={'/'}><img src={deleteIcon} onClick={handleDelete} alt={row.owner_name} style={{ width: '20px', height: '20px', borderRadius: '50px', margin: '3px' }} /></Link>
         }       
     ]
-    // Assuming sortBlogs is an array of blog objects
+   
     const data = registeredCamp.map((eachCamp, index) => ({
         id: index + 1,
         campName: eachCamp.campName,

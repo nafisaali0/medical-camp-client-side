@@ -1,11 +1,14 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/images/icon/Logo-removebg.png'
+import useUsers from '../hooks/useUsers';
+import React from 'react';
 import useAuth from '../hooks/useAuth';
+
 const Dashboard = () => {
-    const { user } = useAuth()
-    // let isAdmin;
-    // let isParticipant;
-    // let isDoctor;
+
+    const [users] = useUsers();//this user from DB
+    const { user } = useAuth();//this user from AuthProvider
+
     return (
         <>
             <div className='bg-[#f3eee4]'>
@@ -15,6 +18,7 @@ const Dashboard = () => {
                             <img className="w-16" src={logo} alt="" />
                             <h2 className='text-3xl font-bold text-[#2b355c]'>Amelia Medical Camp</h2>
                         </div>
+                        {/* search bar */}
                         <div className='w-2/5'>
                             <form>
                                 <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -45,31 +49,54 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <ul className="flex flex-col gap-5 menu">
-                            <li>
-                                <NavLink to={"/dashboard/home-dashbord"}>
-                                    Dashboard Home
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={"/dashboard/add-a-camp"}>
-                                    Add Camp
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={"/dashboard/manage-camps"}>
-                                    Manage Camps
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={"/dashboard/manage-registered-camps"}>
-                                    Manage Registered Camps
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink to={"/dashboard/registered-camps"}>
-                                    Registered Camps
-                                </NavLink>
-                            </li>
+                            {
+                                users?.map((eachUser) => (
+                                    <React.Fragment key={eachUser.id}>
+                                        {eachUser?.role === "Admin" && (
+                                            <>
+                                                <li>
+                                                    <NavLink to={"/dashboard/home-dashbord"}>
+                                                        Dashboard Home
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={"/dashboard/add-a-camp"}>
+                                                        Add Camp
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={"/dashboard/manage-camps"}>
+                                                        Manage Camps
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={"/dashboard/manage-registered-camps"}>
+                                                        Manage Registered Camps
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        )}
+                                        {eachUser?.role === "Participant" && (
+                                            <>
+                                                <li>
+                                                    <NavLink to={"/dashboard/registered-camps"}>
+                                                        Registered Camps
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        )}
+                                        {eachUser?.role === "Healthcare Professionals" && (
+                                            <>
+                                                <li>
+                                                    <NavLink to={"/dashboard/home-dashbord"}>
+                                                        Dashboard Home
+                                                    </NavLink>
+                                                </li>
+                                            </>
+                                        )}
+                                    </React.Fragment>
+                                ))
+                            }
                             {/* shared */}
                             <div className="flex flex-col w-full">
                                 <div className="divider"></div>

@@ -14,6 +14,8 @@ const useRegisteredCamp = () => {
         }
     })
     return [registeredCamp, refetch]
+
+
   
 };
 

@@ -2,15 +2,16 @@ import { useForm } from "react-hook-form";
 import DashboardTitle from "../../../components/DashboardTitle";
 import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
+import { Helmet } from "react-helmet-async";
 
 const AddCamps = () => {
-    
+
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
 
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-    
+
 
     const onSubmit = async (data) => {
         console.log(data)
@@ -35,9 +36,9 @@ const AddCamps = () => {
                 date: data.date,
                 time: data.time,
                 venue: data.venue,
-                enroll: data.enroll,  
+                enroll: data.enroll,
                 shortDescription: data.shortDescription,
-                longDescription: data.longDescription              
+                longDescription: data.longDescription
             }
             const campRes = await axiosLocalhost.post('/camp', campDetails);
             // console.log(menuRes.data)
@@ -57,6 +58,9 @@ const AddCamps = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Amelia | AddCamps</title>
+            </Helmet>
             <div>
                 <DashboardTitle
                     heading={"Add New Camp"}>

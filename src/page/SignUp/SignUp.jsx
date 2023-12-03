@@ -4,10 +4,12 @@ import { useForm } from "react-hook-form"
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useAxioslocalhost from "../../hooks/useAxioslocalhost";
 
 const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
+    const axiosLocalhost = useAxioslocalhost()
     const { updateUserProfile, signUpUser } = useAuth();
     const navigate = useNavigate();
 
@@ -18,15 +20,8 @@ const SignUp = () => {
 
     const onSubmit = async (data) => {
         reset();
-        console.log(data)
+        // console.log(data)
 
-        // const imageFile = { image: data.image[0] }
-        // const res = await axiosPublic.post(image_hostion_api, imageFile, {
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     }
-        // });
-        
         // signup authentication
         signUpUser(data.email, data.password)
             .then(result => {
@@ -35,15 +30,28 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photo)
                     .then(() => {
                         console.log('user profile info updated')
-                        reset();
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "SignUp Successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        navigate('/')
+                        const userInfo = {
+                            name: data.name,
+                            email: data.email,
+                            photo: data.photo,
+                            role: data.role
+                        }
+                        console.log(userInfo)
+                        axiosLocalhost.post('/users', userInfo)
+                            .then(res => {
+                                if (res.data.insertedId) {
+                                    console.log('user add')
+                                    reset();
+                                    Swal.fire({
+                                        position: "top-end",
+                                        icon: "success",
+                                        title: "Your work has been saved",
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/')
+                                }
+                            })
                     })
                     .catch(error => console.log(error))
             })
@@ -52,7 +60,7 @@ const SignUp = () => {
     return (
         <>
             <Helmet>
-                <title>Amelia || Signup</title>
+                <title>Amelia | Signup</title>
             </Helmet>
             <div className="overflow-hidden" >
                 <div className='container mx-auto flex flex-col justify-center items-center drop-shadow-lg md:pt-12 lg:pt-20'>
@@ -70,12 +78,17 @@ const SignUp = () => {
                         </div>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div>
-                                <input type="name" {...register("name")} name="name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Name" />
+                                <input type="name" {...register("name")} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Name" />
                             </div>
                             <div>
-                                <input type="url" {...register("photo", { required: true })} name="photo" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Photo" />
-                                {errors.email && <span>Photo URL is required</span>}
+                                <input type="url" {...register("photo")} className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Image" />
                             </div>
+                            <select {...register("role")} className="select select-bordered w-full my-5">
+                                <option disabled selected>Select Your Role</option>
+                                <option>Admin</option>
+                                <option>Healthcare Professionals</option>
+                                <option>Participant</option>
+                            </select>
                             <div className="relative z-0 w-full mb-6 group">
                                 <input type="email" {...register("email", { required: true })} name="email" className="block py-2 px-0 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300   focus:outline-none focus:border-blue-600 peer" placeholder="Email" />
                                 {errors.email && <span>This field is required</span>}

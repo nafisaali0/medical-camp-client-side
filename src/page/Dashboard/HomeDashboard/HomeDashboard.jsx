@@ -1,7 +1,9 @@
 import useAuth from "../../../hooks/useAuth";
 
+
 const HomeDashboard = () => {
     const { user } = useAuth();
+   
     return (
         <>
             <div>

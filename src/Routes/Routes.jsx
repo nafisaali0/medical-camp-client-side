@@ -8,12 +8,14 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
 import AddCamps from './../page/Dashboard/AddCamps/AddCamps';
 import ManageCamps from "../page/Dashboard/ManageCamps/ManageCamps";
-import AdminRegister from './../page/Dashboard/AdminRegister/AdminRegister';
+// import AdminRegister from './../page/Dashboard/AdminRegister/AdminRegister';
 import HomeDashboard from './../page/Dashboard/HomeDashboard/HomeDashboard';
 import UpdateCamp from './../page/Dashboard/UpdateCamp/UpdateCamp';
 import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
 import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps';
+import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
+// import UpdateProfile from './../page/Dashboard/UpdateProfile/UpdateProfile';
 
 
 export const router = createBrowserRouter([
@@ -69,7 +71,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "manage-registered-camps",
-                element: <AdminRegister></AdminRegister>,
+                element: <ManageRegisterCamps></ManageRegisterCamps>,
+                loader: () => fetch('http://localhost:5000/registerCamps')
             },
             {
                 path: "update-camp/:campId",
@@ -78,6 +81,9 @@ export const router = createBrowserRouter([
             },
 
             //doctor 
+
+            
+
 
         ]
     }
