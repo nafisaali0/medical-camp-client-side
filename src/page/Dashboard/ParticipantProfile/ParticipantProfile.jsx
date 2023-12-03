@@ -4,14 +4,8 @@ import useUsers from "../../../hooks/useUsers";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import image1 from '../../../assets/images/newBanner/image2.jpeg'
-import image2 from '../../../assets/images/newBanner/image4.jpg'
-import image3 from '../../../assets/images/newBanner/image10.jpeg'
-import image4 from '../../../assets/images/newBanner/image11.jpg'
 
-
-const OrganizerProfile = () => {
-
+const ParticipantProfile = () => {
     const [users, refetch, loading] = useUsers();
     const { register, handleSubmit, reset } = useForm();
     const axiosLocalhost = useAxioslocalhost()
@@ -31,6 +25,9 @@ const OrganizerProfile = () => {
         const userInfo = {
             role: data.role,
             phone: data.phone,
+            age: data.age,
+            gender: data.gender,
+            interestMedical: data.interestMedical,
             address: data.address,
         }
         console.log(userInfo)
@@ -57,9 +54,9 @@ const OrganizerProfile = () => {
             </div>
             <div className="container mx-auto my-20">
                 {
-                    users?.map((user) =>
+                    users.map((user) =>
                         <>
-                            <div key={user._id}>
+                            <div key={user?._id}>
                                 <div className="flex items-center gap-16 my-10">
                                     <div className="avatar">
                                         <div className="w-36 rounded-full">
@@ -82,6 +79,17 @@ const OrganizerProfile = () => {
                                         <h1>Address: <span className="text-xl font-semibold">{user?.address}</span></h1>
                                     </div>
                                 </div>
+                                <div className="text-xl font-bold flex flex-wrap gap-10 my-10">
+                                    <div>
+                                        <h1>Age: <span className="text-xl font-semibold">{user?.age}</span></h1>
+                                    </div>
+                                    <div>
+                                        <h1>Gender: <span className="text-xl font-semibold">{user?.gender}</span></h1>
+                                    </div>
+                                    <div>
+                                        <h1>Interests Medical Areas: <span className="text-xl font-semibold">{user?.interestMedical}</span></h1>
+                                    </div>
+                                </div>
                                 <div className="my-10">
                                     {/* You can open the modal using document.getElementById('ID').showModal() method */}
                                     <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Update</button>
@@ -97,11 +105,11 @@ const OrganizerProfile = () => {
                                                 </div>
                                                 <div className="mb-5">
                                                     <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Photo</label>
-                                                    <input type="url" {...register("photo")} placeholder="photo" defaultValue={user.photo} onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
+                                                    <input type="url" {...register("photo")} placeholder="photo" defaultValue={user?.photo} onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
                                                     <p>{displayText}</p>
                                                 </div>
                                                 <div className="mb-5">
-                                                    <select {...register("role")} defaultValue={user.role} className="select select-bordered w-full my-5">
+                                                    <select {...register("role")} defaultValue={user?.role} className="select select-bordered w-full my-5">
                                                         <option disabled selected>Select Your Role</option>
                                                         <option>Admin</option>
                                                         <option>Healthcare Professionals</option>
@@ -110,16 +118,31 @@ const OrganizerProfile = () => {
                                                 </div>
                                                 <div className="mb-5">
                                                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
-                                                    <input type="number" {...register("phone")} defaultValue={user.phone} placeholder="phone" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
+                                                    <input type="number" {...register("phone")} defaultValue={user?.phone} placeholder="phone" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
                                                 </div>
                                                 <div className="mb-5">
                                                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                                    <input type="text" {...register("email")} defaultValue={user.email} placeholder="email" onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
+                                                    <input type="text" {...register("email")} defaultValue={user?.email} placeholder="email" onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
                                                     <p>{displayText}</p>
                                                 </div>
                                                 <div className="mb-5">
+                                                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Age</label>
+                                                    <input type="number" {...register("age")} defaultValue={user?.age} placeholder="age" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
+                                                </div>
+                                                <div className="mb-5">
+                                                    <select {...register("gender")} defaultValue={user?.gender} className="select select-bordered w-full my-5">
+                                                        <option disabled selected>Select Your Gender</option>
+                                                        <option>Male</option>
+                                                        <option>Female</option>
+                                                    </select>
+                                                </div>
+                                                <div className="mb-5">
+                                                    <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Interest Medical Area</label>
+                                                    <textarea type="text" {...register("interestMedical")} defaultValue={user?.interestMedical} placeholder="Interest Medical Areas" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                                                </div>
+                                                <div className="mb-5">
                                                     <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                                    <textarea type="text" {...register("address")} defaultValue={user.address} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                                                    <textarea type="text" {...register("address")} defaultValue={user?.address} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
                                                 </div>
                                                 <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Confirm Update</button>
                                             </form>
@@ -139,28 +162,9 @@ const OrganizerProfile = () => {
                         </>
                     )
                 }
-                <div className="my-20">
-                    <div>
-                        <DashboardTitle heading={"Successs Story In Different Camp"}></DashboardTitle>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-4 my-10">
-                        <div>
-                            <img src={image1} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image2} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image3} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image4} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                    </div>
-                </div>
             </div>
         </>
     );
 };
 
-export default OrganizerProfile;
+export default ParticipantProfile;

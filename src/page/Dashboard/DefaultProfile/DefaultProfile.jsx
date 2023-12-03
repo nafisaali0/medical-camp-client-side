@@ -4,13 +4,8 @@ import useUsers from "../../../hooks/useUsers";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import image1 from '../../../assets/images/newBanner/image2.jpeg'
-import image2 from '../../../assets/images/newBanner/image4.jpg'
-import image3 from '../../../assets/images/newBanner/image10.jpeg'
-import image4 from '../../../assets/images/newBanner/image11.jpg'
 
-
-const OrganizerProfile = () => {
+const DefaultProfile = () => {
 
     const [users, refetch, loading] = useUsers();
     const { register, handleSubmit, reset } = useForm();
@@ -56,6 +51,7 @@ const OrganizerProfile = () => {
                 <DashboardTitle heading={"My Profile"}></DashboardTitle>
             </div>
             <div className="container mx-auto my-20">
+
                 {
                     users?.map((user) =>
                         <>
@@ -68,7 +64,7 @@ const OrganizerProfile = () => {
                                     </div>
                                     <div className="text-3xl font-bold">
                                         <h1 className="text-3xl font-bold">{user?.name}</h1>
-                                        <h1 className="text-2xl font-semibold my-5">{user?.role}</h1>
+                                        <h1 className="text-2xl font-semibold my-5">{user.role}</h1>
                                     </div>
                                 </div>
                                 <div className="text-xl font-bold flex flex-wrap gap-10 my-10">
@@ -92,7 +88,7 @@ const OrganizerProfile = () => {
                                             <form onSubmit={(e) => handleSubmit((data) => onSubmit(user._id, data))(e)} className="max-w-sm mx-auto">
                                                 <div className="mb-5">
                                                     <label className="block mb-2 text-sm font-medium text-gray-900 ">Name</label>
-                                                    <input type="name" {...register("name")} defaultValue={user.name} onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Your Name"></input>
+                                                    <input type="name" {...register("name")} defaultValue={user?.name} onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Your Name"></input>
                                                     <p className="text-red">{displayText}</p>
                                                 </div>
                                                 <div className="mb-5">
@@ -101,7 +97,7 @@ const OrganizerProfile = () => {
                                                     <p>{displayText}</p>
                                                 </div>
                                                 <div className="mb-5">
-                                                    <select {...register("role")} defaultValue={user.role} className="select select-bordered w-full my-5">
+                                                    <select {...register("role")} defaultValue={user?.role} className="select select-bordered w-full my-5">
                                                         <option disabled selected>Select Your Role</option>
                                                         <option>Admin</option>
                                                         <option>Healthcare Professionals</option>
@@ -110,16 +106,16 @@ const OrganizerProfile = () => {
                                                 </div>
                                                 <div className="mb-5">
                                                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone</label>
-                                                    <input type="number" {...register("phone")} defaultValue={user.phone} placeholder="phone" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
+                                                    <input type="number" {...register("phone")} defaultValue={user?.phone} placeholder="phone" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
                                                 </div>
                                                 <div className="mb-5">
                                                     <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                                    <input type="text" {...register("email")} defaultValue={user.email} placeholder="email" onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
+                                                    <input type="text" {...register("email")} defaultValue={user?.email} placeholder="email" onClick={handleClick} disabled={buttonDisabled} className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></input>
                                                     <p>{displayText}</p>
                                                 </div>
                                                 <div className="mb-5">
                                                     <label htmlFor="address" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Address</label>
-                                                    <textarea type="text" {...register("address")} defaultValue={user.address} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
+                                                    <textarea type="text" {...register("address")} defaultValue={user?.address} placeholder="Write Your Addrees" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"></textarea>
                                                 </div>
                                                 <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Confirm Update</button>
                                             </form>
@@ -139,28 +135,9 @@ const OrganizerProfile = () => {
                         </>
                     )
                 }
-                <div className="my-20">
-                    <div>
-                        <DashboardTitle heading={"Successs Story In Different Camp"}></DashboardTitle>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-4 my-10">
-                        <div>
-                            <img src={image1} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image2} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image3} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image4} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                    </div>
-                </div>
             </div>
         </>
     );
 };
 
-export default OrganizerProfile;
+export default DefaultProfile;

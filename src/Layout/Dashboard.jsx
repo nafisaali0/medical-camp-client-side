@@ -59,8 +59,8 @@ const Dashboard = () => {
                                                     </NavLink>
                                                 </li>
                                                 <li>
-                                                    <NavLink to={"organizer-profile"}>
-                                                        Your Profile
+                                                    <NavLink to={"/dashboard/organizer-profile"}>
+                                                        My Profile
                                                     </NavLink>
                                                 </li>
                                                 <li>
@@ -83,6 +83,11 @@ const Dashboard = () => {
                                         {eachUser?.role === "Participant" && (
                                             <>
                                                 <li>
+                                                    <NavLink to={"/dashboard/participant-profile"}>
+                                                        My Profile
+                                                    </NavLink>
+                                                </li>
+                                                <li>
                                                     <NavLink to={"/dashboard/registered-camps"}>
                                                         Registered Camps
                                                     </NavLink>
@@ -96,13 +101,18 @@ const Dashboard = () => {
                                                         Dashboard Home
                                                     </NavLink>
                                                 </li>
+                                                <li>
+                                                    <NavLink to={"/dashboard/professional-profile"}>
+                                                        My Profile
+                                                    </NavLink>
+                                                </li>
                                             </>
                                         )}
                                         {eachUser?.role === undefined && (
                                             <>
                                                 <li>
-                                                    <NavLink to={"organizer-profile"}>
-                                                        Your Profile
+                                                    <NavLink to={"/dashboard/default-Profile"}>
+                                                        My Profile
                                                     </NavLink>
                                                 </li>
                                             </>

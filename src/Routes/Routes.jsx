@@ -17,6 +17,9 @@ import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps
 import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
 import OrganizerProfile from "../page/Dashboard/OrganizerProfile/OrganizerProfile";
 // import UpdateProfile from './../page/Dashboard/UpdateProfile/UpdateProfile';
+import ParticipantProfile from './../page/Dashboard/ParticipantProfile/ParticipantProfile';
+import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
+import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
 
 
 export const router = createBrowserRouter([
@@ -52,10 +55,14 @@ export const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
-            // user
+            // participant routes
             {
                 path: "home-dashbord",
                 element: <HomeDashboard></HomeDashboard>,
+            },
+            {
+                path: "participant-profile",
+                element: <ParticipantProfile></ParticipantProfile>,
             },
             {
                 path: "registered-camps",
@@ -86,8 +93,15 @@ export const router = createBrowserRouter([
             },
 
             //doctor 
-
-
+            {
+                path: "professional-profile",
+                element: <ProfessionalProfile></ProfessionalProfile>,
+            },
+            //undefined or google user
+            {
+                path: "default-Profile",
+                element: <DefaultProfile></DefaultProfile>,
+            },
 
 
         ]
