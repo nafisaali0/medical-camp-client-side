@@ -46,8 +46,8 @@ export const router = createBrowserRouter([
             },
             {
                 path: "camp-details/:campId",
-                element: <DetailCamp></DetailCamp>,
-                loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.campId}`)
+                element: <PrivateRoutes><DetailCamp></DetailCamp></PrivateRoutes>,
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
             {
                 path: "available-camps",
@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "contact",
-                element:<Contact></Contact> ,
+                element: <Contact></Contact>,
             },
         ],
     },
@@ -79,7 +79,7 @@ export const router = createBrowserRouter([
             {
                 path: "payment/:id",
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/registerCamps/${params.id}`)
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/registerCamps/${params.id}`)
             },
             {
                 path: "payment-history",
@@ -105,12 +105,12 @@ export const router = createBrowserRouter([
             {
                 path: "manage-registered-camps",
                 element: <ManageRegisterCamps></ManageRegisterCamps>,
-                loader: () => fetch('http://localhost:5000/registerCamps')
+                loader: () => fetch('https://medical-camp-server-seven.vercel.app/registerCamps')
             },
             {
                 path: "update-camp/:campId",
                 element: <UpdateCamp></UpdateCamp>,
-                loader: ({ params }) => fetch(`http://localhost:5000/camp/${params.campId}`)
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
 
             //doctor 
@@ -118,7 +118,7 @@ export const router = createBrowserRouter([
                 path: "professional-profile",
                 element: <ProfessionalProfile></ProfessionalProfile>,
             },
-            //undefined or google user
+            //undefined role or google user
             {
                 path: "default-Profile",
                 element: <DefaultProfile></DefaultProfile>,

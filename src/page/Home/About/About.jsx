@@ -8,7 +8,7 @@ const About = () => {
                     <h2 className="text-3xl font-bold mb-8 text-center text-gray-800">
                         About Us
                     </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         <div className="bg-white p-8 rounded-lg shadow-md text-lg font-semibold">
                             <p className="text-gray-700 mb-4 ">
                                 Welcome to Amelia, your dedicated partner in organizing impactful and compassionate medical camps. At [Agency Name], we believe in the power of healthcare outreach to transform lives and communities.

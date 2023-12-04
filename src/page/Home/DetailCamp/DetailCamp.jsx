@@ -102,7 +102,7 @@ const DetailCamp = () => {
                                         {
                                             eachUser?.role === "Participant" ? (
                                                 <>
-                                                    <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Register</button>
+                                                    <button className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Join Camp</button>
                                                     <dialog id="my_modal_4" className="modal">
                                                         <div className="modal-box w-11/12 max-w-5xl">
                                                             <div className="text-left text-3xl font-bold my-5">
@@ -143,7 +143,7 @@ const DetailCamp = () => {
                                             ) :
                                                 <>
                                                     <>
-                                                        <button disabled className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Register</button>
+                                                        <button disabled className="btn text-white bg-gradient-to-r from-blue-500 to-indigo-800" onClick={() => document.getElementById('my_modal_4').showModal()}>Join Camp</button>
                                                         <dialog id="my_modal_4" className="modal">
                                                             <div className="modal-box w-11/12 max-w-5xl">
                                                                 <div className="text-left text-3xl font-bold my-5">

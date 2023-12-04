@@ -10,7 +10,7 @@ const usePayment = () => {
         queryKey: ['paymentsCamp', user?.email],
         queryFn: async () => {
             const res = await axiosLocalhost.get(`/payments?email=${user.email}`)
-            // http://localhost:5000/payments?email=nafisaali20006@gmail.com
+            // https://medical-camp-server-seven.vercel.app/payments?email=nafisaali20006@gmail.com
             return res.data
         }
     })

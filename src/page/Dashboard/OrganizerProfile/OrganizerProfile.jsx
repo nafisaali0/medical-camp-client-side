@@ -13,7 +13,7 @@ import { Helmet } from "react-helmet-async";
 
 const OrganizerProfile = () => {
 
-    const [users, refetch, loading] = useUsers();
+    const [users, refetch] = useUsers();
     const { register, handleSubmit, reset } = useForm();
     const axiosLocalhost = useAxioslocalhost()
     const [buttonDisabled, setButtonDisabled] = useState(false);
@@ -47,7 +47,7 @@ const OrganizerProfile = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            loading();
+            // loading();
             refetch();
         }
     }
