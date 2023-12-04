@@ -77,7 +77,7 @@ const Footer = () => {
                     <footer className="footer items-center p-4 bg-black text-white border-t-2 border-[#5b608b]">
                         <aside className="items-center grid-flow-col">
                             <img className='w-[50px] h-[50px]' src={logo} alt="logo" />
-                            <p>JESTBLOG © 2023 - Created by Nafisa Ali</p>
+                            <p>Amenia Medical Camp © 2023 - Created by Nafisa Ali</p>
                         </aside>
                         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
                             <a href=""><img className='w-[30px] h-[30px] bg-white' src={icon1} alt="" /></a>

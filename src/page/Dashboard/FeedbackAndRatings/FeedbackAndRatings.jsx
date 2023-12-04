@@ -1,22 +1,43 @@
 import { Helmet } from 'react-helmet-async';
 import DashboardTitle from '../../../components/DashboardTitle';
 import usePayment from './../../../hooks/usePayment';
-// import { useForm } from 'react-hook-form';
+import useAxioslocalhost from '../../../hooks/useAxioslocalhost';
+import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
+
 const FeedbackAndRatings = () => {
 
-    // const { register, handleSubmit } = useForm();
+    const axiosLocalhost = useAxioslocalhost()
     const [paymentsCamp] = usePayment();
+    const { user } = useAuth();
 
-    const handleCreateReview = e => {
+    const handleCreateReview = async (e, campid) => {
+
         e.preventDefault();
+
         const comment = e.target.comment.value;
-        // Get the selected rating value
         const ratingInput = document.querySelector('input[name="rating-2"]:checked');
         const rating = ratingInput ? parseInt(ratingInput.value, 10) : null;
+        const reviewerName = user?.displayName;
+        const reviewerPhoto = user?.photoURL;
 
-        console.log("comment", comment);
-        console.log("rating", rating);
-
+        // for post rewiew in database 
+        const newFeedback = { comment, rating, reviewerName, reviewerPhoto, campid }
+        console.log(newFeedback)
+        //  await axiosLocalhost.post('/feedbacks', newFeedback);
+        axiosLocalhost.post('/feedbacks', newFeedback)
+            .then(res => {
+                console.log(res.data)
+                if (res.data.insertedId) {
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: `Thank you for your feedback`,
+                        showConfirmButton: false,
+                        timer: 1600
+                    });
+                }
+            })
     }
 
     return (
@@ -54,16 +75,13 @@ const FeedbackAndRatings = () => {
                                     <td>{payment.status}</td>
                                     <td>{payment.status}</td>
                                     <td>
-                                        {/* <Link to={`/dashboard/reviewForm/${payment._id}`}>
-                                            <button>Review</button>
-                                        </Link> */}
                                         {/* modal */}
                                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                                         <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>open modal</button>
                                         <dialog id="my_modal_1" className="modal">
                                             <div className="modal-box">
                                                 <div>
-                                                    <form onSubmit={handleCreateReview}>
+                                                    <form onSubmit={(e) => handleCreateReview(e, payment._id)}>
                                                         <div className='my-10'>
                                                             <div className="rating">
                                                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-blue-500" value={1} />
@@ -72,21 +90,6 @@ const FeedbackAndRatings = () => {
                                                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-blue-500" value={4} />
                                                                 <input type="radio" name="rating-2" className="mask mask-star-2 bg-blue-500" value={5} />
                                                             </div>
-                                                            {/* <div className='rating'>
-                                                                {[1, 2, 3, 4, 5].map((value) => (
-                                                                    <label key={value}>
-                                                                        <input
-                                                                            type="radio"
-                                                                            name="rating-2"
-                                                                            className="mask mask-star-2 bg-blue-500"
-                                                                            value={value}
-                                                                            checked={rating === value}
-                                                                            onChange={handleRatingChange}
-                                                                        />
-                                                                    </label>
-                                                                ))}
-                                                                </div> */}
-
                                                         </div>
                                                         <div className="my-3">
                                                             <label htmlFor="Title" className="text-lg font-bold">Comments</label>

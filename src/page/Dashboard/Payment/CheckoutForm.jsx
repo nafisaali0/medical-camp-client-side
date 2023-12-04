@@ -91,7 +91,7 @@ const CheckoutForm = ({ eachCamp }) => {
                     date: date,
                     time: time,
                     transactionId: paymentIntent.id,
-                    status: 'pending'
+                    status: 'paid'
                 }
                 //console.log(payment)
                 const res = await axiosLocalhost.post('/payments', payment);
