@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import DashboardTitle from '../../../components/DashboardTitle';
 import usePayment from './../../../hooks/usePayment';
 // import { useForm } from 'react-hook-form';
@@ -20,8 +21,10 @@ const FeedbackAndRatings = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Amelia | FeedBack And Rating</title>
+            </Helmet>
             <DashboardTitle heading={"Your Payment Story"}></DashboardTitle >
-            {/*  */}
             <div className='container mx-auto my-20'>
                 <h2 className='text-black text-2xl font-semibold my-10'>Total Payments: {paymentsCamp.length}</h2>
                 <div className='bg-white w-12/12'>

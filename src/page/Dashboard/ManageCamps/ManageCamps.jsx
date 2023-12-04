@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import { Link } from "react-router-dom";
 import DashboardTitle from "../../../components/DashboardTitle";
+import { Helmet } from "react-helmet-async";
 
 const ManageCamps = () => {
 
@@ -43,6 +44,9 @@ const ManageCamps = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Amelia | Manage Camps</title>
+            </Helmet>
             <div>
                 <DashboardTitle
                     heading={"See All Camp Information"}>

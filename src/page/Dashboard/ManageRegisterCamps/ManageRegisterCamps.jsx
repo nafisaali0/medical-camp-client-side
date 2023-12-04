@@ -1,10 +1,11 @@
 import DataTable from "react-data-table-component";
 import { Link, useLoaderData } from "react-router-dom";
 import deleteIcon from '../../../assets/images/icon/delete.svg'
+import { Helmet } from "react-helmet-async";
 const ManageRegisterCamps = () => {
     const registeredCamps = useLoaderData();
     // console.log(registeredCamps)
-    
+
     const handleDelete = () => {
         console.log("delete")
     }
@@ -66,7 +67,7 @@ const ManageRegisterCamps = () => {
             cell: (row) => <Link to={'/'}><img src={deleteIcon} onClick={handleDelete} alt={row.owner_name} style={{ width: '20px', height: '20px', borderRadius: '50px', margin: '3px' }} /></Link>
         }
     ]
-    
+
     const data = registeredCamps.map((eachCamp, index) => ({
         id: index + 1,
         campName: eachCamp.campName,
@@ -79,6 +80,9 @@ const ManageRegisterCamps = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Amelia | Manage Register Camp</title>
+            </Helmet>
             <div className="w-[100rem] p-3">
                 <DataTable
                     columns={columns}

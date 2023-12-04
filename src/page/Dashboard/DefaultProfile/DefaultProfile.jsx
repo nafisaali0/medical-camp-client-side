@@ -4,6 +4,7 @@ import useUsers from "../../../hooks/useUsers";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const DefaultProfile = () => {
 
@@ -47,6 +48,9 @@ const DefaultProfile = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Amelia | DefaultProfile</title>
+            </Helmet>
             <div>
                 <DashboardTitle heading={"My Profile"}></DashboardTitle>
             </div>

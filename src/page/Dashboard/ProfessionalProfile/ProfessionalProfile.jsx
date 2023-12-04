@@ -8,6 +8,7 @@ import image1 from '../../../assets/images/newBanner/image12.jpg'
 import image2 from '../../../assets/images/newBanner/certificate1.webp'
 import image3 from '../../../assets/images/newBanner/certificate2.webp'
 import image4 from '../../../assets/images/newBanner/certificate3.webp'
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -57,6 +58,9 @@ const ProfessionalProfile = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Amelia | Professional Profile</title>
+            </Helmet>
             <div>
                 <DashboardTitle heading={"My Profile"}></DashboardTitle>
             </div>

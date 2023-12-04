@@ -43,7 +43,7 @@ const Signin = () => {
     return (
         <>
             <Helmet>
-                <title>Amelia || Signin</title>
+                <title>Amelia | Signin</title>
             </Helmet>
             <div className="w-[100%] lg:h-[100vh] md:h-[100%]" >
                 <div className='container mx-auto overflow-hidden flex flex-col justify-center items-center drop-shadow-lg md:pt-12 lg:pt-20'>

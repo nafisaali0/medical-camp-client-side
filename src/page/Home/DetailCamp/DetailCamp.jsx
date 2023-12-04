@@ -7,6 +7,7 @@ import useCamp from './../../../hooks/useCamp';
 import useUsers from './../../../hooks/useUsers';
 import errorIcon from '../../../assets/images/icon/error.svg'
 import React from 'react';
+import { Helmet } from "react-helmet-async";
 
 const DetailCamp = () => {
 
@@ -78,6 +79,9 @@ const DetailCamp = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Amelia | Camp Details Page</title>
+            </Helmet>
             <div className=" max-w-5xl mx-auto overflow-hidden my-10 p-3">
                 <div className="">
                     <div className="text-4xl font-bold">

@@ -18,8 +18,13 @@ const NavBar = () => {
     const navOptions = <>
         <nav className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/available-camps">Available Camps</NavLink>
-            <NavLink to="/dashboard">Dashboard</NavLink>
+            {
+                user?.email ?
+                    <>
+                        <NavLink to="/available-camps">Available Camps</NavLink>
+                        <NavLink to="/dashboard">Dashboard</NavLink>
+                    </> : ''
+            }
             <NavLink to="/contact">Contact Us</NavLink>
         </nav>
     </>

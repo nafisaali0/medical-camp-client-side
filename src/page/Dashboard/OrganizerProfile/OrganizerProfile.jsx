@@ -8,6 +8,7 @@ import image1 from '../../../assets/images/newBanner/image2.jpeg'
 import image2 from '../../../assets/images/newBanner/image4.jpg'
 import image3 from '../../../assets/images/newBanner/image10.jpeg'
 import image4 from '../../../assets/images/newBanner/image11.jpg'
+import { Helmet } from "react-helmet-async";
 
 
 const OrganizerProfile = () => {
@@ -52,6 +53,9 @@ const OrganizerProfile = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Amelia | Organizer Profile</title>
+            </Helmet>
             <div>
                 <DashboardTitle heading={"My Profile"}></DashboardTitle>
             </div>

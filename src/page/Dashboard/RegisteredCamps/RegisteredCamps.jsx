@@ -2,13 +2,14 @@ import DataTable from "react-data-table-component";
 import useRegisteredCamp from "../../../hooks/useRegisteredCamp";
 import deleteIcon from "../../../assets/images/icon/delete.svg"
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const RegisteredCamps = () => {
     const [registeredCamp] = useRegisteredCamp();
     // console.log(registeredCamp)
 
-    
+
     const handleDelete = () => {
         console.log("delete")
     }
@@ -89,6 +90,9 @@ const RegisteredCamps = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Amelia | Register Camps</title>
+            </Helmet>
             <div className="w-[100rem] p-3">
                 <DataTable
                     columns={columns}

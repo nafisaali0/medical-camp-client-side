@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useRouteError } from "react-router-dom";
 
@@ -6,6 +7,9 @@ const ErrorPage = () => {
     // console.error(error);
     return (
         <>
+            <Helmet>
+                <title>Amelia | ErrorPage</title>
+            </Helmet>
             <div className="container mx-auto flex flex-col justify-center items-center  mt-64 text-2xl font-bold">
                 <h2>Error!</h2>
                 <div className="text-center mt-6">

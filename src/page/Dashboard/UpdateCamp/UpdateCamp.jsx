@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import { useLoaderData } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -63,6 +64,9 @@ const UpdateCamp = () => {
     }
     return (
         <>
+            <Helmet>
+                <title>Amelia | Update Camp</title>
+            </Helmet>
             <div>
                 <DashboardTitle
                     heading={"Update Camp"}>

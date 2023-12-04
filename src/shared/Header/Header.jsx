@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import icon1 from '../../assets/images/icon/facebook.svg'
 import icon2 from '../../assets/images/icon/linkedin.svg'
-import icon3 from '../../assets/images/icon/github1.svg'
 import useAuth from './../../hooks/useAuth';
 
 const Header = () => {
@@ -14,7 +13,6 @@ const Header = () => {
                         <div className='flex gap-1 items-center flex-wrap justify-center md:justify-start'>
                             <a href=""><img className='w-[30px] h-[30px]' src={icon1} alt="" /></a>
                             <a href=""><img className='w-[30px] h-[30px]' src={icon2} alt="" /></a>
-                            <a href=""><img className='w-[30px] h-[30px]' src={icon3} alt="" /></a>
                         </div>
                     </div>
                     <div className="navbar-end">

@@ -4,6 +4,7 @@ import DashboardTitle from './../../../components/DashboardTitle';
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from './CheckoutForm';
 import { useLoaderData } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Payment = () => {
 
@@ -15,6 +16,9 @@ const Payment = () => {
     const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
     return (
         <>
+            <Helmet>
+                <title>Amelia | Payment</title>
+            </Helmet>
             <div>
                 <DashboardTitle heading={"Payment With Stripe"}></DashboardTitle>
             </div>

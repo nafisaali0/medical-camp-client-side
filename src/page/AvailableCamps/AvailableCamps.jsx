@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useCamp from "../../hooks/useCamp";
 import useRegisteredCamp from "../../hooks/useRegisteredCamp";
+import { Helmet } from "react-helmet-async";
 
 const AvailableCamps = () => {
 
@@ -15,6 +16,9 @@ const AvailableCamps = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Amelia | AvailableCamps</title>
+            </Helmet>
             <div className="overflow-hidden bg-[#f0f2f5] p-3">
                 <div className="container mx-auto my-10">
                     <div className="grid grid-cols-1 gap-5">
