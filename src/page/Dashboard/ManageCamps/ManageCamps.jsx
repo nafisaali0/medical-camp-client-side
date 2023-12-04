@@ -31,7 +31,7 @@ const ManageCamps = () => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                'Your food has been deleted.',
+                                'Your camp has been deleted.',
                                 'success'
                             )
                             loading()
@@ -90,7 +90,7 @@ const ManageCamps = () => {
                                             {item.campName}
                                         </td>
                                         <td>{item.date}</td>
-                                        <td>{item.campFees}</td>
+                                        <td>{item.campFees} $</td>
                                         <th>
                                             <Link to={`/dashboard/update-camp/${item._id}`}>
                                                 <img

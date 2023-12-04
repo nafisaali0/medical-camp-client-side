@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import logo from '../assets/images/icon/Logo-removebg.png'
 import useUsers from '../hooks/useUsers';
 import React from 'react';
@@ -15,7 +15,9 @@ const Dashboard = () => {
                 <div className="bg-white p-2 drop-shadow-md">
                     <div className='flex justify-between mx-10'>
                         <div className='flex items-center gap-4'>
-                            <img className="w-16" src={logo} alt="" />
+                            <Link to={'/'}>
+                                <img className="w-16" src={logo} alt="" />
+                            </Link>
                             <h2 className='text-3xl font-bold text-[#2b355c]'>Amelia Medical Camp</h2>
                         </div>
                         {/* search bar */}
@@ -82,6 +84,11 @@ const Dashboard = () => {
                                         )}
                                         {eachUser?.role === "Participant" && (
                                             <>
+                                                <li>
+                                                    <NavLink to={"/dashboard/home-dashbord"}>
+                                                        Dashboard Home
+                                                    </NavLink>
+                                                </li>
                                                 <li>
                                                     <NavLink to={"/dashboard/participant-profile"}>
                                                         My Profile

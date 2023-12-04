@@ -1,13 +1,42 @@
 import DataTable from "react-data-table-component";
-import { Link, useLoaderData } from "react-router-dom";
-import deleteIcon from '../../../assets/images/icon/delete.svg'
+import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-const ManageRegisterCamps = () => {
-    const registeredCamps = useLoaderData();
-    // console.log(registeredCamps)
 
-    const handleDelete = () => {
+import Swal from "sweetalert2";
+import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
+import usePayment from "../../../hooks/usePayment";
+
+const ManageRegisterCamps = () => {
+
+    const registeredCamps = useLoaderData();
+    const [paymentsCamp] = usePayment()
+    const axiosLocalhost = useAxioslocalhost()
+    const handleDelete = (id) => {
         console.log("delete")
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete it this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosLocalhost.delete(`/registerCamps/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your registered camp has been deleted.',
+                                'success'
+                            )
+                            // refetch();
+                        }
+                    })
+            }
+        })
     }
 
     const customStyles = {
@@ -55,21 +84,38 @@ const ManageRegisterCamps = () => {
         },
         {
             name: 'Payment Status',
-            cell: () => <Link to={'/'}><button className="btn">Unpaid</button></Link>,
-            // cell1: () => <Link to={'/pay'}><button className="btn">Pay</button></Link>,
+            cell: (row) => {
+                const payment = paymentsCamp.find(payment => payment.campId === row._id);
+                if (payment) {
+                    return (
+                        <button className="btn" disabled>{payment.status === 'paid' ? 'paid' : 'pending'}</button>
+                    )
+                } else {
+                    return <button className="btn">unpaid</button>
+                }
+            },
         },
         {
             name: 'Confirmation Status',
             cell: () => <button className="btn">Pending</button>
         },
         {
-            name: 'Action',
-            cell: (row) => <Link to={'/'}><img src={deleteIcon} onClick={handleDelete} alt={row.owner_name} style={{ width: '20px', height: '20px', borderRadius: '50px', margin: '3px' }} /></Link>
+            cell: (row) => {
+                const payment = paymentsCamp.find(payment => payment.campId === row._id);
+                if (payment) {
+                    return (
+                        <button className="btn" onClick={() => handleDelete(row._id)} disabled>Cancel</button>
+                    )
+                } else {
+                    return <button className="btn" onClick={() => handleDelete(row._id)}>Cancel</button>
+                }
+            }
         }
     ]
 
     const data = registeredCamps.map((eachCamp, index) => ({
         id: index + 1,
+        _id: eachCamp._id,
         campName: eachCamp.campName,
         venue: eachCamp.venue,
         campFees: eachCamp.campFees,

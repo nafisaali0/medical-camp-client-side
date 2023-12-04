@@ -1,17 +1,45 @@
 import DataTable from "react-data-table-component";
 import useRegisteredCamp from "../../../hooks/useRegisteredCamp";
-import deleteIcon from "../../../assets/images/icon/delete.svg"
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import usePayment from "../../../hooks/usePayment";
+import Swal from "sweetalert2";
+import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 
 
 const RegisteredCamps = () => {
-    const [registeredCamp] = useRegisteredCamp();
-    // console.log(registeredCamp)
 
+    const [registeredCamp, refetch] = useRegisteredCamp();
+    const [paymentsCamp] = usePayment();
 
-    const handleDelete = () => {
+    const axiosLocalhost = useAxioslocalhost()
+
+    const handleDelete = (id) => {
         console.log("delete")
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete it this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosLocalhost.delete(`/registerCamps/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your registered camp has been deleted.',
+                                'success'
+                            )
+                            refetch();
+                        }
+                    })
+            }
+        })
     }
 
     const customStyles = {
@@ -43,6 +71,11 @@ const RegisteredCamps = () => {
 
         },
         {
+            name: 'Camp Image',
+            cell: (row) => <img src={row.campimage} alt={row.owner_name} style={{ width: '100px', height: '100px', margin: '3px' }} />,
+
+        },
+        {
             name: 'Camp Name',
             selector: row => row.campName
         },
@@ -60,12 +93,15 @@ const RegisteredCamps = () => {
         },
         {
             name: 'Payment Status',
-
-            // cell: (row) => <Link to={`/dashboard/payment/${row._id}`}><button className="btn">Pay</button></Link>,
-            // cell: () => <Link to={'/dashboard/payment'}><button className="btn">Pay</button></Link>,
             cell: (row) => {
-                // console.log(row._id); // Check if _id is correct
-                return <Link to={`/dashboard/payment/${row._id}`}><button className="btn">Pay</button></Link>;
+                const payment = paymentsCamp.find(payment => payment.campId === row._id);
+                if (payment) {
+                    return (
+                        <button className="btn" disabled>{payment.status === 'paid' ? 'paid' : 'pending'}</button>
+                    )
+                } else {
+                    return <Link to={`/dashboard/payment/${row._id}`}><button className="btn">Pay</button></Link>
+                }
             },
         },
         {
@@ -74,7 +110,16 @@ const RegisteredCamps = () => {
         },
         {
             name: 'Action',
-            cell: (row) => <Link to={'/'}><img src={deleteIcon} onClick={handleDelete} alt={row.owner_name} style={{ width: '20px', height: '20px', borderRadius: '50px', margin: '3px' }} /></Link>
+            cell: (row) => {
+                const payment = paymentsCamp.find(payment => payment.campId === row._id);
+                if (payment) {
+                    return (
+                        <button className="btn" onClick={() => handleDelete(row._id)} disabled>Cancel</button>
+                    )
+                } else {
+                    return <button className="btn" onClick={() => handleDelete(row._id)}>Cancel</button>
+                }
+            }
         }
     ]
 
@@ -82,6 +127,7 @@ const RegisteredCamps = () => {
         id: index + 1,
         _id: eachCamp._id,
         campName: eachCamp.campName,
+        campimage: eachCamp.image,
         venue: eachCamp.venue,
         campFees: eachCamp.campFees,
         date: eachCamp.date,

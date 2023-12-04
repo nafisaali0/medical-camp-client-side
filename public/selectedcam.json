@@ -77,8 +77,8 @@
         "longDescription": "'Diabetes Awareness Summit' is a comprehensive event scheduled for April 25, 2025, from 9:00 AM to 4:00 PM at the DiabCare Community Center. Receive diabetes screenings, gain nutritional insights from nutritionist Mark Robertson, explore insulin management with diabetes educator Sarah Adams, and participate in an expert Q&A session with endocrinologist Dr. Lisa Taylor.This summit is designed for individuals with diabetes and their caregivers, providing valuable information and support. Join us for a day of diabetes awareness and empowerment.",
         "image": "https://i.ibb.co/dQYmwSb/new-6.jpg"
     },
-    // start above hare testing 
     {
+        "start" : "",
         "campName": "Eye Symposium",
         "campFees": 30,
         "date": "2024-08-12",
