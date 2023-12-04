@@ -8,7 +8,6 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
 import AddCamps from './../page/Dashboard/AddCamps/AddCamps';
 import ManageCamps from "../page/Dashboard/ManageCamps/ManageCamps";
-// import AdminRegister from './../page/Dashboard/AdminRegister/AdminRegister';
 import HomeDashboard from './../page/Dashboard/HomeDashboard/HomeDashboard';
 import UpdateCamp from './../page/Dashboard/UpdateCamp/UpdateCamp';
 import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
@@ -16,10 +15,15 @@ import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
 import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps';
 import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
 import OrganizerProfile from "../page/Dashboard/OrganizerProfile/OrganizerProfile";
-// import UpdateProfile from './../page/Dashboard/UpdateProfile/UpdateProfile';
 import ParticipantProfile from './../page/Dashboard/ParticipantProfile/ParticipantProfile';
 import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
 import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
+import Payment from "../page/Dashboard/Payment/Payment";
+import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
+import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
+import Contact from "../page/Contact/Contact";
+
+
 
 
 export const router = createBrowserRouter([
@@ -49,6 +53,10 @@ export const router = createBrowserRouter([
                 path: "available-camps",
                 element: <AvailableCamps></AvailableCamps>,
             },
+            {
+                path: "contact",
+                element:<Contact></Contact> ,
+            },
         ],
     },
     {
@@ -67,6 +75,19 @@ export const router = createBrowserRouter([
             {
                 path: "registered-camps",
                 element: <RegisteredCamps></RegisteredCamps>,
+            },
+            {
+                path: "payment/:id",
+                element: <Payment></Payment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/registerCamps/${params.id}`)
+            },
+            {
+                path: "payment-history",
+                element: <ParticipantPaymentHistory></ParticipantPaymentHistory>,
+            },
+            {
+                path: "feedback-and-ratings",
+                element: <FeedbackAndRatings></FeedbackAndRatings>,
             },
             // addmin routes
             {
@@ -102,7 +123,6 @@ export const router = createBrowserRouter([
                 path: "default-Profile",
                 element: <DefaultProfile></DefaultProfile>,
             },
-
 
         ]
     }

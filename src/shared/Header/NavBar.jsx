@@ -26,7 +26,6 @@ const NavBar = () => {
 
     return (
         <>
-            {/* <div className=" drop-shadow-lg  bg-base-100"> */}
             <div className="navbar container mx-auto text-black">
                 <div className="navbar-start ">
                     <div className="dropdown">

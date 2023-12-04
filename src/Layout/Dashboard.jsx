@@ -92,6 +92,16 @@ const Dashboard = () => {
                                                         Registered Camps
                                                     </NavLink>
                                                 </li>
+                                                <li>
+                                                    <NavLink to={"/dashboard/payment-history"}>
+                                                        Payment History
+                                                    </NavLink>
+                                                </li>
+                                                <li>
+                                                    <NavLink to={"/dashboard/feedback-and-ratings"}>
+                                                        Feeback and Rating
+                                                    </NavLink>
+                                                </li>
                                             </>
                                         )}
                                         {eachUser?.role === "Healthcare Professionals" && (

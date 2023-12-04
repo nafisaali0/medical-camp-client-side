@@ -88,7 +88,6 @@ const OrganizerProfile = () => {
                                     <dialog id="my_modal_4" className="modal">
                                         <div className="modal-box w-11/12 max-w-5xl">
                                             {/* write here */}
-                                            {/*  onSubmit={handleSubmit(onSubmit)} */}
                                             <form onSubmit={(e) => handleSubmit((data) => onSubmit(user._id, data))(e)} className="max-w-sm mx-auto">
                                                 <div className="mb-5">
                                                     <label className="block mb-2 text-sm font-medium text-gray-900 ">Name</label>

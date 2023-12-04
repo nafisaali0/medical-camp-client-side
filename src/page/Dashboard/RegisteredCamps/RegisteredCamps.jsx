@@ -3,10 +3,12 @@ import useRegisteredCamp from "../../../hooks/useRegisteredCamp";
 import deleteIcon from "../../../assets/images/icon/delete.svg"
 import { Link } from "react-router-dom";
 
+
 const RegisteredCamps = () => {
     const [registeredCamp] = useRegisteredCamp();
-    console.log(registeredCamp)
+    // console.log(registeredCamp)
 
+    
     const handleDelete = () => {
         console.log("delete")
     }
@@ -36,7 +38,8 @@ const RegisteredCamps = () => {
     const columns = [
         {
             name: 'Serial Number',
-            selector: row => row.id
+            selector: row => row.id,
+
         },
         {
             name: 'Camp Name',
@@ -56,8 +59,13 @@ const RegisteredCamps = () => {
         },
         {
             name: 'Payment Status',
-            cell: () => <Link to={'/'}><button className="btn">Unpaid</button></Link>,
-            // cell1: () => <Link to={'/pay'}><button className="btn">Pay</button></Link>,
+
+            // cell: (row) => <Link to={`/dashboard/payment/${row._id}`}><button className="btn">Pay</button></Link>,
+            // cell: () => <Link to={'/dashboard/payment'}><button className="btn">Pay</button></Link>,
+            cell: (row) => {
+                // console.log(row._id); // Check if _id is correct
+                return <Link to={`/dashboard/payment/${row._id}`}><button className="btn">Pay</button></Link>;
+            },
         },
         {
             name: 'Confirmation Status',
@@ -66,11 +74,12 @@ const RegisteredCamps = () => {
         {
             name: 'Action',
             cell: (row) => <Link to={'/'}><img src={deleteIcon} onClick={handleDelete} alt={row.owner_name} style={{ width: '20px', height: '20px', borderRadius: '50px', margin: '3px' }} /></Link>
-        }       
+        }
     ]
-   
+
     const data = registeredCamp.map((eachCamp, index) => ({
         id: index + 1,
+        _id: eachCamp._id,
         campName: eachCamp.campName,
         venue: eachCamp.venue,
         campFees: eachCamp.campFees,
