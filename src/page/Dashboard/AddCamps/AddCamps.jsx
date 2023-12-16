@@ -23,7 +23,7 @@ const AddCamps = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        console.log(res.data)
+        // console.log(res.data)
         if (res.data.success) {
             //now send the menu item to the server with the image url
             const campDetails = {
