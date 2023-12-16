@@ -11,7 +11,7 @@ const HealthChart = () => {
     const [bloodPressureData, setbloodPressureData] = useState([])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bloodPressure?email=${user?.email}`)
+        fetch(`https://medical-camp-server-seven.vercel.app/bloodPressure?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setbloodPressureData(data)
