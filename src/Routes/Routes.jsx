@@ -22,6 +22,8 @@ import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import Contact from "../page/Contact/Contact";
+import HealthCheck from './../page/HealthCheck/HealthCheck';
+import BloodPressureCheck from "../page/BloodPressureCheck/BloodPressureCheck";
 
 
 
@@ -43,6 +45,14 @@ export const router = createBrowserRouter([
             {
                 path: "signup",
                 element: <SignUp></SignUp>,
+            },
+            {
+                path: "/healthCheck",
+                element: <HealthCheck></HealthCheck>,
+            },
+            {
+                path: "/bloodPressureCheck",
+                element: <PrivateRoutes><BloodPressureCheck></BloodPressureCheck></PrivateRoutes>,
             },
             {
                 path: "camp-details/:campId",
