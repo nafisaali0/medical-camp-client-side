@@ -1,13 +1,10 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-// import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
 import HomeTitle from "../../components/HomeTitle";
-import BloodPressureCheck from "../BloodPressureCheck/BloodPressureCheck";
-
+import Swal from "sweetalert2";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const HealthCheck = () => {
-
     const { register, handleSubmit, reset } = useForm();
 
     // state
@@ -43,6 +40,7 @@ const HealthCheck = () => {
             }
         }
     }
+
     return (
         <>
             <div className="container p-4">
@@ -110,9 +108,8 @@ const HealthCheck = () => {
                         </div>
                     </form>
                     <div className="my-10">
-                        {/* <h1 className="text-2xl font-bold">Monitor Daily Health Based On Your Blood Pressure</h1>
-                        <Link to={"/bloodPressureCheck"}><button className="my-5 bg-gradient-to-r from-blue-500 to-indigo-800 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">Click It</button></Link> */}
-                        <BloodPressureCheck></BloodPressureCheck>
+                        <h1 className="text-2xl font-bold">Monitor Daily Health Based On Your Blood Pressure</h1>
+                        <Link to={"/bloodPressureCheck"}><button className="my-5 bg-gradient-to-r from-blue-500 to-indigo-800 text-white p-2 rounded-md hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue active:bg-blue-800">Click It</button></Link>
                     </div>
                 </div>
             </div>

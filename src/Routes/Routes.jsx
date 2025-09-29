@@ -23,7 +23,7 @@ import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHis
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import Contact from "../page/Contact/Contact";
 import HealthCheck from './../page/HealthCheck/HealthCheck';
-import BloodPressureCheck from "../page/BloodPressureCheck/BloodPressureCheck";
+import BloodPressureCheck from './../page/BloodPressureCheck/BloodPressureCheck';
 
 
 

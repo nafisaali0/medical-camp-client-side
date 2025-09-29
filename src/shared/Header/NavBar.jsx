@@ -18,7 +18,7 @@ const NavBar = () => {
     const navOptions = <>
         <nav className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/healthCheck">HealthCheck</NavLink>
+            <NavLink to="/healthCheck">Health Check</NavLink>
             {
                 user?.email ?
                     <>

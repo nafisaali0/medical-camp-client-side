@@ -24,4 +24,4 @@ Healthcare Professionals : Healthcare Professionals can Update profile informant
 
 4. Contact : There is simple contact form 
 
-# Live LinK In Project: <a href="https://amelia-medical-camp.netlify.app/">Amalia Medical Camp</a>
+# Live LinK In Project: <a href="https://medical-camp.netlify.app/">Amalia Medical Camp</a>
