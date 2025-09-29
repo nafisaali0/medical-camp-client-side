@@ -10,9 +10,7 @@ import { Helmet } from "react-helmet-async";
 const ManageCamps = () => {
 
     const [camp, refetch, loading] = useCamp();
-    const axiosLocalhost = useAxioslocalhost()
-
-
+    const axiosLocalhost = useAxioslocalhost();
 
     const handleDelete = id => {
 
