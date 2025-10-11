@@ -5,14 +5,14 @@ import Footer from "../shared/Footer/Footer";
 
 const Root = () => {
 
-    const location = useLocation();
+    // const location = useLocation();
     // console.log(location)
-    const nosubHeader = location.pathname.includes('signin') || location.pathname.includes('signup') || location.pathname.includes('availablecamp')
+    // const nosubHeader = location.pathname.includes('signin') || location.pathname.includes('signup') || location.pathname.includes('availablecamp')
 
 
     return (
         <div>
-            {nosubHeader || <Header></Header>}
+            {/* {nosubHeader || <Header></Header>} */}
             <NavBar></NavBar>
             <Outlet></Outlet>
             <Footer></Footer>

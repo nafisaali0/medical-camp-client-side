@@ -1,3 +1,125 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  font-family: "Work Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #000;
+}
+
+/* .bg-custom-gradient {
+  background-image: linear-gradient(
+    to bottom,
+    #87a8d0,
+    #91afd5,
+    #9ab6da,
+    #a4bddf,
+    #adc4e4,
+    #b4cae8,
+    #bbd0eb,
+    #c2d6ef,
+    #c9dbf2,
+    #d0e1f5,
+    #d7e6f9,
+    #deecfc
+  );
+  background-color: #001510;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+} */
+
+.navMobileBg {
+  background-image: linear-gradient(
+    to top,
+    #b9ceeb,
+    #c2d6ef,
+    #c9dbf2,
+    #d0e1f5,
+    #d7e6f9,
+    #deecfc
+  );
+}
+
+.bg-custom-gradient {
+  background-image: linear-gradient(
+    to bottom,
+    rgba(135, 168, 208, 0.7),
+    rgba(145, 175, 213, 0.6),
+    rgba(154, 182, 218, 0.5),
+    rgba(164, 189, 223, 0.4),
+    rgba(173, 196, 228, 0.35),
+    rgba(180, 202, 232, 0.3),
+    rgba(187, 208, 235, 0.3),
+    rgba(194, 214, 239, 0.3),
+    rgba(201, 219, 242, 0.35),
+    rgba(208, 225, 245, 0.4),
+    rgba(215, 230, 249, 0.45),
+    rgba(222, 236, 252, 0.5)
+  );
+}
+
+/* From Uiverse.io by satyamchaudharydev */
+.navBtn {
+  --white: #fff;
+  --primary-color: #000;
+  --arrow-width: 10px;
+  --arrow-stroke: 2px;
+  box-sizing: border-box;
+  border: 0;
+  border-radius: 20px;
+  color: var(--white);
+  padding: 0.4em 1em;
+  background: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  display: flex;
+  transition: 0.2s background;
+  align-items: center;
+  gap: 0.6em;
+  font-weight: bold;
+}
+
+.navBtn .arrow-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navBtn .arrow {
+  margin-top: 1px;
+  width: var(--arrow-width);
+  background: var(--primary-color);
+  height: var(--arrow-stroke);
+  position: relative;
+  transition: 0.2s;
+}
+
+.navBtn .arrow::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: solid var(--white);
+  border-width: 0 var(--arrow-stroke) var(--arrow-stroke) 0;
+  display: inline-block;
+  top: -3px;
+  right: 3px;
+  transition: 0.2s;
+  padding: 3px;
+  transform: rotate(-45deg);
+}
+
+.navBtn:hover {
+  color: white;
+  background-color: var(--primary-color);
+}
+
+.navBtn:hover .arrow {
+  background: var(--white);
+}
+
+.navBtn:hover .arrow:before {
+  right: 0;
+}
