@@ -34,30 +34,54 @@ const NavBar = () => {
     // </>
 
     const navOptions = <>
-        {/* className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors
-                                   ${ifActive('/dashboard')
-                                    ? 'bg-primaryColor text-white'
-                                    : 'text-textSmallGray'
-                                }`} */}
-        {/* className={`${ifActive('/dashboard')
-                                    ? 'text-'
-                                    : 'text-black'
-                                }`} */}
         <li><Link to="/"
             className={`${ifActive('/')
-                ? 'text-black font-semibold'
-                : 'text-primaryDark'
-                }`}> Home</Link></li>
-        {/* ${ifActive('/dashboard') ? 'text-white' : 'text-textSmallGray'} */}
-        <li><Link to="/healthCheck">Health Check</Link></li>
+                ? 'text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
+                : 'font-semibold hover:bg-primaryDark/50'
+                }`}>Home</Link></li>
+        {/* <li><Link to="/healthCheck" className={`${ifActive('/healthCheck')
+            ? 'text-black font-bold hover:bg-primaryDark/50'
+            : 'font-semibold hover:bg-primaryDark/50'
+            }`}>Health Check</Link></li> */}
         {
             user?.email ?
                 <>
-                    <li><Link to="/available-camps">Camps</Link></li>
-                    <li><Link to="/dashboard">Dashboard</Link></li>
+                    <li><Link to="/available-camps" className={`${ifActive('/available-camps')
+                        ? 'text-black font-bold hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/50'
+                        }`}>Camps</Link></li>
+                    <li><Link to="/dashboard" className={`${ifActive('/dashboard')
+                        ? 'text-black font-bold hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/50'
+                        }`}>Dashboard</Link></li>
                 </> : ''
         }
     </>
+    const mobileNavOptions = <>
+        <li className=""><Link to="/"
+            className={`py-2 ${ifActive('/')
+                ? 'flex justify-center items-center text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
+                : 'font-semibold hover:bg-primaryDark/50'
+                }`}>Home</Link></li>
+        {/* <li><Link to="/healthCheck" className={`${ifActive('/healthCheck')
+            ? 'text-black font-bold hover:bg-primaryDark/50'
+            : 'font-semibold hover:bg-primaryDark/50'
+            }`}>Health Check</Link></li> */}
+        {
+            user?.email ?
+                <>
+                    <li><Link to="/available-camps" className={`py-2 flex justify-center items-center ${ifActive('/available-camps')
+                        ? 'text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/50'
+                        }`}>Camps</Link></li>
+                    <li><Link to="/dashboard" className={`py-2 flex justify-center items-center ${ifActive('/dashboard')
+                        ? 'text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/50'
+                        }`}>Dashboard</Link></li>
+                </> : ''
+        }
+    </>
+
 
     return (
         <>
@@ -118,8 +142,8 @@ const NavBar = () => {
                                 </div>
                                 <ul
                                     tabIndex={0}
-                                    className="menu menu-sm dropdown-content rounded-md z-1 mt-5 w-52 p-2 bg-primarySemiDark/70 backdrop-blur-md flex justify-center items-center gap-4">
-                                    {navOptions}
+                                    className="menu menu-sm dropdown-content rounded-md z-1 mt-5 w-52 bg-primarySemiDark/70 backdrop-blur-md gap-2">
+                                    {mobileNavOptions}
                                 </ul>
                             </div>
                             <figure className="w-10">
@@ -131,7 +155,7 @@ const NavBar = () => {
                             </figure>
                         </div>
                         <div className="navbar-end">
-                            <ul className="menu menu-horizontal px-1 hidden lg:flex">
+                            <ul className="menu menu-horizontal px-1 gap-3 hidden lg:flex">
                                 {/* <li>
                                     <details>
                                         <summary>Parent</summary>
