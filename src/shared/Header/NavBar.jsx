@@ -1,6 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from '../../assets/images/icon/Logo-removebg.png'
-// import './navbar.css'
 import useAuth from "../../hooks/useAuth";
 
 
