@@ -21,9 +21,9 @@ const NavBar = () => {
 
     const navOptions = <>
         <li><Link to="/"
-            className={`${ifActive('/')
-                ? 'text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
-                : 'font-semibold hover:bg-primaryDark/50'
+            className={`text-black ${ifActive('/')
+                ? 'font-bold bg-primaryDark/50'
+                : 'font-semibold  hover:bg-primaryDark/50 '
                 }`}>Home</Link></li>
         {/* <li><Link to="/healthCheck" className={`${ifActive('/healthCheck')
             ? 'text-black font-bold hover:bg-primaryDark/50'
@@ -32,12 +32,12 @@ const NavBar = () => {
         {
             user?.email ?
                 <>
-                    <li><Link to="/available-camps" className={`${ifActive('/available-camps')
-                        ? 'text-black font-bold hover:bg-primaryDark/50'
+                    <li><Link to="/available-camps" className={`text-black ${ifActive('/available-camps')
+                        ? 'font-bold hover:bg-primaryDark/50'
                         : 'font-semibold hover:bg-primaryDark/50'
                         }`}>Camps</Link></li>
-                    <li><Link to="/dashboard" className={`${ifActive('/dashboard')
-                        ? 'text-black font-bold hover:bg-primaryDark/50'
+                    <li><Link to="/dashboard" className={`text-black ${ifActive('/dashboard')
+                        ? 'font-bold hover:bg-primaryDark/50'
                         : 'font-semibold hover:bg-primaryDark/50'
                         }`}>Dashboard</Link></li>
                 </> : ''
@@ -63,7 +63,6 @@ const NavBar = () => {
                 </> : ''
         }
     </>
-
 
     return (
         <>
@@ -114,7 +113,7 @@ const NavBar = () => {
                 </div>
             </div> */}
 
-            <div className="fixed top-0 z-50 w-full bg-primarySemiDark/70 backdrop-blur-md">
+            <div className="fixed top-0 z-50 w-full backdrop-blur-md">
                 <nav className="max-w-[1300px] mx-auto">
                     <div className="navbar">
                         <div className="navbar-start gap-3">

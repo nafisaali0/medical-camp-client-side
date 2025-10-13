@@ -1,5 +1,5 @@
 // import { Link } from 'react-router-dom';
-// import banner1 from '../../../assets/images/newBanner/image1.avif'
+import heroBG from '../../../assets/images/background/bg-2.png'
 // import banner2 from '../../../assets/images/newBanner/image1.jpg'
 // import banner3 from '../../../assets/images/newBanner/image9.jpg'
 // import banner4 from '../../../assets/images/newBanner/image8.jpg'
@@ -9,6 +9,8 @@
 // import withAutoplay from 'react-awesome-slider/dist/autoplay';
 // import 'react-awesome-slider/dist/styles.css';
 // import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
+
+import { Link } from "react-router-dom";
 
 // const AutoplaySlider = withAutoplay(AwesomeSlider);
 
@@ -110,32 +112,117 @@ const Banner = () => {
         // </div>
         // new
         <>
-            <section className="relative h-screen flex justify-center items-center p-5 bg-custom-gradient" >
+            {/* <section className="relative h-screen flex justify-center items-center p-5"
+                style={{
+                    backgroundImage: `
+                    linear-gradient(
+                         to bottom,
+                          rgba(135, 168, 208, 0.7),
+                        rgba(145, 175, 213, 0.6),
+                          rgba(154, 182, 218, 0.5),
+                          rgba(164, 189, 223, 0.4),
+                              rgba(173, 196, 228, 0.35),
+                       rgba(180, 202, 232, 0.3),
+                       rgba(187, 208, 235, 0.3),
+                       rgba(194, 214, 239, 0.3),
+                       rgba(201, 219, 242, 0.35),
+                       rgba(208, 225, 245, 0.4),
+                       rgba(215, 230, 249, 0.45),
+                    rgba(222, 236, 252, 0.5)
+                 ),
+                url(${heroBG})
+                 `,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top",
+                    backgroundSize: "cover",
+                    backgroundAttachment: "fixed"
+                }}
+            >
                 <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+                <div
+                    className="relative z-10 text-center max-w-3xl">
+                    <h1 className="text-8xl font-bold text-gradient">
+                        Our Medical Mission for a Healthier
+                    </h1>
+
+                    <div className="flex justify-center items-center">
+                        <p className='text-md text-black font-medium my-5 lg:my-7 w-1/2'>
+                            Join us on a journey of compassion, making a meaningful impact in healthcare for a brighter future.
+                        </p>
+                    </div>
+                    <div className="flex justify-center items-center">
+                        <Link to={"/available-camps"}>
+                            <button className="navBtn ml-2">
+                                See Camps
+                                <div className="arrow-wrapper">
+                                    <div className="arrow"></div>
+                                </div>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+
+            </section> */}
+
+            {/* new */}
+            <section
+                className="relative h-screen flex justify-center items-center p-5"
+                style={{
+                    backgroundImage: `
+      linear-gradient(
+        to bottom,
+       rgba(83, 128, 160, 0.9),
+  rgba(95, 138, 175, 0.85),
+  rgba(110, 150, 190, 0.8),
+  rgba(125, 160, 200, 0.75),
+  rgba(135, 170, 210, 0.7),
+  rgba(145, 180, 220, 0.65),
+  rgba(155, 190, 230, 0.6),
+  rgba(165, 200, 240, 0.55),
+  rgba(175, 210, 245, 0.5),
+  rgba(185, 220, 250, 0.45),
+  rgba(195, 230, 252, 0.4),
+  rgba(205, 236, 255, 0.35)
+      ),
+      url(${heroBG})
+    `,
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "top",
+                    backgroundSize: "cover",
+                    backgroundAttachment: "fixed"
+                }}
+            >
+                {/* Grid lines background */}
+                <div className="absolute inset-0 -z-20 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+
+                {/* 🔹 New Overlay Layer */}
+                {/* <div className="absolute bg-black/40 -z-10"></div> */}
+                {/* You can adjust opacity: bg-black/20 (lighter), bg-black/40 (darker) */}
+
+                <div className="relative z-10 text-center max-w-3xl">
+                    <h1 className="text-7xl font-bold text-black">
+                        Our Medical Mission for a Healthier
+                    </h1>
+
+                    <div className="flex justify-center items-center">
+                        <p className="text-md text-black font-medium my-5 lg:my-7 w-1/2">
+                            Join us on a journey of compassion, making a meaningful impact in healthcare for a brighter future.
+                        </p>
+                    </div>
+
+                    <div className="flex justify-center items-center">
+                        <Link to={"/available-camps"}>
+                            <button className="navBtn ml-2">
+                                See Camps
+                                <div className="arrow-wrapper">
+                                    <div className="arrow"></div>
+                                </div>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
             </section>
 
-            {/* <div
-                className="relative z-10 text-center max-w-3xl mt-32">
-                <h1 className="text-8xl font-bold tracking-tighter bg-[radial-gradient(100%_100%_at_top_left,white,white,rgb(83,168,182,1))] text-transparent bg-clip-text">
-                    EcoNova
-                </h1>
-                <p className='text-md font-medium my-5 lg:my-7'>
-                    Youth innovation for green futures.
-                    We are a youth-driven team harnessing the power of AI and sustainable technologies to design intelligent solutions for climate resilience. Our mission is to create scalable innovations that protect ecosystems, empower communities, and shape a sustainable future for generations to come.
-                </p>
-                <div className='flex justify-center items-center'>
-                    <button><a href="#projects">See Projects</a></button>
-                </div>
-            </div> */}
-
-            {/* style */}
-            {/* style={{
-                backgroundImage: `url(${noise})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "right top",
-                backgroundSize: "cover",
-                backgroundAttachment: "fixed"
-            }} */}
         </>
     );
 };

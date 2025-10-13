@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import contactImage from '../../assets/images/newBanner/contact2.jpg'
+// import contactImage from '../../assets/images/newBanner/contact2.jpg'
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
@@ -50,9 +50,9 @@ const Contact = () => {
                                 <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Send Massage</button>
                             </form>
                         </div>
-                        <div className="flex-1 w-full p-10">
+                        {/* <div className="flex-1 w-full p-10">
                             <img src={contactImage} className="w-full" alt="" />
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>

@@ -6,6 +6,7 @@ export default {
   theme: {
     colors: {
       // borderColour: "#dbdbde",
+      primaryDarkTale:"#53A8B6",
       primaryDark: "#87A8D0",
       primarySemiDark: "#B9CEEB",
       primarylight: "#DEECFC",
