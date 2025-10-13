@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from '../../assets/images/icon/Logo-removebg.png'
 // import './navbar.css'
 import useAuth from "../../hooks/useAuth";
@@ -8,6 +8,7 @@ const NavBar = () => {
     const { user, logOut } = useAuth();
     const location = useLocation()
     const ifActive = (path) => location.pathname === path;
+
     const handleLogOut = () => {
         logOut(user)
             .then(result => {
@@ -17,21 +18,6 @@ const NavBar = () => {
                 console.log(error)
             })
     }
-
-    // const navOptions = <>
-    //     <nav className={({ isActive, isPending }) => isPending ? "pending" : isActive ? "active" : ""}>
-    //         <NavLink to="/">Home</NavLink>
-    //         <NavLink to="/healthCheck">Health Check</NavLink>
-    //         {
-    //             user?.email ?
-    //                 <>
-    //                     <NavLink to="/available-camps">Available Camps</NavLink>
-    //                     <NavLink to="/dashboard">Dashboard</NavLink>
-    //                 </> : ''
-    //         }
-    //         <NavLink to="/contact">Contact Us</NavLink>
-    //     </nav>
-    // </>
 
     const navOptions = <>
         <li><Link to="/"
@@ -63,10 +49,6 @@ const NavBar = () => {
                 ? 'flex justify-center items-center text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
                 : 'font-semibold hover:bg-primaryDark/50'
                 }`}>Home</Link></li>
-        {/* <li><Link to="/healthCheck" className={`${ifActive('/healthCheck')
-            ? 'text-black font-bold hover:bg-primaryDark/50'
-            : 'font-semibold hover:bg-primaryDark/50'
-            }`}>Health Check</Link></li> */}
         {
             user?.email ?
                 <>
@@ -142,7 +124,7 @@ const NavBar = () => {
                                 </div>
                                 <ul
                                     tabIndex={0}
-                                    className="menu menu-sm dropdown-content rounded-md z-1 mt-5 w-52 bg-primarySemiDark/70 backdrop-blur-md gap-2">
+                                    className="menu menu-sm dropdown-content rounded-md z-1 mt-5 w-52 bg-primarySemiDark/80 backdrop-blur-md gap-2">
                                     {mobileNavOptions}
                                 </ul>
                             </div>
@@ -156,35 +138,39 @@ const NavBar = () => {
                         </div>
                         <div className="navbar-end">
                             <ul className="menu menu-horizontal px-1 gap-3 hidden lg:flex">
-                                {/* <li>
-                                    <details>
-                                        <summary>Parent</summary>
-                                        <ul className="p-2">
-                                            <li><a>Submenu 1</a></li>
-                                            <li><a>Submenu 2</a></li>
-                                        </ul>
-                                    </details>
-                                </li> */}
                                 {navOptions}
                             </ul>
 
                             {/* user func */}
                             {
                                 user ?
-                                    <div className="avatar">
-                                        <div className="w-8 rounded-full">
-                                            <img src={user.photoURL ? user.photoURL : ``} />
+                                    // <div className="avatar">
+                                    //     <div className="w-8 rounded-full">
+                                    //         <img src={user.photoURL ? user.photoURL : ``} />
+                                    //     </div>
+                                    // </div>
+
+                                    <div className="dropdown dropdown-end cursor-pointer ml-2">
+                                        <div tabIndex={0} className="avatar">
+                                            <div className="w-8 rounded-full">
+                                                <img src={user.photoURL ? user.photoURL : ``} />
+                                            </div>
                                         </div>
+                                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primarySemiDark/70 backdrop-blur-md rounded-box w-52">
+                                            <li className="hover:bg-primaryDark/70 hover:rounded-xl" onClick={handleLogOut}><a>Logout</a></li>
+                                        </ul>
                                     </div>
                                     :
                                     <>
                                         {/* signup btn */}
-                                        <button className="navBtn ml-2">
-                                            Sign up
-                                            <div className="arrow-wrapper">
-                                                <div className="arrow"></div>
-                                            </div>
-                                        </button>
+                                        <Link to={"/signup"}>
+                                            <button className="navBtn ml-2">
+                                                Sign up
+                                                <div className="arrow-wrapper">
+                                                    <div className="arrow"></div>
+                                                </div>
+                                            </button>
+                                        </Link>
                                     </>
                             }
                         </div>

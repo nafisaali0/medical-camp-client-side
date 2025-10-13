@@ -32,18 +32,6 @@
   background-attachment: fixed;
 } */
 
-.navMobileBg {
-  background-image: linear-gradient(
-    to top,
-    #b9ceeb,
-    #c2d6ef,
-    #c9dbf2,
-    #d0e1f5,
-    #d7e6f9,
-    #deecfc
-  );
-}
-
 .bg-custom-gradient {
   background-image: linear-gradient(
     to bottom,
@@ -72,14 +60,14 @@
   border: 0;
   border-radius: 20px;
   color: var(--white);
-  padding: 0.4em 1em;
+  padding: 0.4em 1.2em;
   background: var(--primary-color);
   border: 1px solid var(--primary-color);
   display: flex;
   transition: 0.2s background;
   align-items: center;
-  gap: 0.6em;
-  font-weight: bold;
+  gap: 0.3em;
+  font-weight: semibold;
 }
 
 .navBtn .arrow-wrapper {
