@@ -6,11 +6,13 @@ export default {
   theme: {
     colors: {
       // borderColour: "#dbdbde",
-      primaryDarkTale:"#53A8B6",
+      primaryDarkTale: "#0A1931",
       primaryDark: "#87A8D0",
       primarySemiDark: "#B9CEEB",
       primarylight: "#DEECFC",
+      textDark: "#0A1931",
       black: "#000",
+      btnColor:"#404f68",
     },
     extend: {},
   },

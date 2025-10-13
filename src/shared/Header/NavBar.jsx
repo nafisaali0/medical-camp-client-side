@@ -21,9 +21,9 @@ const NavBar = () => {
 
     const navOptions = <>
         <li><Link to="/"
-            className={`text-black ${ifActive('/')
-                ? 'font-bold bg-primaryDark/50'
-                : 'font-semibold  hover:bg-primaryDark/50 '
+            className={`${ifActive('/')
+                ? 'font-bold bg-primaryDark/80 hover:bg-primaryDark/50'
+                : 'font-semibold  hover:bg-primaryDark/80'
                 }`}>Home</Link></li>
         {/* <li><Link to="/healthCheck" className={`${ifActive('/healthCheck')
             ? 'text-black font-bold hover:bg-primaryDark/50'
@@ -32,33 +32,33 @@ const NavBar = () => {
         {
             user?.email ?
                 <>
-                    <li><Link to="/available-camps" className={`text-black ${ifActive('/available-camps')
-                        ? 'font-bold hover:bg-primaryDark/50'
-                        : 'font-semibold hover:bg-primaryDark/50'
+                    <li><Link to="/available-camps" className={`${ifActive('/available-camps')
+                        ? 'font-bold bg-primaryDark/80 hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/80'
                         }`}>Camps</Link></li>
-                    <li><Link to="/dashboard" className={`text-black ${ifActive('/dashboard')
-                        ? 'font-bold hover:bg-primaryDark/50'
-                        : 'font-semibold hover:bg-primaryDark/50'
+                    <li><Link to="/dashboard" className={`${ifActive('/dashboard')
+                        ? 'font-bold bg-primaryDark/80 hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/80'
                         }`}>Dashboard</Link></li>
                 </> : ''
         }
     </>
     const mobileNavOptions = <>
         <li className=""><Link to="/"
-            className={`py-2 ${ifActive('/')
-                ? 'flex justify-center items-center text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
-                : 'font-semibold hover:bg-primaryDark/50'
+            className={`flex justify-center items-center py-2 ${ifActive('/')
+                ? 'font-bold bg-primaryDark/80 hover:bg-primaryDark/50'
+                : 'font-semibold hover:bg-primaryDark/80'
                 }`}>Home</Link></li>
         {
             user?.email ?
                 <>
                     <li><Link to="/available-camps" className={`py-2 flex justify-center items-center ${ifActive('/available-camps')
-                        ? 'text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
-                        : 'font-semibold hover:bg-primaryDark/50'
+                        ? 'font-bold bg-primaryDark/80 hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/80'
                         }`}>Camps</Link></li>
                     <li><Link to="/dashboard" className={`py-2 flex justify-center items-center ${ifActive('/dashboard')
-                        ? 'text-black font-bold bg-primaryDark/50 hover:bg-primaryDark/50'
-                        : 'font-semibold hover:bg-primaryDark/50'
+                        ? 'font-bold bg-primaryDark/80 hover:bg-primaryDark/50'
+                        : 'font-semibold hover:bg-primaryDark/80'
                         }`}>Dashboard</Link></li>
                 </> : ''
         }
@@ -113,17 +113,17 @@ const NavBar = () => {
                 </div>
             </div> */}
 
-            <div className="fixed top-0 z-50 w-full backdrop-blur-md">
+            <div className="fixed top-0 z-50 w-full bg-primarySemiDark/80 backdrop-blur-md">
                 <nav className="max-w-[1300px] mx-auto">
                     <div className="navbar">
                         <div className="navbar-start gap-3">
                             <div className="dropdown">
                                 <div tabIndex={0} role="button" className="lg:hidden">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#000"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#404f68"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                                 </div>
                                 <ul
                                     tabIndex={0}
-                                    className="menu menu-sm dropdown-content rounded-md z-1 mt-5 w-52 bg-primarySemiDark/80 backdrop-blur-md gap-2">
+                                    className="menu menu-sm dropdown-content rounded-md z-1 mt-5 w-52 bg-primarySemiDark gap-2 text-textDark">
                                     {mobileNavOptions}
                                 </ul>
                             </div>
@@ -136,7 +136,7 @@ const NavBar = () => {
                             </figure>
                         </div>
                         <div className="navbar-end">
-                            <ul className="menu menu-horizontal px-1 gap-3 hidden lg:flex">
+                            <ul className="menu menu-horizontal px-1 gap-3 hidden lg:flex text-textDark">
                                 {navOptions}
                             </ul>
 
@@ -155,8 +155,8 @@ const NavBar = () => {
                                                 <img src={user.photoURL ? user.photoURL : ``} />
                                             </div>
                                         </div>
-                                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primarySemiDark/70 backdrop-blur-md rounded-box w-52">
-                                            <li className="hover:bg-primaryDark/70 hover:rounded-xl" onClick={handleLogOut}><a>Logout</a></li>
+                                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primarySemiDark backdrop-blur-md rounded-box w-52">
+                                            <li className="hover:bg-primaryDark/50 hover:rounded-xl" onClick={handleLogOut}><a>Logout</a></li>
                                         </ul>
                                     </div>
                                     :

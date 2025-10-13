@@ -1,9 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import Banner from './../Banner/Banner';
 import PopularCamp from '../PopularCamp/PopularCamp';
-import BrandSlider from '../BrandSlider/BrandSlider';
-import About from '../About/About';
-import Testimonials from '../Testimonials/Testimonials';
+// import BrandSlider from '../BrandSlider/BrandSlider';
+// import Testimonials from '../Testimonials/Testimonials';
 
 
 
@@ -15,9 +14,8 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <PopularCamp></PopularCamp>
-            <Testimonials></Testimonials>
-            <About></About>
-            <BrandSlider></BrandSlider>
+            {/* <Testimonials></Testimonials> */}
+            {/* <BrandSlider></BrandSlider> */}
         </div>
     );
 };
