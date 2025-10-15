@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from '../../assets/images/logo/logo2-removebg.png'
+import logo from '../../assets/images/logo/logo_nav.png'
 import useAuth from "../../hooks/useAuth";
 
 
 const NavBar = () => {
+
     const { user, logOut } = useAuth();
     const location = useLocation()
     const ifActive = (path) => location.pathname === path;
@@ -126,16 +127,15 @@ const NavBar = () => {
                                     {mobileNavOptions}
                                 </ul>
                             </div>
-                            <div className="w-[80px] h-[80px]">
-                                <figure>
-                                    <Link to="/">
-                                        <img
-                                            src={logo}
-                                            alt="logo"
-                                            className="" />
-                                    </Link>
-                                </figure>
-                            </div>
+                            <figure className="transform scale-125 origin-left">
+                                <Link to="/">
+                                    <img
+                                        src={logo}
+                                        alt="logo"
+                                        className="h-16 w-fit"
+                                    />
+                                </Link>
+                            </figure>
                         </div>
                         <div className="navbar-end">
                             <ul className="menu menu-horizontal px-1 gap-3 hidden lg:flex text-textDark">

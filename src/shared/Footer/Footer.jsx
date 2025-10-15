@@ -1,23 +1,20 @@
-// import { Link } from 'react-router-dom';
-// import icon1 from '../../assets/images/icon/facebook.svg'
-// import icon3 from '../../assets/images/icon/linkedin.svg'
-// import logo from '../../assets/images/icon/Logo1.png'
 import { Link } from "react-router-dom";
-import logo from '../../assets/images/icon/Logo-removebg.png'
+import logo from '../../assets/images/logo/logo_footer.png'
 
 const Footer = () => {
     return (
         <>
             <footer className="footer sm:footer-horizontal bg-textDark text-[#ffff] p-10">
                 <aside>
-                    <figure className="w-10">
+                    <figure>
                         <Link to="/">
                             <img
+                                className="w-24"
                                 src={logo}
-                                alt="logo"/>
+                                alt="logo" />
                         </Link>
                     </figure>
-                    <p className="w-80 mt-5">
+                    <p className="w-80">
                         Our medical campaign website aims to make healthcare accessible for everyone by organizing free checkups, blood donation drives, and health awareness events.
                         <br />
                         <a href="#home">
