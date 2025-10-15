@@ -6,26 +6,24 @@ const Banner = () => {
     return (
         <>
             <section
+                id='home'
                 className="relative h-screen flex justify-center items-center p-5"
                 style={{
-                    backgroundImage: `
-      linear-gradient(
-        to bottom,
-      rgba(135, 168, 208, 0.7),
-    rgba(145, 175, 213, 0.6),
-    rgba(154, 182, 218, 0.5),
-    rgba(164, 189, 223, 0.4),
-    rgba(173, 196, 228, 0.35),
-    rgba(180, 202, 232, 0.3),
-    rgba(187, 208, 235, 0.3),
-    rgba(194, 214, 239, 0.3),
-    rgba(201, 219, 242, 0.35),
-    rgba(208, 225, 245, 0.4),
-    rgba(215, 230, 249, 0.45),
-    rgba(222, 236, 252, 0.5)
-      ),
-      url(${heroBG})
-    `,
+                    backgroundImage: `linear-gradient(to bottom,
+                    rgba(135, 168, 208, 0.7),
+                    rgba(145, 175, 213, 0.6),
+                    rgba(154, 182, 218, 0.5),
+                    rgba(164, 189, 223, 0.4),
+                    rgba(173, 196, 228, 0.35),
+                    rgba(180, 202, 232, 0.3),
+                    rgba(187, 208, 235, 0.3),
+                    rgba(194, 214, 239, 0.3),
+                    rgba(201, 219, 242, 0.35),
+                    rgba(208, 225, 245, 0.4),
+                    rgba(215, 230, 249, 0.45),
+                    rgba(222, 236, 252, 0.5)
+                ),
+                url(${heroBG})    `,
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "top",
                     backgroundSize: "cover",
