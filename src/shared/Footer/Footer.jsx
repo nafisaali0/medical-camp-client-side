@@ -14,7 +14,7 @@ const Footer = () => {
                         <Link to="/">
                             <img
                                 src={logo}
-                                alt="logo" />
+                                alt="logo"/>
                         </Link>
                     </figure>
                     <p className="w-80 mt-5">

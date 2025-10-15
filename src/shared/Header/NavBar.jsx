@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from '../../assets/images/icon/Logo-removebg.png'
+import logo from '../../assets/images/logo/logo2-removebg.png'
 import useAuth from "../../hooks/useAuth";
 
 
@@ -126,13 +126,16 @@ const NavBar = () => {
                                     {mobileNavOptions}
                                 </ul>
                             </div>
-                            <figure className="w-10">
-                                <Link to="/">
-                                    <img
-                                        src={logo}
-                                        alt="logo" />
-                                </Link>
-                            </figure>
+                            <div className="w-[80px] h-[80px]">
+                                <figure>
+                                    <Link to="/">
+                                        <img
+                                            src={logo}
+                                            alt="logo"
+                                            className="" />
+                                    </Link>
+                                </figure>
+                            </div>
                         </div>
                         <div className="navbar-end">
                             <ul className="menu menu-horizontal px-1 gap-3 hidden lg:flex text-textDark">
