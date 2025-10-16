@@ -1,4 +1,4 @@
-import heroBG from '../../../assets/images/background/bg-3-removebg.png'
+import heroBG from '../../../assets/images/background/bg_hero-removebg.png'
 import { Link } from "react-router-dom";
 
 const Banner = () => {
