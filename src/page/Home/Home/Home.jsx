@@ -13,7 +13,9 @@ const Home = () => {
                 <title>Amelia | Home</title>
             </Helmet>
             <Banner></Banner>
-            <PopularCamp></PopularCamp>
+            <div className="max-w-[1300px] mx-auto my-10 p-5">
+                <PopularCamp></PopularCamp>
+            </div>
             {/* <Testimonials></Testimonials> */}
             {/* <BrandSlider></BrandSlider> */}
         </div>
