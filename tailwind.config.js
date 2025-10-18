@@ -13,6 +13,7 @@ export default {
       textDark: "#0A1931",
       btnColor:"#404f68",
       black: "#000",
+      white:"#ffff"
     },
     extend: {},
   },

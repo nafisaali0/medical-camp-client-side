@@ -1,7 +1,8 @@
 // import { useEffect, useState } from "react";
+// import useCamp from "../../../hooks/useCamp";
+// import useRegisteredCamp from "../../../hooks/useRegisteredCamp";
+import useAllRegisteredCamp from "../../../hooks/useAllRegisteredCamp";
 import { Link } from "react-router-dom";
-import useCamp from "../../../hooks/useCamp";
-import useRegisteredCamp from "../../../hooks/useRegisteredCamp";
 import { IoMdTime } from "react-icons/io";
 import { GoPeople } from "react-icons/go";
 import { IoLocationOutline } from "react-icons/io5";
@@ -9,10 +10,15 @@ import { TbCoinTaka } from "react-icons/tb";
 
 const PopularCamp = () => {
 
-    const [camp] = useCamp()
-    console.log(camp)
-    const [registeredCamp] = useRegisteredCamp();
-    console.log(registeredCamp)
+    
+    const [allregisteredCamp] = useAllRegisteredCamp();
+    // console.log(allregisteredCamp)
+
+
+    // const [camp] = useCamp()
+    // console.log(camp)
+    // const [registeredCamp] = useRegisteredCamp();
+    // console.log(registeredCamp)
     // const [camps, setCamps] = useState([])
     // const [sortOrder, setSortOrder] = useState('asc'); // Default sorting order is ascending
 
@@ -106,82 +112,87 @@ const PopularCamp = () => {
             </div> */}
 
             <div>
-                <div className="mb-5">
+                <div className="mb-10">
                     <h1 className="text-4xl text-textDark font-bold text-center">Enrolled Camps</h1>
                 </div>
-                <div>
-                    <div className="card bg-[#ffff] max-w-xl shadow-lg">
-                        <figure>
-                            <img
-                                src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                alt="camp" />
-                        </figure>
-                        <div className="bg-btnColor bg-transparent p-5 -mt-5">
-                            <h2 className="text-3xl font-bold text-[#ffff]">Community Immunization Drive</h2>
-                        </div>
-                        <div className="card-body">
-                            <div className="flex gap-2 justify-center item-center">
-                                <div>
-                                    <div className="flex gap-2 justify-center items-center">
-                                        <div>
-                                            <IoMdTime className="text-[20px] text-btnColor" />
+
+                {/* testing */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
+                    {
+                        allregisteredCamp?.map((enrolledCamp, index) =>
+                            <>
+                                <div key={index}>
+                                    <div className="card h-96 rounded-t-xl bg-white shadow-lg hover:shadow-xl">
+                                        <figure>
+                                            <img
+                                                src={enrolledCamp.image}
+                                                className="w-full h-52 object-cover"
+                                            />
+                                        </figure>
+
+                                        <div className="w-full z-10 md:max-w-[300px] md:mx-auto md:absolute md:top-20 md:left-10 p-4 -mb-14 md:rounded-lg bg-gradient-to-r from-[#404f68] via-[#87A8D0] to-[#B9CEEB]">
+                                            <h2 className="text-center text-lg font-bold text-white">
+                                                {enrolledCamp.campName}
+                                            </h2>
                                         </div>
-                                        <div>
-                                            <h1 className="text-sm font-normal text-textDark">
-                                                <span className="font-bold">Date & Time: </span>
-                                                Sat, Nov 16, 2025, 9:00 AM – 12:11 PM
-                                            </h1>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-2 justify-center items-center">
-                                        <div>
-                                            <GoPeople className="text-[20px] text-btnColor" />
-                                        </div>
-                                        <div>
-                                            <h1 className="text-sm font-normal text-textDark">
-                                                <span className="font-bold">Target Audience: </span>
-                                                Children Ages 0–5 & Parents
-                                            </h1>
+
+                                        <div className="card-body pt-10 md:pt-0 p-3 m-0 md:-mt-3 rounded-t-3xl rounded-b-3xl bg-white border-2 border-white">
+                                            <div className="flex flex-col items-start gap-4 mt-6 md:mt-12">
+                                                <div className="w-full space-y-3">
+                                                    <div className="flex gap-2 items-start">
+                                                        <IoMdTime className="text-[25px] text-btnColor" />
+                                                        <h1 className="text-sm font-normal text-textDark">
+                                                            <span className="font-bold">Date & Time: </span>
+                                                            {enrolledCamp.date}
+
+                                                            |
+
+                                                            {enrolledCamp.time}
+                                                        </h1>
+                                                    </div>
+
+                                                    <div className="flex items-start gap-2">
+                                                        <GoPeople className="text-[25px] text-btnColor" />
+                                                        <h1 className="text-sm font-normal text-textDark">
+                                                            <span className="font-bold">Target Audience: </span>
+                                                            Adult
+                                                        </h1>
+                                                    </div>
+
+                                                    <div className="flex items-start gap-2">
+                                                        <IoLocationOutline className="text-[25px] text-btnColor" />
+                                                        <h1 className="text-sm font-normal text-textDark">
+                                                            <span className="font-bold">Venue: </span>
+                                                            {enrolledCamp.venue}
+                                                        </h1>
+                                                    </div>
+
+                                                    <div className="flex items-start gap-2">
+                                                        <TbCoinTaka className="text-[25px] text-btnColor" />
+                                                        <h1 className="text-sm font-normal text-textDark">
+                                                            <span className="font-bold">Price: </span>
+                                                            {enrolledCamp.campFees}
+                                                        </h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div className="card-actions justify-center my-3">
+                                                <Link to={"/available-camps"}>
+                                                    <button className="navBtn ml-2">
+                                                        See Details
+                                                        <div className="arrow-wrapper">
+                                                            <div className="arrow"></div>
+                                                        </div>
+                                                    </button>
+                                                </Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="flex gap-2 items-center">
-                                        <div>
-                                            <IoLocationOutline className="text-[20px] text-btnColor" />
-                                        </div>
-                                        <div>
-                                            <h1 className="text-sm font-normal text-textDark">
-                                                <span className="font-bold">Vanue: </span>
-                                                Community Health Clinic, Room 3B
-                                            </h1>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-2 items-center">
-                                        <div>
-                                            <TbCoinTaka className="text-[20px] text-btnColor" />
-                                        </div>
-                                        <div>
-                                            <h1 className="text-sm font-normal text-textDark">
-                                                <span className="font-bold">Price: </span>
-                                                Free (Sponsored Event)
-                                            </h1>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="card-actions justify-center mt-5">
-                                <Link to={"/available-camps"}>
-                                    <button className="navBtn ml-2">
-                                        See Details
-                                        <div className="arrow-wrapper">
-                                            <div className="arrow"></div>
-                                        </div>
-                                    </button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
+                            </>
+                        )
+                    }
                 </div>
             </div>
         </>
