@@ -52,7 +52,7 @@ const PopularCamp = () => {
 
             <div>
                 <div className="mb-10">
-                    <h1 className="text-4xl text-textDark font-bold text-center">Enrolled Camps</h1>
+                    <h1 className="text-3xl text-textDark font-bold text-center">Enrolled Camps</h1>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {

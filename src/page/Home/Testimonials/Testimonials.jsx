@@ -9,10 +9,12 @@ import '@smastrom/react-rating/style.css'
 
 
 const Testimonials = () => {
+
     const [feedbacks] = useFeedback();
+
     return (
         <>
-            <div className="container mx-auto overflow-hidden my-20  flex items-center justify-center">
+            {/* <div className="container mx-auto overflow-hidden my-20  flex items-center justify-center">
                 <div className="w-7/12">
                     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
                         {
@@ -44,6 +46,15 @@ const Testimonials = () => {
                         }
                     </Swiper>
                 </div>
+            </div> */}
+
+            <div>
+                <div className="mb-10">
+                    {/* <h1 className="text-4xl text-textDark font-bold text-center">Camp Feedback Summary</h1> */}
+                    <h1 className="text-3xl text-textDark font-bold text-center">What Participant Are Saying</h1>
+                </div>
+
+
             </div>
         </>
     );
