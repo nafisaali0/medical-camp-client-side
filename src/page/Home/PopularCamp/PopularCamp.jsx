@@ -85,7 +85,7 @@ const PopularCamp = () => {
                                                     <GoPeople className="text-[25px] text-btnColor" />
                                                     <h1 className="text-sm font-normal text-textDark">
                                                         <span className="font-bold">Target Audience: </span>
-                                                        Adult
+                                                        {enrolledCamp.targetAudience}
                                                     </h1>
                                                 </div>
 

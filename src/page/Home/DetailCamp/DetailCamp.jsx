@@ -82,7 +82,7 @@ const DetailCamp = () => {
         <>
             <div>
                 <Helmet>
-                    <title>Amelia | Camp Details Page</title>
+                    <title>Amelia | Camp Details</title>
                 </Helmet>
                 {/* <div className="max-w-5xl mx-auto overflow-hidden my-10 p-3">
                     <div>
@@ -216,16 +216,24 @@ const DetailCamp = () => {
                 </div> */}
 
                 <div className="py-24">
-                    <div className="max-w-4xl mx-auto my-10 p-5 overflow-hidden space-y-20 bg-primarylight ">
-                        <div>
-                            <figure>
-                                <img src={image} alt="" />
-                            </figure>
-                        </div>
+                    <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-20 bg-primarylight ">
+                        <div className="flex">
+                            <div className="flex-1">
+                                <figure>
+                                    <img src={image} alt="" />
+                                </figure>
+                            </div>
 
-                        <div>
-                            <div></div>
-                            <div></div>
+                            <div className="flex-1">
+                                <div>
+                                    <button></button>
+                                    <h1></h1>
+                                </div>
+                                <div>
+                                    <p>time</p>
+                                    <p>Date</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
