@@ -4,7 +4,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { Rating } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
+import '@smastrom/react-rating/style.css';
+import logo from "../../../assets/images/logo/logo_nav.png"
 
 
 
@@ -49,11 +50,65 @@ const Testimonials = () => {
             </div> */}
 
             <div>
-                <div className="mb-10">
-                    {/* <h1 className="text-4xl text-textDark font-bold text-center">Camp Feedback Summary</h1> */}
-                    <h1 className="text-3xl text-textDark font-bold text-center">What Participant Are Saying</h1>
+                <div className="mb-10 text-textDark">
+                    <h1 className="text-3xl font-bold text-center">What Participant Are Saying</h1>
                 </div>
+                <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
 
+                    {
+                        feedbacks?.slice(0, 7).map((review, index) =>
+                            <>
+                                <div key={index} className="p-5 bg-white rounded-xl shadow-lg hover:shadow-xl">
+                                    <div className="flex justify-between items-start">
+                                        <div className="flex gap-4 items-center">
+                                            <div className="avatar">
+                                                <div className="w-16 rounded-full">
+                                                    <img src={review.reviewerPhoto} />
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div>
+                                                    <h1 className="text-lg font-bold">
+                                                        {review.reviewerName}
+                                                    </h1>
+                                                </div>
+                                                <div>
+                                                    <span>
+                                                        <Rating
+                                                            style={{ maxWidth: 80 }}
+                                                            value={review?.rating}
+                                                            readOnly
+                                                        />
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <figure>
+                                                <img src={logo}
+                                                    alt="logo"
+                                                    className="w-16 object-cover"
+                                                />
+                                            </figure>
+                                        </div>
+                                    </div>
+
+                                    {
+                                        review?.comment ?
+                                            <>
+                                                <div className="h-fit mt-5 p-5">
+                                                    <p className="text-md font-medium">
+                                                        {review?.comment}
+                                                    </p>
+                                                </div>
+                                            </>
+                                            :
+                                            ""
+                                    }
+                                </div>
+                            </>
+                        )}
+                </div>
 
             </div>
         </>

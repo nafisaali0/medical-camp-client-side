@@ -13,10 +13,10 @@ const Home = () => {
                 <title>Amelia | Home</title>
             </Helmet>
             <Banner></Banner>
-            <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden">
+            <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-10">
                 <PopularCamp></PopularCamp>
+                <Testimonials></Testimonials>
             </div>
-            <Testimonials></Testimonials>
             {/* <BrandSlider></BrandSlider> */}
         </div>
     );
