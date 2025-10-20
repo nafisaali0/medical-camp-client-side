@@ -13,7 +13,7 @@ const Home = () => {
                 <title>Amelia | Home</title>
             </Helmet>
             <Banner></Banner>
-            <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-10">
+            <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-20">
                 <PopularCamp></PopularCamp>
                 <Testimonials></Testimonials>
             </div>

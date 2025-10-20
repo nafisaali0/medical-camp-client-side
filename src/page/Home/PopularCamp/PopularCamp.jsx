@@ -10,17 +10,12 @@ import { TbCoinTaka } from "react-icons/tb";
 
 const PopularCamp = () => {
 
-
     const [allregisteredCamp] = useAllRegisteredCamp();
-    // console.log(allregisteredCamp)
-
 
     // const [camp] = useCamp()
-    // console.log(camp)
     // const [registeredCamp] = useRegisteredCamp();
-    // console.log(registeredCamp)
     // const [camps, setCamps] = useState([])
-    // const [sortOrder, setSortOrder] = useState('asc'); // Default sorting order is ascending
+    // const [sortOrder, setSortOrder] = useState('asc'); 
 
     // const calculateTotalParticipation = (campId) => {
     //     const participantsForCamp = registeredCamp.filter(registration => registration.campId === campId);
@@ -48,8 +43,6 @@ const PopularCamp = () => {
 
     return (
         <>
-            {/* camps.slice(0, 6).map(eachCamp =>*/}
-
             <div>
                 <div className="mb-10">
                     <h1 className="text-3xl text-textDark font-bold text-center">Enrolled Camps</h1>
@@ -92,7 +85,6 @@ const PopularCamp = () => {
                                                     <GoPeople className="text-[25px] text-btnColor" />
                                                     <h1 className="text-sm font-normal text-textDark">
                                                         <span className="font-bold">Target Audience: </span>
-                                                        {/* {enrolledCamp.time} */}
                                                         Adult
                                                     </h1>
                                                 </div>
