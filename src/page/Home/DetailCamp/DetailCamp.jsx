@@ -217,7 +217,16 @@ const DetailCamp = () => {
 
                 <div className="py-24">
                     <div className="max-w-4xl mx-auto my-10 p-5 overflow-hidden space-y-20 bg-primarylight ">
-                        details
+                        <div>
+                            <figure>
+                                <img src={image} alt="" />
+                            </figure>
+                        </div>
+
+                        <div>
+                            <div></div>
+                            <div></div>
+                        </div>
                     </div>
                 </div>
             </div>

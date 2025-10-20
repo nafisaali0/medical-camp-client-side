@@ -22,7 +22,7 @@ import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 // import HealthCheck from './../page/HealthCheck/HealthCheck';
-import BloodPressureCheck from './../page/BloodPressureCheck/BloodPressureCheck';
+// import BloodPressureCheck from './../page/BloodPressureCheck/BloodPressureCheck';
 
 
 
@@ -49,10 +49,10 @@ export const router = createBrowserRouter([
             //     path: "/healthCheck",
             //     element: <HealthCheck></HealthCheck>,
             // },
-            {
-                path: "/bloodPressureCheck",
-                element: <PrivateRoutes><BloodPressureCheck></BloodPressureCheck></PrivateRoutes>,
-            },
+            // {
+            //     path: "/bloodPressureCheck",
+            //     element: <PrivateRoutes><BloodPressureCheck></BloodPressureCheck></PrivateRoutes>,
+            // },
             {
                 path: "camp-details/:campId",
                 element: <PrivateRoutes><DetailCamp></DetailCamp></PrivateRoutes>,
