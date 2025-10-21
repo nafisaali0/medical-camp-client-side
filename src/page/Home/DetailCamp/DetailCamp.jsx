@@ -7,8 +7,13 @@
 // import useUsers from './../../../hooks/useUsers';
 // import errorIcon from '../../../assets/images/icon/error.svg'
 // import React from 'react';
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { IoLocationOutline } from 'react-icons/io5';
+import { IoMdTime } from "react-icons/io";
+import { GoPeople } from "react-icons/go";
+import { TbCoinTaka } from "react-icons/tb";
+import { CiCalendarDate } from "react-icons/ci";
 
 const DetailCamp = () => {
 
@@ -19,7 +24,7 @@ const DetailCamp = () => {
     // const [loading, refetch] = useCamp();
     // const location = useLocation();
     // const navigate = useNavigate();
-    const { _id, image, campFees, campName, targetAudience, date, time, venue, services, shortDescription, longDescription } = useLoaderData();
+    const { image, campFees, healthcareProfessionals, campName, targetAudience, date, time, venue, services, shortDescription } = useLoaderData();
 
     // const onSubmit = (data) => {
     //     // console.log(data, user?.email)
@@ -52,7 +57,7 @@ const DetailCamp = () => {
     //                         icon: "success",
     //                         title: `Your ${campName} has been added to the register camp`,
     //                         showConfirmButton: false,
-    //                         timer: 1600
+    //                         timer: 2500
     //                     });
     //                     // refetch the cart to update the cart items count
     //                     loading()
@@ -80,10 +85,13 @@ const DetailCamp = () => {
 
     return (
         <>
-            <div>
-                <Helmet>
-                    <title>Amelia | Camp Details</title>
-                </Helmet>
+            <Helmet>
+                <title>Amelia | Camp Details</title>
+            </Helmet>
+            
+            <div className="py-24 p-5">
+
+                {/* old version */}
                 {/* <div className="max-w-5xl mx-auto overflow-hidden my-10 p-3">
                     <div>
                         <div className="text-4xl font-bold">
@@ -215,24 +223,136 @@ const DetailCamp = () => {
                     </div>
                 </div> */}
 
-                <div className="py-24">
-                    <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-20 bg-primarylight ">
-                        <div className="flex">
-                            <div className="flex-1">
-                                <figure>
-                                    <img src={image} alt="" />
-                                </figure>
+                {/* new version */}
+                <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-25 rounded-xl shadow-lg">
+
+                    <div className="flex flex-col lg:flex-row items-start justify-around gap-5">
+
+                        <div className="relative lg:flex-1 w-full lg:w-1/2 rounded-xl border-2 border-borderColour">
+                            <figure>
+                                <img src={image}
+                                    alt="campsImage"
+                                    className="w-full object-cover rounded-xl" />
+                            </figure>
+                            <div className="absolute inset-0 bg-black/40 rounded-xl"></div>
+                        </div>
+
+                        <div className="lg:flex-1 w-full lg:w-1/2">
+
+                            <button className="flex items-center gap-1 px-4 py-1 mt-3 border border-borderColour rounded-full text-sm font-medium capitalize">
+                                <span>
+                                    <IoLocationOutline className="text-[25px] text-btnColor" />
+                                </span>
+                                {venue}
+                            </button>
+
+                            <div className="mt-3">
+                                <h1 className="text-2xl lg:text-3xl text-textDark font-bold">{campName}</h1>
                             </div>
 
-                            <div className="flex-1">
+                            <div className="space-y-3 mt-10">
+
+                                <p className="text-md text-textDark font-medium">
+                                    {shortDescription}
+                                </p>
+
                                 <div>
-                                    <button></button>
-                                    <h1></h1>
+
+                                    <p className="text-md text-textDark font-medium">
+                                        <span className="font-bold">
+                                            HealthcareProfessionals: </span>
+                                        {healthcareProfessionals}
+                                    </p>
+
+                                    <p className="text-md text-textDark font-medium">
+                                        <span className="font-bold">Services: </span>
+                                        {services}
+                                    </p>
+
                                 </div>
-                                <div>
-                                    <p>time</p>
-                                    <p>Date</p>
+                            </div>
+                            {/* large screen */}
+                            <div className="hidden lg:flex items-center gap-3 mt-5 p-5 rounded-lg border border-borderColour">
+
+                                <p className="flex items-center gap-1 text-sm font-medium capitalize">
+                                    <span>
+                                        <GoPeople className="text-[25px] text-btnColor" />
+                                    </span>
+                                    {targetAudience}
+                                </p>
+
+                                <p className="flex items-center gap-1 text-sm font-medium">
+                                    <span>
+                                        <CiCalendarDate className="text-[25px] text-btnColor" />
+                                    </span>
+                                    {date}
+                                </p>
+
+                                <p className="flex items-center gap-1 text-sm font-medium">
+                                    <span>
+                                        <IoMdTime className="text-[25px] text-btnColor" />
+                                    </span>
+                                    {time}
+                                </p>
+
+                                <p className="flex items-center gap-1 text-sm font-medium">
+                                    <span>
+                                        <TbCoinTaka className="text-[25px] text-btnColor" />
+                                    </span>
+                                    {campFees}
+                                </p>
+
+                            </div>
+
+                            {/* mobile screen */}
+                            <div className="block lg:hidden mt-5 p-5 rounded-lg border border-borderColour">
+                                <div className="flex justify-around items-center">
+                                    <p className="flex items-center gap-2 text-sm font-medium capitalize">
+                                        <span>
+                                            <GoPeople className="text-[25px] text-btnColor" />
+                                        </span>
+                                        {targetAudience}
+                                    </p>
+
+                                    <p className="flex items-center gap-2 text-sm font-medium">
+                                        <span>
+                                            <CiCalendarDate className="text-[25px] text-btnColor" />
+                                        </span>
+                                        {date}
+                                    </p>
                                 </div>
+
+                                <div className="my-5 bg-borderColour border-t-2 border-t-borderColour"></div>
+
+                                <div className="flex justify-around items-center">
+                                    <p className="flex items-center gap-2 text-sm font-medium">
+                                        <span>
+                                            <IoMdTime className="text-[25px] text-btnColor" />
+                                        </span>
+                                        {time}
+                                    </p>
+
+                                    <p className="flex items-center gap-2 text-sm font-medium">
+                                        <span>
+                                            <TbCoinTaka className="text-[25px] text-btnColor" />
+                                        </span>
+                                        {campFees}
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div className="my-5">
+                                {/*  to={`/camp-details/${enrolledCamp?.campId}`} */}
+                                <Link>
+                                    <button className="navBtn">
+                                        Register Camp
+                                        <div className="arrow-wrapper">
+                                            <div className="arrow"></div>
+                                        </div>
+                                    </button>
+                                </Link>
+
                             </div>
                         </div>
                     </div>
