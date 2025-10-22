@@ -5,8 +5,8 @@ import useAllRegisteredCamp from "../../../hooks/useAllRegisteredCamp";
 import { Link } from "react-router-dom";
 import { IoMdTime } from "react-icons/io";
 import { GoPeople } from "react-icons/go";
-import { TbCoinTaka } from "react-icons/tb";
 import { IoLocationOutline } from "react-icons/io5";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 
 const PopularCamp = () => {
@@ -46,7 +46,7 @@ const PopularCamp = () => {
         <>
             <div>
                 <div className="mb-10">
-                    <h1 className="text-3xl text-textDark font-bold text-center">Enrolled Camps</h1>
+                    <h1 className="text-3xl text-textDark font-bold text-center">Popular Camps</h1>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {
@@ -99,7 +99,7 @@ const PopularCamp = () => {
                                                 </div>
 
                                                 <div className="flex items-start gap-2">
-                                                    <TbCoinTaka className="text-[25px] text-btnColor" />
+                                                    <FaBangladeshiTakaSign className="text-[16px] text-btnColor" />
                                                     <h1 className="text-sm font-normal text-textDark">
                                                         <span className="font-bold">Price: </span>
                                                         {enrolledCamp.campFees}
@@ -111,7 +111,7 @@ const PopularCamp = () => {
                                         <div className="card-actions justify-center my-3">
                                             <Link to={`/camp-details/${enrolledCamp?.campId}`}>
                                                 <button className="navBtn ml-2">
-                                                    See Details
+                                                    View Details
                                                     <div className="arrow-wrapper">
                                                         <div className="arrow"></div>
                                                     </div>

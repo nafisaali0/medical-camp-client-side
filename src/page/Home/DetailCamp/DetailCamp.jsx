@@ -12,8 +12,8 @@ import { Helmet } from "react-helmet-async";
 import { IoLocationOutline } from 'react-icons/io5';
 import { IoMdTime } from "react-icons/io";
 import { GoPeople } from "react-icons/go";
-import { TbCoinTaka } from "react-icons/tb";
 import { CiCalendarDate } from "react-icons/ci";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const DetailCamp = () => {
 
@@ -224,7 +224,7 @@ const DetailCamp = () => {
                 </div> */}
 
                 {/* new version */}
-                <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-25 rounded-xl shadow-lg">
+                <div className="max-w-[1300px] mx-auto p-5 overflow-hidden space-y-25 rounded-xl shadow-lg">
 
                     <div className="flex flex-col lg:flex-row items-start justify-around gap-5">
 
@@ -274,30 +274,30 @@ const DetailCamp = () => {
                             {/* large screen */}
                             <div className="hidden lg:flex items-center gap-3 mt-5 p-5 rounded-lg border border-borderColour">
 
-                                <p className="flex items-center gap-1 text-sm font-medium capitalize">
+                                <p className="flex items-center justify-center gap-1 text-sm font-medium capitalize">
                                     <span>
                                         <GoPeople className="text-[25px] text-btnColor" />
                                     </span>
                                     {targetAudience}
                                 </p>
 
-                                <p className="flex items-center gap-1 text-sm font-medium">
+                                <p className="flex items-center justify-center gap-1 text-sm font-medium">
                                     <span>
                                         <CiCalendarDate className="text-[25px] text-btnColor" />
                                     </span>
                                     {date}
                                 </p>
 
-                                <p className="flex items-center gap-1 text-sm font-medium">
+                                <p className="flex items-center justify-center gap-1 text-sm font-medium">
                                     <span>
                                         <IoMdTime className="text-[25px] text-btnColor" />
                                     </span>
                                     {time}
                                 </p>
 
-                                <p className="flex items-center gap-1 text-sm font-medium">
+                                <p className="flex items-center justify-center gap-1 text-sm font-medium">
                                     <span>
-                                        <TbCoinTaka className="text-[25px] text-btnColor" />
+                                        <FaBangladeshiTakaSign className="text-[16px] text-btnColor" />
                                     </span>
                                     {campFees}
                                 </p>
@@ -307,14 +307,14 @@ const DetailCamp = () => {
                             {/* mobile screen */}
                             <div className="block lg:hidden mt-5 p-5 rounded-lg border border-borderColour">
                                 <div className="flex justify-around items-center">
-                                    <p className="flex items-center gap-2 text-sm font-medium capitalize">
+                                    <p className="flex items-center justify-center gap-2 text-sm font-medium capitalize">
                                         <span>
                                             <GoPeople className="text-[25px] text-btnColor" />
                                         </span>
                                         {targetAudience}
                                     </p>
 
-                                    <p className="flex items-center gap-2 text-sm font-medium">
+                                    <p className="flex items-center justify-center gap-2 text-sm font-medium">
                                         <span>
                                             <CiCalendarDate className="text-[25px] text-btnColor" />
                                         </span>
@@ -325,16 +325,16 @@ const DetailCamp = () => {
                                 <div className="my-5 bg-borderColour border-t-2 border-t-borderColour"></div>
 
                                 <div className="flex justify-around items-center">
-                                    <p className="flex items-center gap-2 text-sm font-medium">
+                                    <p className="flex items-center justify-center gap-2 text-sm font-medium">
                                         <span>
                                             <IoMdTime className="text-[25px] text-btnColor" />
                                         </span>
                                         {time}
                                     </p>
 
-                                    <p className="flex items-center gap-2 text-sm font-medium">
+                                    <p className="flex items-center justify-center gap-2 text-sm font-medium">
                                         <span>
-                                            <TbCoinTaka className="text-[25px] text-btnColor" />
+                                            <FaBangladeshiTakaSign className="text-[16px] text-btnColor" />
                                         </span>
                                         {campFees}
                                     </p>
