@@ -16,14 +16,16 @@ const Banner = () => {
                     <div className="flex flex-col md:flex-row items-center justify-between">
 
                         <div className='md:flex-1 w-full md:w-1/2'>
+
                             <div className='flex flex-col items-center md:items-start text-center md:text-start'>
-                                <h1 className="text-6xl lg:text-7xl font-bold text-textDark">
+                                <h1 className="text-6xl lg:text-7xl font-bold text-gradient">
                                     Our Medical Mission for a Healthier
                                 </h1>
-                                <p className="text-md text-black font-semibold my-5 md:my-7 md:max-w-xl">
+                                <p className="text-md text-textDark font-semibold my-5 md:my-7 md:max-w-xl">
                                     Join us on a journey of compassion, making a meaningful impact in healthcare for a brighter future.
                                 </p>
                             </div>
+
                             <div className="flex justify-center items-center md:items-start md:justify-start mt-3 md:mt-0">
                                 <Link to={"/available-camps"}>
                                     <button className="primaryBtn">
@@ -34,6 +36,7 @@ const Banner = () => {
                                     </button>
                                 </Link>
                             </div>
+
                         </div>
 
                         <div
@@ -43,11 +46,10 @@ const Banner = () => {
                                 backgroundRepeat: "no-repeat",
                                 backgroundPosition: "center left",
                                 backgroundSize: "contain",
-                            }}
-                        ></div>
+                            }}>
+                        </div>
 
                     </div>
-
                 </div>
             </section>
         </>
