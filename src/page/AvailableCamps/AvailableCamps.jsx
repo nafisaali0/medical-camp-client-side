@@ -110,7 +110,7 @@ const AvailableCamps = () => {
                                                                             </h2>
                                                                             <div className="card-actions justify-center mt-5">
                                                                                 <Link to={`/camp-details/${eachCamp?._id}`}>
-                                                                                    <button className="navBtn">
+                                                                                    <button className="primaryBtn">
                                                                                         View Details
                                                                                         <div className="arrow-wrapper">
                                                                                             <div className="arrow"></div>
@@ -217,7 +217,7 @@ const AvailableCamps = () => {
                                                                                 </h2>
                                                                                 <div className="card-actions justify-start mt-5">
                                                                                     <Link to={`/camp-details/${eachCamp._id}`}>
-                                                                                        <button className="navBtn">
+                                                                                        <button className="primaryBtn">
                                                                                             View Details
                                                                                             <div className="arrow-wrapper">
                                                                                                 <div className="arrow"></div>

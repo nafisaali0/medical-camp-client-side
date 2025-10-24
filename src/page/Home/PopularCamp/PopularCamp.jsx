@@ -110,7 +110,7 @@ const PopularCamp = () => {
 
                                         <div className="card-actions justify-center my-3">
                                             <Link to={`/camp-details/${enrolledCamp?.campId}`}>
-                                                <button className="navBtn ml-2">
+                                                <button className="primaryBtn ml-2">
                                                     View Details
                                                     <div className="arrow-wrapper">
                                                         <div className="arrow"></div>

@@ -165,7 +165,7 @@ const NavBar = () => {
                                     <>
                                         {/* signup btn */}
                                         <Link to={"/signup"}>
-                                            <button className="navBtn ml-2">
+                                            <button className="primaryBtn ml-2">
                                                 Sign up
                                                 <div className="arrow-wrapper">
                                                     <div className="arrow"></div>

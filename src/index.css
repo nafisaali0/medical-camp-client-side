@@ -27,27 +27,9 @@
     rgba(215, 230, 249, 0.45),
     rgba(222, 236, 252, 0.5)
   );
-  /* dark theme */
-  /* background-image: linear-gradient(
-    to bottom,
-    rgba(83, 128, 160, 0.9),
-    rgba(95, 138, 175, 0.85),
-    rgba(110, 150, 190, 0.8),
-    rgba(125, 160, 200, 0.75),
-    rgba(135, 170, 210, 0.7),
-    rgba(145, 180, 220, 0.65),
-    rgba(155, 190, 230, 0.6),
-    rgba(165, 200, 240, 0.55),
-    rgba(175, 210, 245, 0.5),
-    rgba(185, 220, 250, 0.45),
-    rgba(195, 230, 252, 0.4),
-    rgba(205, 236, 255, 0.35)
-  ); */
 }
 
-/* From Uiverse.io by satyamchaudharydev */
-/* navbtn: #1a3d63 / #505a71 / #404f68 */
-.navBtn {
+.primaryBtn {
   --white: #fff;
   --primary-color: #404f68;
   --arrow-width: 10px;
@@ -66,13 +48,13 @@
   font-weight: semibold;
 }
 
-.navBtn .arrow-wrapper {
+.primaryBtn .arrow-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.navBtn .arrow {
+.primaryBtn .arrow {
   margin-top: 1px;
   width: var(--arrow-width);
   background: var(--primary-color);
@@ -81,7 +63,7 @@
   transition: 0.2s;
 }
 
-.navBtn .arrow::before {
+.primaryBtn .arrow::before {
   content: "";
   box-sizing: border-box;
   position: absolute;
@@ -95,16 +77,16 @@
   transform: rotate(-45deg);
 }
 
-.navBtn:hover {
+.primaryBtn:hover {
   color: white;
   background-color: var(--primary-color);
 }
 
-.navBtn:hover .arrow {
+.primaryBtn:hover .arrow {
   background: var(--white);
 }
 
-.navBtn:hover .arrow:before {
+.primaryBtn:hover .arrow:before {
   right: 0;
 }
 

@@ -345,7 +345,7 @@ const DetailCamp = () => {
                             <div className="my-5">
                                 {/*  to={`/camp-details/${enrolledCamp?.campId}`} */}
                                 <Link>
-                                    <button className="navBtn">
+                                    <button className="primaryBtn">
                                         Register Camp
                                         <div className="arrow-wrapper">
                                             <div className="arrow"></div>

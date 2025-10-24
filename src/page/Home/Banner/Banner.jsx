@@ -26,7 +26,7 @@ const Banner = () => {
                             </div>
                             <div className="flex justify-center items-center md:items-start md:justify-start mt-3 md:mt-0">
                                 <Link to={"/available-camps"}>
-                                    <button className="navBtn">
+                                    <button className="primaryBtn">
                                         See Camps
                                         <div className="arrow-wrapper">
                                             <div className="arrow"></div>
