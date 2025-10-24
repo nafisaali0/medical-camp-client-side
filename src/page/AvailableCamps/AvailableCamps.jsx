@@ -45,14 +45,14 @@ const AvailableCamps = () => {
                 <title>Amelia | AvailableCamps</title>
             </Helmet>
 
-            <div className="py-20 p-5">
+            <div className="py-20 px-5 my-16">
 
                 {
                     grid ?
                         (
                             <>
                                 {/* card-grid */}
-                                <div className="max-w-[1300px] mx-auto overflow-hidden p-5 my-16">
+                                <div className="max-w-[1300px] mx-auto overflow-hidden p-5">
 
                                     {
                                         camp !== 0 ?
@@ -149,7 +149,7 @@ const AvailableCamps = () => {
                             (
                                 <>
                                     {/* card-single-align */}
-                                    <div className="max-w-3xl mx-auto overflow-hidden my-16">
+                                    <div className="max-w-3xl mx-auto overflow-hidden p-5">
 
                                         {
                                             camp !== 0 ?

@@ -89,7 +89,7 @@ const DetailCamp = () => {
                 <title>Amelia | Camp Details</title>
             </Helmet>
             
-            <div className="py-24 p-5">
+            <div className="py-20 px-5 my-16">
 
                 {/* old version */}
                 {/* <div className="max-w-5xl mx-auto overflow-hidden my-10 p-3">
@@ -224,7 +224,7 @@ const DetailCamp = () => {
                 </div> */}
 
                 {/* new version */}
-                <div className="max-w-[1300px] mx-auto p-5 overflow-hidden space-y-25 rounded-xl shadow-lg">
+                <div className="max-w-[1300px] mx-auto p-10 overflow-hidden space-y-25 rounded-xl shadow-lg border border-borderColour">
 
                     <div className="flex flex-col lg:flex-row items-start justify-around gap-5">
 
