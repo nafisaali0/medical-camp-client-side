@@ -28,7 +28,7 @@
     rgba(222, 236, 252, 0.5)
   );
   /* dark theme */
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to bottom,
     rgba(83, 128, 160, 0.9),
     rgba(95, 138, 175, 0.85),
@@ -42,7 +42,7 @@
     rgba(185, 220, 250, 0.45),
     rgba(195, 230, 252, 0.4),
     rgba(205, 236, 255, 0.35)
-  );
+  ); */
 }
 
 /* From Uiverse.io by satyamchaudharydev */
