@@ -16,8 +16,6 @@ const Signin = () => {
 
     // after sign in user back desire path or page
     const from = location.state?.from?.pathname || '/';
-    console.log("State of Login", from)
-
 
     const onSubmit = (data) => {
         console.log(data)
@@ -42,11 +40,14 @@ const Signin = () => {
             })
 
     }
+
     return (
         <>
             <Helmet>
                 <title>Amelia | Signin</title>
             </Helmet>
+
+            {/* old version */}
             {/* <div className="w-[100%] lg:h-[100vh] md:h-[100%]" >
                 <div className='container mx-auto overflow-hidden flex flex-col justify-center items-center drop-shadow-lg md:pt-12 lg:pt-20'>
                     <div className="bg-base-100 m-10 p-7 md:w-[700px]">
@@ -89,20 +90,29 @@ const Signin = () => {
             <div className="py-20 px-5 my-16">
                 <div className="max-w-xl mx-auto p-5 overflow-hidden flex flex-col bg-white border border-borderColour shadow-lg rounded-xl py-10 px-12 space-y-4">
                     <div className="mb-5">
-                        <h5 className="text-textDark text-2xl font-medium">Join Our Health Campaign</h5>
+                        <h5 className="text-textDark text-2xl font-medium">Welcome Back</h5>
                     </div>
                     <div className="flex-auto">
 
-                        <form role="form" onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
+                        <form role="form" onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
 
-                            <div className="relative flex items-center">
-                                <TfiEmail className="absolute left-3 text-grayText text-lg" />
-                                <input
-                                    type="email" name="email" placeholder="Email"
-                                    {...register("email", { required: true })}
-                                    className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
-                                />
+                            <div className="flex flex-col">
+
+                                <div className="relative flex items-center">
+                                    <TfiEmail className="absolute left-3 text-grayText text-lg" />
+                                    <input
+                                        type="email" name="email" placeholder="Email"
+                                        {...register("email", { required: true })}
+                                        className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
+                                    />
+                                </div>
+
+                                <div className="text-grayText text-sm mt-2">
+                                    {errors?.email?.type === 'required' && <p>Email is required</p>}
+                                </div>
+
                             </div>
+
                             <div className="flex flex-col">
                                 <div className="relative flex items-center">
                                     <TbLockPassword className="absolute left-3 text-grayText text-lg" />
@@ -118,26 +128,27 @@ const Signin = () => {
                                     />
                                 </div>
                                 <div className="text-grayText text-sm mt-2">
-                                    {errors.password?.type === 'required' && <p>Password is required</p>}
-                                    {errors.password?.type === 'minLength' && <p>Password must be 6 characters</p>}
-                                    {errors.password?.type === 'maxLength' && <p>Password must be less than 20 characters</p>}
+                                    {errors?.password?.type === 'required' && <p>Password is required</p>}
                                 </div>
                             </div>
 
-                            <div className=''>
+                            <div>
                                 <button type="submit" className='w-full border px-4 py-2 rounded-lg text-md font-medium text-white border-btnColor bg-btnColor'>Sign In</button>
                             </div>
-                            <div className="flex items-center justify-center gap-2">
+
+                            <div className="flex items-center justify-center gap-2 text-md font-medium">
                                 <p>New to Amelia?</p>
                                 <Link
                                     to={'/signup'}
-                                    title="Signupn">
-                                    <p>Create New Account</p>
+                                    title="Signup">
+                                    <p className="text-primaryDark">Create New Account</p>
                                 </Link>
                             </div>
+
                             <div className="text-center">
                                 <p className="font-medium text-sm">or</p>
                             </div>
+
                             <div className="flex-auto">
                                 <SocialLogin />
                             </div>
