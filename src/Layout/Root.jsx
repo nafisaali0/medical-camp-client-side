@@ -4,15 +4,15 @@ import Footer from "../shared/Footer/Footer";
 
 const Root = () => {
 
-    // const location = useLocation();
-    // const nosubHeader = location.pathname.includes('signin') || location.pathname.includes('signup') || location.pathname.includes('availablecamp')
-
+    const location = useLocation();
+    const noNavbar = location.pathname.includes('signin') || location.pathname.includes('signup')
+    const noFooter = location.pathname.includes('signin') || location.pathname.includes('signup')
 
     return (
         <>
-            <NavBar></NavBar>
+            {noNavbar || <NavBar></NavBar>}
             <Outlet></Outlet>
-            <Footer></Footer>
+            {noFooter || <Footer></Footer>}
         </>
     );
 };
