@@ -6,6 +6,8 @@ export default {
   theme: {
     colors: {
       borderColour: "#dbdbde",
+      grayLight: "#ffffffE6",
+      grayText: "#6B6B6B",
       primaryDark: "#87A8D0",
       primarySemiDark: "#B9CEEB",
       primarylight: "#DEECFC",

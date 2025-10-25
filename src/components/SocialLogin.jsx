@@ -2,9 +2,10 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import useAxioslocalhost from "../hooks/useAxioslocalhost";
+import { FcGoogle } from "react-icons/fc";
 
 const SocialLogin = () => {
-    
+
     const axiosLocalhost = useAxioslocalhost();
     const navigate = useNavigate()
     const { googleLogIn } = useAuth()
@@ -23,7 +24,7 @@ const SocialLogin = () => {
                         Swal.fire(
                             'Login Successfully!'
                         ),
-                        navigate('/')
+                            navigate('/')
                     })
             })
             .catch(error => {
@@ -41,18 +42,30 @@ const SocialLogin = () => {
     }
 
     return (
-        <div>
-            <div>
-                <button
-                    onClick={handleGoogle}
-                    className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-800 text-white"
-                    type="submit"
-                    data-ripple-light="true"
-                >
-                    Sign In With Google
-                </button>
-            </div>
-        </div>
+        // <div>
+        //     <div>
+        //         <button
+        //             onClick={handleGoogle}
+        //             className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-800 text-white"
+        //             type="submit"
+        //             data-ripple-light="true"
+        //         >
+        //             Sign In With Google
+        //         </button>
+        //     </div>
+        // </div>
+
+        <>
+            <button
+                onClick={handleGoogle}
+                className="flex flex-row justify-center items-center gap-2 w-full border border-borderColour rounded-lg py-2 px-3">
+                <a>
+                    <FcGoogle className="text-2xl" />
+                    {/* style={{ width: '20px', height: '20px' }} */}
+                </a>
+                <span className='text-sm font-medium text-textDark'>Sign up with google</span>
+            </button>
+        </>
     );
 };
 

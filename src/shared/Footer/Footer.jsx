@@ -18,7 +18,7 @@ const Footer = () => {
                         Our medical campaign website aims to make healthcare accessible for everyone by organizing free checkups, blood donation drives, and health awareness events.
                         <br />
                         <a href="#home">
-                            <button className="navBtn mt-5 capitalize">
+                            <button className="primaryBtn mt-5 capitalize">
                                 ↑ Back To Top
                             </button>
                         </a>
