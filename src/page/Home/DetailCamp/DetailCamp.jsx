@@ -7,7 +7,8 @@
 // import useUsers from './../../../hooks/useUsers';
 // import errorIcon from '../../../assets/images/icon/error.svg'
 // import React from 'react';
-import { Link, useLoaderData } from "react-router-dom";
+// --------------------------------------------------------------
+import {Link, useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { IoLocationOutline } from 'react-icons/io5';
 import { IoMdTime } from "react-icons/io";
@@ -17,14 +18,15 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const DetailCamp = () => {
 
+    const { _id, image, campFees, healthcareProfessionals, campName, targetAudience, date, time, venue, services, shortDescription } = useLoaderData();
+
     // const { register, handleSubmit } = useForm();
     // const { user } = useAuth();
     // const [users] = useUsers();
     // const axiosLocalhost = useAxioslocalhost();
     // const [loading, refetch] = useCamp();
     // const location = useLocation();
-    // const navigate = useNavigate();
-    const { image, campFees, healthcareProfessionals, campName, targetAudience, date, time, venue, services, shortDescription } = useLoaderData();
+    // const navigate = useNavigate();    
 
     // const onSubmit = (data) => {
     //     // console.log(data, user?.email)
@@ -88,7 +90,7 @@ const DetailCamp = () => {
             <Helmet>
                 <title>Amelia | Camp Details</title>
             </Helmet>
-            
+
             <div className="py-20 px-5 my-16">
 
                 {/* old version */}
@@ -344,9 +346,9 @@ const DetailCamp = () => {
 
                             <div className="my-5">
                                 {/*  to={`/camp-details/${enrolledCamp?.campId}`} */}
-                                <Link>
+                                <Link to={`/camp-registration/${_id}`}>
                                     <button className="primaryBtn">
-                                        Register Camp
+                                        Register Now
                                         <div className="arrow-wrapper">
                                             <div className="arrow"></div>
                                         </div>

@@ -21,10 +21,7 @@ import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
 import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
-// import HealthCheck from './../page/HealthCheck/HealthCheck';
-// import BloodPressureCheck from './../page/BloodPressureCheck/BloodPressureCheck';
-
-
+import CampRegistration from "../page/CampRegistration/CampRegistration";
 
 
 export const router = createBrowserRouter([
@@ -45,14 +42,6 @@ export const router = createBrowserRouter([
                 path: "signup",
                 element: <SignUp></SignUp>,
             },
-            // {
-            //     path: "/healthCheck",
-            //     element: <HealthCheck></HealthCheck>,
-            // },
-            // {
-            //     path: "/bloodPressureCheck",
-            //     element: <PrivateRoutes><BloodPressureCheck></BloodPressureCheck></PrivateRoutes>,
-            // },
             {
                 path: "camp-details/:campId",
                 element: <PrivateRoutes><DetailCamp></DetailCamp></PrivateRoutes>,
@@ -61,6 +50,11 @@ export const router = createBrowserRouter([
             {
                 path: "available-camps",
                 element: <PrivateRoutes><AvailableCamps></AvailableCamps></PrivateRoutes>,
+            },
+            {
+                path: "camp-registration/:campId",
+                element: <PrivateRoutes><CampRegistration></CampRegistration></PrivateRoutes>,
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
         ],
     },
@@ -117,7 +111,6 @@ export const router = createBrowserRouter([
                 element: <UpdateCamp></UpdateCamp>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
-
             //doctor 
             {
                 path: "professional-profile",
