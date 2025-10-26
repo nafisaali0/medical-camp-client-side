@@ -1,11 +1,12 @@
 import { useForm } from "react-hook-form";
-import { TfiEmail } from "react-icons/tfi";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from './../../hooks/useAuth';
 import useAxioslocalhost from './../../hooks/useAxioslocalhost';
 import useCamp from "../../hooks/useCamp";
-
+import { PiGenderIntersexBold } from "react-icons/pi";
+import { GiAges } from "react-icons/gi";
+import { FaLocationCrosshairs, FaPhone, FaUser } from "react-icons/fa6";
 
 export default function CampRegistration() {
 
@@ -91,10 +92,12 @@ export default function CampRegistration() {
                                     role="form"
                                     onSubmit={handleSubmit(onSubmit)}
                                     className="space-y-4">
+
                                     <div className="flex flex-col lg:flex-row gap-2 mb-5">
                                         <div className="flex-1 w-full space-y-4">
+
                                             <div className="relative flex items-center  w-full">
-                                                <TfiEmail className="absolute left-3 text-grayText text-lg" />
+                                                <FaUser className="absolute left-3 text-grayText text-lg" />
                                                 <input
                                                     type="name" name="name" placeholder="Name"
                                                     {...register("name")}
@@ -102,17 +105,19 @@ export default function CampRegistration() {
                                                 />
                                             </div>
                                             <div className="relative flex items-center">
-                                                <TfiEmail className="absolute left-3 text-grayText text-lg" />
+                                                <PiGenderIntersexBold className="absolute left-3 text-grayText text-lg" />
                                                 <input
-                                                    type="gender" name="gender" placeholder="gender"
+                                                    type="gender" name="gender" placeholder="Gender"
                                                     {...register("gender")}
                                                     className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
                                                 />
                                             </div>
                                         </div>
+
                                         <div className="flex-1 w-full space-y-4">
+
                                             <div className="relative flex items-center">
-                                                <TfiEmail className="absolute left-3 text-grayText text-lg" />
+                                                <GiAges className="absolute left-3 text-grayText text-lg" />
                                                 <input
                                                     type="age" name="age" placeholder="Age"
                                                     {...register("age")}
@@ -120,47 +125,42 @@ export default function CampRegistration() {
                                                 />
                                             </div>
                                             <div className="relative flex items-center">
-                                                <TfiEmail className="absolute left-3 text-grayText text-lg" />
+                                                <FaPhone className="absolute left-3 text-grayText text-lg" />
                                                 <input
                                                     type="number" name="number" placeholder="Phone Number"
                                                     {...register("phoneNumber")}
                                                     className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
                                                 />
                                             </div>
+
                                         </div>
                                     </div>
 
-                                    {/* <div>
-                                        <textarea
-                                            {...register("address")}
-                                            className="textarea w-full border border-borderColour" placeholder="Address">
-                                        </textarea>
-                                       
-                                    </div> */}
                                     <div className="relative w-full">
-                                        <TfiEmail className="absolute left-3 top-3 text-grayText text-lg" />
+                                        <FaLocationCrosshairs className="absolute left-3 top-3 text-grayText text-lg" />
                                         <textarea
                                             placeholder="Address"
                                             {...register("address")}
-                                            className="textarea w-full border-borderColour placeholder:pl-5"
+                                            className="textarea w-full py-2 pl-10 pr-3 font-medium border-borderColour"
                                         ></textarea>
                                     </div>
+                                    <div>
+                                        <h1 className="text-xl font-medium text-textDark">Payment</h1>
+                                    </div>
 
-                                </form>
-
-                                <div className="flex justify-center items-center my-5">
-                                    <Link to={`/camp-details/${_id}`}>
+                                    <div className="flex justify-center items-center py-5">
                                         <button className="primaryBtn">
-                                            Proceed to Registration
+                                            Complete Registration
                                             <div className="arrow-wrapper">
                                                 <div className="arrow"></div>
                                             </div>
                                         </button>
-                                    </Link>
-                                </div>
+                                    </div>
+
+                                </form>
                             </div>
                         </div>
-                        <div>
+                        <div className="flex-1 w-auto">
                             <div
                                 key={_id}
                                 className="card bg-primarylight/60 shadow-lg hover:shadow-xl">

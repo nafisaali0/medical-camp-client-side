@@ -136,12 +136,15 @@ const SignUp = () => {
             <div className="py-20 px-5 my-16">
                 <div className="max-w-xl mx-auto p-5 overflow-hidden flex flex-col bg-white border border-borderColour shadow-lg rounded-xl py-10 px-12 space-y-4">
                     <div className="flex justify-between items-center mb-5 py-2">
+
                         <h5 className="text-textDark text-2xl font-medium">Join Our Health Campaign</h5>
+
                         <div title="Signin">
                             <Link to={'/signin'}>
                                 <BsArrowLeftSquareFill className="text-2xl" />
                             </Link>
                         </div>
+                        
                     </div>
                     <div className="flex-auto">
 
@@ -194,6 +197,7 @@ const SignUp = () => {
                             <div className="flex-auto">
                                 <SocialLogin />
                             </div>
+
                         </form>
                     </div>
                 </div>
