@@ -22,6 +22,7 @@ import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import CampRegistration from "../page/CampRegistration/CampRegistration";
+// import Loader from './../components/Loader';
 
 
 export const router = createBrowserRouter([
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
                 path: "signup",
                 element: <SignUp></SignUp>,
             },
+            // {
+            //     path: "loader",
+            //     element: <Loader />,
+            // },
             {
                 path: "camp-details/:campId",
                 element: <PrivateRoutes><DetailCamp></DetailCamp></PrivateRoutes>,

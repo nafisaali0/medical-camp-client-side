@@ -1,14 +1,17 @@
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Loader = () => {
     return (
-        <div>
-            <div className="flex justify-center items-center mt-64">
-                <span className="loading loading-spinner loading-xs"></span>
-                <span className="loading loading-spinner loading-sm"></span>
-                <span className="loading loading-spinner loading-md"></span>
-                <span className="loading loading-spinner loading-lg"></span>
+        <>
+            <div className="max-w-[1300px] mx-auto flex justify-center items-center my-12">
+                <DotLottieReact
+                    src="https://lottie.host/965aaf31-80df-4388-913b-ee93e4eb6cfd/brZWJ6LGN5.lottie"
+                    loop
+                    autoplay
+                    style={{ width: 250, height: 250 }}
+                />
             </div>
-        </div>
+        </>
     );
 };
 

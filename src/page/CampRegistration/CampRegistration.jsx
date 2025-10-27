@@ -4,9 +4,9 @@ import Swal from "sweetalert2";
 import useAuth from './../../hooks/useAuth';
 import useAxioslocalhost from './../../hooks/useAxioslocalhost';
 import useCamp from "../../hooks/useCamp";
-import { PiGenderIntersexBold } from "react-icons/pi";
 import { GiAges } from "react-icons/gi";
 import { FaLocationCrosshairs, FaPhone, FaUser } from "react-icons/fa6";
+import { PiGenderIntersexBold } from "react-icons/pi";
 
 export default function CampRegistration() {
 
