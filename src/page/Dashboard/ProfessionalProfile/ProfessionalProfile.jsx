@@ -4,14 +4,7 @@ import useUsers from "../../../hooks/useUsers";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
 import { useState } from "react";
-import image1 from '../../../assets/images/newBanner/image12.jpg'
-import image2 from '../../../assets/images/newBanner/certificate1.webp'
-import image3 from '../../../assets/images/newBanner/certificate2.webp'
-import image4 from '../../../assets/images/newBanner/certificate3.webp'
 import { Helmet } from "react-helmet-async";
-
-
-
 
 const ProfessionalProfile = () => {
 
@@ -174,27 +167,6 @@ const ProfessionalProfile = () => {
                         </>
                     )
                 }
-
-                {/* showcase certificate */}
-                <div className="my-20">
-                    <div>
-                        <DashboardTitle heading={"Certificate And Successs Story In Different Camp"}></DashboardTitle>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-4 my-10">
-                        <div>
-                            <img src={image1} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image2} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image3} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                        <div>
-                            <img src={image4} className="w-[250px] h-[250px]" alt="" />
-                        </div>
-                    </div>
-                </div>
             </div>
         </>
     );
