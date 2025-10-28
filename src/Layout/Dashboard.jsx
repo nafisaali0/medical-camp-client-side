@@ -1,17 +1,21 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
-import logo from '../assets/images/icon/Logo-removebg.png'
-import useUsers from '../hooks/useUsers';
-import React from 'react';
-import useAuth from '../hooks/useAuth';
+// import { Link, NavLink } from 'react-router-dom';
+// import logo from '../assets/images/icon/Logo-removebg.png'
+// import useUsers from '../hooks/useUsers';
+// import useAuth from '../hooks/useAuth';
+import { Outlet } from 'react-router-dom';
+import NavDashboard from './../page/Dashboard/NavDashboard/NavDashboard';
+import { useState } from 'react';
 
 const Dashboard = () => {
 
-    const [users] = useUsers();//this user from DB
-    const { user } = useAuth();//this user from AuthProvider
+    // const [users] = useUsers();
+    // const { user } = useAuth();
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <>
-            <div className='bg-[#f3eee4]'>
+            {/* old version */}
+            {/* <div className='bg-[#f3eee4]'>
                 <div className="bg-white p-2 drop-shadow-md">
                     <div className='flex justify-between mx-10'>
                         <div className='flex items-center gap-4'>
@@ -20,7 +24,7 @@ const Dashboard = () => {
                             </Link>
                             <h2 className='text-3xl font-bold text-[#2b355c]'>Amelia Medical Camp</h2>
                         </div>
-                        {/* search bar */}
+
                         <div className='w-2/5'>
                             <form>
                                 <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -138,7 +142,8 @@ const Dashboard = () => {
                                     </React.Fragment>
                                 ))
                             }
-                            {/* shared */}
+                            
+                            
                             <div className="flex flex-col w-full">
                                 <div className="divider"></div>
                             </div>
@@ -148,10 +153,29 @@ const Dashboard = () => {
                             </li>
                         </ul>
                     </div>
-                    {/* dashbord content */}
+                    
+                    
                     <div className="flex-1 drop-shadow-lg my-10">
                         <Outlet></Outlet>
                     </div>
+                </div>
+            </div> */}
+
+            {/* new version */}
+            <div className="flex">
+                <div
+                    className={`w-16 md:w-60 fixed left-0 top-0 h-screen border-r border-primaryDark bg-custom-gradient
+                    ${isOpen ? "w-60 border-r border-primaryDark bg-primarySemiDark z-50" : "w-16"} `}
+                >
+                    <NavDashboard
+                        isOpen={isOpen}
+                        setIsOpen={setIsOpen}
+                    ></NavDashboard>
+                </div>
+                <div className="flex-1 relative min-h-screen ml-16 md:ml-60 lg:px-14 md:px-5 px-3 py-10 bg-custom-gradient overflow-hidden border border-primarylight">
+                    {/* Grid lines background */}
+                    <div className="absolute inset-0 -z-20 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+                    <Outlet></Outlet>
                 </div>
             </div>
         </>
