@@ -1,25 +1,18 @@
-import { Helmet } from "react-helmet-async";
-import useAuth from "../../../hooks/useAuth";
-
+import useUsers from './../../../hooks/useUsers';
 
 const HomeDashboard = () => {
-    const { user } = useAuth();
+
+    const [users] = useUsers();
+    const currentUser = users?.length > 0 ? users[0] : {};
 
     return (
         <>
-            <Helmet>
-                <title>Amelia | Dashboard Home</title>
-            </Helmet>
             <div>
-                <h2 className="text-3xl">
-                    <span>Hi, Welcome </span>
-                    {
-                        user?.displayName ? user.displayName : 'Back'
-                    }
-                </h2>
+                   <h1>{currentUser?.name}</h1>
             </div>
         </>
-    );
-};
+    )
+}
 
-export default HomeDashboard;
+export default HomeDashboard
+

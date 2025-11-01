@@ -162,20 +162,25 @@ const Dashboard = () => {
             </div> */}
 
             {/* new version */}
-            <div className="flex">
+            <div className="flex bg-custom-gradient">
+                {/* Grid lines background */}
+                <div className="absolute inset-0 -z-20 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
                 <div
-                    className={`w-16 md:w-60 fixed left-0 top-0 h-screen border-r border-primaryDark bg-custom-gradient
-                    ${isOpen ? "w-60 border-r border-primaryDark bg-primarySemiDark z-50" : "w-16"} `}
+                    className={`w-16 md:w-72 fixed left-0 top-0 h-screen bg-btnColor rounded-[0%_9rem_0%_0%]
+                    ${isOpen ? "w-72 bg-btnColor z-50" : "w-16"} `}
                 >
                     <NavDashboard
                         isOpen={isOpen}
                         setIsOpen={setIsOpen}
                     ></NavDashboard>
                 </div>
-                <div className="flex-1 relative min-h-screen ml-16 md:ml-60 lg:px-14 md:px-5 px-3 py-10 bg-custom-gradient overflow-hidden border border-primarylight">
+                <div className="flex-1 relative min-h-screen ml-16 md:ml-72 lg:px-14 md:px-5 px-3 py-10overflow-hidden">
+
                     {/* Grid lines background */}
-                    <div className="absolute inset-0 -z-20 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
+                    {/* <div className="absolute inset-0 -z-20 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div> */}
+
                     <Outlet></Outlet>
+
                 </div>
             </div>
         </>

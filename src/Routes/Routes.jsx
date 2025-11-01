@@ -8,7 +8,6 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
 import AddCamps from './../page/Dashboard/AddCamps/AddCamps';
 import ManageCamps from "../page/Dashboard/ManageCamps/ManageCamps";
-import HomeDashboard from './../page/Dashboard/HomeDashboard/HomeDashboard';
 import UpdateCamp from './../page/Dashboard/UpdateCamp/UpdateCamp';
 import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
@@ -16,13 +15,14 @@ import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps
 import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
 import OrganizerProfile from "../page/Dashboard/OrganizerProfile/OrganizerProfile";
 import ParticipantProfile from './../page/Dashboard/ParticipantProfile/ParticipantProfile';
-import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
-import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
 import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import CampRegistration from "../page/CampRegistration/CampRegistration";
+import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard";
 // import Loader from './../components/Loader';
+// import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
+// import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
 
 
 export const router = createBrowserRouter([
@@ -64,68 +64,68 @@ export const router = createBrowserRouter([
         ],
     },
     {
-        path: 'dashboard',
+        path: '/dashboard',
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
             // participant routes
             {
-                path: "home-dashbord",
-                element: <HomeDashboard></HomeDashboard>,
+                path: "/dashboard",
+                element: <PrivateRoutes><HomeDashboard /></PrivateRoutes>,
             },
             {
                 path: "participant-profile",
-                element: <ParticipantProfile></ParticipantProfile>,
+                element: <PrivateRoutes><ParticipantProfile /></PrivateRoutes>,
             },
             {
                 path: "registered-camps",
-                element: <RegisteredCamps></RegisteredCamps>,
+                element: <PrivateRoutes><RegisteredCamps /></PrivateRoutes>,
             },
             {
                 path: "payment/:id",
-                element: <Payment></Payment>,
+                element: <PrivateRoutes><Payment /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/registerCamps/${params.id}`)
             },
             {
                 path: "payment-history",
-                element: <ParticipantPaymentHistory></ParticipantPaymentHistory>,
+                element: <PrivateRoutes><ParticipantPaymentHistory /></PrivateRoutes>,
             },
             {
                 path: "feedback-and-ratings",
-                element: <FeedbackAndRatings></FeedbackAndRatings>,
+                element: <PrivateRoutes><FeedbackAndRatings /></PrivateRoutes>,
             },
             // addmin routes
             {
                 path: "organizer-profile",
-                element: <OrganizerProfile></OrganizerProfile>,
+                element: <PrivateRoutes><OrganizerProfile /></PrivateRoutes>,
             },
             {
                 path: "add-a-camp",
-                element: <AddCamps></AddCamps>,
+                element: <PrivateRoutes><AddCamps /></PrivateRoutes>,
             },
             {
                 path: "manage-camps",
-                element: <ManageCamps></ManageCamps>,
+                element: <PrivateRoutes><ManageCamps /></PrivateRoutes>,
             },
             {
                 path: "manage-registered-camps",
-                element: <ManageRegisterCamps></ManageRegisterCamps>,
+                element: <PrivateRoutes><ManageRegisterCamps /></PrivateRoutes>,
                 loader: () => fetch('https://medical-camp-server-seven.vercel.app/registerCamps')
             },
             {
                 path: "update-camp/:campId",
-                element: <UpdateCamp></UpdateCamp>,
+                element: <PrivateRoutes><UpdateCamp /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
             //doctor 
-            {
-                path: "professional-profile",
-                element: <ProfessionalProfile></ProfessionalProfile>,
-            },
-            //undefined role or google user
-            {
-                path: "default-Profile",
-                element: <DefaultProfile></DefaultProfile>,
-            },
+            // {
+            //     path: "professional-profile",
+            //     element: <ProfessionalProfile></ProfessionalProfile>,
+            // },
+            // //undefined role or google user
+            // {
+            //     path: "default-Profile",
+            //     element: <DefaultProfile></DefaultProfile>,
+            // },
 
         ]
     }
