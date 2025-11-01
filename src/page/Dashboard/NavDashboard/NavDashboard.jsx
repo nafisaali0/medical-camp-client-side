@@ -4,7 +4,7 @@ import { RxDashboard } from "react-icons/rx";
 // import { PiUserSquareThin } from "react-icons/pi";
 // import { SlSettings } from "react-icons/sl";
 import useUsers from "../../../hooks/useUsers";
-import { HiBars2, HiOutlineEllipsisVertical } from "react-icons/hi2";
+import { HiBars2, } from "react-icons/hi2";
 import React from "react";
 
 const NavDashboard = ({ isOpen, setIsOpen }) => {
@@ -12,317 +12,182 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
     const location = useLocation();
     const ifActive = (path) => location.pathname === path;
     const [users] = useUsers();
-    const currentUser = users?.length > 0 ? users[0] : {};
+    // const currentUser = users?.length > 0 ? users[0] : {};
 
     return (
         <>
             <div className="flex flex-col h-screen relative">
-                {/* <div className="absolute top-32 w-full h-screen isolate aspect-video bg-white/20 bg-opacity-40 backdrop-blur-sm ring-1 ring-textDark/5"></div> */}
-
 
                 {/* Logo */}
-                <div className={`flex md:justify-between ${isOpen ? "justify-between" : "justify-start"} items-center cursor-pointer p-3`}>
-
-                    {/* old */}
-                    {/* <Link to={'/'} className="flex gap-2 items-center">
-                        <figure>
-                            <img className={`md:flex w-10 ${isOpen ? "flex" : "hidden"}`} src={logo} alt="" />
-                        </figure>
-                        <h1 className={`md:flex text-xm font-semibold text-textDark ${isOpen ? "flex" : "hidden"}`}>Amelia Medical Camp</h1>
-                        <h1 className={`md:flex text-lg font-semibold text-textDark ${isOpen ? "flex" : "hidden"}`}>Amelia</h1>
-                    </Link> */}
-
-                    <Link to={'/'}>
-                        <figure>
-                            <img className={`md:flex w-14 ${isOpen ? "flex" : "hidden"}`} src={logo} alt="" />
-                        </figure>
-                    </Link>
+                <div className="flex gap-3 justify-start items-center cursor-pointer px-3 mt-10">
 
                     <div
                         onClick={() => {
                             if (window.innerWidth <= 768) { // 768px or less = mobile
                                 setIsOpen(!isOpen);
                             }
-                        }}
-                    >
-                        {/* <HiBars2 className="text-3xl text-btnColor" /> */}
+                        }}>
                         <HiBars2 className="text-3xl text-white" />
                     </div>
+                    <Link to={'/'}>
+                        <figure>
+                            <img className={`md:flex w-[60px] ${isOpen ? "flex" : "hidden"}`} src={logo} alt="" />
+                        </figure>
+                    </Link>
 
                 </div>
-                {/* border-radius: top-left top-right bottom-right bottom-left; */}
-                <div className="absolute top-36 md:w-72 h-screen sidenavBlur rounded-[0%_9rem_0%_0%]"></div>
+                
+                <div className={`absolute top-48 w-60 h-screen sidenavBlur rounded-[0%_9rem_0%_0%] 
+                    ${isOpen ? "w-52" : ""}`}></div>
 
-                {/* Middle navigation */}
-                <nav className="mt-40 flex-1 pr-3">
+                <nav className="mt-36 flex-1 pr-3">
                     <ul className="space-y-1">
                         {
                             users?.map((eachUser) => (
                                 <React.Fragment key={eachUser.id}>
                                     {eachUser?.role === "Admin" && (
                                         <>
-                                            {/* dark */}
-                                            {/* <Link
+                                            <Link
                                                 to="/dashboard"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors 
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white 
                                                     ${ifActive('/dashboard')
-                                                        ? 'bg-btnColor text-white'
-                                                        : 'text-textDark'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard') ? 'text-white' : 'text-textDark'}`}
-                                                />
+                                                        ? 'sideNavLink'
+                                                        : ''
+                                                    }`}>
+                                                <RxDashboard />
                                                 <span
-                                                    className={`md:flex text-md font-semibold 
-                                                    ${ifActive('/dashboard') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
+                                                    className={`md:flex md:text-md font-medium 
+                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                     Dashboard
                                                 </span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/organizer-profile"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/organizer-profile')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/organizer-profile')
+                                                    ? 'sideNavLink'
+                                                    : ''
                                                     }`}
                                             >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/organizer-profile') ? 'text-white' : 'text-textDark'}`}
-                                                />
+                                                <RxDashboard />
                                                 <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/organizer-profile') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
+                                                    className={`md:flex md:text-md font-medium
+                                                    ${isOpen ? "flex text-xs" : "hidden"}`}
                                                 >
                                                     Profile
                                                 </span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/add-a-camp"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/add-a-camp')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/add-a-camp') ? 'text-white' : 'text-textDark'}`}
-                                                />
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/add-a-camp')
+                                                    ? 'sideNavLink' : ''}`}>
+                                                <RxDashboard />
                                                 <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/add-a-camp') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
+                                                    className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                     Create Camp
                                                 </span>
                                             </Link>
-                                            <Link
-                                                to="/dashboard/manage-camps"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/manage-camps')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/manage-camps') ? 'text-white' : 'text-textDark'}`}
-                                                />
-                                                <span
-                                                    className={`md:flex text-md font-semibold
-                                                   ${ifActive('/dashboard/manage-camps') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
-                                                    Manage Camp
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/manage-registered-camps"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/manage-registered-camps')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/manage-registered-camps') ? 'text-white' : 'text-textDark'}`}
-                                                />
-                                                <span
-                                                    className={`md:flex text-md font-semibold
-                                                 ${ifActive('/dashboard/manage-registered-camps') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
-                                                    Manage Register Camps
-                                                </span>
-                                            </Link> */}
-
-                                            {/* light */}
-                                            <Link
-                                                to="/dashboard"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors 
-                                                    ${ifActive('/dashboard')
-                                                        ? 'bg-btnColor text-white'
-                                                        : 'text-white'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard') ? 'text-white' : 'text-white'}`}
-                                                />
-                                                <span
-                                                    className={`md:flex text-md font-semibold 
-                                                    ${ifActive('/dashboard') ? 'text-white' : 'text-white'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
-                                                    Dashboard
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/organizer-profile"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/organizer-profile')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-white'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/organizer-profile') ? 'text-white' : 'text-white'}`}
-                                                />
-                                                <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/organizer-profile') ? 'text-white' : 'text-white'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
-                                                    Profile
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/add-a-camp"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/add-a-camp')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-white'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/add-a-camp') ? 'text-white' : 'text-white'}`}
-                                                />
-                                                <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/add-a-camp') ? 'text-white' : 'text-white'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
-                                                    Create Camp
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/manage-camps"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/manage-camps')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-white'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/manage-camps') ? 'text-white' : 'text-white'}`}
-                                                />
-                                                <span
-                                                    className={`md:flex text-md font-semibold
-                                                   ${ifActive('/dashboard/manage-camps') ? 'text-white' : 'text-white'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
-                                                    Manage Camp
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/manage-registered-camps"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/manage-registered-camps')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-white'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/manage-registered-camps') ? 'text-white' : 'text-white'}`}
-                                                />
-                                                <span
-                                                    className={`md:flex text-md font-semibold
-                                                 ${ifActive('/dashboard/manage-registered-camps') ? 'text-white' : 'text-white'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
-                                                    Manage Register Camps
-                                                </span>
-                                            </Link>
+                                            <div className="flex justify-start items-center gap-2 rounded p-[11px] text-white">
+                                                <RxDashboard />
+                                                <div className={`dropdown dropdown-start md:w-full ${isOpen ? "w-full" : ""}`}>
+                                                    <div tabIndex={0} role="button" className={`md:flex md:text-md font-medium 
+                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>Manage</div>
+                                                    <div tabIndex="-1" className="dropdown-content mt-3">
+                                                        <Link
+                                                            to="/dashboard/manage-camps"
+                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-camps') ? 'sideNavDropdown' : ''}`}>
+                                                            <RxDashboard />
+                                                            <span
+                                                                className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                                All Camp
+                                                            </span>
+                                                        </Link>
+                                                        <Link
+                                                            to="/dashboard/manage-registered-camps"
+                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-registered-camps')
+                                                                ? 'sideNavDropdown'
+                                                                : ''}`}>
+                                                            <RxDashboard />
+                                                            <span
+                                                                className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                                Register Camps
+                                                            </span>
+                                                        </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </>
                                     )}
                                     {eachUser?.role === "Participant" && (
                                         <>
                                             <Link
                                                 to="/dashboard"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors 
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white 
                                                     ${ifActive('/dashboard')
-                                                        ? 'bg-btnColor text-white'
-                                                        : 'text-textDark'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard') ? 'text-white' : 'text-textDark'}`}
-                                                />
+                                                        ? 'sideNavLink'
+                                                        : ''
+                                                    }`}>
+                                                <RxDashboard />
                                                 <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
+                                                    className={`md:flex md:text-md font-medium
+                                                    ${isOpen ? "flex text-xs" : "hidden"}`}
                                                 >
                                                     Dashboard
                                                 </span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/participant-profile"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/participant-profile')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/participant-profile')
+                                                    ? 'sideNavLink'
+                                                    : ''
                                                     }`}
                                             >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/participant-profile') ? 'text-white' : 'text-textDark'}`}
-                                                />
+                                                <RxDashboard />
                                                 <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/participant-profile') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
+                                                    className={`md:flex md:text-md font-medium
+                                                    ${isOpen ? "flextext-xs" : "hidden"}`}>
                                                     Profile
                                                 </span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/registered-camps"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/registered-camps')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/registered-camps')
+                                                    ? 'sideNavLink'
+                                                    : ''
                                                     }`}
                                             >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/registered-camps') ? 'text-white' : 'text-textDark'}`}
-                                                />
+                                                <RxDashboard />
                                                 <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/registered-camps') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
-                                                >
+                                                    className={`md:flex md:text-md font-medium
+                                                     ${isOpen ? "flextext-xs" : "hidden"}`}>
                                                     Registered Camps
                                                 </span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/payment-history"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/payment-history')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
-                                                    }`}
-                                            >
-                                                <RxDashboard
-                                                    className={`${ifActive('/dashboard/payment-history') ? 'text-white' : 'text-textDark'}`}
-                                                />
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/payment-history')
+                                                    ? 'sideNavLink'
+                                                    : ''
+                                                    }`}>
+                                                <RxDashboard />
                                                 <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/payment-history') ? 'text-white' : 'text-textDark'} ${isOpen ? "flex" : "hidden"}`}
+                                                    className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}
                                                 >
                                                     Payment History
                                                 </span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/feedback-and-ratings"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] transition-colors ${ifActive('/dashboard/feedback-and-ratings')
-                                                    ? 'bg-btnColor text-white'
-                                                    : 'text-textDark'
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/feedback-and-ratings')
+                                                    ? 'sideNavLink'
+                                                    : ''
                                                     }`}
                                             >
                                                 <RxDashboard
-                                                    className={`${ifActive('/dashboard/feedback-and-ratings') ? 'text-white' : 'text-textDark'}`}
+                                                    className={`${ifActive('/dashboard/feedback-and-ratings') ? 'text-white' : ''}`}
                                                 />
                                                 <span
-                                                    className={`md:flex text-md font-semibold
-                                                    ${ifActive('/dashboard/feedback-and-ratings') ? 'text-white' : 'text-textDark'}  
-                                                    ${isOpen ? "flex" : "hidden"}`}
+                                                    className={`md:flex md:text-md font-medium 
+                                                    ${isOpen ? "flex text-xs" : "hidden"}`}
                                                 >
                                                     Review
                                                 </span>
@@ -374,30 +239,29 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                 style={{ width: '20px', height: '20px' }} />
                             <ul
                                 tabIndex={0}
-                                className="menu dropdown-content mb-5 z-1 w-52 p-2 rounded-md shadow font-semibold text-center border-2 border-borderColour bg-mainTheme text-black backdrop-blur-sm">
-                                <div className="py-2 px-4 text-md font-semibold border-b hover:text-primaryHover hover:border-borderColour cursor-pointer border-borderColour last:border-b-0">Logout</div>
+                                className="menu dropdown-content mb-5 z-1 w-52 p-2 rounded-md shadow font-medium text-center border-2 border-borderColour bg-mainTheme text-black backdrop-blur-sm">
+                                <div className="py-2 px-4 md:text-md font-medium border-b hover:text-primaryHover hover:border-borderColour cursor-pointer border-borderColour last:border-b-0">Logout</div>
                             </ul>
                         </div>
                     </div>
                 </div> */}
 
-
-                <div className="flex flex-col justify-start items-start p-3 space-y-2">
+                <div className="flex flex-col justify-start items-start space-y-2">
                     <Link
                         to="/dashboard"
-                        className="flex w-full justify-start items-center gap-2 rounded p-[11px] transition-colors text-white hover:bg-btnColor">
-                        <RxDashboard className="text-white" />
+                        className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
+                        <RxDashboard />
                         <span
-                            className={`md:flex text-md font-semibold text-white
-                            ${isOpen ? "flex" : "hidden"}`}
+                            className={`md:flex md:text-md font-medium
+                            ${isOpen ? "flex text-xs" : "hidden"}`}
                         >
                             Settings
                         </span>
                     </Link>
-                    <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] transition-colors text-white hover:bg-btnColor">
-                        <RxDashboard className="text-white" />
+                    <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
+                        <RxDashboard />
                         <span
-                            className={`md:flex text-md font-semibold text-white ${isOpen ? "flex" : "hidden"}`}
+                            className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}
                         >
                             LogOut
                         </span>
