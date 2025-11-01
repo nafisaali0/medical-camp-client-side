@@ -1,11 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import logo from '../../../assets/images/logo/logo_footer.png'
 import { RxDashboard } from "react-icons/rx";
-// import { PiUserSquareThin } from "react-icons/pi";
-// import { SlSettings } from "react-icons/sl";
 import useUsers from "../../../hooks/useUsers";
 import { HiBars2, } from "react-icons/hi2";
 import React from "react";
+import { MdManageHistory } from "react-icons/md";
+import { IoIosArrowDown } from "react-icons/io";
 
 const NavDashboard = ({ isOpen, setIsOpen }) => {
 
@@ -19,7 +19,7 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
             <div className="flex flex-col h-screen relative">
 
                 {/* Logo */}
-                <div className="flex gap-3 justify-start items-center cursor-pointer px-3 mt-10">
+                <div className="flex gap-6 justify-start items-center cursor-pointer px-3 mt-10">
 
                     <div
                         onClick={() => {
@@ -36,8 +36,8 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                     </Link>
 
                 </div>
-                
-                <div className={`absolute top-48 w-60 h-screen sidenavBlur rounded-[0%_9rem_0%_0%] 
+
+                <div className={`absolute top-48 w-60 h-screen sidenavBlur rounded-[0%_6rem_0%_0%] 
                     ${isOpen ? "w-52" : ""}`}></div>
 
                 <nav className="mt-36 flex-1 pr-3">
@@ -87,11 +87,16 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 </span>
                                             </Link>
                                             <div className="flex justify-start items-center gap-2 rounded p-[11px] text-white">
-                                                <RxDashboard />
+                                                <MdManageHistory
+                                                    className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <div className={`dropdown dropdown-start md:w-full ${isOpen ? "w-full" : ""}`}>
-                                                    <div tabIndex={0} role="button" className={`md:flex md:text-md font-medium 
-                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>Manage</div>
-                                                    <div tabIndex="-1" className="dropdown-content mt-3">
+                                                    <div tabIndex={0} role="button" className={`md:flex items-center gap-1 md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                        Manage
+                                                        <span>
+                                                            <IoIosArrowDown className="text-[20px]" />
+                                                        </span>
+                                                    </div>
+                                                    <div tabIndex="-1" className="dropdown-content mt-4">
                                                         <Link
                                                             to="/dashboard/manage-camps"
                                                             className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-camps') ? 'sideNavDropdown' : ''}`}>
@@ -200,6 +205,28 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                     </ul>
                 </nav>
 
+                <div className="flex flex-col justify-start items-start space-y-2">
+                    <Link
+                        to="/dashboard"
+                        className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
+                        <RxDashboard />
+                        <span
+                            className={`md:flex md:text-md font-medium
+                            ${isOpen ? "flex text-xs" : "hidden"}`}
+                        >
+                            Settings
+                        </span>
+                    </Link>
+                    <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
+                        <RxDashboard />
+                        <span
+                            className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}
+                        >
+                            LogOut
+                        </span>
+                    </div>
+                </div>
+
                 {/* Bottom user section */}
                 {/* <div className="flex md:justify-between items-center leading-4 border-t border-borderColour p-2 py-5">
                     <div className="flex gap-2 items-center">
@@ -246,27 +273,6 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                     </div>
                 </div> */}
 
-                <div className="flex flex-col justify-start items-start space-y-2">
-                    <Link
-                        to="/dashboard"
-                        className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
-                        <RxDashboard />
-                        <span
-                            className={`md:flex md:text-md font-medium
-                            ${isOpen ? "flex text-xs" : "hidden"}`}
-                        >
-                            Settings
-                        </span>
-                    </Link>
-                    <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
-                        <RxDashboard />
-                        <span
-                            className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}
-                        >
-                            LogOut
-                        </span>
-                    </div>
-                </div>
             </div>
         </>
     )

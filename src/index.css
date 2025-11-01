@@ -155,9 +155,3 @@
 .primaryBtn:hover .arrow:before {
   right: 0;
 }
-
-/* @media (min-width: 768px) {
-  .sideNavLink {
-    margin-right: 0rem;
-  }
-} */
