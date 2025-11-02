@@ -67,11 +67,13 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
-            // participant routes
+            
             {
                 path: "/dashboard",
                 element: <PrivateRoutes><HomeDashboard /></PrivateRoutes>,
             },
+            
+            // participant routes
             {
                 path: "participant-profile",
                 element: <PrivateRoutes><ParticipantProfile /></PrivateRoutes>,
@@ -93,6 +95,7 @@ export const router = createBrowserRouter([
                 path: "feedback-and-ratings",
                 element: <PrivateRoutes><FeedbackAndRatings /></PrivateRoutes>,
             },
+
             // addmin routes
             {
                 path: "organizer-profile",

@@ -12,8 +12,8 @@ const ParticipantPaymentHistory = () => {
                 <title>Amelia | Participant Payment History</title>
             </Helmet>
             <DashboardTitle heading={"Your Payment Story"}></DashboardTitle >
-            {/*  */}
-            <div className='container mx-auto my-20'>
+            {/*  className='container mx-auto my-20' */}
+            <div>
                 <h2 className='text-black text-2xl font-semibold my-10'>Total Payments: {paymentsCamp.length}</h2>
                 <div className='bg-white w-10/12'>
 

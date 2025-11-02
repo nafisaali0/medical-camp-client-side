@@ -22,8 +22,8 @@ const Payment = () => {
             <div>
                 <DashboardTitle heading={"Payment With Stripe"}></DashboardTitle>
             </div>
-
-            <div className='mx-auto container my-20 overflow-hidden'>
+            {/*  className='mx-auto container my-20 overflow-hidden' */}
+            <div>
                 <div>
                     <Elements stripe={stripePromise}>
                         {

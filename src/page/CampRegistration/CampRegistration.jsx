@@ -150,7 +150,7 @@ export default function CampRegistration() {
 
                                     <div className="flex justify-center items-center py-5">
                                         <button className="primaryBtn">
-                                            Complete Registration
+                                            Enrollment Complete
                                             <div className="arrow-wrapper">
                                                 <div className="arrow"></div>
                                             </div>

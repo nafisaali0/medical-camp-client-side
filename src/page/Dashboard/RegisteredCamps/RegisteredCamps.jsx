@@ -139,7 +139,8 @@ const RegisteredCamps = () => {
             <Helmet>
                 <title>Amelia | Register Camps</title>
             </Helmet>
-            <div className="w-[100rem] p-3">
+            {/*  className="w-[100rem] p-3" */}
+            <div>
                 <DataTable
                     columns={columns}
                     data={data}

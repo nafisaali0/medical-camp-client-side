@@ -348,7 +348,7 @@ const DetailCamp = () => {
                                 {/*  to={`/camp-details/${enrolledCamp?.campId}`} */}
                                 <Link to={`/camp-registration/${_id}`}>
                                     <button className="primaryBtn">
-                                        Register Now
+                                        Enroll Now
                                         <div className="arrow-wrapper">
                                             <div className="arrow"></div>
                                         </div>
