@@ -12,9 +12,9 @@ export default {
       primarySemiDark: "#B9CEEB",
       primarylight: "#DEECFC",
       textDark: "#0A1931",
-      btnColor:"#404f68",
+      btnColor: "#404f68",
       black: "#000",
-      white:"#ffff"
+      white: "#ffff",
     },
     extend: {},
   },

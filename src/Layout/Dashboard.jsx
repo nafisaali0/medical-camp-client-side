@@ -164,7 +164,7 @@ const Dashboard = () => {
 
             {/* new version */}
 
-            <div className="flex bg-custom-gradient">
+            <div className="flex relative bg-custom-gradient  overflow-hidden">
 
                 {/* Grid lines background */}
                 <div className="absolute inset-0 -z-20 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
@@ -180,7 +180,7 @@ const Dashboard = () => {
 
                 </div>
 
-                <div className="flex-1 relative min-h-screen ml-16 md:ml-60 lg:px-14 md:px-5 px-3 py-10 overflow-hidden">
+                <div className="flex-1 min-h-screen ml-16 md:ml-60 px-3 py-10 lg:px-14 md:px-5">
 
                     <Outlet></Outlet>
 

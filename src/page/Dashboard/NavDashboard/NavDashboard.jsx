@@ -1,18 +1,19 @@
-import { Link, useLocation } from "react-router-dom";
-import logo from '../../../assets/images/logo/logo_footer.png'
-import { RxDashboard } from "react-icons/rx";
-import useUsers from "../../../hooks/useUsers";
-import { HiBars2, } from "react-icons/hi2";
 import React from "react";
-import { MdManageHistory } from "react-icons/md";
-import { IoIosArrowDown } from "react-icons/io";
+import { Link, useLocation } from "react-router-dom";
+import useUsers from "../../../hooks/useUsers";
+import logo from '../../../assets/images/logo/logo_footer.png'
+import { MdManageAccounts, MdManageHistory } from "react-icons/md";
+import { IoIosArrowDown, IoIosArrowDropdown } from "react-icons/io";
+import { IoCreateOutline } from "react-icons/io5";
+import { BiLogOut } from "react-icons/bi";
+import { HiBars2, } from "react-icons/hi2";
+import { RxDashboard } from "react-icons/rx";
 
 const NavDashboard = ({ isOpen, setIsOpen }) => {
 
     const location = useLocation();
     const ifActive = (path) => location.pathname === path;
     const [users] = useUsers();
-    // const currentUser = users?.length > 0 ? users[0] : {};
 
     return (
         <>
@@ -66,34 +67,34 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/organizer-profile')
                                                     ? 'sideNavLink'
                                                     : ''
-                                                    }`}
-                                            >
-                                                <RxDashboard />
+                                                    }`}>
+                                                <MdManageAccounts className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <span
                                                     className={`md:flex md:text-md font-medium
-                                                    ${isOpen ? "flex text-xs" : "hidden"}`}
-                                                >
+                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>
+
                                                     Profile
+
                                                 </span>
                                             </Link>
                                             <Link
                                                 to="/dashboard/add-a-camp"
                                                 className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/add-a-camp')
                                                     ? 'sideNavLink' : ''}`}>
-                                                <RxDashboard />
+                                                <IoCreateOutline className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <span
                                                     className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                     Create Camp
                                                 </span>
                                             </Link>
                                             <div className="flex justify-start items-center gap-2 rounded p-[11px] text-white">
-                                                <MdManageHistory
-                                                    className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                <MdManageHistory className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <div className={`dropdown dropdown-start md:w-full ${isOpen ? "w-full" : ""}`}>
                                                     <div tabIndex={0} role="button" className={`md:flex items-center gap-1 md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                         Manage
                                                         <span>
-                                                            <IoIosArrowDown className="text-[20px]" />
+                                                            {/* <IoIosArrowDown className="text-[20px]" /> */}
+                                                            <IoIosArrowDropdown className="text-[20px]" />
                                                         </span>
                                                     </div>
                                                     <div tabIndex="-1" className="dropdown-content mt-4">
@@ -205,11 +206,21 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                     </ul>
                 </nav>
 
-                <div className="flex flex-col justify-start items-start space-y-2">
+                <div className="flex flex-col justify-start items-start mb-5">
+                    <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
+                        <BiLogOut className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                        <span
+                            className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                            LogOut
+                        </span>
+                    </div>
+                </div>
+
+                {/* <div className="flex flex-col justify-start items-start space-y-2">
                     <Link
                         to="/dashboard"
                         className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
-                        <RxDashboard />
+                        <IoSettingsOutline className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                         <span
                             className={`md:flex md:text-md font-medium
                             ${isOpen ? "flex text-xs" : "hidden"}`}
@@ -218,58 +229,12 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                         </span>
                     </Link>
                     <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
-                        <RxDashboard />
+                        <BiLogOut className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`}/>
                         <span
                             className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}
                         >
                             LogOut
                         </span>
-                    </div>
-                </div>
-
-                {/* Bottom user section */}
-                {/* <div className="flex md:justify-between items-center leading-4 border-t border-borderColour p-2 py-5">
-                    <div className="flex gap-2 items-center">
-                        {
-                            currentUser?.photo ?
-                                <>
-                                    <div className="avatar flex">
-                                        <div className="w-9 rounded-full">
-                                            <img src={currentUser?.photo} />
-                                        </div>
-                                    </div>
-                                </>
-                                :
-                                <>
-                                    <div className="w-10 h-10 rounded-full bg-bodyColor flex items-center justify-center">
-                                        <span className="text-sm font-normal text-black">
-                                            {currentUser?.name?.charAt(0).toUpperCase()}
-                                        </span>
-                                    </div>
-                                </>
-                        }
-                        <div className={`md:flex flex-col max-w-[150px] ${isOpen ? "flex" : "hidden"}`}>
-                            <h1 className="text-[14px] font-medium text-black truncate whitespace-nowrap overflow-hidden">{currentUser?.name}</h1>
-                            <span
-                                className="text-[12px] font-normal text-textSmallGray truncate whitespace-nowrap overflow-hidden"
-                                title={currentUser?.email}
-                            >
-                                {currentUser?.email}
-                            </span>
-                        </div>
-                    </div>
-                    <div className={`md:flex ${isOpen ? "flex" : "hidden"}`}>
-                        <div className="dropdown dropdown-top dropdown-end">
-                            <HiOutlineEllipsisVertical
-                                tabIndex={0}
-                                role="button"
-                                style={{ width: '20px', height: '20px' }} />
-                            <ul
-                                tabIndex={0}
-                                className="menu dropdown-content mb-5 z-1 w-52 p-2 rounded-md shadow font-medium text-center border-2 border-borderColour bg-mainTheme text-black backdrop-blur-sm">
-                                <div className="py-2 px-4 md:text-md font-medium border-b hover:text-primaryHover hover:border-borderColour cursor-pointer border-borderColour last:border-b-0">Logout</div>
-                            </ul>
-                        </div>
                     </div>
                 </div> */}
 

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
 const ParticipantProfile = () => {
+
     const [users, refetch, loading] = useUsers();
     const { register, handleSubmit, reset } = useForm();
     const axiosLocalhost = useAxioslocalhost()
@@ -56,7 +57,8 @@ const ParticipantProfile = () => {
             <div>
                 <DashboardTitle heading={"My Profile"}></DashboardTitle>
             </div>
-            <div className="container mx-auto my-20">
+            {/*  className="container mx-auto my-20" */}
+            <div>
                 {
                     users.map((user) =>
                         <>

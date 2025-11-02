@@ -46,55 +46,6 @@
   font-weight: 600;
 }
 
-.sidenav {
-  background-image: linear-gradient(
-    to right bottom,
-    #deecfc,
-    #beccdf,
-    #9faec2,
-    #8190a6,
-    #64738b,
-    #64738b,
-    #64738b,
-    #64738b,
-    #8190a6,
-    #9faec2,
-    #beccdf,
-    #deecfc
-  );
-}
-.sidenavBlur {
-  position: fixed;
-  background: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-  z-index: -1000;
-}
-.sideNavLink {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  width: 70%;
-}
-.sideNavDropdown {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  width: 100%;
-}
-.sideNavBottom:hover {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  width: 70%;
-}
-
 .primaryBtn {
   --white: #fff;
   --primary-color: #404f68;
@@ -155,3 +106,40 @@
 .primaryBtn:hover .arrow:before {
   right: 0;
 }
+
+
+/* dasboard Start */
+
+.sidenavBlur {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: -1000;
+}
+.sideNavLink {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 70%;
+}
+.sideNavDropdown {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 100%;
+}
+.sideNavBottom:hover {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  width: 70%;
+}
+
+/* dasboard end */

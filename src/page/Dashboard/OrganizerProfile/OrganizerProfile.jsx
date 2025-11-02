@@ -55,7 +55,7 @@ const OrganizerProfile = () => {
             <div>
                 <DashboardTitle heading={"My Profile"}></DashboardTitle>
             </div>
-            <div className="container mx-auto my-20">
+            <div>
                 {
                     users?.map((user) =>
                         <>

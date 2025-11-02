@@ -11,6 +11,7 @@ const ManageRegisterCamps = () => {
     const registeredCamps = useLoaderData();
     const [paymentsCamp] = usePayment()
     const axiosLocalhost = useAxioslocalhost()
+
     const handleDelete = (id) => {
         console.log("delete")
 
@@ -61,6 +62,7 @@ const ManageRegisterCamps = () => {
             }
         },
     }
+
     const columns = [
         {
             name: 'Serial Number',
@@ -122,14 +124,13 @@ const ManageRegisterCamps = () => {
         date: eachCamp.date,
     }));
 
-
-
     return (
         <>
             <Helmet>
                 <title>Amelia | Manage Register Camp</title>
             </Helmet>
-            <div className="w-[100rem] p-3">
+            {/*  className="w-[100rem] p-3" */}
+            <div>
                 <DataTable
                     columns={columns}
                     data={data}
