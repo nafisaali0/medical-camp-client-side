@@ -20,6 +20,7 @@ import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHis
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import CampRegistration from "../page/CampRegistration/CampRegistration";
 import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard";
+import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
 // import Loader from './../components/Loader';
 // import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
 // import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
@@ -67,12 +68,12 @@ export const router = createBrowserRouter([
         path: '/dashboard',
         element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
         children: [
-            
+
             {
                 path: "/dashboard",
                 element: <PrivateRoutes><HomeDashboard /></PrivateRoutes>,
             },
-            
+
             // participant routes
             {
                 path: "participant-profile",
@@ -106,6 +107,10 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes><AddCamps /></PrivateRoutes>,
             },
             {
+                path: "create-camp",
+                element: <PrivateRoutes><CreateCamp /></PrivateRoutes>,
+            },
+            {
                 path: "manage-camps",
                 element: <PrivateRoutes><ManageCamps /></PrivateRoutes>,
             },
@@ -119,16 +124,6 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes><UpdateCamp /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
-            //doctor 
-            // {
-            //     path: "professional-profile",
-            //     element: <ProfessionalProfile></ProfessionalProfile>,
-            // },
-            // //undefined role or google user
-            // {
-            //     path: "default-Profile",
-            //     element: <DefaultProfile></DefaultProfile>,
-            // },
 
         ]
     }

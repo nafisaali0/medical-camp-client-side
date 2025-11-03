@@ -120,28 +120,10 @@ const AddCamps = () => {
                                     placeholder="Date"
                                     {...register("date")}
                                     className="input input-bordered w-full" />
-                                    <input type="text"
-                                            placeholder="Time"
-                                            {...register("time")}
-                                            className="input input-bordered w-full" />
-                                {/* <div className="flex items-center gap-5">
-                                    <div className="flex-1 w-1/2">
-                                        <input type="date"
-                                            placeholder="Date"
-                                            {...register("date")}
-                                            className="input input-bordered w-full max-w-2xl" />
-                                    </div>
-                                    <div className="flex-1 w-1/2">
-                                        <input type="text"
-                                            placeholder="Time"
-                                            {...register("time")}
-                                            className="input input-bordered w-full" />
-                                    </div>
-                                </div> */}
-                                {/* <input type="number"
-                                    placeholder="Enroll Amount"
-                                    {...register("enroll")}
-                                    className="input input-bordered w-full" /> */}
+                                <input type="text"
+                                    placeholder="Time"
+                                    {...register("time")}
+                                    className="input input-bordered w-full" />
                                 <input type="text"
                                     placeholder="Short Description"
                                     {...register("shortDescription")}

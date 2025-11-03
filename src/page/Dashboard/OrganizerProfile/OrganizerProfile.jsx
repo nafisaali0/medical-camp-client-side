@@ -47,6 +47,7 @@ const OrganizerProfile = () => {
             refetch();
         }
     }
+    
     return (
         <>
             <Helmet>
