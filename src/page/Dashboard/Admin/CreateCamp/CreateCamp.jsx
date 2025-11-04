@@ -34,7 +34,7 @@ const CreateCamp = () => {
                 campServices: data.services,
                 campProfessionals: data.campProfessionals,
                 campCategory: data.campCategory,
-                campDetails: data.campDetails,                
+                campDetails: data.campDetails,
                 campDate: data.campDate,
                 campTime: data.campTime,
                 campVenue: data.campVenue,
@@ -213,7 +213,7 @@ const CreateCamp = () => {
                                     <button className="flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
                                         <span>
                                             <LuUpload className="text-[16px]" />
-                                        </span>                                        
+                                        </span>
                                         Upload Image
                                     </button>
                                 </div>

@@ -1,11 +1,72 @@
+import { useForm } from "react-hook-form";
 import { LuUpload } from "react-icons/lu"
 import { MdOutlineUpdate } from "react-icons/md"
 import { SiBasecamp } from "react-icons/si"
+// import Swal from "sweetalert2";
+import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
+import { useLoaderData } from "react-router-dom";
 
 const EditCamp = () => {
+    // _id, 
+    // const { campName, campServices, campProfessionals, campCategory, campDetails, campDate, campTime, campVenue, campAge, campGender, campFee, } = useLoaderData();
+
+    const { register, handleSubmit, reset } = useForm()
+    const axiosLocalhost = useAxioslocalhost()
+
+    // image hosting
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
+    const onSubmit = async (data) => {
+        // console.log(data)
+
+        // image upload to imagbb and then get an url
+        const imageFile = { image: data.image[0] }
+        const res = await axiosLocalhost.post(image_hostion_api, imageFile, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+
+        console.log(res.data)
+        if (res.data.success) {
+            // now send the camp data to the server with the image url
+            const campItem = {
+                image: res.data.data.display_url,
+                campName: data.campName,
+                campServices: data.services,
+                campProfessionals: data.campProfessionals,
+                campCategory: data.campCategory,
+                campDetails: data.campDetails,
+                campDate: data.campDate,
+                campTime: data.campTime,
+                campVenue: data.campVenue,
+                campAge: data.campAge,
+                campGender: data.campGender,
+                campFee: parseFloat(data.campFee),
+            }
+            console.log(campItem)
+            // console.log("load")
+            // const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campItem);
+            // console.log(campRes.data)
+            // if (campRes.data.modifiedCount > 0) {
+            //     // show success popup
+            //     reset();
+            //     Swal.fire({
+            //         position: "top-end",
+            //         icon: "success",
+            //         title: `${data.campName} is updated camp.`,
+            //         showConfirmButton: false,
+            //         timer: 1500
+            //     });
+            // }
+        }
+        // console.log('with image url', res.data);
+    }
+
     return (
         <>
-            <form>
+            <form onSubmit={handleSubmit(onSubmit)}>
 
                 <div className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
@@ -44,6 +105,8 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Camp Name"
+                                    // defaultValue={campName}
+                                    {...register("campName")}
                                     title="Health Checkup"
                                 />
                             </div>
@@ -54,6 +117,8 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Check up on pressure/diabetes"
+                                    // defaultValue={campServices}
+                                    {...register("campServices")}
                                     title="Services"
                                 />
                             </div>
@@ -64,6 +129,8 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Dr. Wasfia Rahman"
+                                    // defaultValue={campProfessionals}
+                                    {...register("campProfessionals")}
                                     title="Healthcare Professionals Name"
                                 />
                             </div>
@@ -74,13 +141,17 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Heart/Cancer"
+                                    // defaultValue={campCategory}
+                                    {...register("campCategory")}
                                     title="Category"
                                 />
                             </div>
                             <div className="space-y-2">
                                 <h1 className="text-xm font-normal text-grayText">Description</h1>
                                 <textarea
-                                    placeholder="Event Details"
+                                    placeholder="Description"
+                                    // defaultValue={campDetails}
+                                    {...register("campDetails")}
                                     className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                 ></textarea>
@@ -91,7 +162,7 @@ const EditCamp = () => {
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
                             <div>
-                                <h1 className="text-textDark text-lg font-medium">Event Details</h1>
+                                <h1 className="text-textDark text-lg font-medium">Camp Details</h1>
                             </div>
 
                             <div className="flex items-center gap-2">
@@ -103,6 +174,8 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="Date"
+                                        // defaultValue={campDate}
+                                        {...register("campDate")}
                                         title="Date"
                                     />
                                 </div>
@@ -113,6 +186,8 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="Time"
+                                        // defaultValue={campTime}
+                                        {...register("campTime")}
                                         title="Time"
                                     />
                                 </div>
@@ -123,6 +198,8 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
                                         required
                                         placeholder="ParkHoliday,Gulshan,Dhaka"
+                                        // defaultValue={campVenue}
+                                        {...register("campVenue")}
                                         title="Venue"
                                     />
                                 </div>
@@ -145,12 +222,13 @@ const EditCamp = () => {
                                 <div className="w-full h-60 border-2 border-dashed border-borderColour">
 
                                 </div>
+                                {/* {...register("campImage")} */}
                                 <div className="mt-5">
                                     <button className="flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
                                         <span>
                                             <LuUpload className="text-[16px]" />
                                         </span>
-                                        Change Image
+                                        Upload Image
                                     </button>
                                 </div>
                             </div>
@@ -172,6 +250,8 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
                                         required
                                         placeholder="25-40/Adult/Child/Older"
+                                        // defaultValue={campAge}
+                                        {...register("campAge")}
                                         title="Age"
                                     />
                                 </div>
@@ -181,6 +261,8 @@ const EditCamp = () => {
                                         type="gender"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         placeholder="Male/Female"
+                                        // defaultValue={campGender}
+                                        {...register("campGender")}
                                         title="Gender"
                                     />
                                 </div>
@@ -192,7 +274,7 @@ const EditCamp = () => {
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
                             <div>
-                                <h1 className="text-textDark text-lg font-medium">Event Price</h1>
+                                <h1 className="text-textDark text-lg font-medium">Camp Price</h1>
                             </div>
 
                             <div>
@@ -203,6 +285,8 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="200 BDT"
+                                        // defaultValue={campFee}
+                                        {...register("campFee")}
                                         title="Enrollment Fee"
                                     />
                                 </div>
