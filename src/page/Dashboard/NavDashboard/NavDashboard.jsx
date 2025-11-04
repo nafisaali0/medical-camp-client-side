@@ -87,6 +87,16 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 </span>
                                             </Link>
                                             <Link
+                                                to="/dashboard/edit-camp"
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/edit-camp')
+                                                    ? 'sideNavLink' : ''}`}>
+                                                <IoCreateOutline className={`md:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                <span
+                                                    className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                    Edit-camp
+                                                </span>
+                                            </Link>
+                                            <Link
                                                 to="/dashboard/create-camp"
                                                 className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/create-camp')
                                                     ? 'sideNavLink' : ''}`}>

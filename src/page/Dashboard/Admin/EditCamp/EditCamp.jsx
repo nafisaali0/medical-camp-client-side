@@ -1,81 +1,26 @@
-import { useForm } from "react-hook-form"
 import { LuUpload } from "react-icons/lu"
-import { MdLibraryAddCheck } from "react-icons/md"
+import { MdOutlineUpdate } from "react-icons/md"
 import { SiBasecamp } from "react-icons/si"
-import Swal from "sweetalert2"
-import useAxioslocalhost from "../../../../hooks/useAxioslocalhost"
 
-
-const CreateCamp = () => {
-
-    const axiosLocalhost = useAxioslocalhost()
-    const { register, handleSubmit, reset } = useForm()
-
-    // image api
-    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-
-    const onSubmit = async (data) => {
-        console.log(data)
-
-        // image upload to imagbb and then get an url
-        const imageFile = { image: data.image[0] }
-        const res = await axiosLocalhost.post(image_hostion_api, imageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-        // console.log(res.data)
-        if (res.data.success) {
-            //now send the menu item to the server with the image url
-            const campDetails = {
-                image: res.data.data.display_url,
-                campName: data.campName,
-                campServices: data.services,
-                campProfessionals: data.campProfessionals,
-                campCategory: data.campCategory,
-                campDetails: data.campDetails,                
-                campDate: data.campDate,
-                campTime: data.campTime,
-                campVenue: data.campVenue,
-                campAge: data.campAge,
-                campGender: data.campGender,
-                campFee: parseFloat(data.campFee),
-            }
-            const campRes = await axiosLocalhost.post('/camp', campDetails);
-            // console.log(menuRes.data)
-            if (campRes.data.insertedId) {
-                //show success popup
-                reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Added camp successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            }
-        }
-    }
-
+const EditCamp = () => {
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form>
 
                 <div className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
                             <SiBasecamp className="text-[22px]" />
-                            <h1 className="text-textDark text-lg font-medium">Add A New Camp</h1>
+                            <h1 className="text-textDark text-lg font-medium">Update Camp</h1>
                         </div>
 
                         <div>
                             <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-lg font-normal text-white bg-btnColor rounded-xl cursor-pointer">
                                 <span>
-                                    <MdLibraryAddCheck className="text-[16px] lg:text-[20px]" />
+                                    <MdOutlineUpdate className="text-[16px] lg:text-[20px]" />
                                 </span>
-                                Create
+                                Update
                             </button>
                         </div>
 
@@ -99,7 +44,6 @@ const CreateCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Camp Name"
-                                    {...register("campName")}
                                     title="Health Checkup"
                                 />
                             </div>
@@ -110,7 +54,6 @@ const CreateCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Check up on pressure/diabetes"
-                                    {...register("campServices")}
                                     title="Services"
                                 />
                             </div>
@@ -121,7 +64,6 @@ const CreateCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Dr. Wasfia Rahman"
-                                    {...register("campProfessionals")}
                                     title="Healthcare Professionals Name"
                                 />
                             </div>
@@ -132,15 +74,13 @@ const CreateCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Heart/Cancer"
-                                    {...register("campCategory")}
                                     title="Category"
                                 />
                             </div>
                             <div className="space-y-2">
                                 <h1 className="text-xm font-normal text-grayText">Description</h1>
                                 <textarea
-                                    placeholder="Description"
-                                    {...register("campDetails")}
+                                    placeholder="Event Details"
                                     className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                 ></textarea>
@@ -151,7 +91,7 @@ const CreateCamp = () => {
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
                             <div>
-                                <h1 className="text-textDark text-lg font-medium">Camp Details</h1>
+                                <h1 className="text-textDark text-lg font-medium">Event Details</h1>
                             </div>
 
                             <div className="flex items-center gap-2">
@@ -163,7 +103,6 @@ const CreateCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="Date"
-                                        {...register("campDate")}
                                         title="Date"
                                     />
                                 </div>
@@ -174,7 +113,6 @@ const CreateCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="Time"
-                                        {...register("campTime")}
                                         title="Time"
                                     />
                                 </div>
@@ -185,7 +123,6 @@ const CreateCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
                                         required
                                         placeholder="ParkHoliday,Gulshan,Dhaka"
-                                        {...register("campVenue")}
                                         title="Venue"
                                     />
                                 </div>
@@ -208,13 +145,12 @@ const CreateCamp = () => {
                                 <div className="w-full h-60 border-2 border-dashed border-borderColour">
 
                                 </div>
-                                {/* {...register("campImage")} */}
                                 <div className="mt-5">
                                     <button className="flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
                                         <span>
                                             <LuUpload className="text-[16px]" />
-                                        </span>                                        
-                                        Upload Image
+                                        </span>
+                                        Change Image
                                     </button>
                                 </div>
                             </div>
@@ -236,7 +172,6 @@ const CreateCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
                                         required
                                         placeholder="25-40/Adult/Child/Older"
-                                        {...register("campAge")}
                                         title="Age"
                                     />
                                 </div>
@@ -246,7 +181,6 @@ const CreateCamp = () => {
                                         type="gender"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         placeholder="Male/Female"
-                                        {...register("campGender")}
                                         title="Gender"
                                     />
                                 </div>
@@ -258,7 +192,7 @@ const CreateCamp = () => {
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
                             <div>
-                                <h1 className="text-textDark text-lg font-medium">Camp Price</h1>
+                                <h1 className="text-textDark text-lg font-medium">Event Price</h1>
                             </div>
 
                             <div>
@@ -269,7 +203,6 @@ const CreateCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="200 BDT"
-                                        {...register("campFee")}
                                         title="Enrollment Fee"
                                     />
                                 </div>
@@ -283,4 +216,4 @@ const CreateCamp = () => {
     )
 }
 
-export default CreateCamp
+export default EditCamp

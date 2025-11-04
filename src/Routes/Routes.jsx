@@ -21,10 +21,10 @@ import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackA
 import CampRegistration from "../page/CampRegistration/CampRegistration";
 import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard";
 import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
+import EditCamp from "../page/Dashboard/Admin/EditCamp/EditCamp";
 // import Loader from './../components/Loader';
 // import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
 // import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
-
 
 export const router = createBrowserRouter([
     {
@@ -109,6 +109,10 @@ export const router = createBrowserRouter([
             {
                 path: "create-camp",
                 element: <PrivateRoutes><CreateCamp /></PrivateRoutes>,
+            },
+            {
+                path: "edit-camp",
+                element: <PrivateRoutes><EditCamp /></PrivateRoutes>,
             },
             {
                 path: "manage-camps",
