@@ -22,6 +22,7 @@ import CampRegistration from "../page/CampRegistration/CampRegistration";
 import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard";
 import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
 import EditCamp from "../page/Dashboard/Admin/EditCamp/EditCamp";
+import CampHub from "../page/Dashboard/Admin/Manage/CampHub/CampHub";
 // import Loader from './../components/Loader';
 // import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
 // import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
@@ -114,6 +115,10 @@ export const router = createBrowserRouter([
                 path: "edit-camp",
                 element: <PrivateRoutes><EditCamp /></PrivateRoutes>,
                 // loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
+            },
+            {
+                path: "camp-hub",
+                element: <PrivateRoutes><CampHub /></PrivateRoutes>,
             },
             {
                 path: "manage-camps",
