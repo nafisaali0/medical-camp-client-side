@@ -7,23 +7,54 @@ import useCamp from "../../../../../hooks/useCamp"
 import { MdDeleteOutline, MdOutlineUpdate } from "react-icons/md"
 import { ImBasecamp } from "react-icons/im"
 import { IoTodayOutline } from "react-icons/io5"
+import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost"
+import Swal from "sweetalert2"
 
 
 const CampHub = () => {
 
-    const [camp] = useCamp();
+    const [camp, refetch, loading] = useCamp();
+    const axiosLocalhost = useAxioslocalhost();
     const [cardOpen, setCardOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(null)
 
     function handleCardDropDown(index) {
         console.log(cardIndex)
         if (cardIndex === index) {
-            // console.log(cardIndex)
             setCardOpen(!cardOpen);
         } else {
             setCardIndex(index);
             setCardOpen(true);
         }
+    }
+
+    const handleDelete = id => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete it this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosLocalhost.delete(`/camp/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'Your camp has been deleted.',
+                                'success'
+                            )
+                            loading()
+                            refetch();
+                        }
+                    })
+            }
+        })
+
     }
 
     return (
@@ -118,6 +149,7 @@ const CampHub = () => {
                                                             </Link>
                                                             <div className="bg-btnColor rounded-full p-2">
                                                                 <MdDeleteOutline
+                                                                    onClick={() => handleDelete(campInfo._id)}
                                                                     className="text-[18px] text-white cursor-pointer"
                                                                     title="Delete" />
                                                             </div>
@@ -225,6 +257,7 @@ const CampHub = () => {
                                                                         </Link>
                                                                         <div className="bg-btnColor rounded-full p-2">
                                                                             <MdDeleteOutline
+                                                                                onClick={() => handleDelete(campInfo._id)}
                                                                                 className="text-[18px] text-white cursor-pointer"
                                                                                 title="Delete" />
                                                                         </div>
