@@ -201,13 +201,15 @@ const CampHub = () => {
                             <>
                                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                                     {
-                                        camp.map((campInfo, index) =>
+                                        camp?.map((campInfo, index) =>
                                             <>
                                                 <div key={index} className="relative">
                                                     <div
                                                         onClick={() => handleCardDropDown(index)}
                                                         className="h-24 px-3 py-2 border border-borderColour rounded-xl shadow-lg space-y-2">
+                                                        
                                                         <div className="flex items-center justify-between">
+
                                                             <div>
                                                                 <h1 className="text-sm font-semibold text-textDark">{campInfo?.campName}</h1>
                                                             </div>
@@ -219,13 +221,16 @@ const CampHub = () => {
                                                                         <CiCircleChevDown className="text-[25px] text-textDark cursor-pointer" />
                                                                 }
                                                             </div>
+
                                                         </div>
+
                                                         <div>
                                                             <div className="flex items-center gap-1">
                                                                 <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
                                                                 <p className="text-sm font-medium text-textDark">{campInfo?.date}</p>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                     {
                                                         cardOpen && cardIndex === index && (
@@ -233,6 +238,7 @@ const CampHub = () => {
                                                                 key={index}
                                                                 className="w-full absolute left-0 mt-2 bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
                                                             >
+
                                                                 <div className="space-y-1">
                                                                     <h1 className="text-sm font-medium text-textDark">
                                                                         <span className="font-semibold">Time: </span>
@@ -246,7 +252,9 @@ const CampHub = () => {
                                                                         <span className="font-semibold">Fee: </span>
                                                                         {campInfo?.campFees} BDT</h1>
                                                                 </div>
+
                                                                 <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">
+
                                                                     <div className="flex items-center gap-2">
                                                                         <Link
                                                                             to={`/dashboard/update-camp/${campInfo?._id}`}
@@ -275,6 +283,7 @@ const CampHub = () => {
                                                                     </div>
 
                                                                 </div>
+                                                                
                                                             </div>
                                                         )}
                                                 </div>
