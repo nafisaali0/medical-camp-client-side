@@ -2,14 +2,15 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import useUsers from "../../../hooks/useUsers";
 import logo from '../../../assets/images/logo/logo_footer.png'
-import { MdManageAccounts, MdManageHistory, MdOutlineConfirmationNumber, MdOutlinePayment } from "react-icons/md";
-import { IoIosArrowDown, IoIosArrowDropdown } from "react-icons/io";
+import { MdManageHistory, MdOutlineConfirmationNumber, MdOutlinePayment } from "react-icons/md";
+import { IoIosArrowDropdown } from "react-icons/io";
 import { IoCreateOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 import { HiBars2, } from "react-icons/hi2";
 import { RxDashboard } from "react-icons/rx";
-import { SiBasecamp } from "react-icons/si";
 import { VscFeedback } from "react-icons/vsc";
+import { ImBasecamp } from "react-icons/im";
+import { FaUsersViewfinder } from "react-icons/fa6";
 
 const NavDashboard = ({ isOpen, setIsOpen }) => {
 
@@ -62,18 +63,13 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 </span>
                                             </Link>
                                             <Link
-                                                to="/dashboard/organizer-profile"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/organizer-profile')
-                                                    ? 'sideNavLink'
-                                                    : ''
-                                                    }`}>
-                                                <MdManageAccounts className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                to="/dashboard/create-camp"
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/create-camp')
+                                                    ? 'sideNavLink' : ''}`}>
+                                                <IoCreateOutline className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <span
-                                                    className={`lg:flex lg:text-md font-medium
-                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>
-
-                                                    Profile
-
+                                                    className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                    Create Camp
                                                 </span>
                                             </Link>
                                             {/* <Link
@@ -85,8 +81,8 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                     className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                     Create Camp
                                                 </span>
-                                            </Link> */}
-                                            {/* <Link
+                                            </Link>
+                                            <Link
                                                 to="/dashboard/edit-camp"
                                                 className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/edit-camp')
                                                     ? 'sideNavLink' : ''}`}>
@@ -96,16 +92,6 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                     Edit-camp
                                                 </span>
                                             </Link> */}
-                                            <Link
-                                                to="/dashboard/create-camp"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/create-camp')
-                                                    ? 'sideNavLink' : ''}`}>
-                                                <IoCreateOutline className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                <span
-                                                    className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    Create Camp
-                                                </span>
-                                            </Link>
                                             <div className="flex justify-start items-center gap-2 rounded p-[11px] text-white">
                                                 <MdManageHistory className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <div className={`dropdown dropdown-start lg:w-full ${isOpen ? "w-full" : ""}`}>
@@ -117,19 +103,10 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                         </span>
                                                     </div>
                                                     <div tabIndex="-1" className="dropdown-content mt-4">
-                                                        {/* <Link
-                                                            to="/dashboard/manage-camps"
-                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-camps') ? 'sideNavDropdown' : ''}`}>
-                                                            <SiBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                            <span
-                                                                className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                                Camp Hub
-                                                            </span>
-                                                        </Link> */}
                                                         <Link
                                                             to="/dashboard/manage-Users"
                                                             className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-Users') ? 'sideNavDropdown' : ''}`}>
-                                                            <SiBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                            <FaUsersViewfinder className={`lg:text-[19px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                             <span
                                                                 className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                                 All Users
@@ -138,23 +115,12 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                         <Link
                                                             to="/dashboard/manage-camp-hub"
                                                             className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-camp-hub') ? 'sideNavDropdown' : ''}`}>
-                                                            <SiBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                            <ImBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                             <span
                                                                 className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                                 Camp Hub
                                                             </span>
                                                         </Link>
-                                                        {/* <Link
-                                                            to="/dashboard/manage-registered-camps"
-                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-registered-camps')
-                                                                ? 'sideNavDropdown'
-                                                                : ''}`}>
-                                                            <MdOutlineConfirmationNumber className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                            <span
-                                                                className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                                Enrollments
-                                                            </span>
-                                                        </Link> */}
                                                         <Link
                                                             to="/dashboard/manage-enroll-camps"
                                                             className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-enroll-camps')
@@ -166,6 +132,26 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                                 Enrollments
                                                             </span>
                                                         </Link>
+                                                        {/* <Link
+                                                            to="/dashboard/manage-camps"
+                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-camps') ? 'sideNavDropdown' : ''}`}>
+                                                            <SiBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                            <span
+                                                                className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                                Camp Hub
+                                                            </span>
+                                                        </Link> */}
+                                                        {/* <Link
+                                                            to="/dashboard/manage-registered-camps"
+                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-registered-camps')
+                                                                ? 'sideNavDropdown'
+                                                                : ''}`}>
+                                                            <MdOutlineConfirmationNumber className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                            <span
+                                                                className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                                Enrollments
+                                                            </span>
+                                                        </Link> */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -188,25 +174,12 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 </span>
                                             </Link>
                                             <Link
-                                                to="/dashboard/participant-profile"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/participant-profile')
-                                                    ? 'sideNavLink'
-                                                    : ''
-                                                    }`}>
-                                                <MdManageAccounts className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                <span
-                                                    className={`lg:flex lg:text-md font-medium
-                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    Profile
-                                                </span>
-                                            </Link>
-                                            <Link
                                                 to="/dashboard/registered-camps"
                                                 className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/registered-camps')
                                                     ? 'sideNavLink'
                                                     : ''
                                                     }`}>
-                                                <SiBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                <ImBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <span
                                                     className={`lg:flex lg:text-md font-medium
                                                     ${isOpen ? "flex text-xs" : "hidden"}`}>

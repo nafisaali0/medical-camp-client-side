@@ -1,9 +1,9 @@
-import { PiUsersThreeLight } from "react-icons/pi"
 import useAllUsers from "../../../../../hooks/useAllUsers";
 import { VscSaveAs } from "react-icons/vsc";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import UserDetails from "./UserDetails";
+import { FaUsersViewfinder } from "react-icons/fa6";
 
 
 const AllUsers = () => {
@@ -18,7 +18,7 @@ const AllUsers = () => {
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
-                            <PiUsersThreeLight className="text-[22px]" />
+                            <FaUsersViewfinder className="text-[22px]" />
                             <h1 className="text-textDark text-lg font-medium">Manage Users</h1>
                         </div>
 

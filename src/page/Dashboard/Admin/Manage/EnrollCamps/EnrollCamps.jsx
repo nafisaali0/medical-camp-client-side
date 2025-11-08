@@ -1,7 +1,6 @@
-import { BiSolidPurchaseTag } from "react-icons/bi"
 import { Link } from "react-router-dom"
 import useCamp from "../../../../../hooks/useCamp";
-import { MdFormatListBulletedAdd } from "react-icons/md";
+import { MdFormatListBulletedAdd, MdOutlineConfirmationNumber } from "react-icons/md";
 import { useState } from "react";
 import { CiCalendarDate, CiCircleChevDown, CiCircleChevUp } from "react-icons/ci";
 import { LuView } from "react-icons/lu";
@@ -30,7 +29,7 @@ const EnrollCamps = () => {
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
-                            <BiSolidPurchaseTag className="text-[22px]" />
+                            <MdOutlineConfirmationNumber className="text-[22px]" />
                             <h1 className="text-textDark text-lg font-medium">Manage Enroll Camps</h1>
                         </div>
 

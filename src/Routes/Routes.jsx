@@ -13,8 +13,6 @@ import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
 import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps';
 import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
-import OrganizerProfile from "../page/Dashboard/OrganizerProfile/OrganizerProfile";
-import ParticipantProfile from './../page/Dashboard/ParticipantProfile/ParticipantProfile';
 import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
@@ -79,10 +77,6 @@ export const router = createBrowserRouter([
 
             // participant routes
             {
-                path: "participant-profile",
-                element: <PrivateRoutes><ParticipantProfile /></PrivateRoutes>,
-            },
-            {
                 path: "registered-camps",
                 element: <PrivateRoutes><RegisteredCamps /></PrivateRoutes>,
             },
@@ -101,10 +95,6 @@ export const router = createBrowserRouter([
             },
 
             // addmin routes
-            {
-                path: "organizer-profile",
-                element: <PrivateRoutes><OrganizerProfile /></PrivateRoutes>,
-            },
             {
                 path: "add-a-camp",
                 element: <PrivateRoutes><AddCamps /></PrivateRoutes>,
