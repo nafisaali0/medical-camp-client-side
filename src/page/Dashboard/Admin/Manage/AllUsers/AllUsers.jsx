@@ -1,9 +1,9 @@
 import { PiUsersThreeLight } from "react-icons/pi"
 import useAllUsers from "../../../../../hooks/useAllUsers";
 import { VscSaveAs } from "react-icons/vsc";
-import { LuView } from "react-icons/lu";
 import { AiOutlineUserDelete } from "react-icons/ai";
 import { MdFormatListBulletedAdd } from "react-icons/md";
+import UserDetails from "./UserDetails";
 
 
 const AllUsers = () => {
@@ -87,7 +87,9 @@ const AllUsers = () => {
                                                 <td className="px-4 py-3">
                                                     <div className="flex items-center gap-2 justify-center text-lg">
                                                         <div>
-                                                            <LuView className="cursor-pointer" />
+                                                            <UserDetails
+                                                                userInfo={userInfo}
+                                                            />
                                                         </div>
                                                         <div>
                                                             <VscSaveAs className="cursor-pointer" />
