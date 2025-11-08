@@ -3,6 +3,7 @@ import useAllUsers from "../../../../../hooks/useAllUsers";
 import { VscSaveAs } from "react-icons/vsc";
 import { LuView } from "react-icons/lu";
 import { AiOutlineUserDelete } from "react-icons/ai";
+import { MdFormatListBulletedAdd } from "react-icons/md";
 
 
 const AllUsers = () => {
@@ -14,9 +15,22 @@ const AllUsers = () => {
             <div className="space-y-5 overflow-hidden">
 
                 <div className="bg-white p-4 rounded-xl border border-borderColour">
-                    <div className="flex items-center gap-2">
-                        <PiUsersThreeLight className="text-[22px]" />
-                        <h1 className="text-textDark text-lg font-medium">Manage Users</h1>
+                    <div className="flex justify-between">
+
+                        <div className="flex items-center gap-2">
+                            <PiUsersThreeLight className="text-[22px]" />
+                            <h1 className="text-textDark text-lg font-medium">Manage Users</h1>
+                        </div>
+
+                        <div>
+                            <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                <span>
+                                    <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
+                                </span>
+                                Total : {allUsers?.length}
+                            </button>
+                        </div>
+
                     </div>
                 </div>
 
@@ -94,7 +108,7 @@ const AllUsers = () => {
 
                     </div>
                 </div>
-                
+
             </div>
         </>
     )

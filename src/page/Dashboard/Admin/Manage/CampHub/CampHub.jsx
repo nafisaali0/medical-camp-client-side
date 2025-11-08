@@ -4,7 +4,7 @@ import { IoMdAdd } from "react-icons/io"
 import { SiManageiq } from "react-icons/si"
 import { Link } from "react-router-dom"
 import useCamp from "../../../../../hooks/useCamp"
-import { MdDeleteOutline, MdOutlineUpdate } from "react-icons/md"
+import { MdDeleteOutline, MdFormatListBulletedAdd, MdOutlineUpdate } from "react-icons/md"
 import { ImBasecamp } from "react-icons/im"
 import { IoTodayOutline } from "react-icons/io5"
 import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost"
@@ -84,9 +84,24 @@ const CampHub = () => {
 
                 {/* All Camp */}
                 <div className="bg-white p-4 rounded-xl border border-borderColour">
-                    <div className="flex items-center gap-2">
-                        <ImBasecamp className="text-[22px]" />
-                        <h1 className="text-textDark text-lg font-medium">All Camps</h1>
+                    <div className="flex justify-between">
+
+                        <div className="flex items-center gap-2">
+                            <ImBasecamp className="text-[22px]" />
+                            <h1 className="text-textDark text-lg font-medium">All Camps</h1>
+                        </div>
+
+                        <div>
+                            <div>
+                                <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                    <span>
+                                        <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
+                                    </span>
+                                    Total : {camp?.length}
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -180,9 +195,22 @@ const CampHub = () => {
 
                 {/* Today Camp */}
                 <div className="bg-white p-4 rounded-xl border border-borderColour">
-                    <div className="flex items-center gap-2">
-                        <IoTodayOutline className="text-[22px]" />
-                        <h1 className="text-textDark text-lg font-medium">Today Camps</h1>
+                    <div className="flex justify-between">
+
+                        <div className="flex items-center gap-2">
+                            <IoTodayOutline className="text-[22px]" />
+                            <h1 className="text-textDark text-lg font-medium">Today Camps</h1>
+                        </div>
+
+                        <div>
+                            <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                <span>
+                                    <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
+                                </span>
+                                Total : {camp?.length}
+                            </button>
+                        </div>
+
                     </div>
                 </div>
 
@@ -207,7 +235,7 @@ const CampHub = () => {
                                                     <div
                                                         onClick={() => handleCardDropDown(index)}
                                                         className="h-24 px-3 py-2 border border-borderColour rounded-xl shadow-lg space-y-2">
-                                                        
+
                                                         <div className="flex items-center justify-between">
 
                                                             <div>
@@ -283,7 +311,7 @@ const CampHub = () => {
                                                                     </div>
 
                                                                 </div>
-                                                                
+
                                                             </div>
                                                         )}
                                                 </div>

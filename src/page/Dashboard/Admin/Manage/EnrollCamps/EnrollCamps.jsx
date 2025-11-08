@@ -35,14 +35,12 @@ const EnrollCamps = () => {
                         </div>
 
                         <div>
-                            <Link to={'/dashboard/create-camp'}>
-                                <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
-                                    <span>
-                                        <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
-                                    </span>
-                                    Total : {camp.length}
-                                </button>
-                            </Link>
+                            <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                <span>
+                                    <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
+                                </span>
+                                Total : {camp?.length}
+                            </button>
                         </div>
 
                     </div>
