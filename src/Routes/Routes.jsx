@@ -21,11 +21,9 @@ import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard";
 import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
 import EditCamp from "../page/Dashboard/Admin/EditCamp/EditCamp";
 import CampHub from "../page/Dashboard/Admin/Manage/CampHub/CampHub";
-import AllUsers from "../page/Dashboard/Admin/Manage/AllUsers/AllUsers";
-// import Loader from './../components/Loader';
-// import ProfessionalProfile from './../page/Dashboard/ProfessionalProfile/ProfessionalProfile';
-// import DefaultProfile from './../page/Dashboard/DefaultProfile/DefaultProfile';
+import AllUsers from "../page/Dashboard/Admin/Manage/AllUsers/AllUsers"
 import EnrollCamps from './../page/Dashboard/Admin/Manage/EnrollCamps/EnrollCamps';
+import MyCamps from "../page/Dashboard/Participant/MyCamps/MyCamps";
 
 export const router = createBrowserRouter([
     {
@@ -76,6 +74,10 @@ export const router = createBrowserRouter([
             },
 
             // participant routes
+            {
+                path: "my-camps",
+                element: <PrivateRoutes><MyCamps/></PrivateRoutes>,
+            },
             {
                 path: "registered-camps",
                 element: <PrivateRoutes><RegisteredCamps /></PrivateRoutes>,

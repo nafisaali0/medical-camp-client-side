@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom"
-import useCamp from "../../../../../hooks/useCamp";
-import { MdFormatListBulletedAdd, MdOutlineConfirmationNumber } from "react-icons/md";
 import { useState } from "react";
+import useCamp from "../../../../hooks/useCamp";
+import { MdFormatListBulletedAdd } from "react-icons/md";
+import { ImBasecamp } from "react-icons/im";
 import { CiCalendarDate, CiCircleChevDown, CiCircleChevUp } from "react-icons/ci";
+import { Link } from "react-router-dom";
 import { LuView } from "react-icons/lu";
 import { GrStatusGood } from "react-icons/gr";
+import Review from "./Review";
 
-const EnrollCamps = () => {
+
+const MyCamps = () => {
 
     const [camp] = useCamp();
     const [cardOpen, setCardOpen] = useState(false)
@@ -29,8 +32,8 @@ const EnrollCamps = () => {
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
-                            <MdOutlineConfirmationNumber className="text-[22px]" />
-                            <h1 className="text-textDark text-lg font-medium">Manage Enroll Camps</h1>
+                            <ImBasecamp className="text-[22px]" />
+                            <h1 className="text-textDark text-lg font-medium">My Camps</h1>
                         </div>
 
                         <div>
@@ -86,10 +89,6 @@ const EnrollCamps = () => {
                                                 >
                                                     <div className="space-y-1">
                                                         <h1 className="text-sm font-medium text-textDark">
-                                                            <span className="font-semibold">Participent: </span>
-                                                            100
-                                                        </h1>
-                                                        <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Time: </span>
                                                             {campInfo?.time}
                                                         </h1>
@@ -105,12 +104,15 @@ const EnrollCamps = () => {
                                                     <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">
 
                                                         <div className="flex items-center gap-2">
+                                                            <div className="bg-btnColor rounded-full p-2">
+                                                                <Review />
+                                                            </div>
                                                             <Link
                                                                 to={`/camp-details/${campInfo?._id}`}
                                                                 className="bg-btnColor rounded-full p-2">
                                                                 <LuView
                                                                     className="text-[18px] text-white cursor-pointer"
-                                                                    title="View Details Camp" />
+                                                                    title="View Camp Details" />
                                                             </Link>
                                                         </div>
 
@@ -139,4 +141,4 @@ const EnrollCamps = () => {
     )
 }
 
-export default EnrollCamps
+export default MyCamps

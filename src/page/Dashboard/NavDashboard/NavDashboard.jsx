@@ -174,8 +174,8 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 </span>
                                             </Link>
                                             <Link
-                                                to="/dashboard/registered-camps"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/registered-camps')
+                                                to="/dashboard/my-camps"
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/my-camps')
                                                     ? 'sideNavLink'
                                                     : ''
                                                     }`}>
@@ -209,6 +209,19 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                     Review
                                                 </span>
                                             </Link>
+                                            {/* <Link
+                                                to="/dashboard/registered-camps"
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/registered-camps')
+                                                    ? 'sideNavLink'
+                                                    : ''
+                                                    }`}>
+                                                <ImBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
+                                                <span
+                                                    className={`lg:flex lg:text-md font-medium
+                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>
+                                                    My Camps
+                                                </span>
+                                            </Link> */}
                                         </>
                                     )}
                                 </React.Fragment>
