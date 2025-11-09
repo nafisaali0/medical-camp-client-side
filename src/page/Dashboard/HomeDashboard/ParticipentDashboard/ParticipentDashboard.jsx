@@ -3,7 +3,7 @@ const ParticipentDashboard = () => {
     return (
         <>
             <div>
-                
+                Participent
             </div>
         </>
     )
