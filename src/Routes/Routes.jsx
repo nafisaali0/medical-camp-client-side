@@ -17,13 +17,13 @@ import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import CampRegistration from "../page/CampRegistration/CampRegistration";
-import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard";
 import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
 import EditCamp from "../page/Dashboard/Admin/EditCamp/EditCamp";
 import CampHub from "../page/Dashboard/Admin/Manage/CampHub/CampHub";
 import AllUsers from "../page/Dashboard/Admin/Manage/AllUsers/AllUsers"
 import EnrollCamps from './../page/Dashboard/Admin/Manage/EnrollCamps/EnrollCamps';
 import MyCamps from "../page/Dashboard/Participant/MyCamps/MyCamps";
+import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard/HomeDashboard";
 
 export const router = createBrowserRouter([
     {
@@ -76,7 +76,7 @@ export const router = createBrowserRouter([
             // participant routes
             {
                 path: "my-camps",
-                element: <PrivateRoutes><MyCamps/></PrivateRoutes>,
+                element: <PrivateRoutes><MyCamps /></PrivateRoutes>,
             },
             {
                 path: "registered-camps",
