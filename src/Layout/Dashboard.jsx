@@ -180,7 +180,7 @@ const Dashboard = () => {
 
                 </div>
 
-                <div className="flex-1 min-h-screen ml-16 lg:ml-60 px-3 py-10 lg:px-14 md:px-5">
+                <div className="flex-1 min-h-screen ml-16 lg:ml-60 px-3 py-10 lg:px-8 md:px-5">
 
                     <Outlet></Outlet>
 

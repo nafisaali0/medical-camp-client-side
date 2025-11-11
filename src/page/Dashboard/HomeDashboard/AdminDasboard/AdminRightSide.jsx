@@ -17,7 +17,7 @@ const AdminRightSide = ({ currentUser }) => {
                                     className="w-full h-56 xl:w-56 rounded-xl" />
                             </figure>
                         </div>
-                        <div className="absolute -top-5 right-14 md:right-56 xl:right-20">
+                        <div className="absolute -top-5 right-16 md:right-56 lg:right-64 xl:right-24">
                             <button className="bg-white/10 rounded-xl p-2">
                                 <FaRegEdit
                                     className="text-[18px] text-white"
