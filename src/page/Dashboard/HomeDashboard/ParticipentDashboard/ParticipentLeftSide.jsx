@@ -1,10 +1,9 @@
 import TodayCamp from "../TodayCamp/TodayCamp"
-import { FaUsers } from "react-icons/fa"
 import { ImBasecamp } from "react-icons/im"
-import { MdOutlineConfirmationNumber } from "react-icons/md"
 import { TbHealthRecognition } from "react-icons/tb"
 import moment from "moment";
 import dashboard from "../../../../assets/images/Dashboard/dashboard_1-removebg.png"
+import { SiVirustotal } from "react-icons/si"
 
 const ParticipentLeftSide = ({ currentUser }) => {
 
@@ -44,40 +43,20 @@ const ParticipentLeftSide = ({ currentUser }) => {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row items-center gap-4 mt-7">
+                <div className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
 
-                    <div className="p-4 w-full bg-white rounded-xl">
-                        <h1 className="text-xl font-semibold text-textDark">Total Camp</h1>
-                        <div className="flex items-center gap-3 mt-3">
-                            <div className="bg-btnColor rounded-xl p-2">
-                                <ImBasecamp
-                                    className="text-[16px] text-white"
-                                    title="Change Image" />
-                            </div>
-                            <p className="text-lg font-semibold text-textDark">500</p>
-                        </div>
+                    <div className="flex items-center gap-1">
+                        <ImBasecamp className="text-[16px] md:text-[22px]" />
+                        <h1 className="text-textDark text-xm md:text-lg font-medium">Your Camps</h1>
                     </div>
-                    <div className="p-4 w-full bg-white rounded-xl">
-                        <h1 className="text-xl font-semibold text-textDark">Total Enroll Camp</h1>
-                        <div className="flex items-center gap-3 mt-3">
-                            <div className="bg-btnColor rounded-xl p-2">
-                                <MdOutlineConfirmationNumber
-                                    className="text-[16px] text-white"
-                                    title="Change Image" />
-                            </div>
-                            <p className="text-lg font-semibold text-textDark">500</p>
-                        </div>
-                    </div>
-                    <div className="p-4 w-full bg-white rounded-xl">
-                        <h1 className="text-xl font-semibold text-textDark">Total User</h1>
-                        <div className="flex items-center gap-3 mt-3">
-                            <div className="bg-btnColor rounded-xl p-2">
-                                <FaUsers
-                                    className="text-[16px] text-white"
-                                    title="Change Image" />
-                            </div>
-                            <p className="text-lg font-semibold text-textDark">500</p>
-                        </div>
+
+                    <div>
+                        <button className="flex items-center gap-1 px-2 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                            <span>
+                                <SiVirustotal className="text-[16px]" />
+                            </span>
+                            Total : 100
+                        </button>
                     </div>
 
                 </div>

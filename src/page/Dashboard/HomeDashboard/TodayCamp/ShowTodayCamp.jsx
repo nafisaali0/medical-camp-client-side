@@ -56,15 +56,15 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
             <div className="bg-white p-4 rounded-xl border border-borderColour my-7">
                 <div className="flex justify-between">
 
-                    <div className="flex items-center gap-2">
-                        <IoTodayOutline className="text-[22px]" />
-                        <h1 className="text-textDark text-lg font-medium">Today Camps</h1>
+                    <div className="flex items-center gap-1">
+                        <IoTodayOutline className="text-[16px] md:text-[22px]" />
+                        <h1 className="text-textDark text-xm md:text-lg font-medium">Today Camps</h1>
                     </div>
 
                     <div>
-                        <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                        <button className="flex items-center gap-1 md:px-3 px-2 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
                             <span>
-                                <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
+                                <MdFormatListBulletedAdd className="text-[16px] md:text-[20px]" />
                             </span>
                             Total : {camp?.length}
                         </button>
@@ -123,7 +123,7 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
                                                     cardOpen && cardIndex === index && (
                                                         <div
                                                             key={index}
-                                                            className="w-auto absolute left-0 -mt-5 bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
+                                                            className="w-auto absolute left-0 -mt-14  bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
                                                         >
 
                                                             <div className="space-y-1">

@@ -1,14 +1,15 @@
+import { CiCalendarDate } from "react-icons/ci";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineUpdate } from "react-icons/md";
 
-const AdminRightSide = ({currentUser}) => {
+const AdminRightSide = ({ currentUser }) => {
 
     return (
         <>
-            <div className="flex-1 w-auto relative">
-                <div className="bg-white p-4 rounded-xl shadow-lg mt-8">
+            <div className="flex-1 w-full">
+                <div className="bg-white p-4 rounded-xl shadow-lg mt-8 relative">
                     <div className="flex flex-col justify-center items-center text-center">
-                        <div className="w-full -mt-12 flex justify-center items-center relative">
+                        <div className="-mt-12 flex justify-center items-center">
                             <figure>
                                 <img
                                     src={currentUser?.photo}
@@ -16,7 +17,7 @@ const AdminRightSide = ({currentUser}) => {
                                     className="w-full h-56 xl:w-56 rounded-xl" />
                             </figure>
                         </div>
-                        <div className="absolute top-2 right-20">
+                        <div className="absolute -top-5 right-14 md:right-56 xl:right-20">
                             <button className="bg-white/10 rounded-xl p-2">
                                 <FaRegEdit
                                     className="text-[18px] text-white"
@@ -31,7 +32,7 @@ const AdminRightSide = ({currentUser}) => {
                     </div>
                 </div>
 
-                <div className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-5">
+                <div className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-7">
                     <div className="bg-white p-4 rounded-xl space-y-5">
                         <div className="flex justify-between items-center">
                             <h1 className="text-textDark text-lg font-medium">Profile Details</h1>
@@ -81,12 +82,21 @@ const AdminRightSide = ({currentUser}) => {
                         <div className="space-y-2">
                             <h1 className="text-xm font-normal text-grayText">Address</h1>
                             <textarea
-                                placeholder="Description"
+                                placeholder="Address"
                                 // // defaultValue={userAddress}
                                 // {...register("userAddress")}
                                 className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                 required
                             ></textarea>
+                        </div>
+                        <div className="flex justify-between items-center">
+                            <div className="flex items-center gap-2">
+                                <CiCalendarDate className="text-lg text-textDark"/>
+                                <h1 className="text-lg font-medium text-textDark">Join</h1>
+                            </div>
+                            <div>
+                                <h1 className="text-lg font-medium text-grayText">6 October 2020</h1>
+                            </div>
                         </div>
                     </div>
                 </div>
