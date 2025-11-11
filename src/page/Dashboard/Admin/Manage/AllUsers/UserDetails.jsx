@@ -2,7 +2,7 @@ import { LuView } from "react-icons/lu"
 // import useAllUsers from "../../../../../hooks/useAllUsers";
 
 const UserDetails = ({ userInfo }) => {
-
+    console.log(userInfo)
     return (
         <>
             {/* The button to open modal */}

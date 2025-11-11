@@ -141,5 +141,10 @@
   border-bottom-right-radius: 15px;
   width: 70%;
 }
-
+.glassBlur {
+  color: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: -1000;
+}
 /* dasboard end */
