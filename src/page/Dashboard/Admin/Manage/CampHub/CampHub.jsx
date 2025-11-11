@@ -6,7 +6,6 @@ import { Link } from "react-router-dom"
 import useCamp from "../../../../../hooks/useCamp"
 import { MdDeleteOutline, MdFormatListBulletedAdd, MdOutlineUpdate } from "react-icons/md"
 import { ImBasecamp } from "react-icons/im"
-import { IoTodayOutline } from "react-icons/io5"
 import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost"
 import Swal from "sweetalert2"
 
@@ -194,7 +193,7 @@ const CampHub = () => {
                 </div>
 
                 {/* Today Camp */}
-                <div className="bg-white p-4 rounded-xl border border-borderColour">
+                {/* <div className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
@@ -324,7 +323,7 @@ const CampHub = () => {
                     }
 
 
-                </div>
+                </div> */}
             </div>
         </>
     )

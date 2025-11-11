@@ -4,6 +4,7 @@ import dashboard from "../../../../assets/images/Dashboard/dashboard_1-removebg.
 import { ImBasecamp } from "react-icons/im";
 import { MdOutlineConfirmationNumber } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
+import TodayCamp from "../TodayCamp/TodayCamp";
 
 const AdminLeftSide = ({ currentUser }) => {
 
@@ -43,7 +44,7 @@ const AdminLeftSide = ({ currentUser }) => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-4 mt-5">
+        <div className="flex flex-col md:flex-row items-center gap-4 mt-7">
 
           <div className="p-4 w-full bg-white rounded-xl">
             <h1 className="text-xl font-semibold text-textDark">Total Camp</h1>
@@ -80,6 +81,9 @@ const AdminLeftSide = ({ currentUser }) => {
           </div>
 
         </div>
+
+        <TodayCamp />
+        
       </div>
     </>
   )
