@@ -9,6 +9,7 @@ import { BsArrowLeftSquareFill, BsPerson } from "react-icons/bs";
 import { TfiEmail } from "react-icons/tfi";
 import { TbLockPassword } from "react-icons/tb";
 import background from "../../assets/images/background/bg_form6.png"
+import moment from "moment";
 
 const SignUp = () => {
 
@@ -21,9 +22,10 @@ const SignUp = () => {
         reset();
         const userInfo = {
             userName: data.name,
-            userEmail: data.email,
+            email: data.email,
             userPassword: data.password,
             userRole: "Participant",
+            date: moment().format("MMM Do YY"),
         };
 
         try {

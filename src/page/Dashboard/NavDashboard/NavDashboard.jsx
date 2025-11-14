@@ -49,7 +49,7 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                         {
                             users?.map((eachUser) => (
                                 <React.Fragment key={eachUser.id}>
-                                    {eachUser?.role === "Admin" && (
+                                    {eachUser?.userRole === "Admin" && (
                                         <>
                                             <Link
                                                 to="/dashboard"
@@ -157,7 +157,7 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                             </div>
                                         </>
                                     )}
-                                    {eachUser?.role === "Participant" && (
+                                    {eachUser?.userRole === "Participant" && (
                                         <>
                                             <Link
                                                 to="/dashboard"

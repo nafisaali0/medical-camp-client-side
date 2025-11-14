@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import useAxioslocalhost from "../hooks/useAxioslocalhost";
 import { FcGoogle } from "react-icons/fc";
+import moment from "moment";
 
 const SocialLogin = () => {
 
@@ -10,24 +11,35 @@ const SocialLogin = () => {
     const navigate = useNavigate()
     const { googleLogIn } = useAuth()
     const handleGoogle = () => {
+
         googleLogIn()
+
             .then(result => {
                 console.log(result.user);
+                // navigate('/')
                 const userInfo = {
                     userName: result.user?.displayName,
-                    userEmail: result.user?.email,
+                    email: result.user?.email,
                     userImage: result.user?.photoURL,
-                    userRole:"Participant"
-
+                    userRole: "Participant",
+                    date: moment().format("MMM Do YY"),
                 }
-                axiosLocalhost.post('/users', userInfo)
-                    .then(res => {
-                        console.log(res.data);
-                        Swal.fire(
-                            'Login Successfully!'
-                        ),
-                            navigate('/')
-                    })
+                return (
+                    axiosLocalhost.post('/users', userInfo)
+                )
+            })
+            .then(res => {
+                if (res.data.insertedId) {
+                    console.log('user create')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Sign Up successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    navigate('/')
+                }
             })
             .catch(error => {
                 console.log(error)
@@ -41,22 +53,10 @@ const SocialLogin = () => {
                     })
                 )
             })
+
     }
 
     return (
-        // <div>
-        //     <div>
-        //         <button
-        //             onClick={handleGoogle}
-        //             className="w-full py-3 bg-gradient-to-r from-blue-500 to-indigo-800 text-white"
-        //             type="submit"
-        //             data-ripple-light="true"
-        //         >
-        //             Sign In With Google
-        //         </button>
-        //     </div>
-        // </div>
-
         <>
             <button
                 onClick={handleGoogle}
