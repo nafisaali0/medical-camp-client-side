@@ -16,7 +16,7 @@ const SocialLogin = () => {
 
             .then(result => {
                 console.log(result.user);
-                // navigate('/')
+                navigate('/')
                 const userInfo = {
                     userName: result.user?.displayName,
                     email: result.user?.email,

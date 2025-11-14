@@ -62,12 +62,12 @@ const AllUsers = () => {
                                                         <div className="avatar">
                                                             <div className="w-10 rounded-full">
                                                                 <img
-                                                                    src={userInfo.photo}
-                                                                    alt="User Avatar"
+                                                                    src={userInfo.userImage}
+                                                                    alt="User"
                                                                 />
                                                             </div>
                                                         </div>
-                                                        <span className="">{userInfo.name}</span>
+                                                        <span className="">{userInfo.userName}</span>
                                                     </div>
                                                 </td>
                                                 <td className="px-4 py-3">
@@ -77,9 +77,11 @@ const AllUsers = () => {
                                                 </td>
                                                 <td>
                                                     <div>
-                                                        <select defaultValue={userInfo.role} className="select  select-sm focus:border-0 focus:outline-none">
-                                                            <option disabled={true}>{userInfo.role}</option>
-                                                            <option>Participent</option>
+                                                        {/* defaultValue={campName} */}
+                                                        <select defaultValue={userInfo.userRole} className="select select-sm focus:border-0 focus:outline-none">
+                                                            <option disabled={true}>{userInfo.userRole}</option>
+                                                            <option>Participant
+                                                            </option>
                                                             <option>Admin</option>
                                                         </select>
                                                     </div>

@@ -25,9 +25,9 @@ const AdminRightSide = ({ currentUser }) => {
                             </button>
                         </div>
                         <div className="mt-5">
-                            <h1 className="text-lg font-medium text-textDark">{currentUser?.name}</h1>
+                            <h1 className="text-lg font-medium text-textDark">{currentUser?.userName}</h1>
                             <h1 className="text-sm font-normal text-grayText">{currentUser?.email}</h1>
-                            <h1 className="text-sm font-normal text-grayText">{currentUser?.role}</h1>
+                            <h1 className="text-sm font-normal text-grayText">{currentUser?.userRole}</h1>
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const AdminRightSide = ({ currentUser }) => {
                                 required
                                 placeholder="Phone Number"
                                 // // defaultValue={userPhoneNumber}
-                                // {...register("userPhoneNumber")}
+                                // {...register("userPhone")}
                                 title="Phone Number"
                             />
                         </div>
@@ -95,7 +95,7 @@ const AdminRightSide = ({ currentUser }) => {
                                 <h1 className="text-lg font-medium text-textDark">Join</h1>
                             </div>
                             <div>
-                                <h1 className="text-lg font-medium text-grayText">6 October 2020</h1>
+                                <h1 className="text-lg font-medium text-grayText">{currentUser?.date}</h1>
                             </div>
                         </div>
                     </div>

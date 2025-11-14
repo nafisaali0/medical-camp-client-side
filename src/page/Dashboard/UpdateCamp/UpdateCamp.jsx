@@ -62,6 +62,7 @@ const UpdateCamp = () => {
         }
         // console.log('with image url', res.data);
     }
+    
     return (
         <>
             <Helmet>
