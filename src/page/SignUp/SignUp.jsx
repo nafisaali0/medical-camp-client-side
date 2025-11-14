@@ -14,51 +14,71 @@ const SignUp = () => {
 
     const { register, handleSubmit, reset, formState: { errors }, } = useForm();
     const axiosLocalhost = useAxioslocalhost()
-    const { updateUserProfile, signUpUser } = useAuth();
+    const { signUpUser } = useAuth();
     const navigate = useNavigate();
-
-    // image hosting 
-    // const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    // const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
     const onSubmit = async (data) => {
         reset();
+        const userInfo = {
+            userName: data.name,
+            userEmail: data.email,
+            userPassword: data.password,
+            userRole: "Participant",
+        };
 
-        // signup authentication
-        signUpUser(data.email, data.password)
-            .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser)
-                updateUserProfile(data.name, data.photo)
-                    .then(() => {
-                        console.log('user profile info updated')
-                        const userInfo = {
-                            name: data.name,
-                            email: data.email,
-                            photo: data.photo,
-                            role: data.role,
-                            phone: data.phone,
-                            address: data.address,
-                        }
-                        console.log(userInfo)
-                        axiosLocalhost.post('/users', userInfo)
-                            .then(res => {
-                                if (res.data.insertedId) {
-                                    console.log('user add')
-                                    reset();
-                                    Swal.fire({
-                                        position: "top-end",
-                                        icon: "success",
-                                        title: "Your work has been saved",
-                                        showConfirmButton: false,
-                                        timer: 1500
-                                    });
-                                    navigate('/')
-                                }
-                            })
-                    })
-                    .catch(error => console.log(error))
-            })
+        try {
+            const result = signUpUser(data.email, data.password)
+            console.log(result)
+
+            const res = await axiosLocalhost.post('/users', userInfo);
+
+            if (res.data.insertedId) {
+                console.log('user create')
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Sign Up successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate('/')
+            }
+        } catch (errors) {
+            console.log(errors);
+        }
+        // right code
+        // signUpUser(data.name, data.password)
+        //     .then(result => {
+        //         console.log(result)
+        //         const userInfo = {
+        //             userName: data.name,
+        //             userEmail: data.email,
+        //             userPassword: data.password,
+        //             userRole: "participent",
+        //         }
+        //         return (
+        //             axiosLocalhost.post('/users', userInfo)
+
+        //         )
+        //     })
+        //     .then(res => {
+        //         if (res.data.insertedId) {
+        //             console.log('user create')
+        //             reset();
+        //             Swal.fire({
+        //                 position: "top-end",
+        //                 icon: "success",
+        //                 title: "Sign Up successfully",
+        //                 showConfirmButton: false,
+        //                 timer: 1500
+        //             });
+        //             navigate('/')
+        //         }
+        //     })
+        //     .catch(errors => {
+        //         console.log(errors)
+        //     })
     }
 
     return (
@@ -208,6 +228,7 @@ const SignUp = () => {
                                 </div>
 
                             </form>
+
                         </div>
                     </div>
                 </div>
