@@ -12,13 +12,13 @@ const TodayCamp = () => {
     return (
         <>
             {
-                currentUser?.role === "Admin" ?
+                currentUser?.userRole === "Admin" ?
                     <ShowTodayCamp
                         camp={camp}
                         loading={loading}
                         refetch={refetch} />
                     :
-                    currentUser?.role === "Participant" ?
+                    currentUser?.userRole === "Participant" ?
                         <ShowTodayCamp
                             camp={camp}
                             loading={loading}

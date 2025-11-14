@@ -10,7 +10,7 @@ const HomeDashboard = () => {
     return (
         <>
             {
-                currentUser?.role === "Admin" ? <AdminDasboard /> : currentUser?.role === "Participant" ? <ParticipentDashboard /> : <></>
+                currentUser?.userRole === "Admin" ? <AdminDasboard /> : currentUser?.userRole === "Participant" ? <ParticipentDashboard /> : <></>
             }
         </>
     )
