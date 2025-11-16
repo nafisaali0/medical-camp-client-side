@@ -6,7 +6,7 @@ const UserDetails = ({ userInfo }) => {
     return (
         <>
             {/* The button to open modal */}
-            <label htmlFor="my_modal_6"><LuView className="cursor-pointer" /></label>
+            <label htmlFor="my_modal_6"><LuView title="View Details" className="cursor-pointer" /></label>
 
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="my_modal_6" className="modal-toggle" />

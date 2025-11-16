@@ -37,79 +37,78 @@ const AllUsers = () => {
                 <div className="bg-white px-4 py-10 rounded-xl border border-borderColour">
                     <div className="overflow-x-auto w-[290px] md:w-full shadow-sm">
 
-                        <table className="rounded-xl shadow w-[280px] md:w-full">
+                        <form action="">
+                            <table className="rounded-xl shadow w-[280px] md:w-full">
 
-                            <tr className="bg-btnColor border-borderColour text-lg font-medium text-white">
+                                <tr className="bg-btnColor border-borderColour text-lg font-medium text-white">
 
-                                <th className="px-4 py-3 text-center rounded-tl-xl">No</th>
-                                <th className="px-4 py-3 text-center">Name</th>
-                                <th className="px-4 py-3 text-center">Email</th>
-                                <th className="px-4 py-3 text-center">Role</th>
-                                <th className="px-4 py-3 text-center rounded-tr-xl">Action</th>
+                                    <th className="px-4 py-3 text-center rounded-tl-xl">No</th>
+                                    <th className="px-4 py-3 text-center">Name</th>
+                                    <th className="px-4 py-3 text-center">Email</th>
+                                    <th className="px-4 py-3 text-center">Role</th>
+                                    <th className="px-4 py-3 text-center rounded-tr-xl">Action</th>
 
-                            </tr>
+                                </tr>
 
-                            <tbody>
+                                <tbody>
 
-                                {
-                                    allUsers?.map((userInfo, index) =>
-                                        <>
-                                            <tr className="text-center text-sm font-medium text-textDark border-b border-b-borderColour hover:bg-base-200 cursor-pointer">
+                                    {
+                                        allUsers?.map((userInfo, index) =>
+                                            <>
+                                                <tr className="text-center text-sm font-medium text-textDark border-b border-b-borderColour hover:bg-base-200 cursor-pointer">
 
-                                                <td className="px-4 py-3">{index + 1}</td>
-                                                <td className="px-4 py-3">
-                                                    <div className="flex items-center gap-3 justify-center">
-                                                        <div className="avatar">
-                                                            <div className="w-10 rounded-full">
-                                                                <img
-                                                                    src={userInfo.userImage}
-                                                                    alt="User"
-                                                                />
+                                                    <td className="px-4 py-3">{index + 1}</td>
+                                                    <td className="px-4 py-3">
+                                                        <div className="flex items-center gap-3 justify-center">
+                                                            <div className="avatar">
+                                                                <div className="w-10 rounded-full">
+                                                                    <img
+                                                                        src={userInfo.userImage}
+                                                                        alt="User"
+                                                                    />
+                                                                </div>
+                                                            </div>
+                                                            <span className="">{userInfo.userName}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-4 py-3">
+                                                        <div className="w-[100px] lg:w-full truncate whitespace-nowrap overflow-hidden" title={userInfo.email}>
+                                                            <span>{userInfo.email}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <div>
+                                                            {/* defaultValue={campName} */}
+                                                            <select name="userRole" defaultValue={userInfo.userRole} className="select select-sm focus:border-0 focus:outline-none">
+                                                                {/* <option disabled={true}>{userInfo.userRole}</option> */}
+                                                                <option>Participant</option>
+                                                                <option>Admin</option>
+                                                            </select>
+                                                        </div>
+                                                    </td>
+                                                    <td className="px-4 py-3">
+                                                        <div className="flex items-center gap-2 justify-center text-lg">
+                                                            <div>
+                                                                <UserDetails
+                                                                    index={index}
+                                                                    userInfo={userInfo} />
+                                                            </div>
+                                                            <div>
+                                                                <VscSaveAs title="Update" className="cursor-pointer" />
+                                                            </div>
+                                                            <div>
+                                                                <AiOutlineUserDelete title="Remove User" className="cursor-pointer" />
                                                             </div>
                                                         </div>
-                                                        <span className="">{userInfo.userName}</span>
-                                                    </div>
-                                                </td>
-                                                <td className="px-4 py-3">
-                                                    <div className="w-[100px] lg:w-full truncate whitespace-nowrap overflow-hidden" title={userInfo.email}>
-                                                        <span>{userInfo.email}</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div>
-                                                        {/* defaultValue={campName} */}
-                                                        <select defaultValue={userInfo.userRole} className="select select-sm focus:border-0 focus:outline-none">
-                                                            <option disabled={true}>{userInfo.userRole}</option>
-                                                            <option>Participant
-                                                            </option>
-                                                            <option>Admin</option>
-                                                        </select>
-                                                    </div>
-                                                </td>
-                                                <td className="px-4 py-3">
-                                                    <div className="flex items-center gap-2 justify-center text-lg">
-                                                        <div>
-                                                            <UserDetails
-                                                                index={index}
-                                                                userInfo={userInfo}
-                                                            />
-                                                        </div>
-                                                        <div>
-                                                            <VscSaveAs className="cursor-pointer" />
-                                                        </div>
-                                                        <div>
-                                                            <AiOutlineUserDelete className="cursor-pointer" />
-                                                        </div>
-                                                    </div>
-                                                </td>
+                                                    </td>
+                                                </tr>
+                                            </>
 
-                                            </tr>
-                                        </>
+                                        )}
 
-                                    )}
-
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </form>
 
                     </div>
                 </div>
