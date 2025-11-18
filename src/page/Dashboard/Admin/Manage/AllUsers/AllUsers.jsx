@@ -37,7 +37,7 @@ const AllUsers = () => {
         }
     };
 
-    const handleDelete = id => {
+    const handleDelete = userId => {
 
         Swal.fire({
             title: 'Are you sure?',
@@ -49,7 +49,7 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, delete the user!'
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosLocalhost.delete(`/users/${id}`)
+                axiosLocalhost.delete(`/users/${userId}`)
                     .then(res => {
                         if (res.data.deletedCount > 0) {
                             Swal.fire(
@@ -170,7 +170,7 @@ const AllUsers = () => {
                                                         <div>
                                                             <AiOutlineUserDelete
                                                                 onClick={() => handleDelete(userInfo?._id)}
-                                                                title="Remove User" 
+                                                                title="Remove User"
                                                                 className="cursor-pointer" />
                                                         </div>
                                                     </div>
