@@ -136,28 +136,7 @@ const UpdateCamp = () => {
                                     placeholder="Time"
                                     defaultValue={time}
                                     {...register("time")}
-                                    className="input input-bordered w-full" />
-                                {/* <div className="flex items-center gap-5">
-                                    <div className="flex-1 w-1/2">
-                                        <input type="date"
-                                            placeholder="Date"
-                                            defaultValue={date}
-                                            {...register("date")}
-                                            className="input input-bordered w-full" />
-                                    </div>
-                                    <div className="flex-1 w-1/2">
-                                        <input type="text"
-                                            placeholder="Time"
-                                            defaultValue={time}
-                                            {...register("time")}
-                                            className="input input-bordered w-full" />
-                                    </div>
-                                </div> */}
-                                {/* <input type="number"
-                                    placeholder="Enroll Amount"
-                                    defaultValue={enroll}
-                                    {...register("enroll")}
-                                    className="input input-bordered w-full" /> */}
+                                    className="input input-bordered w-full" />                               
                                 <input type="text"
                                     placeholder="Short Description"
                                     defaultValue={shortDescription}

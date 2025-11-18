@@ -4,11 +4,65 @@ import { AiOutlineUserDelete } from "react-icons/ai";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import UserDetails from "./UserDetails";
 import { FaUsersViewfinder } from "react-icons/fa6";
-
+import Swal from "sweetalert2";
+import { useForm } from "react-hook-form";
+import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost";
 
 const AllUsers = () => {
 
     const [allUsers] = useAllUsers();
+    const { register, handleSubmit, reset } = useForm()
+    const axiosLocalhost = useAxioslocalhost()
+
+    const onSubmit = async ({ userId, userRole, userName }) => {
+
+        if (userId, userRole) {
+
+            const userInfo = {
+                userRole: userRole,
+            }
+            console.log(userInfo)
+            const updateRole = await axiosLocalhost.patch(`/users/${userId}`, userInfo);
+            console.log(updateRole.data)
+            reset();
+            if (updateRole.data.modifiedCount > 0) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${userName} role change to ${userRole}.`,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        }
+    };
+
+    const handleDelete = id => {
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to delete this user?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete the user!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosLocalhost.delete(`/users/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire(
+                                'Deleted!',
+                                'The user has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+
+    }
 
     return (
         <>
@@ -37,78 +91,97 @@ const AllUsers = () => {
                 <div className="bg-white px-4 py-10 rounded-xl border border-borderColour">
                     <div className="overflow-x-auto w-[290px] md:w-full shadow-sm">
 
-                        <form action="">
-                            <table className="rounded-xl shadow w-[280px] md:w-full">
+                        <table className="rounded-xl shadow w-[280px] md:w-full">
 
-                                <tr className="bg-btnColor border-borderColour text-lg font-medium text-white">
+                            <tr className="bg-btnColor border-borderColour text-lg font-medium text-white">
 
-                                    <th className="px-4 py-3 text-center rounded-tl-xl">No</th>
-                                    <th className="px-4 py-3 text-center">Name</th>
-                                    <th className="px-4 py-3 text-center">Email</th>
-                                    <th className="px-4 py-3 text-center">Role</th>
-                                    <th className="px-4 py-3 text-center rounded-tr-xl">Action</th>
+                                <th className="px-4 py-3 text-center rounded-tl-xl">No</th>
+                                <th className="px-4 py-3 text-center">Name</th>
+                                <th className="px-4 py-3 text-center">Email</th>
+                                <th className="px-4 py-3 text-center">Role</th>
+                                <th className="px-4 py-3 text-center rounded-tr-xl">Action</th>
 
-                                </tr>
+                            </tr>
 
-                                <tbody>
+                            <tbody>
 
-                                    {
-                                        allUsers?.map((userInfo, index) =>
-                                            <>
-                                                <tr className="text-center text-sm font-medium text-textDark border-b border-b-borderColour hover:bg-base-200 cursor-pointer">
+                                {
+                                    allUsers?.map((userInfo, index) =>
+                                        <>
+                                            <tr className="text-center text-sm font-medium text-textDark border-b border-b-borderColour hover:bg-base-200 cursor-pointer">
 
-                                                    <td className="px-4 py-3">{index + 1}</td>
-                                                    <td className="px-4 py-3">
-                                                        <div className="flex items-center gap-3 justify-center">
-                                                            <div className="avatar">
-                                                                <div className="w-10 rounded-full">
-                                                                    <img
-                                                                        src={userInfo.userImage}
-                                                                        alt="User"
-                                                                    />
-                                                                </div>
+                                                <td className="px-4 py-3">{index + 1}</td>
+                                                <td className="px-4 py-3">
+                                                    <div className="flex items-center gap-3 justify-center">
+                                                        <div className="avatar">
+                                                            <div className="w-10 rounded-full">
+                                                                <img
+                                                                    src={userInfo?.userImage}
+                                                                    alt="User"
+                                                                />
                                                             </div>
-                                                            <span className="">{userInfo.userName}</span>
                                                         </div>
-                                                    </td>
-                                                    <td className="px-4 py-3">
-                                                        <div className="w-[100px] lg:w-full truncate whitespace-nowrap overflow-hidden" title={userInfo.email}>
-                                                            <span>{userInfo.email}</span>
+                                                        <span className="">{userInfo?.userName}</span>
+                                                    </div>
+                                                </td>
+                                                <td className="px-4 py-3">
+                                                    <div className="w-[100px] lg:w-full truncate whitespace-nowrap overflow-hidden" title={userInfo.email}>
+                                                        <span>{userInfo?.email}</span>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <form onSubmit={handleSubmit((data) =>
+                                                        onSubmit({
+                                                            userId: userInfo._id,
+                                                            userName: userInfo.userName,
+                                                            userRole: data[`userRole${userInfo._id}`]
+                                                        })
+                                                    )}>
+                                                        <div className="flex items-center gap-1">
+
+                                                            <div>
+
+                                                                <select
+                                                                    name="userRole"
+                                                                    {...register(`userRole${userInfo._id}`)}
+                                                                    defaultValue={userInfo?.userRole}
+                                                                    className="select select-sm focus:border-0 focus:outline-none">
+                                                                    <option>Participant</option>
+                                                                    <option>Admin</option>
+                                                                </select>
+
+                                                            </div>
+                                                            <div>
+                                                                <button>
+                                                                    <VscSaveAs title="Update" className="cursor-pointer text-[16px]" />
+                                                                </button>
+                                                            </div>
+
                                                         </div>
-                                                    </td>
-                                                    <td>
+                                                    </form>
+                                                </td>
+                                                <td className="px-4 py-3">
+                                                    <div className="flex items-center gap-2 justify-center text-lg">
                                                         <div>
-                                                            {/* defaultValue={campName} */}
-                                                            <select name="userRole" defaultValue={userInfo.userRole} className="select select-sm focus:border-0 focus:outline-none">
-                                                                {/* <option disabled={true}>{userInfo.userRole}</option> */}
-                                                                <option>Participant</option>
-                                                                <option>Admin</option>
-                                                            </select>
+                                                            <UserDetails
+                                                                index={index}
+                                                                userInfo={userInfo} />
                                                         </div>
-                                                    </td>
-                                                    <td className="px-4 py-3">
-                                                        <div className="flex items-center gap-2 justify-center text-lg">
-                                                            <div>
-                                                                <UserDetails
-                                                                    index={index}
-                                                                    userInfo={userInfo} />
-                                                            </div>
-                                                            <div>
-                                                                <VscSaveAs title="Update" className="cursor-pointer" />
-                                                            </div>
-                                                            <div>
-                                                                <AiOutlineUserDelete title="Remove User" className="cursor-pointer" />
-                                                            </div>
+                                                        <div>
+                                                            <AiOutlineUserDelete
+                                                                onClick={() => handleDelete(userInfo._id)}
+                                                                title="Remove User" 
+                                                                className="cursor-pointer" />
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                            </>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </>
 
-                                        )}
+                                    )}
 
-                                </tbody>
-                            </table>
-                        </form>
+                            </tbody>
+                        </table>
 
                     </div>
                 </div>
