@@ -164,12 +164,12 @@ const AllUsers = () => {
                                                     <div className="flex items-center gap-2 justify-center text-lg">
                                                         <div>
                                                             <UserDetails
-                                                                index={index}
+                                                                userId={userInfo._id}
                                                                 userInfo={userInfo} />
                                                         </div>
                                                         <div>
                                                             <AiOutlineUserDelete
-                                                                onClick={() => handleDelete(userInfo._id)}
+                                                                onClick={() => handleDelete(userInfo?._id)}
                                                                 title="Remove User" 
                                                                 className="cursor-pointer" />
                                                         </div>
