@@ -1,8 +1,40 @@
+import { useForm } from "react-hook-form";
 import { CiCalendarDate } from "react-icons/ci";
 import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineUpdate } from "react-icons/md";
+import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
+import Swal from "sweetalert2";
 
 const AdminRightSide = ({ currentUser }) => {
+
+    const { register, handleSubmit, reset } = useForm()
+    const axiosLocalhost = useAxioslocalhost()
+
+    const onSubmit = async (data) => {
+
+        if (data) {
+
+            const userInfo = {
+                userPhone: data.userPhone,
+                userGender: data.userGender,
+                userAge: data.userAge,
+                userAddress: data.userAddress,
+            }
+            console.log(userInfo)
+            const updateRole = await axiosLocalhost.patch(`/users/${currentUser._id}`, userInfo);
+            console.log(updateRole.data)
+            reset();
+            if (updateRole.data.modifiedCount > 0) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${currentUser?.userName} update your information.`,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+        }
+    };
 
     return (
         <>
@@ -12,7 +44,7 @@ const AdminRightSide = ({ currentUser }) => {
                         <div className="-mt-12 flex justify-center items-center">
                             <figure>
                                 <img
-                                    src={currentUser?.photo}
+                                    src={currentUser?.userImage}
                                     alt=""
                                     className="w-full h-56 xl:w-56 rounded-xl" />
                             </figure>
@@ -32,74 +64,75 @@ const AdminRightSide = ({ currentUser }) => {
                     </div>
                 </div>
 
-                <div className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-7">
-                    <div className="bg-white p-4 rounded-xl space-y-5">
-                        <div className="flex justify-between items-center">
-                            <h1 className="text-textDark text-lg font-medium">Profile Details</h1>
-                            <button className="flex items-center gap-1 px-2 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
-                                <span>
-                                    <MdOutlineUpdate className="text-[18px]" />
-                                </span>
-                                Update
-                            </button>
-                        </div>
-                        <div className="space-y-2">
-                            <h1 className="text-xm font-normal text-grayText">Phone Number</h1>
-                            <input
-                                type="number"
-                                className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                required
-                                placeholder="Phone Number"
-                                // // defaultValue={userPhoneNumber}
-                                // {...register("userPhone")}
-                                title="Phone Number"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <h1 className="text-xm font-normal text-grayText">Gender</h1>
-                            <input
-                                type="text"
-                                className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                required
-                                placeholder="Gender"
-                                // // defaultValue={userGender}
-                                // {...register("userGender")}
-                                title="Gender"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <h1 className="text-xm font-normal text-grayText">Age</h1>
-                            <input
-                                type="text"
-                                className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                required
-                                placeholder="Age"
-                                // // defaultValue={userAge}
-                                // {...register("userAge")}
-                                title="Age"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <h1 className="text-xm font-normal text-grayText">Address</h1>
-                            <textarea
-                                placeholder="Address"
-                                // // defaultValue={userAddress}
-                                // {...register("userAddress")}
-                                className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                required
-                            ></textarea>
-                        </div>
-                        <div className="flex justify-between items-center">
-                            <div className="flex items-center gap-2">
-                                <CiCalendarDate className="text-lg text-textDark"/>
-                                <h1 className="text-lg font-medium text-textDark">Join</h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-7">
+                        <div className="bg-white p-4 rounded-xl space-y-5">
+                            <div className="flex justify-between items-center">
+                                <h1 className="text-textDark text-lg font-medium">Profile Details</h1>
+                                <button className="flex items-center gap-1 px-2 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                    <span>
+                                        <MdOutlineUpdate className="text-[18px]" />
+                                    </span>
+                                    Update
+                                </button>
                             </div>
-                            <div>
-                                <h1 className="text-lg font-medium text-grayText">{currentUser?.date}</h1>
+                            <div className="space-y-2">
+                                <h1 className="text-xm font-normal text-grayText">Phone Number</h1>
+                                <input
+                                    type="number"
+                                    className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+                                    required
+                                    placeholder="Phone Number"
+                                    {...register("userPhone")}
+                                    defaultValue={currentUser?.userPhone}
+                                    title="Phone Number"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <h1 className="text-xm font-normal text-grayText">Gender</h1>
+                                <input
+                                    type="text"
+                                    className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+                                    required
+                                    placeholder="Gender"
+                                    defaultValue={currentUser?.userGender}
+                                    {...register("userGender")}
+                                    title="Gender"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <h1 className="text-xm font-normal text-grayText">Age</h1>
+                                <input
+                                    type="text"
+                                    className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+                                    required
+                                    placeholder="Age"
+                                    defaultValue={currentUser?.userAge}
+                                    {...register("userAge")}
+                                    title="Age"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <h1 className="text-xm font-normal text-grayText">Address</h1>
+                                <textarea
+                                    placeholder="Address"
+                                    defaultValue={currentUser?.userAddress}
+                                    {...register("userAddress")}
+                                    className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+                                    required></textarea>
+                            </div>
+                            <div className="flex justify-between items-center">
+                                <div className="flex items-center gap-2">
+                                    <CiCalendarDate className="text-lg text-textDark" />
+                                    <h1 className="text-lg font-medium text-textDark">Join</h1>
+                                </div>
+                                <div>
+                                    <h1 className="text-lg font-medium text-grayText">{currentUser?.date}</h1>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
 
             </div>
         </>
