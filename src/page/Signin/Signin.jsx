@@ -16,7 +16,6 @@ const Signin = () => {
 
 
     const onSubmit = (data) => {
-        console.log(data)
         
         // signin authentication
         signInUser(data.email, data.password)

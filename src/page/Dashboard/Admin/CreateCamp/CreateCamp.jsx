@@ -4,6 +4,7 @@ import { MdLibraryAddCheck } from "react-icons/md"
 import { SiBasecamp } from "react-icons/si"
 import Swal from "sweetalert2"
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost"
+import { useState } from "react"
 
 
 const CreateCamp = () => {
@@ -15,6 +16,13 @@ const CreateCamp = () => {
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
 
+    const [getImage, setGetImage] = useState(null);
+
+    const handleImage = async (e) => {
+        console.log(e.target.files)
+        setGetImage(URL.createObjectURL(e.target.files[0]))
+    }
+
     const onSubmit = async (data) => {
         console.log(data)
 
@@ -25,13 +33,13 @@ const CreateCamp = () => {
                 'Content-Type': 'multipart/form-data'
             }
         });
-        // console.log(res.data)
+
         if (res.data.success) {
             //now send the menu item to the server with the image url
             const campDetails = {
                 image: res.data.data.display_url,
                 campName: data.campName,
-                campServices: data.services,
+                campServices: data.campServices,
                 campProfessionals: data.campProfessionals,
                 campCategory: data.campCategory,
                 campDetails: data.campDetails,
@@ -43,9 +51,9 @@ const CreateCamp = () => {
                 campFee: parseFloat(data.campFee),
             }
             const campRes = await axiosLocalhost.post('/camp', campDetails);
-            // console.log(menuRes.data)
+
             if (campRes.data.insertedId) {
-                //show success popup
+
                 reset();
                 Swal.fire({
                     position: "top-end",
@@ -56,6 +64,10 @@ const CreateCamp = () => {
                 });
             }
         }
+
+        //-------------new-------------
+
+
     }
 
     return (
@@ -82,7 +94,7 @@ const CreateCamp = () => {
                     </div>
                 </div>
 
-                <div className="flex flex-col lg:flex-row gap-4 mt-5">
+                <div className="flex flex-col xl:flex-row gap-4 mt-5">
 
                     {/* left side */}
                     <div className="w-auto lg:w-[700px] space-y-5">
@@ -206,16 +218,18 @@ const CreateCamp = () => {
                             <div className="mt-5">
                                 <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
                                 <div className="w-full h-60 border-2 border-dashed border-borderColour">
-
+                                    <img src={getImage} alt="" className="w-full h-full" />
                                 </div>
                                 {/* {...register("campImage")} */}
-                                <div className="mt-5">
-                                    <button className="flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                <div className="mt-5" onChange={handleImage}>
+                                    <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
                                         <span>
                                             <LuUpload className="text-[16px]" />
                                         </span>
-                                        Upload Image
-                                    </button>
+                                        <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" />
+                                        <span>Upload Image</span>
+                                    </label>
+                                    {/* {...register("campImage")} */}
                                 </div>
                             </div>
                         </div>
