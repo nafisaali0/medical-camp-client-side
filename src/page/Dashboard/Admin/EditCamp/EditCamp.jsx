@@ -6,63 +6,160 @@ import { SiBasecamp } from "react-icons/si"
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import moment from "moment";
+import axios from "axios";
+import { useState } from "react";
 
-const EditCamp = () => {4
+const EditCamp = () => {
 
-    const {  _id,  campName, campServices, campProfessionals, campCategory, campDetails, campDate, campTime, campVenue, campAge, campGender, campFee, } = useLoaderData();
+    const { _id, campName, campServices, campProfessionals, campCategory, campDetails, campDate, campTime, campVenue, campAge, campGender, campFee, campImage } = useLoaderData();
 
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
 
     // image hosting
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+    const [getImage, setGetImage] = useState(campImage);
+
+    const handleImage = async (e) => {
+        // setGetImage(URL.createObjectURL(e.target.files[0]))
+
+        const file = e.target.files[0]
+        const formdata = new FormData();
+        formdata.append("image", file)
+
+        const res = await axios.post(image_hosting_api, formdata);
+        console.log(res.data.data.display_url);
+
+        if (res.data.success) {
+            const details_image = res.data.data.display_url;
+            setGetImage(details_image);
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: "Image not updated",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+    }
 
     const onSubmit = async (data) => {
         // console.log(data)
 
-        // image upload to imagbb and then get an url
-        const imageFile = { image: data.image[0] }
-        const res = await axiosLocalhost.post(image_hostion_api, imageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
+        // new start
+        const campDetails = {
 
-        console.log(res.data)
-        if (res.data.success) {
-            // now send the camp data to the server with the image url
-            const campItem = {
-                image: res.data.data.display_url,
-                campName: data.campName,
-                campServices: data.services,
-                campProfessionals: data.campProfessionals,
-                campCategory: data.campCategory,
-                campDetails: data.campDetails,
-                campDate: data.campDate,
-                campTime: data.campTime,
-                campVenue: data.campVenue,
-                campAge: data.campAge,
-                campGender: data.campGender,
-                campFee: parseFloat(data.campFee),
-            }
-            console.log(campItem)
-            console.log("load")
-            const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campItem);
-            console.log(campRes.data)
-            if (campRes.data.modifiedCount > 0) {
-                // show success popup
-                reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${data.campName} is updated camp.`,
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-            }
+            campCreateDate: moment().format("MMM Do YY"),
+            campImage: getImage,
+            // details_image: imagePreview,
+            campName: data.campName,
+            campServices: data.campServices,
+            campProfessionals: data.campProfessionals,
+            campCategory: data.campCategory,
+            campDetails: data.campDetails,
+            campDate: data.campDate,
+            campTime: data.campTime,
+            campVenue: data.campVenue,
+            campAge: data.campAge,
+            campGender: data.campGender,
+            campFee: parseFloat(data.campFee),
+
         }
-        // console.log('with image url', res.data);
+        console.log(campDetails)
+        const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campDetails);
+        console.log(campRes.data)
+
+        if (campRes.data.modifiedCount > 0) {
+
+            reset();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `${data.campName} is updated camp.`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+
+        } else {
+
+            Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: "new camp not create",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            
+        }
+        // new end
+
+        // image upload to imagbb and then get an url
+        // const imageFile = { image: data.image[0] }
+        // const res = await axiosLocalhost.post(image_hostion_api, imageFile, {
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     }
+        // });
+
+        // if (res.data.success) {
+
+        //     const campDetails = {
+
+        //         campCreateDate: moment().format("MMM Do YY"),
+        //         campImage: res.data.data.display_url,
+        //         campName: data.campName,
+        //         campServices: data.campServices,
+        //         campProfessionals: data.campProfessionals,
+        //         campCategory: data.campCategory,
+        //         campDetails: data.campDetails,
+        //         campDate: data.campDate,
+        //         campTime: data.campTime,
+        //         campVenue: data.campVenue,
+        //         campAge: data.campAge,
+        //         campGender: data.campGender,
+        //         campFee: parseFloat(data.campFee),
+
+        //     }
+        //     console.log(campDetails)
+
+        //     const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campDetails);
+        //     console.log(campRes.data)
+
+        //     if (campRes.data.modifiedCount > 0) {
+
+        //         reset();
+        //         Swal.fire({
+        //             position: "top-end",
+        //             icon: "success",
+        //             title: `${data.campName} is updated camp.`,
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //         });
+
+
+        //     } else {
+        //         Swal.fire({
+        //             position: "top-end",
+        //             icon: "warning",
+        //             title: "new camp not create",
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //         });
+        //     }
+        // } else {
+        //     Swal.fire({
+        //         position: "top-end",
+        //         icon: "warning",
+        //         title: "Image not updated",
+        //         showConfirmButton: false,
+        //         timer: 1500
+        //     });
+        // }
     }
 
     return (
@@ -221,16 +318,16 @@ const EditCamp = () => {4
                             <div className="mt-5">
                                 <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
                                 <div className="w-full h-60 border-2 border-dashed border-borderColour">
-
+                                    <img src={getImage} alt="" className="w-full h-full" />
                                 </div>
-                                {/* {...register("campImage")} */}
-                                <div className="mt-5">
-                                    <button className="flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                <div onChange={handleImage} className="mt-5">
+                                    <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
                                         <span>
                                             <LuUpload className="text-[16px]" />
                                         </span>
-                                        Upload Image
-                                    </button>
+                                        <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" {...register("campImage")} />
+                                        <span>Upload Image</span>
+                                    </label>
                                 </div>
                             </div>
                         </div>

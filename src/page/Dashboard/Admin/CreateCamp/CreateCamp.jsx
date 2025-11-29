@@ -227,7 +227,6 @@ const CreateCamp = () => {
                                 <div className="w-full h-60 border-2 border-dashed border-borderColour">
                                     <img src={getImage} alt="" className="w-full h-full" />
                                 </div>
-                                {/* */}
                                 <div onChange={handleImage} className="mt-5">
                                     <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
                                         <span>
