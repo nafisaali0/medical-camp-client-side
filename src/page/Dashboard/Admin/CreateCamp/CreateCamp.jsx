@@ -3,8 +3,10 @@ import { LuUpload } from "react-icons/lu"
 import { MdLibraryAddCheck } from "react-icons/md"
 import { SiBasecamp } from "react-icons/si"
 import Swal from "sweetalert2"
+import axios from "axios"
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost"
 import { useState } from "react"
+import moment from "moment"
 
 
 const CreateCamp = () => {
@@ -12,32 +14,28 @@ const CreateCamp = () => {
     const axiosLocalhost = useAxioslocalhost()
     const { register, handleSubmit, reset } = useForm()
 
-    // image api
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
-    const image_hostion_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
     const [getImage, setGetImage] = useState(null);
 
     const handleImage = async (e) => {
-        console.log(e.target.files)
         setGetImage(URL.createObjectURL(e.target.files[0]))
     }
 
     const onSubmit = async (data) => {
-        console.log(data)
 
-        // image upload to imagbb and then get an url
-        const imageFile = { image: data.image[0] }
-        const res = await axiosLocalhost.post(image_hostion_api, imageFile, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
+        const file = data.campImage[0]
+        const formdata = new FormData();
+        formdata.append("image", file)
+        const res = await axios.post(image_hosting_api, formdata);
+        console.log(res.data.data.display_url);
 
         if (res.data.success) {
-            //now send the menu item to the server with the image url
+
             const campDetails = {
-                image: res.data.data.display_url,
+
+                campCreateDate:moment().format("MMM Do YY"),
+                campImage: res.data.data.display_url,
                 campName: data.campName,
                 campServices: data.campServices,
                 campProfessionals: data.campProfessionals,
@@ -49,23 +47,32 @@ const CreateCamp = () => {
                 campAge: data.campAge,
                 campGender: data.campGender,
                 campFee: parseFloat(data.campFee),
+
             }
+            
             const campRes = await axiosLocalhost.post('/camp', campDetails);
 
             if (campRes.data.insertedId) {
 
-                reset();
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
-                    title: "Added camp successfully",
+                    title: "create camp successfully",
                     showConfirmButton: false,
                     timer: 1500
                 });
+                
+                reset();
             }
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: "new camp not create",
+                showConfirmButton: false,
+                timer: 1500
+            });
         }
-
-        //-------------new-------------
 
 
     }
@@ -97,7 +104,7 @@ const CreateCamp = () => {
                 <div className="flex flex-col xl:flex-row gap-4 mt-5">
 
                     {/* left side */}
-                    <div className="w-auto lg:w-[700px] space-y-5">
+                    <div className="w-auto lg:w-[800px] space-y-5">
 
                         {/* part one */}
                         <div className="bg-white p-4 rounded-xl border border-borderColour space-y-5">
@@ -109,7 +116,7 @@ const CreateCamp = () => {
                                 <input
                                     type="text"
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                    required
+
                                     placeholder="Camp Name"
                                     {...register("campName")}
                                     title="Health Checkup"
@@ -120,7 +127,7 @@ const CreateCamp = () => {
                                 <input
                                     type="text"
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                    required
+
                                     placeholder="Check up on pressure/diabetes"
                                     {...register("campServices")}
                                     title="Services"
@@ -131,7 +138,7 @@ const CreateCamp = () => {
                                 <input
                                     type="text"
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                    required
+
                                     placeholder="Dr. Wasfia Rahman"
                                     {...register("campProfessionals")}
                                     title="Healthcare Professionals Name"
@@ -142,7 +149,7 @@ const CreateCamp = () => {
                                 <input
                                     type="category"
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                    required
+
                                     placeholder="Heart/Cancer"
                                     {...register("campCategory")}
                                     title="Category"
@@ -154,7 +161,7 @@ const CreateCamp = () => {
                                     placeholder="Description"
                                     {...register("campDetails")}
                                     className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                    required
+
                                 ></textarea>
                             </div>
                         </div>
@@ -173,7 +180,7 @@ const CreateCamp = () => {
                                     <input
                                         type="date"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                        required
+
                                         placeholder="Date"
                                         {...register("campDate")}
                                         title="Date"
@@ -184,7 +191,7 @@ const CreateCamp = () => {
                                     <input
                                         type="time"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                        required
+
                                         placeholder="Time"
                                         {...register("campTime")}
                                         title="Time"
@@ -195,7 +202,7 @@ const CreateCamp = () => {
                                     <input
                                         type="location"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
-                                        required
+
                                         placeholder="ParkHoliday,Gulshan,Dhaka"
                                         {...register("campVenue")}
                                         title="Venue"
@@ -220,16 +227,15 @@ const CreateCamp = () => {
                                 <div className="w-full h-60 border-2 border-dashed border-borderColour">
                                     <img src={getImage} alt="" className="w-full h-full" />
                                 </div>
-                                {/* {...register("campImage")} */}
-                                <div className="mt-5" onChange={handleImage}>
+                                {/* */}
+                                <div onChange={handleImage} className="mt-5">
                                     <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
                                         <span>
                                             <LuUpload className="text-[16px]" />
                                         </span>
-                                        <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" />
+                                        <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" {...register("campImage")} />
                                         <span>Upload Image</span>
                                     </label>
-                                    {/* {...register("campImage")} */}
                                 </div>
                             </div>
                         </div>
@@ -248,7 +254,7 @@ const CreateCamp = () => {
                                     <input
                                         type="age"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
-                                        required
+
                                         placeholder="25-40/Adult/Child/Older"
                                         {...register("campAge")}
                                         title="Age"
@@ -281,7 +287,7 @@ const CreateCamp = () => {
                                     <input
                                         type="fee"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                        required
+
                                         placeholder="200 BDT"
                                         {...register("campFee")}
                                         title="Enrollment Fee"

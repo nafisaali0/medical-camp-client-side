@@ -106,9 +106,9 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes><CreateCamp /></PrivateRoutes>,
             },
             {
-                path: "edit-camp",
+                path: "edit-camp/:campId",
                 element: <PrivateRoutes><EditCamp /></PrivateRoutes>,
-                // loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
             {
                 path: "manage-camp-hub",

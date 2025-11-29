@@ -155,7 +155,7 @@ const CampHub = () => {
                                                     <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">
                                                         <div className="flex items-center gap-2">
                                                             <Link
-                                                                to={`/dashboard/update-camp/${campInfo?._id}`}
+                                                                to={`/dashboard/edit-camp/${campInfo?._id}`}
                                                                 className="bg-btnColor rounded-full p-2">
                                                                 <MdOutlineUpdate
                                                                     className="text-[18px] text-white cursor-pointer"

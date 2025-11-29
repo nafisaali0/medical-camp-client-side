@@ -5,10 +5,11 @@ import { SiBasecamp } from "react-icons/si"
 // import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const EditCamp = () => {
-    // _id, 
-    // const { campName, campServices, campProfessionals, campCategory, campDetails, campDate, campTime, campVenue, campAge, campGender, campFee, } = useLoaderData();
+const EditCamp = () => {4
+
+    const {  _id,  campName, campServices, campProfessionals, campCategory, campDetails, campDate, campTime, campVenue, campAge, campGender, campFee, } = useLoaderData();
 
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
@@ -46,20 +47,20 @@ const EditCamp = () => {
                 campFee: parseFloat(data.campFee),
             }
             console.log(campItem)
-            // console.log("load")
-            // const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campItem);
-            // console.log(campRes.data)
-            // if (campRes.data.modifiedCount > 0) {
-            //     // show success popup
-            //     reset();
-            //     Swal.fire({
-            //         position: "top-end",
-            //         icon: "success",
-            //         title: `${data.campName} is updated camp.`,
-            //         showConfirmButton: false,
-            //         timer: 1500
-            //     });
-            // }
+            console.log("load")
+            const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campItem);
+            console.log(campRes.data)
+            if (campRes.data.modifiedCount > 0) {
+                // show success popup
+                reset();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${data.campName} is updated camp.`,
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
         }
         // console.log('with image url', res.data);
     }
@@ -105,7 +106,7 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Camp Name"
-                                    // defaultValue={campName}
+                                    defaultValue={campName}
                                     {...register("campName")}
                                     title="Health Checkup"
                                 />
@@ -117,7 +118,7 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Check up on pressure/diabetes"
-                                    // defaultValue={campServices}
+                                    defaultValue={campServices}
                                     {...register("campServices")}
                                     title="Services"
                                 />
@@ -129,7 +130,7 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Dr. Wasfia Rahman"
-                                    // defaultValue={campProfessionals}
+                                    defaultValue={campProfessionals}
                                     {...register("campProfessionals")}
                                     title="Healthcare Professionals Name"
                                 />
@@ -141,7 +142,7 @@ const EditCamp = () => {
                                     className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
                                     placeholder="Heart/Cancer"
-                                    // defaultValue={campCategory}
+                                    defaultValue={campCategory}
                                     {...register("campCategory")}
                                     title="Category"
                                 />
@@ -150,7 +151,7 @@ const EditCamp = () => {
                                 <h1 className="text-xm font-normal text-grayText">Description</h1>
                                 <textarea
                                     placeholder="Description"
-                                    // defaultValue={campDetails}
+                                    defaultValue={campDetails}
                                     {...register("campDetails")}
                                     className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required
@@ -174,7 +175,7 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="Date"
-                                        // defaultValue={campDate}
+                                        defaultValue={campDate}
                                         {...register("campDate")}
                                         title="Date"
                                     />
@@ -186,7 +187,7 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="Time"
-                                        // defaultValue={campTime}
+                                        defaultValue={campTime}
                                         {...register("campTime")}
                                         title="Time"
                                     />
@@ -198,7 +199,7 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
                                         required
                                         placeholder="ParkHoliday,Gulshan,Dhaka"
-                                        // defaultValue={campVenue}
+                                        defaultValue={campVenue}
                                         {...register("campVenue")}
                                         title="Venue"
                                     />
@@ -250,7 +251,7 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
                                         required
                                         placeholder="25-40/Adult/Child/Older"
-                                        // defaultValue={campAge}
+                                        defaultValue={campAge}
                                         {...register("campAge")}
                                         title="Age"
                                     />
@@ -261,7 +262,7 @@ const EditCamp = () => {
                                         type="gender"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         placeholder="Male/Female"
-                                        // defaultValue={campGender}
+                                        defaultValue={campGender}
                                         {...register("campGender")}
                                         title="Gender"
                                     />
@@ -285,7 +286,7 @@ const EditCamp = () => {
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         required
                                         placeholder="200 BDT"
-                                        // defaultValue={campFee}
+                                        defaultValue={campFee}
                                         {...register("campFee")}
                                         title="Enrollment Fee"
                                     />
