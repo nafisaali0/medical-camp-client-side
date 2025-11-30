@@ -42,19 +42,15 @@ export const router = createBrowserRouter([
             {
                 path: "signup",
                 element: <SignUp></SignUp>,
+            },            
+            {
+                path: "available-camps",
+                element: <PrivateRoutes><AvailableCamps></AvailableCamps></PrivateRoutes>,
             },
-            // {
-            //     path: "loader",
-            //     element: <Loader />,
-            // },
             {
                 path: "camp-details/:campId",
                 element: <PrivateRoutes><DetailCamp></DetailCamp></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
-            },
-            {
-                path: "available-camps",
-                element: <PrivateRoutes><AvailableCamps></AvailableCamps></PrivateRoutes>,
             },
             {
                 path: "camp-registration/:campId",

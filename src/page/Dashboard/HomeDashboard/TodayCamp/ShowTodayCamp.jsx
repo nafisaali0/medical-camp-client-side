@@ -13,7 +13,7 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
     const [cardIndex, setCardIndex] = useState(null)
 
     function handleCardDropDown(index) {
-        console.log(cardIndex)
+        // console.log(cardIndex)
         if (cardIndex === index) {
             setCardOpen(!cardOpen);
         } else {
@@ -114,7 +114,7 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
                                                     <div>
                                                         <div className="flex items-center gap-1">
                                                             <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
-                                                            <p className="text-sm font-medium text-textDark">{campInfo?.date}</p>
+                                                            <p className="text-sm font-medium text-textDark">{campInfo?.campDate}</p>
                                                         </div>
                                                     </div>
 
@@ -129,15 +129,15 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
                                                             <div className="space-y-1">
                                                                 <h1 className="text-sm font-medium text-textDark">
                                                                     <span className="font-semibold">Time: </span>
-                                                                    {campInfo?.time}
+                                                                    {campInfo?.campTime}
                                                                 </h1>
                                                                 <h1 className="text-sm font-medium text-textDark">
                                                                     <span className="font-semibold">Location: </span>
-                                                                    {campInfo?.venue}
+                                                                    {campInfo?.campVenue}
                                                                 </h1>
                                                                 <h1 className="text-sm font-medium text-textDark">
                                                                     <span className="font-semibold">Fee: </span>
-                                                                    {campInfo?.campFees} BDT</h1>
+                                                                    {campInfo?.campFee} BDT</h1>
                                                             </div>
 
                                                             <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">

@@ -10,7 +10,7 @@ import { PiGenderIntersexBold } from "react-icons/pi";
 
 export default function CampRegistration() {
 
-    const { _id, image, campFees, campName, date, time, venue, services } = useLoaderData();
+    const { _id, campImage, campFee, campName, campDate, campTime, campVenue, campServices } = useLoaderData();
     const { register, handleSubmit } = useForm();
     const { user } = useAuth();
     const axiosLocalhost = useAxioslocalhost();
@@ -20,18 +20,18 @@ export default function CampRegistration() {
 
     const onSubmit = (data) => {
 
-        if (user && user.email) {
+        if (user && user?.email) {
             // send cart item to the database
             const campItem = {
                 campId: _id,
                 email: user.email,
                 campName: campName,
-                campFees: campFees,
-                date: date,
-                time: time,
-                venue: venue,
-                services: services,
-                image: image,
+                campFees: campFee,
+                date: campDate,
+                time: campTime,
+                venue: campVenue,
+                services: campServices,
+                image: campImage,
                 // register form
                 name: data.name,
                 age: data.age,
@@ -167,7 +167,7 @@ export default function CampRegistration() {
 
                                 <figure>
                                     <img
-                                        src={image}
+                                        src={campImage}
                                         className="w-full h-52 object-cover rounded-t-xl"
                                         alt="camp" />
                                 </figure>
@@ -175,7 +175,7 @@ export default function CampRegistration() {
                                     <h2 className="card-title text-sm">{campName}</h2>
                                     <h2>
                                         <span className="font-semibold">Price: </span>
-                                        ৳ {campFees}
+                                        ৳ {campFee}
                                     </h2>
                                     <div className="card-actions justify-center mt-5">
                                         <Link to={`/camp-details/${_id}`}>

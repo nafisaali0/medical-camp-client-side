@@ -23,14 +23,12 @@ const EditCamp = () => {
     const [getImage, setGetImage] = useState(campImage);
 
     const handleImage = async (e) => {
-        // setGetImage(URL.createObjectURL(e.target.files[0]))
 
         const file = e.target.files[0]
         const formdata = new FormData();
         formdata.append("image", file)
 
         const res = await axios.post(image_hosting_api, formdata);
-        console.log(res.data.data.display_url);
 
         if (res.data.success) {
             const details_image = res.data.data.display_url;
@@ -48,14 +46,11 @@ const EditCamp = () => {
     }
 
     const onSubmit = async (data) => {
-        // console.log(data)
-
-        // new start
+       
         const campDetails = {
 
             campCreateDate: moment().format("MMM Do YY"),
             campImage: getImage,
-            // details_image: imagePreview,
             campName: data.campName,
             campServices: data.campServices,
             campProfessionals: data.campProfessionals,
@@ -96,70 +91,6 @@ const EditCamp = () => {
             });
             
         }
-        // new end
-
-        // image upload to imagbb and then get an url
-        // const imageFile = { image: data.image[0] }
-        // const res = await axiosLocalhost.post(image_hostion_api, imageFile, {
-        //     headers: {
-        //         'Content-Type': 'multipart/form-data'
-        //     }
-        // });
-
-        // if (res.data.success) {
-
-        //     const campDetails = {
-
-        //         campCreateDate: moment().format("MMM Do YY"),
-        //         campImage: res.data.data.display_url,
-        //         campName: data.campName,
-        //         campServices: data.campServices,
-        //         campProfessionals: data.campProfessionals,
-        //         campCategory: data.campCategory,
-        //         campDetails: data.campDetails,
-        //         campDate: data.campDate,
-        //         campTime: data.campTime,
-        //         campVenue: data.campVenue,
-        //         campAge: data.campAge,
-        //         campGender: data.campGender,
-        //         campFee: parseFloat(data.campFee),
-
-        //     }
-        //     console.log(campDetails)
-
-        //     const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campDetails);
-        //     console.log(campRes.data)
-
-        //     if (campRes.data.modifiedCount > 0) {
-
-        //         reset();
-        //         Swal.fire({
-        //             position: "top-end",
-        //             icon: "success",
-        //             title: `${data.campName} is updated camp.`,
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //         });
-
-
-        //     } else {
-        //         Swal.fire({
-        //             position: "top-end",
-        //             icon: "warning",
-        //             title: "new camp not create",
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //         });
-        //     }
-        // } else {
-        //     Swal.fire({
-        //         position: "top-end",
-        //         icon: "warning",
-        //         title: "Image not updated",
-        //         showConfirmButton: false,
-        //         timer: 1500
-        //     });
-        // }
     }
 
     return (

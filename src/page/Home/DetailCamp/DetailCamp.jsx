@@ -18,7 +18,7 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const DetailCamp = () => {
 
-    const { _id, image, campFees, healthcareProfessionals, campName, targetAudience, date, time, venue, services, shortDescription } = useLoaderData();
+    const { _id, campImage, campFee, campProfessionals, campName, campAge, campDate, campTime, campVenue, campServices, campDetails } = useLoaderData();
 
     // const { register, handleSubmit } = useForm();
     // const { user } = useAuth();
@@ -232,7 +232,7 @@ const DetailCamp = () => {
 
                         <div className="relative lg:flex-1 w-full lg:w-1/2 rounded-xl border-2 border-borderColour">
                             <figure>
-                                <img src={image}
+                                <img src={campImage}
                                     alt="campsImage"
                                     className="w-full object-cover rounded-xl" />
                             </figure>
@@ -245,7 +245,7 @@ const DetailCamp = () => {
                                 <span>
                                     <IoLocationOutline className="text-[25px] text-btnColor" />
                                 </span>
-                                {venue}
+                                {campVenue}
                             </button>
 
                             <div className="mt-3">
@@ -255,7 +255,7 @@ const DetailCamp = () => {
                             <div className="space-y-3 mt-10">
 
                                 <p className="text-md text-textDark font-medium">
-                                    {shortDescription}
+                                    {campDetails}
                                 </p>
 
                                 <div>
@@ -263,12 +263,12 @@ const DetailCamp = () => {
                                     <p className="text-md text-textDark font-medium">
                                         <span className="font-bold">
                                             HealthcareProfessionals: </span>
-                                        {healthcareProfessionals}
+                                        {campProfessionals}
                                     </p>
 
                                     <p className="text-md text-textDark font-medium">
                                         <span className="font-bold">Services: </span>
-                                        {services}
+                                        {campServices}
                                     </p>
 
                                 </div>
@@ -280,28 +280,28 @@ const DetailCamp = () => {
                                     <span>
                                         <GoPeople className="text-[25px] text-btnColor" />
                                     </span>
-                                    {targetAudience}
+                                    {campAge}
                                 </p>
 
                                 <p className="flex items-center justify-center gap-1 text-sm font-medium">
                                     <span>
                                         <CiCalendarDate className="text-[25px] text-btnColor" />
                                     </span>
-                                    {date}
+                                    {campDate}
                                 </p>
 
                                 <p className="flex items-center justify-center gap-1 text-sm font-medium">
                                     <span>
                                         <IoMdTime className="text-[25px] text-btnColor" />
                                     </span>
-                                    {time}
+                                    {campTime}
                                 </p>
 
                                 <p className="flex items-center justify-center gap-1 text-sm font-medium">
                                     <span>
                                         <FaBangladeshiTakaSign className="text-[16px] text-btnColor" />
                                     </span>
-                                    {campFees}
+                                    {campFee}
                                 </p>
 
                             </div>
@@ -313,14 +313,14 @@ const DetailCamp = () => {
                                         <span>
                                             <GoPeople className="text-[25px] text-btnColor" />
                                         </span>
-                                        {targetAudience}
+                                        {campAge}
                                     </p>
 
                                     <p className="flex items-center justify-center gap-2 text-sm font-medium">
                                         <span>
                                             <CiCalendarDate className="text-[25px] text-btnColor" />
                                         </span>
-                                        {date}
+                                        {campDate}
                                     </p>
                                 </div>
 
@@ -331,14 +331,14 @@ const DetailCamp = () => {
                                         <span>
                                             <IoMdTime className="text-[25px] text-btnColor" />
                                         </span>
-                                        {time}
+                                        {campTime}
                                     </p>
 
                                     <p className="flex items-center justify-center gap-2 text-sm font-medium">
                                         <span>
                                             <FaBangladeshiTakaSign className="text-[16px] text-btnColor" />
                                         </span>
-                                        {campFees}
+                                        {campFee}
                                     </p>
                                 </div>
 

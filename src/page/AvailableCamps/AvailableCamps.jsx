@@ -98,7 +98,7 @@ const AvailableCamps = () => {
 
                                                                         <figure>
                                                                             <img
-                                                                                src={eachCamp?.image}
+                                                                                src={eachCamp?.campImage}
                                                                                 className="w-full h-52 object-cover rounded-t-xl"
                                                                                 alt="camp" />
                                                                         </figure>
@@ -106,7 +106,7 @@ const AvailableCamps = () => {
                                                                             <h2 className="card-title text-sm">{eachCamp?.campName}</h2>
                                                                             <h2>
                                                                                 <span className="font-semibold">Price: </span>
-                                                                                ৳ {eachCamp?.campFees}
+                                                                                ৳ {eachCamp?.campFee}
                                                                             </h2>
                                                                             <div className="card-actions justify-center mt-5">
                                                                                 <Link to={`/camp-details/${eachCamp?._id}`}>
@@ -194,7 +194,7 @@ const AvailableCamps = () => {
 
                                                                             <figure>
                                                                                 <img
-                                                                                    src={eachCamp?.image}
+                                                                                    src={eachCamp?.campImage}
                                                                                     className="h-72 w-72"
                                                                                     alt="Movie" />
                                                                             </figure>
@@ -204,16 +204,16 @@ const AvailableCamps = () => {
                                                                                     <span>
                                                                                         <CiCalendarDate className="text-[25px] text-btnColor" />
                                                                                     </span>
-                                                                                    {eachCamp.date}
+                                                                                    {eachCamp.campDate}
                                                                                 </div>
                                                                                 <h2 className="card-title">{eachCamp?.campName}</h2>
                                                                                 <h2>
                                                                                     <span className="font-semibold">Price: </span>
-                                                                                    ৳ {eachCamp.campFees}
+                                                                                    ৳ {eachCamp.campFee}
                                                                                 </h2>
                                                                                 <h2>
                                                                                     <span className="font-semibold">Target Audience: </span>
-                                                                                    {eachCamp.targetAudience}
+                                                                                    {eachCamp.campAge}
                                                                                 </h2>
                                                                                 <div className="card-actions justify-start mt-5">
                                                                                     <Link to={`/camp-details/${eachCamp._id}`}>
