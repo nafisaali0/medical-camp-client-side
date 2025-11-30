@@ -6,17 +6,13 @@ import Signin from './../page/Signin/Signin';
 import SignUp from "../page/SignUp/SignUp";
 import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
-import AddCamps from './../page/Dashboard/AddCamps/AddCamps';
-import ManageCamps from "../page/Dashboard/ManageCamps/ManageCamps";
-import UpdateCamp from './../page/Dashboard/UpdateCamp/UpdateCamp';
-import DetailCamp from './../page/Home/DetailCamp/DetailCamp';
+import DetailsCamp from '../page/DetailsCamp/DetailsCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
 import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps';
 import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
 import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
-import CampRegistration from "../page/CampRegistration/CampRegistration";
 import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
 import EditCamp from "../page/Dashboard/Admin/EditCamp/EditCamp";
 import CampHub from "../page/Dashboard/Admin/Manage/CampHub/CampHub";
@@ -24,6 +20,7 @@ import AllUsers from "../page/Dashboard/Admin/Manage/AllUsers/AllUsers"
 import EnrollCamps from './../page/Dashboard/Admin/Manage/EnrollCamps/EnrollCamps';
 import MyCamps from "../page/Dashboard/Participant/MyCamps/MyCamps";
 import HomeDashboard from "../page/Dashboard/HomeDashboard/HomeDashboard/HomeDashboard";
+import CampEnrollment from "../page/CampEnrollment/CampEnrollment";
 
 export const router = createBrowserRouter([
     {
@@ -42,21 +39,23 @@ export const router = createBrowserRouter([
             {
                 path: "signup",
                 element: <SignUp></SignUp>,
-            },            
+            },
             {
                 path: "available-camps",
                 element: <PrivateRoutes><AvailableCamps></AvailableCamps></PrivateRoutes>,
             },
             {
                 path: "camp-details/:campId",
-                element: <PrivateRoutes><DetailCamp></DetailCamp></PrivateRoutes>,
+                element: <PrivateRoutes><DetailsCamp/></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
+            // --old
             {
-                path: "camp-registration/:campId",
-                element: <PrivateRoutes><CampRegistration></CampRegistration></PrivateRoutes>,
+                path: "camp-enrollment/:campId",
+                element: <PrivateRoutes><CampEnrollment /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
+
         ],
     },
     {
@@ -94,10 +93,6 @@ export const router = createBrowserRouter([
 
             // addmin routes
             {
-                path: "add-a-camp",
-                element: <PrivateRoutes><AddCamps /></PrivateRoutes>,
-            },
-            {
                 path: "create-camp",
                 element: <PrivateRoutes><CreateCamp /></PrivateRoutes>,
             },
@@ -118,19 +113,11 @@ export const router = createBrowserRouter([
                 path: "manage-enroll-camps",
                 element: <PrivateRoutes><EnrollCamps /></PrivateRoutes>,
             },
-            {
-                path: "manage-camps",
-                element: <PrivateRoutes><ManageCamps /></PrivateRoutes>,
-            },
+            // .....old....
             {
                 path: "manage-registered-camps",
                 element: <PrivateRoutes><ManageRegisterCamps /></PrivateRoutes>,
                 loader: () => fetch('https://medical-camp-server-seven.vercel.app/registerCamps')
-            },
-            {
-                path: "update-camp/:campId",
-                element: <PrivateRoutes><UpdateCamp /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
             },
 
         ]

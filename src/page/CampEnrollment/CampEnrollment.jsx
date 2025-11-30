@@ -1,14 +1,15 @@
 import { useForm } from "react-hook-form";
-import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAuth from './../../hooks/useAuth';
-import useAxioslocalhost from './../../hooks/useAxioslocalhost';
+import useAxioslocalhost from "../../hooks/useAxioslocalhost";
 import useCamp from "../../hooks/useCamp";
-import { GiAges } from "react-icons/gi";
+import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { FaLocationCrosshairs, FaPhone, FaUser } from "react-icons/fa6";
 import { PiGenderIntersexBold } from "react-icons/pi";
+import { GiAges } from "react-icons/gi";
+import useAuth from "../../hooks/useAuth";
 
-export default function CampRegistration() {
+
+const CampEnrollment = () => {
 
     const { _id, campImage, campFee, campName, campDate, campTime, campVenue, campServices } = useLoaderData();
     const { register, handleSubmit } = useForm();
@@ -26,7 +27,7 @@ export default function CampRegistration() {
                 campId: _id,
                 email: user.email,
                 campName: campName,
-                campFees: campFee,
+                campFee: campFee,
                 date: campDate,
                 time: campTime,
                 venue: campVenue,
@@ -196,3 +197,5 @@ export default function CampRegistration() {
         </>
     )
 }
+
+export default CampEnrollment
