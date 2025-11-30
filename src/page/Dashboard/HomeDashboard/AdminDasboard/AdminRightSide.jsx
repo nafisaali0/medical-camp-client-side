@@ -4,11 +4,41 @@ import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineUpdate } from "react-icons/md";
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import axios from "axios";
 
 const AdminRightSide = ({ currentUser }) => {
 
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
+
+    const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+    const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+    const [getImage, setGetImage] = useState(currentUser?.userImage);
+    // campImage
+    const handleImage = async (e) => {
+
+        const file = e.target.files[0]
+        const formdata = new FormData();
+        formdata.append("image", file)
+
+        const res = await axios.post(image_hosting_api, formdata);
+
+        if (res.data.success) {
+            const details_image = res.data.data.display_url;
+            setGetImage(details_image);
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: "Image not updated",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+    }
+
 
     const onSubmit = async (data) => {
 
@@ -44,18 +74,34 @@ const AdminRightSide = ({ currentUser }) => {
                         <div className="-mt-12 flex justify-center items-center">
                             <figure>
                                 <img
-                                    src={currentUser?.userImage}
+                                    src={getImage}
                                     alt=""
                                     className="w-full h-56 xl:w-56 rounded-xl" />
                             </figure>
                         </div>
-                        <div className="absolute -top-5 right-16 md:right-56 lg:right-64 xl:right-24">
+                        <div
+                            onChange={handleImage}
+                            className="absolute -top-5 right-16 md:right-56 lg:right-64 xl:right-24 cursor-pointer">
+
                             <button className="bg-white/10 rounded-xl p-2">
-                                <FaRegEdit
-                                    className="text-[18px] text-white"
-                                    title="Change Image" />
+                                <label htmlFor="fileUpload">
+                                    <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" />
+                                    <FaRegEdit
+                                        className="text-[18px] text-white"
+                                        title="Change Image" />
+                                </label>
                             </button>
+
                         </div>
+                        {/* <div onChange={handleImage} className="mt-5">
+                            <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
+                                <span>
+                                    <LuUpload className="text-[16px]" />
+                                </span>
+                                <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" {...register("campImage")} />
+                                <span>Upload Image</span>
+                            </label>
+                        </div> */}
                         <div className="mt-5">
                             <h1 className="text-lg font-medium text-textDark">{currentUser?.userName}</h1>
                             <h1 className="text-sm font-normal text-grayText">{currentUser?.email}</h1>
