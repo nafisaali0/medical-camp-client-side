@@ -1,6 +1,5 @@
 
 import { Helmet } from 'react-helmet-async';
-import DashboardTitle from '../../../components/DashboardTitle';
 import usePayment from './../../../hooks/usePayment';
 const ParticipantPaymentHistory = () => {
 
@@ -11,7 +10,6 @@ const ParticipantPaymentHistory = () => {
             <Helmet>
                 <title>Amelia | Participant Payment History</title>
             </Helmet>
-            <DashboardTitle heading={"Your Payment Story"}></DashboardTitle >
             {/*  className='container mx-auto my-20' */}
             <div>
                 <h2 className='text-black text-2xl font-semibold my-10'>Total Payments: {paymentsCamp.length}</h2>

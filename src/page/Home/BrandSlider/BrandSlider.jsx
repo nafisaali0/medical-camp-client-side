@@ -7,16 +7,12 @@ import brand5 from '../../../assets/images/brandlogo/logo10.jpg'
 import brand6 from '../../../assets/images/brandlogo/logo11.jpg'
 import brand7 from '../../../assets/images/brandlogo/logo12.jpg'
 import brand8 from '../../../assets/images/brandlogo/logo13.jpg'
-import HomeTitle from "../../../components/HomeTitle";
 
 
 const BrandSlider = () => {
     return (
         <>
-            <div className="mx-auto overflow-hidden container my-20 p-5">
-                <div className="my-10">
-                    <HomeTitle title="Our Partners"></HomeTitle>
-                </div>
+            <div className="mx-auto overflow-hidden container my-20 p-5">             
                 <div className="bg-blue-200">
                     <Marquee>
                         <img className="w-[200px] h-[200px]" src={brand1}></img>

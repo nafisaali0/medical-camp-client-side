@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async';
-import DashboardTitle from '../../../components/DashboardTitle';
 import usePayment from './../../../hooks/usePayment';
 import useAxioslocalhost from '../../../hooks/useAxioslocalhost';
 import Swal from 'sweetalert2';
@@ -45,8 +44,6 @@ const FeedbackAndRatings = () => {
             <Helmet>
                 <title>Amelia | FeedBack And Rating</title>
             </Helmet>
-            
-            <DashboardTitle heading={"Your Payment Story"}></DashboardTitle >
 
             {/*  className='container mx-auto my-20' */}
             <div>

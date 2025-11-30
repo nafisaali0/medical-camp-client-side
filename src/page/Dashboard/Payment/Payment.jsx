@@ -1,6 +1,5 @@
 
 import { Elements } from '@stripe/react-stripe-js';
-import DashboardTitle from './../../../components/DashboardTitle';
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from './CheckoutForm';
 import { useLoaderData } from 'react-router-dom';
@@ -19,9 +18,7 @@ const Payment = () => {
             <Helmet>
                 <title>Amelia | Payment</title>
             </Helmet>
-            <div>
-                <DashboardTitle heading={"Payment With Stripe"}></DashboardTitle>
-            </div>
+           
             {/*  className='mx-auto container my-20 overflow-hidden' */}
             <div>
                 <div>
