@@ -21,9 +21,9 @@ const AllUsers = () => {
             const userInfo = {
                 userRole: userRole,
             }
-            console.log(userInfo)
+            // console.log(userInfo)
             const updateRole = await axiosLocalhost.patch(`/users/${userId}`, userInfo);
-            console.log(updateRole.data)
+            // console.log(updateRole.data)
             reset();
             if (updateRole.data.modifiedCount > 0) {
                 Swal.fire({

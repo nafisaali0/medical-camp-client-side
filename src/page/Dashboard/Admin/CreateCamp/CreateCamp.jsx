@@ -28,7 +28,7 @@ const CreateCamp = () => {
         const formdata = new FormData();
         formdata.append("image", file)
         const res = await axios.post(image_hosting_api, formdata);
-        console.log(res.data.data.display_url);
+        // console.log(res.data.data.display_url);
 
         if (res.data.success) {
 

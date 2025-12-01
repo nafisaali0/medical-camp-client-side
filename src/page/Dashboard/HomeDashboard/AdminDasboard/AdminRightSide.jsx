@@ -1,6 +1,5 @@
 import { useForm } from "react-hook-form";
 import { CiCalendarDate } from "react-icons/ci";
-import { FaRegEdit } from "react-icons/fa";
 import { MdOutlineUpdate } from "react-icons/md";
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
@@ -15,7 +14,7 @@ const AdminRightSide = ({ currentUser }) => {
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
     const [getImage, setGetImage] = useState(currentUser?.userImage);
-    // campImage
+
     const handleImage = async (e) => {
 
         const file = e.target.files[0]
@@ -25,20 +24,31 @@ const AdminRightSide = ({ currentUser }) => {
         const res = await axios.post(image_hosting_api, formdata);
 
         if (res.data.success) {
-            const details_image = res.data.data.display_url;
-            setGetImage(details_image);
-        } else {
-            Swal.fire({
-                position: "top-end",
-                icon: "warning",
-                title: "Image not updated",
-                showConfirmButton: false,
-                timer: 1500
-            });
+            const userImage = res.data.data.display_url;
+            setGetImage(userImage);
+            // console.log(getImage)
 
+            const userInfo = {
+                userImage: res.data.data.display_url,
+            }
+            console.log(userInfo)
+
+            const updateImage = await axiosLocalhost.patch(`/users/${currentUser._id}`, userInfo)
+
+            if (updateImage.data.modifiedCount > 0) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${currentUser?.userName} update your Image.`,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
+
+        } else {
+            console.log("image not updated")
         }
     }
-
 
     const onSubmit = async (data) => {
 
@@ -50,11 +60,13 @@ const AdminRightSide = ({ currentUser }) => {
                 userAge: data.userAge,
                 userAddress: data.userAddress,
             }
-            console.log(userInfo)
-            const updateRole = await axiosLocalhost.patch(`/users/${currentUser._id}`, userInfo);
-            console.log(updateRole.data)
+            // console.log(userInfo)
+            const updateUserDetails = await axiosLocalhost.patch(`/users/${currentUser._id}`, userInfo);
+            // console.log(updateUserDetails.data)
+
             reset();
-            if (updateRole.data.modifiedCount > 0) {
+
+            if (updateUserDetails.data.modifiedCount > 0) {
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -69,40 +81,27 @@ const AdminRightSide = ({ currentUser }) => {
     return (
         <>
             <div className="flex-1 w-full">
-                <div className="bg-white p-4 rounded-xl shadow-lg mt-8 relative">
+                <div className="bg-white p-4 rounded-xl shadow-lg mt-8">
                     <div className="flex flex-col justify-center items-center text-center">
                         <div className="-mt-12 flex justify-center items-center">
                             <figure>
                                 <img
                                     src={getImage}
-                                    alt=""
+                                    alt="userImage"
                                     className="w-full h-56 xl:w-56 rounded-xl" />
                             </figure>
                         </div>
-                        <div
+
+                        <button
                             onChange={handleImage}
-                            className="absolute -top-5 right-16 md:right-56 lg:right-64 xl:right-24 cursor-pointer">
-
-                            <button className="bg-white/10 rounded-xl p-2">
-                                <label htmlFor="fileUpload">
-                                    <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" />
-                                    <FaRegEdit
-                                        className="text-[18px] text-white"
-                                        title="Change Image" />
-                                </label>
-                            </button>
-
-                        </div>
-                        {/* <div onChange={handleImage} className="mt-5">
-                            <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
-                                <span>
-                                    <LuUpload className="text-[16px]" />
-                                </span>
-                                <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" {...register("campImage")} />
-                                <span>Upload Image</span>
+                            className="bg-textDark text-white rounded-full px-3 py-1 mt-3">
+                            <label htmlFor="fileUpload">
+                                <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" />
+                                <p className="cursor-pointer">Change Image</p>
                             </label>
-                        </div> */}
-                        <div className="mt-5">
+                        </button>
+
+                        <div className="mt-2">
                             <h1 className="text-lg font-medium text-textDark">{currentUser?.userName}</h1>
                             <h1 className="text-sm font-normal text-grayText">{currentUser?.email}</h1>
                             <h1 className="text-sm font-normal text-grayText">{currentUser?.userRole}</h1>

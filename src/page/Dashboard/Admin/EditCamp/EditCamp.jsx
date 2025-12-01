@@ -64,9 +64,9 @@ const EditCamp = () => {
             campFee: parseFloat(data.campFee),
 
         }
-        console.log(campDetails)
+        // console.log(campDetails)
         const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campDetails);
-        console.log(campRes.data)
+        // console.log(campRes.data)
 
         if (campRes.data.modifiedCount > 0) {
 
