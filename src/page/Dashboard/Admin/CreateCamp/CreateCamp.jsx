@@ -28,13 +28,12 @@ const CreateCamp = () => {
         const formdata = new FormData();
         formdata.append("image", file)
         const res = await axios.post(image_hosting_api, formdata);
-        // console.log(res.data.data.display_url);
 
         if (res.data.success) {
 
             const campDetails = {
 
-                campCreateDate:moment().format("MMM Do YY"),
+                campCreateDate: moment().format("MMM Do YY"),
                 campImage: res.data.data.display_url,
                 campName: data.campName,
                 campServices: data.campServices,
@@ -49,7 +48,7 @@ const CreateCamp = () => {
                 campFee: parseFloat(data.campFee),
 
             }
-            
+
             const campRes = await axiosLocalhost.post('/camp', campDetails);
 
             if (campRes.data.insertedId) {
@@ -61,7 +60,7 @@ const CreateCamp = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                
+
                 reset();
             }
         } else {

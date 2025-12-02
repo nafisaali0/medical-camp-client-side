@@ -92,14 +92,16 @@ const AdminRightSide = ({ currentUser }) => {
                             </figure>
                         </div>
 
-                        <button
-                            onChange={handleImage}
-                            className="bg-textDark text-white rounded-full px-3 py-1 mt-3">
-                            <label htmlFor="fileUpload">
-                                <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" />
-                                <p className="cursor-pointer">Change Image</p>
-                            </label>
-                        </button>
+                        <div>
+                            <button
+                                onChange={handleImage}
+                                className="px-3 py-1 mt-3 bg-primarySemiDark text-textDark border border-primarySemiDark rounded-full">
+                                <label htmlFor="fileUpload">
+                                    <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" />
+                                    <p className="cursor-pointer">Change Image</p>
+                                </label>
+                            </button>
+                        </div>
 
                         <div className="mt-2">
                             <h1 className="text-lg font-medium text-textDark">{currentUser?.userName}</h1>

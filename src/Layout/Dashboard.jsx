@@ -8,7 +8,8 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="flex relative bg-custom-gradient  overflow-hidden">
+            {/* overflow-hidden */}
+            <div className="flex relative bg-custom-gradient h-full">
 
                 {/* Grid lines background */}
                 <div className="absolute inset-0 -z-20 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"></div>
@@ -23,8 +24,8 @@ const Dashboard = () => {
                     ></NavDashboard>
 
                 </div>
-
-                <div className="flex-1 min-h-screen ml-16 lg:ml-60 px-3 py-10 lg:px-8 md:px-5">
+                {/* flex-1 min-h-screen  */}
+                <div className="flex-1 ml-16 lg:ml-60 px-3 py-10 lg:px-8 md:px-5">
 
                     <Outlet></Outlet>
 

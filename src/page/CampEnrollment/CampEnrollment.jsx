@@ -1,65 +1,61 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxioslocalhost from "../../hooks/useAxioslocalhost";
-import useCamp from "../../hooks/useCamp";
 import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
 import { FaLocationCrosshairs, FaPhone, FaUser } from "react-icons/fa6";
 import { PiGenderIntersexBold } from "react-icons/pi";
 import { GiAges } from "react-icons/gi";
-import useAuth from "../../hooks/useAuth";
+import useUsers from "../../hooks/useUsers";
 
 
 const CampEnrollment = () => {
 
-    const { _id, campImage, campFee, campName, campDate, campTime, campVenue, campServices } = useLoaderData();
-    const { register, handleSubmit } = useForm();
-    const { user } = useAuth();
+    const { _id, campImage, campFee, campName, campCategory } = useLoaderData();
+    const { register, handleSubmit, reset } = useForm();
     const axiosLocalhost = useAxioslocalhost();
-    const [loading, refetch] = useCamp();
     const location = useLocation();
     const navigate = useNavigate();
+    const [users] = useUsers();
+    const currentUser = users?.length > 0 ? users[0] : {};
 
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
 
-        if (user && user?.email) {
-            // send cart item to the database
-            const campItem = {
+        if (currentUser) {
+
+            const enrollmentItem = {
+                // camp info
                 campId: _id,
-                email: user.email,
                 campName: campName,
                 campFee: campFee,
-                date: campDate,
-                time: campTime,
-                venue: campVenue,
-                services: campServices,
-                image: campImage,
-                // register form
-                name: data.name,
-                age: data.age,
-                gender: data.gender,
-                address: data.address,
+                campCategory: campCategory,
+
+                // user info
+                userEmail: currentUser.email,
+                userName: data.userName,
+                userImage: data.userImage,
+                userAge: data.userAge,
+                userGender: data.userGender,
+                userAddress: data.userAddress,
+
             }
-            console.log(campItem)
-            axiosLocalhost.post('/registerCamps', campItem)
-                .then(res => {
-                    console.log(res.data)
-                    if (res.data.insertedId) {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: `Your ${campName} has been added to the register camp`,
-                            showConfirmButton: false,
-                            timer: 2500
-                        });
-                        // refetch the cart to update the cart items count
-                        loading()
-                        refetch()
-                    }
-                })
+            console.log(enrollmentItem)
+            const enrollCamp = await axiosLocalhost.post('/enrollCamp', enrollmentItem);
+            if (enrollCamp.data.insertedId) {
+
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "create camp successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                reset();
+            }
         } else {
             Swal.fire({
                 title: "You are not login",
-                text: "Please login to add to the cart",
+                text: "Please login to enroll camp",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
@@ -67,7 +63,6 @@ const CampEnrollment = () => {
                 confirmButtonText: "Go to login page"
             }).then((result) => {
                 if (result.isConfirmed) {
-                    //send the user to the login page 
                     navigate('/login', { state: { from: location } })
                 }
             });
@@ -101,7 +96,8 @@ const CampEnrollment = () => {
                                                 <FaUser className="absolute left-3 text-grayText text-lg" />
                                                 <input
                                                     type="name" name="name" placeholder="Name"
-                                                    {...register("name")}
+                                                    defaultValue={currentUser?.userName}
+                                                    {...register("userName")}
                                                     className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
                                                 />
                                             </div>
@@ -109,7 +105,8 @@ const CampEnrollment = () => {
                                                 <PiGenderIntersexBold className="absolute left-3 text-grayText text-lg" />
                                                 <input
                                                     type="gender" name="gender" placeholder="Gender"
-                                                    {...register("gender")}
+                                                    defaultValue={currentUser?.userGender}
+                                                    {...register("userGender")}
                                                     className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
                                                 />
                                             </div>
@@ -121,7 +118,8 @@ const CampEnrollment = () => {
                                                 <GiAges className="absolute left-3 text-grayText text-lg" />
                                                 <input
                                                     type="age" name="age" placeholder="Age"
-                                                    {...register("age")}
+                                                    defaultValue={currentUser?.userAge}
+                                                    {...register("userAge")}
                                                     className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
                                                 />
                                             </div>
@@ -129,7 +127,8 @@ const CampEnrollment = () => {
                                                 <FaPhone className="absolute left-3 text-grayText text-lg" />
                                                 <input
                                                     type="number" name="number" placeholder="Phone Number"
-                                                    {...register("phoneNumber")}
+                                                    defaultValue={currentUser?.userPhone}
+                                                    {...register("userPhone")}
                                                     className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
                                                 />
                                             </div>
@@ -141,7 +140,8 @@ const CampEnrollment = () => {
                                         <FaLocationCrosshairs className="absolute left-3 top-3 text-grayText text-lg" />
                                         <textarea
                                             placeholder="Address"
-                                            {...register("address")}
+                                            defaultValue={currentUser?.userAddress}
+                                            {...register("userAddress")}
                                             className="textarea w-full py-2 pl-10 pr-3 font-medium border-borderColour"
                                         ></textarea>
                                     </div>

@@ -73,23 +73,13 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 </span>
                                             </Link>
                                             {/* <Link
-                                                to="/dashboard/add-a-camp"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/add-a-camp')
+                                                to="/dashboard/manage-Users"
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-Users')
                                                     ? 'sideNavLink' : ''}`}>
                                                 <IoCreateOutline className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <span
                                                     className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    Create Camp
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/edit-camp"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/edit-camp')
-                                                    ? 'sideNavLink' : ''}`}>
-                                                <IoCreateOutline className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                <span
-                                                    className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    Edit-camp
+                                                    All Users
                                                 </span>
                                             </Link> */}
                                             <div className="flex justify-start items-center gap-2 rounded p-[11px] text-white">

@@ -6,7 +6,7 @@ const useAllRegisteredCamp = () => {
     const {refetch, data: allregisteredCamp = [], isPending: loading  } = useQuery({
         queryKey: ['allregisteredCamp'],
         queryFn: async () => {
-            const res = await axiosLocalhost.get('/registerCamps');
+            const res = await axiosLocalhost.get('/enrollCamp');
             return res.data
         }
     })
