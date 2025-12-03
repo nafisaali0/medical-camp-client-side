@@ -16,4 +16,4 @@ const useUserEnrollCamp = () => {
     return [userEnrollCamp, refetch, loading]
 }
 
-export default useUserEnrollCamp
+export default useUserEnrollCamp;

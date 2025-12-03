@@ -34,7 +34,7 @@ const CampEnrollment = () => {
                 campImage: campImage,
 
                 // user info
-                userEmail: currentUser.email,
+                email: currentUser.email,
                 userName: data.userName,
                 userImage: data.userImage,
                 userAge: data.userAge,
