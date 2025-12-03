@@ -8,8 +8,6 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
 import DetailsCamp from '../page/DetailsCamp/DetailsCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
-import RegisteredCamps from './../page/Dashboard/RegisteredCamps/RegisteredCamps';
-import ManageRegisterCamps from './../page/Dashboard/ManageRegisterCamps/ManageRegisterCamps';
 import Payment from "../page/Dashboard/Payment/Payment";
 import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
@@ -74,10 +72,6 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes><MyCamps /></PrivateRoutes>,
             },
             {
-                path: "registered-camps",
-                element: <PrivateRoutes><RegisteredCamps /></PrivateRoutes>,
-            },
-            {
                 path: "payment/:id",
                 element: <PrivateRoutes><Payment /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/registerCamps/${params.id}`)
@@ -112,12 +106,6 @@ export const router = createBrowserRouter([
             {
                 path: "manage-enroll-camps",
                 element: <PrivateRoutes><EnrollCamps /></PrivateRoutes>,
-            },
-            // .....old....
-            {
-                path: "manage-registered-camps",
-                element: <PrivateRoutes><ManageRegisterCamps /></PrivateRoutes>,
-                loader: () => fetch('https://medical-camp-server-seven.vercel.app/registerCamps')
             },
 
         ]

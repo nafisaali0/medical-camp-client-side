@@ -1,22 +1,22 @@
 import { useState } from "react";
-import useCamp from "../../../../hooks/useCamp";
 import { MdFormatListBulletedAdd } from "react-icons/md";
 import { ImBasecamp } from "react-icons/im";
 import { CiCalendarDate, CiCircleChevDown, CiCircleChevUp } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { LuView } from "react-icons/lu";
 import { GrStatusGood } from "react-icons/gr";
-import Review from "./Review";
+import useUserEnrollCamp from "../../../../hooks/useUserEnrollCamp";
+import Review from "../Review/Review";
 
 
 const MyCamps = () => {
 
-    const [camp] = useCamp();
+    const [userEnrollCamp] = useUserEnrollCamp();
     const [cardOpen, setCardOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(null)
 
     function handleCardDropDown(index) {
-        console.log(cardIndex)
+
         if (cardIndex === index) {
             setCardOpen(!cardOpen);
         } else {
@@ -41,7 +41,7 @@ const MyCamps = () => {
                                 <span>
                                     <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
                                 </span>
-                                Total : {camp?.length}
+                                Total : {userEnrollCamp?.length}
                             </button>
                         </div>
 
@@ -51,7 +51,7 @@ const MyCamps = () => {
                 <div className="bg-white px-4 py-10 rounded-xl border border-borderColour">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                         {
-                            camp.map((campInfo, index) =>
+                            userEnrollCamp?.map((campInfo, index) =>
                                 <>
                                     <div key={index} className="relative">
                                         <div
@@ -76,7 +76,7 @@ const MyCamps = () => {
                                             <div>
                                                 <div className="flex items-center gap-1">
                                                     <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
-                                                    <p className="text-sm font-medium text-textDark">{campInfo?.date}</p>
+                                                    <p className="text-sm font-medium text-textDark">{campInfo?.campDate}</p>
                                                 </div>
                                             </div>
 
@@ -90,15 +90,15 @@ const MyCamps = () => {
                                                     <div className="space-y-1">
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Time: </span>
-                                                            {campInfo?.time}
+                                                            {campInfo?.campTime}
                                                         </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Location: </span>
-                                                            {campInfo?.venue}
+                                                            {campInfo?.campVenue}
                                                         </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Fee: </span>
-                                                            {campInfo?.campFees} BDT</h1>
+                                                            {campInfo?.campFee} BDT</h1>
                                                     </div>
 
                                                     <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">

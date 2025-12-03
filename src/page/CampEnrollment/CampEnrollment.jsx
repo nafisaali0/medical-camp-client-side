@@ -10,7 +10,7 @@ import useUsers from "../../hooks/useUsers";
 
 const CampEnrollment = () => {
 
-    const { _id, campImage, campFee, campName, campCategory } = useLoaderData();
+    const { _id, campImage, campFee, campName, campDate, campVenue,campTime, campCategory } = useLoaderData();
     const { register, handleSubmit, reset } = useForm();
     const axiosLocalhost = useAxioslocalhost();
     const location = useLocation();
@@ -28,6 +28,10 @@ const CampEnrollment = () => {
                 campName: campName,
                 campFee: campFee,
                 campCategory: campCategory,
+                campDate: campDate,
+                campVenue: campVenue,
+                campTime: campTime,
+                campImage: campImage,
 
                 // user info
                 userEmail: currentUser.email,
@@ -38,7 +42,7 @@ const CampEnrollment = () => {
                 userAddress: data.userAddress,
 
             }
-            console.log(enrollmentItem)
+            // console.log(enrollmentItem)
             const enrollCamp = await axiosLocalhost.post('/enrollCamp', enrollmentItem);
             if (enrollCamp.data.insertedId) {
 

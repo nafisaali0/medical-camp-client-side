@@ -1,16 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxioslocalhost from "./useAxioslocalhost";
 
-const useAllRegisteredCamp = () => {
+const useAllEnrollCamp = () => {
+
     const axiosLocalhost = useAxioslocalhost()
-    const {refetch, data: allregisteredCamp = [], isPending: loading  } = useQuery({
-        queryKey: ['allregisteredCamp'],
+    const { refetch, data: allEnrollCamp = [], isPending: loading } = useQuery({
+        queryKey: ['allEnrollCamp'],
         queryFn: async () => {
             const res = await axiosLocalhost.get('/enrollCamp');
             return res.data
         }
     })
-    return [allregisteredCamp, loading , refetch]
-};
+    return [allEnrollCamp, loading, refetch]
+    
+}
 
-export default useAllRegisteredCamp;
+export default useAllEnrollCamp
