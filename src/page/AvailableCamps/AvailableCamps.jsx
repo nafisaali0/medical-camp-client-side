@@ -5,7 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { CiCalendarDate } from "react-icons/ci";
 import { IoArrowDownCircleOutline, IoArrowUpCircle, IoGridOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AvailableCamps = () => {
 
@@ -13,12 +13,21 @@ const AvailableCamps = () => {
     const [grid, setGridOpen] = useState(true)
     const [singleAlign, setSingleAlignOpen] = useState(false)
 
+
     // const [registeredCamp] = useRegisteredCamp();
     // const calculateTotalParticipation = (campId) => {
     //     const participantsForCamp = registeredCamp.filter(registration => registration.campId === campId);
     //     return participantsForCamp.length;
     // }
+    const [ascending, setAscending] = useState()
+    useEffect(() => {
+        const sorting = camp.sort(function (a, b) {
+            return parseFloat(b.campFee) - parseFloat(a.campFee);
 
+            // (b.campFee) - (a.campFee)
+        })
+        setAscending(sorting)
+    }, [camp, ascending])
 
     function handleSingleAlign() {
         console.log("handleSingleAlign")
