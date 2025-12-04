@@ -1,4 +1,3 @@
-// import useRegisteredCamp from "../../hooks/useRegisteredCamp";
 import { Link } from "react-router-dom";
 import useCamp from "../../hooks/useCamp";
 import { Helmet } from "react-helmet-async";
@@ -6,31 +5,47 @@ import { CiCalendarDate } from "react-icons/ci";
 import { IoArrowDownCircleOutline, IoArrowUpCircle, IoGridOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
 import { useEffect, useState } from "react";
+import Loader from './../../components/Loader';
 
 const AvailableCamps = () => {
 
     const [camp] = useCamp()
     const [grid, setGridOpen] = useState(true)
     const [singleAlign, setSingleAlignOpen] = useState(false)
+    const [defaultCamp, setDefaultCamp] = useState()
 
-
-    // const [registeredCamp] = useRegisteredCamp();
-    // const calculateTotalParticipation = (campId) => {
-    //     const participantsForCamp = registeredCamp.filter(registration => registration.campId === campId);
-    //     return participantsForCamp.length;
-    // }
-    const [ascending, setAscending] = useState()
     useEffect(() => {
-        const sorting = camp.sort(function (a, b) {
-            return parseFloat(b.campFee) - parseFloat(a.campFee);
+        if (camp?.length > 0) {
+            setDefaultCamp(camp)
+        } else {
+            <Loader />
+        }
+    }, [camp])
 
-            // (b.campFee) - (a.campFee)
+    function handleAscendingOrder() {
+
+        if (camp?.length === 0) return
+        const copyCamp = [...camp];
+
+        const sorting = copyCamp.sort(function (a, b) {
+            return parseFloat(b.campFee) - parseFloat(a.campFee);
         })
-        setAscending(sorting)
-    }, [camp, ascending])
+        setDefaultCamp(sorting)
+    }
+    function handleDescendingOrder() {
+
+        if (camp?.length === 0) return
+        const copyCamp = [...camp];
+
+        const sorting = copyCamp.sort(function (a, b) {
+            return parseFloat(a.campFee) - parseFloat(b.campFee);
+        })
+
+        setDefaultCamp(sorting)
+    }
 
     function handleSingleAlign() {
-        console.log("handleSingleAlign")
+        // console.log("handleSingleAlign")
         if (singleAlign === false) {
             setSingleAlignOpen(true)
         }
@@ -39,7 +54,7 @@ const AvailableCamps = () => {
         }
     }
     function handleGrid() {
-        console.log("gridOpen")
+        // console.log("gridOpen")
         if (grid === false) {
             setGridOpen(true)
         }
@@ -64,7 +79,7 @@ const AvailableCamps = () => {
                                 <div className="max-w-[1300px] mx-auto overflow-hidden p-5">
 
                                     {
-                                        camp !== 0 ?
+                                        defaultCamp !== 0 ?
                                             (
                                                 <>
                                                     <div className="flex justify-between items-center mb-5">
@@ -73,10 +88,12 @@ const AvailableCamps = () => {
                                                             <button className="text-sm font-semibold text-textDark">Sort by Price: </button>
                                                             <div>
                                                                 <IoArrowUpCircle
+                                                                    onClick={handleAscendingOrder}
                                                                     className="text-[20px] text-btnColor cursor-pointer" />
                                                             </div>
                                                             <div>
                                                                 <IoArrowDownCircleOutline
+                                                                    onClick={handleDescendingOrder}
                                                                     className="text-[20px] text-btnColor cursor-pointer" />
                                                             </div>
                                                         </div>
@@ -98,7 +115,7 @@ const AvailableCamps = () => {
                                                     <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5">
 
                                                         {
-                                                            camp?.map((eachCamp, index) =>
+                                                            defaultCamp?.map((eachCamp, index) =>
 
                                                                 <>
                                                                     <div
@@ -161,7 +178,7 @@ const AvailableCamps = () => {
                                     <div className="max-w-3xl mx-auto overflow-hidden p-5">
 
                                         {
-                                            camp !== 0 ?
+                                            defaultCamp !== 0 ?
                                                 (
                                                     <>
                                                         <div className="flex justify-between items-center mb-5">
@@ -195,7 +212,7 @@ const AvailableCamps = () => {
                                                         <div className="flex flex-col gap-5">
 
                                                             {
-                                                                camp.map((eachCamp, index) =>
+                                                                defaultCamp.map((eachCamp, index) =>
                                                                     <>
                                                                         <div
                                                                             key={index}
