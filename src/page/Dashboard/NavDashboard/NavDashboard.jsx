@@ -72,16 +72,16 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                     Create Camp
                                                 </span>
                                             </Link>
-                                            {/* <Link
-                                                to="/dashboard/manage-Users"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-Users')
+                                            <Link
+                                                to="/dashboard/payment-history"
+                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/payment-history')
                                                     ? 'sideNavLink' : ''}`}>
                                                 <IoCreateOutline className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <span
                                                     className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    All Users
+                                                    Payment
                                                 </span>
-                                            </Link> */}
+                                            </Link>
                                             <div className="flex justify-start items-center gap-2 rounded p-[11px] text-white">
                                                 <MdManageHistory className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                                                 <div className={`dropdown dropdown-start lg:w-full ${isOpen ? "w-full" : ""}`}>
@@ -199,19 +199,6 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                     Review
                                                 </span>
                                             </Link>
-                                            {/* <Link
-                                                to="/dashboard/registered-camps"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/registered-camps')
-                                                    ? 'sideNavLink'
-                                                    : ''
-                                                    }`}>
-                                                <ImBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                <span
-                                                    className={`lg:flex lg:text-md font-medium
-                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    My Camps
-                                                </span>
-                                            </Link> */}
                                         </>
                                     )}
                                 </React.Fragment>

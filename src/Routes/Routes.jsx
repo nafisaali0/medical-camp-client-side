@@ -71,10 +71,14 @@ export const router = createBrowserRouter([
                 path: "my-camps",
                 element: <PrivateRoutes><MyCamps /></PrivateRoutes>,
             },
+            // {
+            //     path: "payment/:id",
+            //     element: <PrivateRoutes><Payment /></PrivateRoutes>,
+            //     loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.id}`)
+            // },
             {
-                path: "payment/:id",
+                path: "payment",
                 element: <PrivateRoutes><Payment /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/registerCamps/${params.id}`)
             },
             {
                 path: "payment-history",

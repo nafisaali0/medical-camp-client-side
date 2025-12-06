@@ -2,32 +2,44 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect } from "react";
 import { useState } from "react";
 import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
-import useAuth from "../../../hooks/useAuth";
-import moment from 'moment';
 import Swal from "sweetalert2";
+import moment from "moment";
+import useUsers from "../../../hooks/useUsers";
 
+const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee }) => {
 
-const CheckoutForm = ({ eachCamp }) => {
+    // const { campFee, _id, campName, campVenue } = eachCamp
+    // const date = moment().format("MMM Do YY");
+    // const time = moment().format('LT');
+    // const { user } = useAuth()
+    // const stripe = useStripe();
+    // const elements = useElements();
+    // const [error, setError] = useState('')
+    // const [clientSecret, setClientSecret] = useState('')
+    // const [transactionId, setTransactionId] = useState('')
+    // const axiosLocalhost = useAxioslocalhost();
+    // const totalPrice = campFee;
 
-    const { campFees, _id, campName, venue } = eachCamp
+    // new
+    
+    // console.log(enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee)
     const date = moment().format("MMM Do YY");
     const time = moment().format('LT');
-    // console.log(date,time)
-    // console.log(campFees)
-    const { user } = useAuth()
+    const [users] = useUsers();
+    const currentUser = users?.length > 0 ? users[0] : {};
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const [transactionId, setTransactionId] = useState('')
     const axiosLocalhost = useAxioslocalhost();
-    // const totalPrice = camp.reduce((total, item) => total + item.campFees, 0)
-    const totalPrice = campFees;
+    const totalPrice = enrollCampFee;
     console.log(totalPrice)
+
 
     useEffect(() => {
         if (totalPrice > 0) {
-            axiosLocalhost.post('/create-payment-intent', { campFees: totalPrice })
+            axiosLocalhost.post('/create-payment-intent', { enrollCampFee: totalPrice })
                 .then(res => {
                     setClientSecret(res.data.clientSecret);
                     console.log(res.data.clientSecret)
@@ -38,10 +50,12 @@ const CheckoutForm = ({ eachCamp }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
+        console.log(event)
         if (!stripe || !elements) {
             // Stripe.js has not loaded yet. Make sure to disable
             // form submission until Stripe.js has loaded.
+            console.log(stripe)
+            console.log(elements)
             return;
         }
         const card = elements.getElement(CardElement)
@@ -67,8 +81,8 @@ const CheckoutForm = ({ eachCamp }) => {
             payment_method: {
                 card: card,
                 billing_details: {
-                    email: user?.email || 'anonymous',
-                    name: user?.displayName || 'anonymous'
+                    email: currentUser?.email || 'anonymous',
+                    name: currentUser?.userName || 'anonymous'
                 }
             }
         })
@@ -83,17 +97,17 @@ const CheckoutForm = ({ eachCamp }) => {
 
                 //now save the payment in the database
                 const payment = {
-                    email: user.email,
+                    email: currentUser?.email,
                     price: totalPrice,
-                    campId: _id,
-                    campName: campName,
-                    venue: venue,
+                    campId: enrollCampId,
+                    enrollCampName: enrollCampName,
+                    enrollCampCategory: enrollCampCategory,
                     date: date,
                     time: time,
                     transactionId: paymentIntent.id,
                     status: 'paid'
                 }
-                //console.log(payment)
+                // console.log(payment)
                 const res = await axiosLocalhost.post('/payments', payment);
                 console.log('payment saved', res.data);
                 // refetch();
