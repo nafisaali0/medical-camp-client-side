@@ -162,14 +162,14 @@ const CampEnrollment = () => {
                                         </Payment>
                                     </div>
 
-                                    <div className="flex justify-center items-center py-5">
+                                    {/* <div className="flex justify-center items-center py-5">
                                         <button className="primaryBtn">
                                             Enrollment Complete
                                             <div className="arrow-wrapper">
                                                 <div className="arrow"></div>
                                             </div>
                                         </button>
-                                    </div>
+                                    </div> */}
 
                                 </div>
                             </div>

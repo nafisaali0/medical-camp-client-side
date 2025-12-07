@@ -9,17 +9,19 @@ const Payment = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampF
 
     return (
         <>
-            <Elements stripe={stripePromise}>
+            <div className='my-5'>
+                <Elements stripe={stripePromise}>
 
-                <CheckoutForm
-                    key={enrollCampId}
-                    enrollCampId={enrollCampId}
-                    enrollCampName={enrollCampName}
-                    enrollCampCategory={enrollCampCategory}
-                    enrollCampFee={enrollCampFee}>
-                </CheckoutForm>
+                    <CheckoutForm
+                        key={enrollCampId}
+                        enrollCampId={enrollCampId}
+                        enrollCampName={enrollCampName}
+                        enrollCampCategory={enrollCampCategory}
+                        enrollCampFee={enrollCampFee}>
+                    </CheckoutForm>
 
-            </Elements>
+                </Elements>
+            </div>
 
         </>
     );

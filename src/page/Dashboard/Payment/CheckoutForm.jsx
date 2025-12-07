@@ -21,7 +21,7 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
     // const totalPrice = campFee;
 
     // new
-    
+
     // console.log(enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee)
     const date = moment().format("MMM Do YY");
     const time = moment().format('LT');
@@ -131,23 +131,31 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
                         style: {
                             base: {
                                 fontSize: '16px',
-                                color: '#424770',
+                                color: '#0A1931',
                                 '::placeholder': {
-                                    color: '#aab7c4',
+                                    color: '#0A1931',
                                 },
                             },
                             invalid: {
-                                color: '#9e2146',
+                                color: '#6B6B6B',
                             },
                         },
                     }}
                 />
+                <p className="text-textDark my-2">{error}</p>
+                {transactionId && <p className="text-textDark my-2"> Your transaction id: <span className="text-grayText"> {transactionId}</span></p>}
+                <div className="flex justify-center items-center py-5">
+                    <button
+                        type="submit"
+                        disabled={!stripe || !clientSecret}
+                        className="primaryBtn">
+                        Complete Enrollment
+                        <div className="arrow-wrapper">
+                            <div className="arrow"></div>
+                        </div>
+                    </button>
+                </div>
 
-                <button className="btn btn-sm btn-primary my-4" type="submit" disabled={!stripe || !clientSecret} >
-                    Pay
-                </button>
-                <p className="text-red-600">{error}</p>
-                {transactionId && <p className="text-green-600"> Your transaction id: {transactionId}</p>}
             </form>
         </>
     );
