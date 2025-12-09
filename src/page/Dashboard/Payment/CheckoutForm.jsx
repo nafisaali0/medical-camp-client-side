@@ -8,20 +8,6 @@ import useUsers from "../../../hooks/useUsers";
 
 const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee }) => {
 
-    // const { campFee, _id, campName, campVenue } = eachCamp
-    // const date = moment().format("MMM Do YY");
-    // const time = moment().format('LT');
-    // const { user } = useAuth()
-    // const stripe = useStripe();
-    // const elements = useElements();
-    // const [error, setError] = useState('')
-    // const [clientSecret, setClientSecret] = useState('')
-    // const [transactionId, setTransactionId] = useState('')
-    // const axiosLocalhost = useAxioslocalhost();
-    // const totalPrice = campFee;
-
-    // new
-
     // console.log(enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee)
     const date = moment().format("MMM Do YY");
     const time = moment().format('LT');
@@ -34,8 +20,6 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
     const [transactionId, setTransactionId] = useState('')
     const axiosLocalhost = useAxioslocalhost();
     const totalPrice = enrollCampFee;
-    console.log(totalPrice)
-
 
     useEffect(() => {
         if (totalPrice > 0) {
@@ -123,6 +107,7 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
             }
         }
     }
+    
     return (
         <>
             <form onSubmit={handleSubmit}>

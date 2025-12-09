@@ -90,7 +90,7 @@ const CampEnrollment = () => {
                                     </h1>
                                 </div>
 
-                                <div
+                                <form
                                     role="form"
                                     // onSubmit={handleSubmit(onSubmit)}
                                     className="space-y-4">
@@ -162,16 +162,18 @@ const CampEnrollment = () => {
                                         </Payment>
                                     </div>
 
-                                    {/* <div className="flex justify-center items-center py-5">
-                                        <button className="primaryBtn">
-                                            Enrollment Complete
-                                            <div className="arrow-wrapper">
-                                                <div className="arrow"></div>
-                                            </div>
-                                        </button>
-                                    </div> */}
+                                    {
+                                        /* <div className="flex justify-center items-center py-5">
+                                            <button className="primaryBtn">
+                                                Enrollment Complete
+                                                <div className="arrow-wrapper">
+                                                    <div className="arrow"></div>
+                                                </div>
+                                            </button>
+                                        </div> */
+                                    }
 
-                                </div>
+                                </form>
                             </div>
                         </div>
                         {/* right side */}
