@@ -4,7 +4,8 @@ import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from './CheckoutForm';
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
-const Payment = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee }) => {
+
+const Payment = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee, enrollCampDate, enrollCampVenue, enrollCampTime, enrollCampAge }) => {
 
 
     return (
@@ -17,11 +18,15 @@ const Payment = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampF
                         enrollCampId={enrollCampId}
                         enrollCampName={enrollCampName}
                         enrollCampCategory={enrollCampCategory}
-                        enrollCampFee={enrollCampFee}>
-                    </CheckoutForm>
+                        enrollCampFee={enrollCampFee}
+                        enrollCampDate = {enrollCampDate}
+                        enrollCampVenue = {enrollCampVenue}
+                        enrollCampTime = {enrollCampTime}
+                        enrollCampAge = {enrollCampAge}>
+                </CheckoutForm>
 
-                </Elements>
-            </div>
+            </Elements>
+        </div >
 
         </>
     );
