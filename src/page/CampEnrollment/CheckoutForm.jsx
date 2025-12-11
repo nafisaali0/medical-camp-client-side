@@ -1,16 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect } from "react";
 import { useState } from "react";
-import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
 import Swal from "sweetalert2";
 import moment from "moment";
-import useUsers from "../../../hooks/useUsers";
 import { FaLocationCrosshairs, FaPhone, FaUser } from "react-icons/fa6";
 import { PiGenderIntersexBold } from "react-icons/pi";
 import { GiAges } from "react-icons/gi";
+import useAxioslocalhost from './../../hooks/useAxioslocalhost';
+import useUsers from "../../hooks/useUsers";
 
-const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee, enrollCampDate, enrollCampVenue, enrollCampTime, enrollCampAge }) => {
-    
+const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee, enrollCampDate, enrollCampVenue, enrollCampTime, enrollCampAge, enrollCampImage }) => {
+
     const date = moment().format("MMM Do YY");
     const time = moment().format('LT');
     const [users] = useUsers();
@@ -84,17 +84,18 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
                 const payment = {
 
                     price: totalPrice,
-                    campId: enrollCampId,
+                    enrollCampId: enrollCampId,
                     enrollCampName: enrollCampName,
                     enrollCampCategory: enrollCampCategory,
                     enrollCampDate: enrollCampDate,
                     enrollCampAge: enrollCampAge,
                     enrollCampVenue: enrollCampVenue,
                     enrollCampTime: enrollCampTime,
-                    date: date,
-                    time: time,
-                    transactionId: paymentIntent.id,
-                    status: 'paid',
+                    enrollCampImage: enrollCampImage,                    
+                    transactionId: paymentIntent?.id,
+                    paymentStatus: 'paid',
+                    enrollDate: date,
+                    enrollTime: time,
 
                     // user
                     email: currentUser?.email,
@@ -214,21 +215,6 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
                     </div>
 
                 </div>
-
-                {/* <p className="text-textDark my-2">{error}</p>
-                {transactionId && <p className="text-textDark my-2"> Your transaction id: <span className="text-grayText"> {transactionId}</span></p>}
-                <div className="flex justify-center items-center py-5">
-                    <button
-                        type="submit"
-                        disabled={!stripe || !clientSecret}
-                        className="primaryBtn">
-                        Complete Enrollment
-                        <div className="arrow-wrapper">
-                            <div className="arrow"></div>
-                        </div>
-                    </button>
-                </div> */}
-
             </form>
         </>
     );

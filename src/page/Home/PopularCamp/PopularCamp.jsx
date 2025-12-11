@@ -50,13 +50,13 @@ const PopularCamp = () => {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {
-                        allEnrollCamp?.map((enrolledCamp, index) =>
+                        allEnrollCamp?.slice(0,4).map((enrolledCamp, index) =>
                             <>
                                 <div key={index} className="card rounded-t-xl bg-white shadow-lg hover:shadow-xl">
                                     <div className="relative">
                                         <figure>
                                             <img
-                                                src={enrolledCamp?.campImage}
+                                                src={enrolledCamp?.enrollCampImage}
                                                 className="w-full h-52 object-cover rounded-t-xl"
                                             />
                                             <div className="absolute inset-0 bg-black/40 rounded-t-xl"></div>
@@ -64,7 +64,7 @@ const PopularCamp = () => {
                                     </div>
                                     <div className="w-full z-10 md:max-w-[300px] md:mx-auto md:absolute md:top-44 md:left-10 p-4 -mb-14 md:rounded-lg bg-gradient-to-r from-[#404f68] via-[#87A8D0]/70 to-[#B9CEEB]/60 backdrop-blur-sm">
                                         <h2 className="text-center text-lg font-bold text-white">
-                                            {enrolledCamp?.campName}
+                                            {enrolledCamp?.enrollCampName}
                                         </h2>
                                     </div>
                                     <div className="card-body pt-10 md:pt-0 p-3 m-0 md:-mt-3 rounded-t-3xl rounded-b-3xl bg-white border-2 border-white">
@@ -74,11 +74,11 @@ const PopularCamp = () => {
                                                     <IoMdTime className="text-[25px] text-btnColor" />
                                                     <h1 className="text-sm font-normal text-textDark">
                                                         <span className="font-bold">Date & Time: </span>
-                                                        {enrolledCamp?.campDate}
+                                                        {enrolledCamp?.enrollCampDate}
 
                                                         <span className="mx-1 text-textDark font-bold">|</span>
 
-                                                        {enrolledCamp?.campTime}
+                                                        {enrolledCamp?.enrollCampTime}
                                                     </h1>
                                                 </div>
 
@@ -86,7 +86,7 @@ const PopularCamp = () => {
                                                     <GoPeople className="text-[25px] text-btnColor" />
                                                     <h1 className="text-sm font-normal text-textDark">
                                                         <span className="font-bold">Target Audience: </span>
-                                                        {enrolledCamp?.campAge}
+                                                        {enrolledCamp?.enrollCampAge}
                                                     </h1>
                                                 </div>
 
@@ -94,7 +94,7 @@ const PopularCamp = () => {
                                                     <IoLocationOutline className="text-[25px] text-btnColor" />
                                                     <h1 className="text-sm font-normal text-textDark">
                                                         <span className="font-bold">Venue: </span>
-                                                        {enrolledCamp?.campVenue}
+                                                        {enrolledCamp?.enrollCampVenue}
                                                     </h1>
                                                 </div>
 
@@ -102,14 +102,14 @@ const PopularCamp = () => {
                                                     <FaBangladeshiTakaSign className="text-[16px] text-btnColor" />
                                                     <h1 className="text-sm font-normal text-textDark">
                                                         <span className="font-bold">Price: </span>
-                                                        {enrolledCamp.campFee}
+                                                        {enrolledCamp?.price}
                                                     </h1>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div className="card-actions justify-center my-3">
-                                            <Link to={`/camp-details/${enrolledCamp?.campId}`}>
+                                            <Link to={`/camp-details/${enrolledCamp?.enrollCampId}`}>
                                                 <button className="primaryBtn ml-2">
                                                     View Details
                                                     <div className="arrow-wrapper">

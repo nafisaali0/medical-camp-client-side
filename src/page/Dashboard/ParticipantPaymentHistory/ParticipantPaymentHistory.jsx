@@ -1,18 +1,15 @@
 
 import { Helmet } from 'react-helmet-async';
-import usePayment from './../../../hooks/usePayment';
 const ParticipantPaymentHistory = () => {
 
-    const [paymentsCamp] = usePayment();
 
     return (
         <>
             <Helmet>
                 <title>Amelia | Participant Payment History</title>
             </Helmet>
-            {/*  className='container mx-auto my-20' */}
             <div>
-                <h2 className='text-black text-2xl font-semibold my-10'>Total Payments: {paymentsCamp.length}</h2>
+                <h2 className='text-black text-2xl font-semibold my-10'>Total Payments: 30</h2>
                 <div className='bg-white w-10/12'>
 
                     <div className="overflow-x-auto">
@@ -29,14 +26,14 @@ const ParticipantPaymentHistory = () => {
                                 </tr>
                             </thead>
                             <tbody className='text-black text-lg font-semibold my-10'>
-                                {paymentsCamp.map((payment, index) => <tr key={payment._id}>
-                                    <th>{index + 1}</th>
-                                    <td>{payment.campName}</td>
-                                    <td>{payment.price} $</td>
-                                    <td>{payment.date}</td>
-                                    <td>{payment.transactionId}</td>
-                                    <td>{payment.status}</td>
-                                </tr>)}
+                                <tr>
+                                    <th>1</th>
+                                    <td>campName</td>
+                                    <td>price</td>
+                                    <td>date</td>
+                                    <td>transactionId</td>
+                                    <td>status</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

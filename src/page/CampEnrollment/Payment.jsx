@@ -2,10 +2,10 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from './CheckoutForm';
-
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 
-const Payment = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee, enrollCampDate, enrollCampVenue, enrollCampTime, enrollCampAge }) => {
+
+const Payment = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee, enrollCampDate, enrollCampVenue, enrollCampTime, enrollCampAge, enrollCampImage }) => {
 
 
     return (
@@ -22,7 +22,8 @@ const Payment = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampF
                         enrollCampDate = {enrollCampDate}
                         enrollCampVenue = {enrollCampVenue}
                         enrollCampTime = {enrollCampTime}
-                        enrollCampAge = {enrollCampAge}>
+                        enrollCampAge = {enrollCampAge}
+                        enrollCampImage={enrollCampImage}>
                 </CheckoutForm>
 
             </Elements>

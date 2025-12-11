@@ -1,4 +1,4 @@
-import Payment from "../Dashboard/Payment/Payment";
+import Payment from "./Payment";
 import { Link, useLoaderData } from "react-router-dom";
 
 
@@ -28,7 +28,8 @@ const CampEnrollment = () => {
                                     enrollCampDate={campDate}
                                     enrollCampVenue={campVenue}
                                     enrollCampTime={campTime}
-                                    enrollCampAge={campAge}>
+                                    enrollCampAge={campAge}
+                                    enrollCampImage={campImage}>
                                 </Payment>
 
                             </div>

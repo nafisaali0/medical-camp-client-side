@@ -50,7 +50,7 @@ const EnrollCamps = () => {
                 <div className="bg-white px-4 py-10 rounded-xl border border-borderColour">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                         {
-                            allEnrollCamp?.map((campInfo, index) =>
+                            allEnrollCamp?.map((enrollCampInfo, index) =>
                                 <>
                                     <div key={index} className="relative">
                                         <div
@@ -60,7 +60,7 @@ const EnrollCamps = () => {
                                             <div className="flex items-center justify-between">
 
                                                 <div>
-                                                    <h1 className="text-sm font-semibold text-textDark">{campInfo?.campName}</h1>
+                                                    <h1 className="text-sm font-semibold text-textDark">{enrollCampInfo?.enrollCampName}</h1>
                                                 </div>
                                                 <div>
                                                     {
@@ -75,7 +75,7 @@ const EnrollCamps = () => {
                                             <div>
                                                 <div className="flex items-center gap-1">
                                                     <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
-                                                    <p className="text-sm font-medium text-textDark">{campInfo?.campDate}</p>
+                                                    <p className="text-sm font-medium text-textDark">{enrollCampInfo?.enrollCampDate}</p>
                                                 </div>
                                             </div>
 
@@ -93,22 +93,23 @@ const EnrollCamps = () => {
                                                         </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Time: </span>
-                                                            {campInfo?.campTime}
+                                                            {enrollCampInfo?.enrollCampTime}
                                                         </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Location: </span>
-                                                            {campInfo?.campVenue}
+                                                            {enrollCampInfo?.enrollCampVenue}
                                                         </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Fee: </span>
-                                                            {campInfo?.campFee} BDT</h1>
+                                                            {enrollCampInfo?.price} BDT</h1>
                                                     </div>
 
                                                     <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">
 
                                                         <div className="flex items-center gap-2">
                                                             <Link
-                                                                to={`/camp-details/${campInfo?.campId}`}
+                                                                target="_blank"
+                                                                to={`/camp-details/${enrollCampInfo?.enrollCampId}`}
                                                                 className="bg-btnColor rounded-full p-2">
                                                                 <LuView
                                                                     className="text-[18px] text-white cursor-pointer"
@@ -121,7 +122,7 @@ const EnrollCamps = () => {
                                                                 <span>
                                                                     <GrStatusGood className="text-[18px] text-white" />
                                                                 </span>
-                                                                Paid
+                                                                {enrollCampInfo?.paymentStatus}
                                                             </button>
                                                         </div>
 
