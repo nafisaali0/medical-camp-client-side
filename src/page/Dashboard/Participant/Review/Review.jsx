@@ -8,7 +8,7 @@ const Review = () => {
             <label htmlFor="my_modal_6">
                 <VscFeedback
                     className="text-[18px] text-white cursor-pointer"
-                    title="View Camp Details" />
+                    title="Review" />
             </label>
 
             {/* Put this part before </body> tag */}

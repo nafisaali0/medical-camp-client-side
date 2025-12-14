@@ -61,7 +61,7 @@ const MyCamps = () => {
                                             <div className="flex items-center justify-between">
 
                                                 <div>
-                                                    <h1 className="text-sm font-semibold text-textDark">{campInfo?.campName}</h1>
+                                                    <h1 className="text-sm font-semibold text-textDark">{campInfo?.enrollCampName}</h1>
                                                 </div>
                                                 <div>
                                                     {
@@ -76,7 +76,7 @@ const MyCamps = () => {
                                             <div>
                                                 <div className="flex items-center gap-1">
                                                     <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
-                                                    <p className="text-sm font-medium text-textDark">{campInfo?.campDate}</p>
+                                                    <p className="text-sm font-medium text-textDark">{campInfo?.enrollCampDate}</p>
                                                 </div>
                                             </div>
 
@@ -90,15 +90,15 @@ const MyCamps = () => {
                                                     <div className="space-y-1">
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Time: </span>
-                                                            {campInfo?.campTime}
+                                                            {campInfo?.enrollCampTime}
                                                         </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Location: </span>
-                                                            {campInfo?.campVenue}
+                                                            {campInfo?.enrollCampVenue}
                                                         </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Fee: </span>
-                                                            {campInfo?.campFee} BDT</h1>
+                                                            {campInfo?.price} BDT</h1>
                                                     </div>
 
                                                     <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">
@@ -108,7 +108,7 @@ const MyCamps = () => {
                                                                 <Review />
                                                             </div>
                                                             <Link
-                                                                to={`/camp-details/${campInfo?._id}`}
+                                                                to={`/camp-details/${campInfo?.enrollCampId}`}
                                                                 className="bg-btnColor rounded-full p-2">
                                                                 <LuView
                                                                     className="text-[18px] text-white cursor-pointer"
