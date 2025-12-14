@@ -13,35 +13,6 @@ const PopularCamp = () => {
 
     const [allEnrollCamp] = useAllEnrollCamp();
 
-    // const [camp] = useCamp()
-    // const [registeredCamp] = useRegisteredCamp();
-    // const [camps, setCamps] = useState([])
-    // const [sortOrder, setSortOrder] = useState('asc'); 
-
-    // const calculateTotalParticipation = (campId) => {
-    //     const participantsForCamp = registeredCamp.filter(registration => registration.campId === campId);
-    //     // console.log(participantsForCamp.length)
-    //     return participantsForCamp.length;
-    // }
-
-    // useEffect(() => {
-    //     // Sort the camp data based on the number of participants and sorting order
-    //     const sortedCamp = [...camp].sort((a, b) => {
-    //         const participantsA = registeredCamp.filter(registration => registration.campId === a._id).length;
-    //         const participantsB = registeredCamp.filter(registration => registration.campId === b._id).length;
-
-    //         return sortOrder === 'asc' ? participantsA - participantsB : participantsB - participantsA;
-    //     });
-
-    //     setCamps(sortedCamp);
-    // }, [camp, registeredCamp, sortOrder]);
-
-    // const handleSort = () => {
-    //     // Toggle sorting order
-    //     const newSortOrder = sortOrder === 'asc' ? 'desc' : 'asc';
-    //     setSortOrder(newSortOrder);
-    // };
-
     return (
         <>
             <div>
@@ -50,7 +21,7 @@ const PopularCamp = () => {
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
                     {
-                        allEnrollCamp?.slice(0,4).map((enrolledCamp, index) =>
+                        allEnrollCamp?.slice(0,3).map((enrolledCamp, index) =>
                             <>
                                 <div key={index} className="card rounded-t-xl bg-white shadow-lg hover:shadow-xl">
                                     <div className="relative">
