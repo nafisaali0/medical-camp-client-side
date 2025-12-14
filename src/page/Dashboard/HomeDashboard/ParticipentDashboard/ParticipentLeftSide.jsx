@@ -1,9 +1,9 @@
-import TodayCamp from "../TodayCamp/TodayCamp"
-import { ImBasecamp } from "react-icons/im"
+// import TodayCamp from "../TodayCamp/TodayCamp"
+// import { ImBasecamp } from "react-icons/im"
+// import { SiVirustotal } from "react-icons/si"
 import { TbHealthRecognition } from "react-icons/tb"
 import moment from "moment";
 import dashboard from "../../../../assets/images/Dashboard/dashboard_1-removebg.png"
-import { SiVirustotal } from "react-icons/si"
 
 const ParticipentLeftSide = ({ currentUser }) => {
 
@@ -11,7 +11,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
 
     return (
         <>
-            <div className="w-auto xl:w-[800px]">
+            <div>
 
                 <div className="bg-white p-4 rounded-xl border border-borderColour flex justify-between">
 
@@ -26,14 +26,14 @@ const ParticipentLeftSide = ({ currentUser }) => {
                         </div>
 
                         <div>
-                            <p className="text-5xl font-normal text-textDark">
+                            <p className="text-5xl font-normal text-textDark mt-10">
                                 {time}
                             </p>
                         </div>
                     </div>
 
                     <div
-                        className="hidden md:flex w-1/2 h-[200px] -mt-10 justify-end overflow-hidden"
+                        className="hidden md:flex w-1/2 h-[180px] -mt-10 justify-end overflow-hidden"
                         style={{
                             backgroundImage: `url(${dashboard})`,
                             backgroundRepeat: "no-repeat",
@@ -43,7 +43,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
                     </div>
                 </div>
 
-                <div className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
+                {/* <div className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
 
                     <div className="flex items-center gap-1">
                         <ImBasecamp className="text-[16px] md:text-[22px]" />
@@ -59,9 +59,9 @@ const ParticipentLeftSide = ({ currentUser }) => {
                         </button>
                     </div>
 
-                </div>
+                </div> */}
 
-                <TodayCamp />
+                {/* <TodayCamp /> */}
 
             </div>
         </>

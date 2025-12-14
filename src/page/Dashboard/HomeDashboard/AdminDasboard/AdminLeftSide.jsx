@@ -27,7 +27,7 @@ const AdminLeftSide = ({ currentUser }) => {
             </div>
 
             <div>
-              <p className="text-5xl font-normal text-textDark">
+              <p className="text-5xl font-normal text-textDark mt-10">
                 {time}
               </p>
             </div>

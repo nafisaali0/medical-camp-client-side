@@ -9,10 +9,8 @@ const ParticipentDashboard = () => {
 
     return (
         <>
-            <div className="flex flex-col xl:flex-row gap-5 xl:justify-between">
-                <ParticipentLeftSide currentUser={currentUser} />
-                <ParticipentRightSide currentUser={currentUser} />
-            </div>
+            <ParticipentLeftSide currentUser={currentUser} />
+            <ParticipentRightSide currentUser={currentUser} />
         </>
     )
 }
