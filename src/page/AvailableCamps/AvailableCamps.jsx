@@ -75,7 +75,6 @@ const AvailableCamps = () => {
                     grid ?
                         (
                             <>
-                                {/* card-grid */}
                                 <div className="max-w-[1300px] mx-auto overflow-hidden p-5">
 
                                     {
