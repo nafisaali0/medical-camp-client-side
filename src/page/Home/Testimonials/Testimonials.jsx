@@ -9,7 +9,6 @@ import '@smastrom/react-rating/style.css';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "./style.css"
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
