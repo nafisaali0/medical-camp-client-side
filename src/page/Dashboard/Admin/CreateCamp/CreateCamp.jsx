@@ -40,7 +40,7 @@ const CreateCamp = () => {
         categoryformdata.append("image", categoryfile)
         const categoryRes = await axios.post(image_hosting_api, categoryformdata);
 
-        if (camRes.data.success) {
+        if (camRes.data.success && categoryRes.data.success) {
 
             const campDetails = {
 
@@ -79,37 +79,6 @@ const CreateCamp = () => {
                 position: "top-end",
                 icon: "warning",
                 title: "new camp not create",
-                showConfirmButton: false,
-                timer: 1500
-            });
-        }
-
-        // post category
-        if (categoryRes.data.success) {
-
-            const categoryDetails = {
-                campCategory: data.campCategory,
-                campCategoryImage: categoryRes.data.data.display_url,
-            }
-            const categoryPostRes = await axiosLocalhost.post('/categories', categoryDetails);
-
-            if (categoryPostRes.data.insertedId) {
-
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "create category successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-
-                reset();
-            }
-        } else {
-            Swal.fire({
-                position: "top-end",
-                icon: "warning",
-                title: "category not create",
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -251,6 +220,8 @@ const CreateCamp = () => {
 
                             </div>
                         </div>
+
+                        {/* part three */}
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
                             <div>
@@ -330,40 +301,6 @@ const CreateCamp = () => {
                                 </div>
                             </div>
                         </div>
-
-                        {/* part two */}
-                        {/* <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
-
-                            <div>
-                                <h1 className="text-textDark text-lg font-medium">Target Group</h1>
-                            </div>
-
-                            <div className="flex items-center gap-2">
-
-                                <div className="space-y-2 w-full">
-                                    <h1 className="text-xm font-normal text-grayText">Age</h1>
-                                    <input
-                                        type="age"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
-
-                                        placeholder="25-40/Adult/Child/Older"
-                                        {...register("campAge")}
-                                        title="Age"
-                                    />
-                                </div>
-                                <div className="space-y-2 w-full">
-                                    <h1 className="text-xm font-normal text-grayText">Gender</h1>
-                                    <input
-                                        type="gender"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                        placeholder="Male/Female"
-                                        {...register("campGender")}
-                                        title="Gender"
-                                    />
-                                </div>
-
-                            </div>
-                        </div> */}
 
                         {/* part three */}
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">

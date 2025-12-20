@@ -12,7 +12,7 @@ import { useState } from "react";
 
 const EditCamp = () => {
 
-    const { _id, campName, campServices, campProfessionals, campCategory, campDetails, campDate, campTime, campVenue, campAge, campGender, campFee, campImage } = useLoaderData();
+    const { _id, campName, campServices, campProfessionals, campCategory, campDetails, campDate, campTime, campVenue, campAge, campGender, campFee, campImage, campCategoryImage } = useLoaderData();
 
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
@@ -20,9 +20,10 @@ const EditCamp = () => {
     // image hosting
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
-    const [getImage, setGetImage] = useState(campImage);
+    const [getCampImage, setGetCampImage] = useState(campImage);
+    const [getCategoryImage, setGetCategoryImage] = useState(campCategoryImage);
 
-    const handleImage = async (e) => {
+    const handleCampImage = async (e) => {
 
         const file = e.target.files[0]
         const formdata = new FormData();
@@ -31,8 +32,30 @@ const EditCamp = () => {
         const res = await axios.post(image_hosting_api, formdata);
 
         if (res.data.success) {
-            const details_image = res.data.data.display_url;
-            setGetImage(details_image);
+            const camp_Image = res.data.data.display_url;
+            setGetCampImage(camp_Image);
+        } else {
+            Swal.fire({
+                position: "top-end",
+                icon: "warning",
+                title: "Image not updated",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+    }
+    const handleCategoryImage = async (e) => {
+
+        const file = e.target.files[0]
+        const formdata = new FormData();
+        formdata.append("image", file)
+
+        const res = await axios.post(image_hosting_api, formdata);
+
+        if (res.data.success) {
+            const category_Image = res.data.data.display_url;
+            setGetCategoryImage(category_Image);
         } else {
             Swal.fire({
                 position: "top-end",
@@ -46,11 +69,12 @@ const EditCamp = () => {
     }
 
     const onSubmit = async (data) => {
-       
+
         const campDetails = {
 
             campCreateDate: moment().format("MMM Do YY"),
-            campImage: getImage,
+            campImage: getCampImage,
+            campCategoryImage: getCategoryImage,
             campName: data.campName,
             campServices: data.campServices,
             campProfessionals: data.campProfessionals,
@@ -89,7 +113,7 @@ const EditCamp = () => {
                 showConfirmButton: false,
                 timer: 1500
             });
-            
+
         }
     }
 
@@ -236,34 +260,7 @@ const EditCamp = () => {
                             </div>
                         </div>
 
-                    </div>
-
-                    {/* right side */}
-                    <div className="w-auto flex-1 space-y-5">
-
-                        {/* part one */}
-                        <div className="p-4 w-full bg-white rounded-xl">
-                            <div>
-                                <h1 className="text-textDark text-lg font-medium">Camp Media</h1>
-                            </div>
-                            <div className="mt-5">
-                                <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
-                                <div className="w-full h-60 border-2 border-dashed border-borderColour">
-                                    <img src={getImage} alt="" className="w-full h-full" />
-                                </div>
-                                <div onChange={handleImage} className="mt-5">
-                                    <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
-                                        <span>
-                                            <LuUpload className="text-[16px]" />
-                                        </span>
-                                        <input type="file" name="imageFile" className="text-white hidden" id="fileUpload" {...register("campImage")} />
-                                        <span>Upload Image</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* part two */}
+                        {/* part three */}
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
                             <div>
@@ -276,29 +273,77 @@ const EditCamp = () => {
                                     <h1 className="text-xm font-normal text-grayText">Age</h1>
                                     <input
                                         type="age"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
-                                        required
                                         placeholder="25-40/Adult/Child/Older"
                                         defaultValue={campAge}
                                         {...register("campAge")}
                                         title="Age"
+                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     />
                                 </div>
                                 <div className="space-y-2 w-full">
                                     <h1 className="text-xm font-normal text-grayText">Gender</h1>
                                     <input
                                         type="gender"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                         placeholder="Male/Female"
                                         defaultValue={campGender}
                                         {...register("campGender")}
                                         title="Gender"
+                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     />
                                 </div>
 
                             </div>
                         </div>
 
+                    </div>
+
+                    {/* right side */}
+                    <div className="w-auto flex-1 space-y-5">
+
+                        {/* part one - campImage */}
+                        <div className="p-4 w-full bg-white rounded-xl">
+                            <div>
+                                <h1 className="text-textDark text-lg font-medium">Camp Media</h1>
+                            </div>
+                            <div className="mt-5">
+                                <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
+                                <div className="w-full h-52 border-2 border-dashed border-borderColour">
+                                    <img src={getCampImage} alt="" className="w-full h-full" />
+                                </div>
+                                <div onChange={handleCampImage} className="mt-5">
+                                    <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
+                                        <span>
+                                            <LuUpload className="text-[16px]" />
+                                        </span>
+                                        <input type="file" name="imageFile" className="text-white hidden" id="campImageUpload" {...register("campImage")} />
+                                        <span>Upload Image</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* part two - categoryImage */}
+                        <div className="p-4 w-full bg-white rounded-xl">
+                            <div>
+                                <h1 className="text-textDark text-lg font-medium">Cetagory Media</h1>
+                            </div>
+                            <div className="mt-5">
+                                <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
+                                <div className="w-full h-48 border-2 border-dashed border-borderColour">
+                                    <img src={getCategoryImage} alt="" className="w-full h-full" />
+                                </div>
+                                <div onChange={handleCategoryImage} className="mt-5">
+                                    <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="categoryImageUpload">
+                                        <span>
+                                            <LuUpload className="text-[16px]" />
+                                        </span>
+                                        <input type="file" name="campCategoryImage" className="text-white hidden" id="categoryImageUpload" {...register("campCategoryImage")} />
+                                        <span>Upload Image</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
                         {/* part three */}
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
