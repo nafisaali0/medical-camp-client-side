@@ -7,8 +7,19 @@ import "./categoryStyle.css"
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
+import useCamp from "../../../hooks/useCamp";
 
 const Category = () => {
+
+    const [camp] = useCamp();
+    // console.log(camp)
+
+    const uniqueCategory = camp.filter((obj, index, category) =>
+        index === category.findIndex((t) => (
+            t.campCategory === obj.campCategory
+        ))
+    );
+    console.log(uniqueCategory)
     return (
         <>
             <div className="max-w-[800px] mx-auto">
@@ -125,7 +136,7 @@ const Category = () => {
                                 </h1>
                             </div>
                         </SwiperSlide>
-                        
+
                     </Swiper>
                 </div>
             </div>
