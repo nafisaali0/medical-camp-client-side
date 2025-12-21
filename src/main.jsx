@@ -12,13 +12,24 @@ import {
 const queryClient = new QueryClient()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
+  // <React.StrictMode>
+  //   <AuthProviders>
+  //     <QueryClientProvider client={queryClient}>
+  //       <HelmetProvider>
+  //         <RouterProvider router={router} />
+  //       </HelmetProvider>
+  //     </QueryClientProvider>
+  //   </AuthProviders>
+  // </React.StrictMode>,
+
   <React.StrictMode>
-    <AuthProviders>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <AuthProviders>
         <HelmetProvider>
           <RouterProvider router={router} />
         </HelmetProvider>
-      </QueryClientProvider>
-    </AuthProviders>
-  </React.StrictMode>,
+      </AuthProviders>
+    </QueryClientProvider>
+  </React.StrictMode>
+
 )

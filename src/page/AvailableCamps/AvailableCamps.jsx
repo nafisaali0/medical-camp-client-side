@@ -4,7 +4,9 @@ import { Helmet } from "react-helmet-async";
 import { CiCalendarDate } from "react-icons/ci";
 import { IoArrowDownCircleOutline, IoArrowUpCircle, IoGridOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
-import { useEffect, useState } from "react";
+// import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
+import useDefaultCamp from "../../hooks/useDefaultCamp";
 import Loader from './../../components/Loader';
 
 const AvailableCamps = () => {
@@ -12,16 +14,10 @@ const AvailableCamps = () => {
     const [camp] = useCamp()
     const [grid, setGridOpen] = useState(true)
     const [singleAlign, setSingleAlignOpen] = useState(false)
-    const [defaultCamp, setDefaultCamp] = useState()
+    const { defaultCamp, setDefaultCamp } = useDefaultCamp();
 
-    useEffect(() => {
-        if (camp?.length > 0) {
-            setDefaultCamp(camp)
-        } else {
-            <Loader />
-        }
-    }, [camp])
-
+    if (!defaultCamp) return <Loader />;
+    
     function handleAscendingOrder() {
 
         if (camp?.length === 0) return
@@ -43,7 +39,6 @@ const AvailableCamps = () => {
 
         setDefaultCamp(sorting)
     }
-
     function handleSingleAlign() {
         // console.log("handleSingleAlign")
         if (singleAlign === false) {
