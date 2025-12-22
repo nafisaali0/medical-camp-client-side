@@ -14,7 +14,6 @@ const DetailCamp = () => {
     const [camp] = useCamp();
     const [sameCategoryCamp, setSameCategoryCamp] = useState();
 
-
     useEffect(() => {
 
         if (!camp) return;
@@ -23,8 +22,6 @@ const DetailCamp = () => {
 
     }, [camp, campCategory, _id]);
 
-
-    // console.log(getSimilerCategoryCamp)
     return (
         <>
             <Helmet>
