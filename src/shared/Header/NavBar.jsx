@@ -28,7 +28,7 @@ const NavBar = () => {
         {
             user?.email ?
                 <>
-                    <li><Link to="available-camps/:campCategory" className={`${ifActive('/available-camps')
+                    <li><Link to="available-camps" className={`${ifActive('/available-camps')
                         ? 'font-bold bg-primaryDark/80 hover:bg-primaryDark/50'
                         : 'font-semibold hover:bg-primaryDark/80'
                         }`}>Camps</Link></li>

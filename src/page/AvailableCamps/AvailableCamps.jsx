@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet-async";
 import { CiCalendarDate } from "react-icons/ci";
 import { IoArrowDownCircleOutline, IoArrowUpCircle, IoGridOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
-// import { useContext, useEffect, useState } from "react";
 import { useState } from "react";
 import useDefaultCamp from "../../hooks/useDefaultCamp";
 import Loader from './../../components/Loader';
