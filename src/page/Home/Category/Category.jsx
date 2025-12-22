@@ -1,6 +1,4 @@
-// import heartCat from "../../../assets/images/Category/image1-removebg.png"
 import '@smastrom/react-rating/style.css';
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules';
 import "./categoryStyle.css"
@@ -9,14 +7,11 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import useCamp from "../../../hooks/useCamp";
 import Loader from "../../../components/Loader";
-// import useDefaultCamp from "../../../hooks/useDefaultCamp";
 import { useEffect, useState } from "react";
-import { Link } from 'react-router-dom';
 
 const Category = () => {
 
     const [camp] = useCamp();
-    // const { setDefaultCamp } = useDefaultCamp();
     const [uniqueCategory, setUniqueCategory] = useState();
 
     useEffect(() => {
@@ -31,24 +26,6 @@ const Category = () => {
         setUniqueCategory(uniqueCategories);
 
     }, [camp]);
-
-
-    // function handleCategory() {
-
-    //     if (camp?.length === 0) return <Loader />
-    //     // const copyCamp = [...camp];
-
-    //     // const sorting = copyCamp.sort(function (a, b) {
-    //     //     return parseFloat(b.campFee) - parseFloat(a.campFee);
-    //     // })
-
-    //     const uniqueCategory = camp.filter((obj, index, category) =>
-    //         index === category.findIndex((t) => (
-    //             t.campCategory === obj.campCategory
-    //         ))
-    //     );
-    //     setDefaultCamp(uniqueCategory)
-    // }
 
     return (
         <>
@@ -99,13 +76,10 @@ const Category = () => {
                                                     className="w-4/4 h-4/4 object-contain"
                                                 />
                                             </div>
-                                            <Link to={`/available-camps/${uniqueCat?.campCategory}`}>
-                                                <h1
-                                                    // onClick={handleCategory}
-                                                    className="mt-4 text-lg font-semibold text-textDark text-center cursor-pointer">
-                                                    {uniqueCat?.campCategory}
-                                                </h1>
-                                            </Link>
+                                            <h1
+                                                className="mt-4 text-lg font-semibold text-textDark text-center cursor-pointer">
+                                                {uniqueCat?.campCategory}
+                                            </h1>
                                         </div>
                                     </SwiperSlide>
                                 </>

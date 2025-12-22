@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useCamp from "../../hooks/useCamp";
 import { Helmet } from "react-helmet-async";
 import { CiCalendarDate } from "react-icons/ci";
@@ -11,8 +11,6 @@ import Loader from './../../components/Loader';
 
 const AvailableCamps = () => {
 
-    const campsCategory = useLoaderData();
-    console.log(campsCategory)
     const [camp] = useCamp()
     const [grid, setGridOpen] = useState(true)
     const [singleAlign, setSingleAlignOpen] = useState(false)

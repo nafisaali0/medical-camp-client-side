@@ -1,13 +1,3 @@
-// import { useForm } from "react-hook-form";
-// import { Link, useLoaderData, useLocation, useNavigate } from "react-router-dom";
-// import useAuth from "../../../hooks/useAuth";
-// import useAxioslocalhost from "../../../hooks/useAxioslocalhost";
-// import Swal from "sweetalert2";
-// import useCamp from './../../../hooks/useCamp';
-// import useUsers from './../../../hooks/useUsers';
-// import errorIcon from '../../../assets/images/icon/error.svg'
-// import React from 'react';
-// -------------------------------------------------------------
 import { Link, useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { IoLocationOutline } from 'react-icons/io5';

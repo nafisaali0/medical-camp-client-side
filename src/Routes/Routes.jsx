@@ -38,11 +38,9 @@ export const router = createBrowserRouter([
                 path: "signup",
                 element: <SignUp></SignUp>,
             },
-            // /camp/:campCategory
             {
-                path: "available-camps/:campCategory",
+                path: "available-camps",
                 element: <PrivateRoutes><AvailableCamps></AvailableCamps></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params?.campCategory}`)
             },
             {
                 path: "camp-details/:campId",
