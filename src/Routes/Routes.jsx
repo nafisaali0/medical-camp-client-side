@@ -38,20 +38,22 @@ export const router = createBrowserRouter([
                 path: "signup",
                 element: <SignUp></SignUp>,
             },
+            // /camp/:campCategory
             {
-                path: "available-camps",
+                path: "available-camps/:campCategory",
                 element: <PrivateRoutes><AvailableCamps></AvailableCamps></PrivateRoutes>,
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params?.campCategory}`)
             },
             {
                 path: "camp-details/:campId",
-                element: <PrivateRoutes><DetailsCamp/></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
+                element: <PrivateRoutes><DetailsCamp /></PrivateRoutes>,
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params?.campId}`)
             },
             // --old
             {
                 path: "camp-enrollment/:campId",
                 element: <PrivateRoutes><CampEnrollment /></PrivateRoutes>,
-                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.campId}`)
+                loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params?.campId}`)
             },
 
         ],
@@ -71,11 +73,6 @@ export const router = createBrowserRouter([
                 path: "my-camps",
                 element: <PrivateRoutes><MyCamps /></PrivateRoutes>,
             },
-            // {
-            //     path: "payment/:id",
-            //     element: <PrivateRoutes><Payment /></PrivateRoutes>,
-            //     loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params.id}`)
-            // },
             {
                 path: "payment",
                 element: <PrivateRoutes><Payment /></PrivateRoutes>,

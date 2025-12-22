@@ -9,13 +9,14 @@ import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import useCamp from "../../../hooks/useCamp";
 import Loader from "../../../components/Loader";
-import useDefaultCamp from "../../../hooks/useDefaultCamp";
+// import useDefaultCamp from "../../../hooks/useDefaultCamp";
 import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 const Category = () => {
 
     const [camp] = useCamp();
-    const { setDefaultCamp } = useDefaultCamp();
+    // const { setDefaultCamp } = useDefaultCamp();
     const [uniqueCategory, setUniqueCategory] = useState();
 
     useEffect(() => {
@@ -32,22 +33,22 @@ const Category = () => {
     }, [camp]);
 
 
-    function handleCategory() {
+    // function handleCategory() {
 
-        if (camp?.length === 0) return <Loader />
-        // const copyCamp = [...camp];
+    //     if (camp?.length === 0) return <Loader />
+    //     // const copyCamp = [...camp];
 
-        // const sorting = copyCamp.sort(function (a, b) {
-        //     return parseFloat(b.campFee) - parseFloat(a.campFee);
-        // })
+    //     // const sorting = copyCamp.sort(function (a, b) {
+    //     //     return parseFloat(b.campFee) - parseFloat(a.campFee);
+    //     // })
 
-        const uniqueCategory = camp.filter((obj, index, category) =>
-            index === category.findIndex((t) => (
-                t.campCategory === obj.campCategory
-            ))
-        );
-        setDefaultCamp(uniqueCategory)
-    }
+    //     const uniqueCategory = camp.filter((obj, index, category) =>
+    //         index === category.findIndex((t) => (
+    //             t.campCategory === obj.campCategory
+    //         ))
+    //     );
+    //     setDefaultCamp(uniqueCategory)
+    // }
 
     return (
         <>
@@ -98,12 +99,13 @@ const Category = () => {
                                                     className="w-4/4 h-4/4 object-contain"
                                                 />
                                             </div>
-
-                                            <h1
-                                                onClick={handleCategory}
-                                                className="mt-4 text-lg font-semibold text-textDark text-center cursor-pointer">
-                                                {uniqueCat?.campCategory}
-                                            </h1>
+                                            <Link to={`/available-camps/${uniqueCat?.campCategory}`}>
+                                                <h1
+                                                    // onClick={handleCategory}
+                                                    className="mt-4 text-lg font-semibold text-textDark text-center cursor-pointer">
+                                                    {uniqueCat?.campCategory}
+                                                </h1>
+                                            </Link>
                                         </div>
                                     </SwiperSlide>
                                 </>
