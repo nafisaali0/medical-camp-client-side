@@ -107,12 +107,11 @@
   right: 0;
 }
 
-
 /* dasboard Start */
 
 .sidenavBlur {
   position: fixed;
-  background: rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   z-index: -1000;
@@ -142,9 +141,32 @@
   width: 70%;
 }
 .glassBlur {
-  color: rgba(255, 255, 255, 0.10);
+  color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(1px);
   -webkit-backdrop-filter: blur(1px);
   z-index: -1000;
 }
 /* dasboard end */
+
+/* swiper start */
+
+.swiper {
+  --swiper-pagination-color: #87a8d0;
+  --swiper-pagination-left: auto;
+  --swiper-pagination-right: 8px;
+  --swiper-pagination-bottom: 8px;
+  --swiper-pagination-top: auto;
+  --swiper-pagination-fraction-color: inherit;
+  --swiper-pagination-progressbar-bg-color: rgba(0, 0, 0, 0.25);
+  --swiper-pagination-progressbar-size: 4px;
+  --swiper-pagination-bullet-width: 30px;
+  --swiper-pagination-bullet-height: 6px;
+  --swiper-pagination-bullet-border-radius: 10px;
+  --swiper-pagination-bullet-inactive-color: #404f68;
+  --swiper-pagination-bullet-inactive-opacity: 0.3;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 8px;
+  --swiper-pagination-bullet-vertical-gap: 8px;
+}
+
+/* swiper end */

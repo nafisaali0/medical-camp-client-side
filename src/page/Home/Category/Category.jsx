@@ -1,13 +1,14 @@
 import '@smastrom/react-rating/style.css';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Pagination } from 'swiper/modules';
+import useCamp from "../../../hooks/useCamp";
+import Loader from "../../../components/Loader";
+import { useEffect, useState } from "react";
+// import swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
 import "./categoryStyle.css"
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-import useCamp from "../../../hooks/useCamp";
-import Loader from "../../../components/Loader";
-import { useEffect, useState } from "react";
 
 const Category = () => {
 
@@ -43,7 +44,7 @@ const Category = () => {
                             clickable: true,
                         }}
                         modules={[FreeMode, Pagination]}
-                        className="mySwiper"
+                        className="mySwipe"
                         breakpoints={{
                             375: {
                                 slidesPerView: 1,
@@ -67,21 +68,25 @@ const Category = () => {
                             uniqueCategory?.map((uniqueCat, index) =>
                                 <>
                                     <SwiperSlide>
-                                        <div key={index} className="flex flex-col items-center w-fit h-fit">
+                                        <div className='flex justify-center items-center'>
 
-                                            <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-primarylight flex items-center justify-center overflow-hidden">
-                                                <img
-                                                    src={uniqueCat?.campCategoryImage}
-                                                    alt="Heart Category"
-                                                    className="w-4/4 h-4/4 object-contain"
-                                                />
+                                            <div key={index} className="flex flex-col items-center w-fit h-fit">
+
+                                                <div className="w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 rounded-full bg-primarylight flex items-center justify-center overflow-hidden">
+                                                    <img
+                                                        src={uniqueCat?.campCategoryImage}
+                                                        alt="Heart Category"
+                                                        className="w-4/4 h-4/4 object-contain"
+                                                    />
+                                                </div>
+                                                <h1
+                                                    className="mt-4 text-lg font-semibold text-textDark text-center cursor-pointer">
+                                                    {uniqueCat?.campCategory}
+                                                </h1>
                                             </div>
-                                            <h1
-                                                className="mt-4 text-lg font-semibold text-textDark text-center cursor-pointer">
-                                                {uniqueCat?.campCategory}
-                                            </h1>
                                         </div>
                                     </SwiperSlide>
+
                                 </>
 
                             )}

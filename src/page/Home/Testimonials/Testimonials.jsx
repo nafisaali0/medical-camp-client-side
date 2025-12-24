@@ -1,19 +1,13 @@
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import { Navigation } from 'swiper/modules';
 import useFeedback from "../../../hooks/useFeedback";
 import logo from "../../../assets/images/logo/logo_nav.png"
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import "./style.css"
+import "./testimoninalStyle.css"
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
-
-// import required modules
 import { FreeMode, Pagination } from 'swiper/modules';
 
 
@@ -37,7 +31,7 @@ const Testimonials = () => {
                             clickable: true,
                         }}
                         modules={[FreeMode, Pagination]}
-                        className="mySwiper"
+                        className="mySwiper, swiper-slide-testimonial, swiper-slide-testimonial "
                         breakpoints={{
                             375: {
                                 slidesPerView: 1,
@@ -58,14 +52,14 @@ const Testimonials = () => {
                         }}
                     >
                         {
-                            feedbacks?.map((review, index) =>
+                            feedbacks?.slice(0, 6)?.map((review, index) =>
                                 <>
                                     <SwiperSlide key={index}>
                                         <div key={index} className="p-5 h-64 bg-white rounded-t-2xl rounded-xl shadow-lg hover:shadow-xl">
                                             <div className="flex justify-between items-start">
                                                 <div className="flex gap-4 items-center">
                                                     <div className="avatar">
-                                                        <div className="w-10 rounded-full">
+                                                        <div className="rounded-full">
                                                             <img src={review?.reviewerPhoto} />
                                                         </div>
                                                     </div>
@@ -90,7 +84,6 @@ const Testimonials = () => {
                                                     <figure>
                                                         <img src={logo}
                                                             alt="logo"
-                                                            className="w-16 object-cover"
                                                         />
                                                     </figure>
                                                 </div>
