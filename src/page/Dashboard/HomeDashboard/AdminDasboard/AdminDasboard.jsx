@@ -19,4 +19,4 @@ const AdminDasboard = () => {
     )
 }
 
-export default AdminDasboard
+export default AdminDasboard;
