@@ -1,21 +1,17 @@
-import { MdDeleteOutline, MdFormatListBulletedAdd, MdOutlineUpdate } from "react-icons/md"
+import { MdFormatListBulletedAdd } from "react-icons/md"
 import { Link } from "react-router-dom"
-import Swal from "sweetalert2";
-import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
 import { useEffect, useState } from "react";
 import { CiCalendarDate, CiCircleChevDown, CiCircleChevUp } from "react-icons/ci";
 import { IoTodayOutline } from "react-icons/io5";
 import moment from "moment";
 import Loader from "../../../../components/Loader";
 
-const ShowTodayCamp = ({ camp, loading, refetch }) => {
+const ShowTodayCamp = ({ camp }) => {
 
-    const axiosLocalhost = useAxioslocalhost();
     const [cardOpen, setCardOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(null)
     const [todayCamp, setTodayCamp] = useState()
     const todayDate = moment().format('YYYY-MM-DD');
-    console.log(todayDate)
 
     function handleCardDropDown(index) {
 
@@ -28,52 +24,15 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
 
     }
 
-    const handleDelete = id => {
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You want to delete it this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axiosLocalhost.delete(`/camp/${id}`)
-                    .then(res => {
-                        if (res.data.deletedCount > 0) {
-                            Swal.fire(
-                                'Deleted!',
-                                'Your camp has been deleted.',
-                                'success'
-                            )
-                            loading()
-                            refetch();
-                        }
-                    })
-            }
-        })
-
-    }
-
     useEffect(() => {
 
         if (!camp) return <Loader />;
-        // const storeDayCamp = camp?.filter((obj, index, category) =>
-        //     index === category?.findIndex((t) => (
-        //         t?.todayDate === obj?.campDate
-        //     ))
-
-        // );
 
         const storeDayCamp = camp?.filter(camp => camp?.campDate === todayDate);
-
 
         setTodayCamp(storeDayCamp);
 
     }, [camp, todayDate]);
-    console.log(todayCamp)
 
     return (
         <>
@@ -99,9 +58,8 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
 
             <div className="bg-white p-4 rounded-xl border border-borderColour">
 
-
                 {
-                    camp === 0 ?
+                    todayCamp === 0 ?
                         <>
                             <div className="flex flex-col justify-center items-center gap-1">
                                 <h1 className="text-xl font-semibold text-textDark">No Camp Today</h1>
@@ -112,7 +70,7 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
                         <>
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
                                 {
-                                    camp?.map((campInfo, index) =>
+                                    todayCamp?.map((campInfo, index) =>
 
                                         <>
                                             <div key={index} className="relative">
@@ -151,7 +109,7 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
                                                             className="w-auto absolute left-0 -mt-14  bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
                                                         >
 
-                                                            <div className="space-y-1">
+                                                            <div className="space-y-1 py-3 px-3">
                                                                 <h1 className="text-sm font-medium text-textDark">
                                                                     <span className="font-semibold">Time: </span>
                                                                     {campInfo?.campTime}
@@ -165,27 +123,11 @@ const ShowTodayCamp = ({ camp, loading, refetch }) => {
                                                                     {campInfo?.campFee} BDT</h1>
                                                             </div>
 
-                                                            <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">
-
-                                                                <div className="flex items-center gap-2">
-                                                                    <Link
-                                                                        to={`/dashboard/update-camp/${campInfo?._id}`}
-                                                                        className="bg-btnColor rounded-full p-2">
-                                                                        <MdOutlineUpdate
-                                                                            className="text-[18px] text-white cursor-pointer"
-                                                                            title="Update" />
-                                                                    </Link>
-                                                                    <div className="bg-btnColor rounded-full p-2">
-                                                                        <MdDeleteOutline
-                                                                            onClick={() => handleDelete(campInfo._id)}
-                                                                            className="text-[18px] text-white cursor-pointer"
-                                                                            title="Delete" />
-                                                                    </div>
-                                                                </div>
+                                                            <div className="my-3 px-3">
 
                                                                 <div>
                                                                     <Link to={`/camp-details/${campInfo?._id}`}>
-                                                                        <button className="primaryBtn text-base font-normal">
+                                                                        <button className="primaryBtn">
                                                                             Details
                                                                             <div className="arrow-wrapper">
                                                                                 <div className="arrow"></div>
