@@ -5,10 +5,39 @@ import { ImBasecamp } from "react-icons/im";
 import { MdOutlineConfirmationNumber } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import TodayCamp from './TodayCamp';
+import { useEffect, useState } from "react";
+import useCamp from "../../../../hooks/useCamp";
+import useAllEnrollCamp from "../../../../hooks/useAllEnrollCamp";
+import useAllUsers from './../../../../hooks/useAllUsers';
 
 const AdminLeftSide = ({ currentUser }) => {
 
+  const [camp] = useCamp();
+  const [allEnrollCamp] = useAllEnrollCamp();
+  const [allUsers] = useAllUsers();
   const time = moment().format("LT");
+  const currentHour = moment().format("HH");
+  const [greeting, setGreeting] = useState();
+
+  useEffect(() => {
+
+    if (currentHour >= 5 && currentHour < 12) {
+      setGreeting("Good Morning")
+      console.log("Good Morning");
+    } else if (currentHour >= 12 && currentHour < 17) {
+      setGreeting("Good Afternoon")
+      console.log("Good Afternoon")
+    } else if (currentHour >= 17 && currentHour < 19) {
+      setGreeting("Good Evening")
+      console.log("Good Evening")
+    } else if (currentHour >= 19 || currentHour < 5) {
+      setGreeting("Good Night")
+      console.log("Good Night")
+    } else {
+      console.log("not work")
+    }
+
+  }, [currentHour]);
 
   return (
     <>
@@ -18,7 +47,7 @@ const AdminLeftSide = ({ currentUser }) => {
 
           <div className="flex justify-between flex-col flex-1">
             <div>
-              <h1 className="text-textDark text-xl font-bold mb-1">Good Morning {currentUser?.name}</h1>
+              <h1 className="text-textDark text-xl font-bold mb-1">{greeting} {currentUser?.name}</h1>
               <div className="flex items-center gap-1">
                 <h1 className="text-textDark text-sm font-medium">Have a Wonderful, Healthy Day!</h1>
                 <TbHealthRecognition className="text-[16px]" />
@@ -54,7 +83,7 @@ const AdminLeftSide = ({ currentUser }) => {
                   className="text-[16px] text-white"
                   title="Change Image" />
               </div>
-              <p className="text-lg font-semibold text-textDark">500</p>
+              <p className="text-lg font-semibold text-textDark">{camp?.length}</p>
             </div>
           </div>
           <div className="p-4 w-full bg-white rounded-xl">
@@ -65,7 +94,7 @@ const AdminLeftSide = ({ currentUser }) => {
                   className="text-[16px] text-white"
                   title="Change Image" />
               </div>
-              <p className="text-lg font-semibold text-textDark">500</p>
+              <p className="text-lg font-semibold text-textDark">{allEnrollCamp?.length}</p>
             </div>
           </div>
           <div className="p-4 w-full bg-white rounded-xl">
@@ -76,7 +105,7 @@ const AdminLeftSide = ({ currentUser }) => {
                   className="text-[16px] text-white"
                   title="Change Image" />
               </div>
-              <p className="text-lg font-semibold text-textDark">500</p>
+              <p className="text-lg font-semibold text-textDark">{allUsers?.length}</p>
             </div>
           </div>
 
