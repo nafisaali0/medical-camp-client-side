@@ -7,12 +7,31 @@ import { CiCalendarDate } from "react-icons/ci";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { useState, useEffect } from 'react';
 import useCamp from './../../hooks/useCamp';
+import useUsers from "../../hooks/useUsers";
 
 const DetailCamp = () => {
 
     const { _id, campImage, campFee, campProfessionals, campName, campAge, campDate, campTime, campVenue, campServices, campDetails, campCategory } = useLoaderData();
     const [camp] = useCamp();
     const [sameCategoryCamp, setSameCategoryCamp] = useState();
+    const [users] = useUsers();
+    const currentUser = users?.length > 0 ? users[0] : {};
+    const [isButtonDisabled, setButtonDisabled] = useState(false);
+
+    const handleClick = (e) => {
+
+        if (currentUser?.userRole === "Admin") {
+            e.preventDefault(); 
+            setButtonDisabled(true);
+            alert("Admin Cannot Enroll Camp");
+        } else if (currentUser?.userRole === "Participant") {
+            setButtonDisabled(false);
+        } else {
+            e.preventDefault();
+            alert("Not working");
+        }
+
+    };
 
     useEffect(() => {
 
@@ -155,7 +174,18 @@ const DetailCamp = () => {
                                 </div>
 
                                 <div className="my-5">
-                                    <Link to={`/camp-enrollment/${_id}`}>
+                                    {/* <Link to={`/camp-enrollment/${_id}`}>
+                                        <button className="primaryBtn">
+                                            Enroll Now
+                                            <div className="arrow-wrapper">
+                                                <div className="arrow"></div>
+                                            </div>
+                                        </button>
+                                    </Link> */}
+                                    <Link
+                                        onClick={handleClick}
+                                        className={`button ${isButtonDisabled ? "disabled" : ""}`}
+                                        to={`/camp-enrollment/${_id}`}>
                                         <button className="primaryBtn">
                                             Enroll Now
                                             <div className="arrow-wrapper">
@@ -163,6 +193,11 @@ const DetailCamp = () => {
                                             </div>
                                         </button>
                                     </Link>
+
+
+
+
+
 
                                 </div>
                             </div>
@@ -192,14 +227,19 @@ const DetailCamp = () => {
                                                 ৳ {eachCamp?.campFee}
                                             </h2>
                                             <div className="card-actions justify-center mt-5">
-                                                <Link to={`/camp-details/${eachCamp?._id}`}>
-                                                    <button className="primaryBtn">
+
+                                                <Link
+                                                    to={`/camp-details/${eachCamp?._id}`}>
+                                                    <button
+                                                        className="primaryBtn"
+                                                    >
                                                         View Details
                                                         <div className="arrow-wrapper">
                                                             <div className="arrow"></div>
                                                         </div>
                                                     </button>
                                                 </Link>
+
                                             </div>
                                         </div>
                                     </div>
@@ -207,10 +247,10 @@ const DetailCamp = () => {
                             )
                         }
 
-                    </div>
+                    </div >
 
                 </div>
-            </div>
+            </div >
         </>
     );
 };
