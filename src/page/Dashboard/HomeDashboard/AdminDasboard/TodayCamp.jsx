@@ -51,7 +51,7 @@ const TodayCamp = () => {
                             <span>
                                 <MdFormatListBulletedAdd className="text-[16px] md:text-[20px]" />
                             </span>
-                            Total : {camp?.length}
+                            Total : {todayCamp?.length}
                         </button>
                     </div>
 

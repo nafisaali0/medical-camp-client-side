@@ -1,6 +1,7 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const Loader = () => {
+    
     return (
         <>
             <div className="max-w-[1300px] mx-auto flex justify-center items-center my-12">

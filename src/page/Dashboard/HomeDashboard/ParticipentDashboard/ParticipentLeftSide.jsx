@@ -4,11 +4,15 @@
 import { TbHealthRecognition } from "react-icons/tb"
 import moment from "moment";
 import dashboard from "../../../../assets/images/Dashboard/dashboard_1-removebg.png"
+import { SiVirustotal } from "react-icons/si";
+import { ImBasecamp } from "react-icons/im";
+import Greetings from "../../../../components/Greetings";
+import useUserEnrollCamp from './../../../../hooks/useUserEnrollCamp';
 
 const ParticipentLeftSide = ({ currentUser }) => {
 
     const time = moment().format("LT");
-
+    const [userEnrollCamp] = useUserEnrollCamp()
     return (
         <>
             <div>
@@ -17,7 +21,9 @@ const ParticipentLeftSide = ({ currentUser }) => {
 
                     <div className="flex justify-between flex-col flex-1">
                         <div>
-                            <h1 className="text-textDark text-xl font-bold mb-1">Good Morning {currentUser?.name}</h1>
+                            <h1 className="text-textDark text-xl font-bold mb-1">
+                                <Greetings />
+                                {currentUser?.name}</h1>
                             <div className="flex items-center gap-1">
                                 <h1 className="text-textDark text-sm font-medium">Have a Wonderful, Healthy Day!</h1>
                                 <TbHealthRecognition className="text-[16px]" />
@@ -43,7 +49,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
                     </div>
                 </div>
 
-                {/* <div className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
+                <div className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
 
                     <div className="flex items-center gap-1">
                         <ImBasecamp className="text-[16px] md:text-[22px]" />
@@ -55,13 +61,11 @@ const ParticipentLeftSide = ({ currentUser }) => {
                             <span>
                                 <SiVirustotal className="text-[16px]" />
                             </span>
-                            Total : 100
+                            Total : {userEnrollCamp?.length}
                         </button>
                     </div>
 
-                </div> */}
-
-                {/* <TodayCamp /> */}
+                </div>
 
             </div>
         </>
