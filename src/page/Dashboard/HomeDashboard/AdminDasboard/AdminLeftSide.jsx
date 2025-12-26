@@ -4,7 +4,7 @@ import dashboard from "../../../../assets/images/Dashboard/dashboard_1-removebg.
 import { ImBasecamp } from "react-icons/im";
 import { MdOutlineConfirmationNumber } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
-import TodayCamp from "../TodayCamp/TodayCamp";
+import TodayCamp from './TodayCamp';
 
 const AdminLeftSide = ({ currentUser }) => {
 

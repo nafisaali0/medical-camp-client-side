@@ -1,3 +1,4 @@
+import useCamp from "../../../../hooks/useCamp";
 import { MdFormatListBulletedAdd } from "react-icons/md"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react";
@@ -6,8 +7,9 @@ import { IoTodayOutline } from "react-icons/io5";
 import moment from "moment";
 import Loader from "../../../../components/Loader";
 
-const ShowTodayCamp = ({ camp }) => {
+const TodayCamp = () => {
 
+    const [camp] = useCamp();
     const [cardOpen, setCardOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(null)
     const [todayCamp, setTodayCamp] = useState()
@@ -155,4 +157,4 @@ const ShowTodayCamp = ({ camp }) => {
     )
 }
 
-export default ShowTodayCamp
+export default TodayCamp
