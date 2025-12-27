@@ -8,27 +8,33 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { useState, useEffect } from 'react';
 import useCamp from './../../hooks/useCamp';
 import useUsers from "../../hooks/useUsers";
+import useAllEnrollCamp from "../../hooks/useAllEnrollCamp";
 
 const DetailCamp = () => {
 
     const { _id, campImage, campFee, campProfessionals, campName, campAge, campDate, campTime, campVenue, campServices, campDetails, campCategory } = useLoaderData();
     const [camp] = useCamp();
+    const [allEnrollCamp] = useAllEnrollCamp();
     const [sameCategoryCamp, setSameCategoryCamp] = useState();
     const [users] = useUsers();
     const currentUser = users?.length > 0 ? users[0] : {};
     const [isButtonDisabled, setButtonDisabled] = useState(false);
+    const checkSameBlog = allEnrollCamp?.some(readBlog => readBlog?.enrollCampId === _id)
 
     const handleClick = (e) => {
 
         if (currentUser?.userRole === "Admin") {
-            e.preventDefault(); 
+            e.preventDefault();
             setButtonDisabled(true);
             alert("Admin Cannot Enroll Camp");
-        } else if (currentUser?.userRole === "Participant") {
-            setButtonDisabled(false);
-        } else {
+        } else if (currentUser?.userRole === "Participant" && checkSameBlog === true) {
             e.preventDefault();
-            alert("Not working");
+            setButtonDisabled(true);
+            alert("Already in Enroll Camp");
+        } else {
+            setButtonDisabled(true);
+            // e.preventDefault();
+            // alert("Not working");
         }
 
     };
@@ -174,6 +180,7 @@ const DetailCamp = () => {
                                 </div>
 
                                 <div className="my-5">
+
                                     {/* <Link to={`/camp-enrollment/${_id}`}>
                                         <button className="primaryBtn">
                                             Enroll Now
@@ -193,11 +200,6 @@ const DetailCamp = () => {
                                             </div>
                                         </button>
                                     </Link>
-
-
-
-
-
 
                                 </div>
                             </div>
