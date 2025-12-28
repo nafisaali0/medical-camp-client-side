@@ -8,7 +8,6 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
 import DetailsCamp from '../page/DetailsCamp/DetailsCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
-import ParticipantPaymentHistory from './../page/Dashboard/ParticipantPaymentHistory/ParticipantPaymentHistory';
 import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
 import EditCamp from "../page/Dashboard/Admin/EditCamp/EditCamp";
@@ -47,7 +46,6 @@ export const router = createBrowserRouter([
                 element: <PrivateRoutes><DetailsCamp /></PrivateRoutes>,
                 loader: ({ params }) => fetch(`https://medical-camp-server-seven.vercel.app/camp/${params?.campId}`)
             },
-            // --old
             {
                 path: "camp-enrollment/:campId",
                 element: <PrivateRoutes><CampEnrollment /></PrivateRoutes>,
@@ -74,10 +72,6 @@ export const router = createBrowserRouter([
             {
                 path: "payment",
                 element: <PrivateRoutes><Payment /></PrivateRoutes>,
-            },
-            {
-                path: "payment-history",
-                element: <PrivateRoutes><ParticipantPaymentHistory /></PrivateRoutes>,
             },
             {
                 path: "feedback-and-ratings",

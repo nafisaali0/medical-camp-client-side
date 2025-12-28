@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import useUsers from "../../../hooks/useUsers";
 import logo from '../../../assets/images/logo/logo_footer.png'
-import { MdManageHistory, MdOutlineConfirmationNumber, MdOutlinePayment } from "react-icons/md";
+import { MdManageHistory, MdOutlineConfirmationNumber } from "react-icons/md";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { IoCreateOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
@@ -70,16 +70,6 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                 <span
                                                     className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                     Create Camp
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/payment-history"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/payment-history')
-                                                    ? 'sideNavLink' : ''}`}>
-                                                <IoCreateOutline className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                <span
-                                                    className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    Payment
                                                 </span>
                                             </Link>
                                             <div className="flex justify-start items-center gap-2 rounded p-[11px] text-white">
@@ -174,17 +164,6 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                     className={`lg:flex lg:text-md font-medium
                                                     ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                     My Camps
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/payment-history"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/payment-history')
-                                                    ? 'sideNavLink'
-                                                    : ''}`}>
-                                                <MdOutlinePayment className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                <span
-                                                    className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    Payment
                                                 </span>
                                             </Link>
                                             <Link
