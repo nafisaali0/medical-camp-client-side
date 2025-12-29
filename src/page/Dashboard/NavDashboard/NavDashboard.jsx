@@ -8,7 +8,6 @@ import { IoCreateOutline } from "react-icons/io5";
 import { BiLogOut } from "react-icons/bi";
 import { HiBars2, } from "react-icons/hi2";
 import { RxDashboard } from "react-icons/rx";
-import { VscFeedback } from "react-icons/vsc";
 import { ImBasecamp } from "react-icons/im";
 import { FaUsersViewfinder } from "react-icons/fa6";
 
@@ -164,18 +163,6 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                     className={`lg:flex lg:text-md font-medium
                                                     ${isOpen ? "flex text-xs" : "hidden"}`}>
                                                     My Camps
-                                                </span>
-                                            </Link>
-                                            <Link
-                                                to="/dashboard/feedback-and-ratings"
-                                                className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/feedback-and-ratings')
-                                                    ? 'sideNavLink' : ''}`}>
-                                                <VscFeedback
-                                                    className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                <span
-                                                    className={`lg:flex lg:text-md font-medium 
-                                                    ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                    Review
                                                 </span>
                                             </Link>
                                         </>

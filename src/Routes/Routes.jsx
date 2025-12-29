@@ -8,7 +8,6 @@ import PrivateRoutes from './PrivateRoutes';
 import Dashboard from "../Layout/Dashboard";
 import DetailsCamp from '../page/DetailsCamp/DetailsCamp';
 import AvailableCamps from './../page/AvailableCamps/AvailableCamps';
-import FeedbackAndRatings from './../page/Dashboard/FeedbackAndRatings/FeedbackAndRatings';
 import CreateCamp from "../page/Dashboard/Admin/CreateCamp/CreateCamp";
 import EditCamp from "../page/Dashboard/Admin/EditCamp/EditCamp";
 import CampHub from "../page/Dashboard/Admin/Manage/CampHub/CampHub";
@@ -72,10 +71,6 @@ export const router = createBrowserRouter([
             {
                 path: "payment",
                 element: <PrivateRoutes><Payment /></PrivateRoutes>,
-            },
-            {
-                path: "feedback-and-ratings",
-                element: <PrivateRoutes><FeedbackAndRatings /></PrivateRoutes>,
             },
 
             // addmin routes
