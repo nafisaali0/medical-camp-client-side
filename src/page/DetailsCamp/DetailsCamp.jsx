@@ -8,18 +8,19 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { useState, useEffect } from 'react';
 import useCamp from './../../hooks/useCamp';
 import useUsers from "../../hooks/useUsers";
-import useAllEnrollCamp from "../../hooks/useAllEnrollCamp";
+// import useAllEnrollCamp from "../../hooks/useAllEnrollCamp";
+import useUserEnrollCamp from "../../hooks/useUserEnrollCamp";
 
 const DetailCamp = () => {
 
     const { _id, campImage, campFee, campProfessionals, campName, campAge, campDate, campTime, campVenue, campServices, campDetails, campCategory } = useLoaderData();
     const [camp] = useCamp();
-    const [allEnrollCamp] = useAllEnrollCamp();
+    const [userEnrollCamp] = useUserEnrollCamp();
     const [sameCategoryCamp, setSameCategoryCamp] = useState();
     const [users] = useUsers();
     const currentUser = users?.length > 0 ? users[0] : {};
     const [isButtonDisabled, setButtonDisabled] = useState(false);
-    const checkSameBlog = allEnrollCamp?.some(readBlog => readBlog?.enrollCampId === _id)
+    const checkSameBlog = userEnrollCamp?.some(readBlog => readBlog?.enrollCampId === _id)
 
     const handleClick = (e) => {
 

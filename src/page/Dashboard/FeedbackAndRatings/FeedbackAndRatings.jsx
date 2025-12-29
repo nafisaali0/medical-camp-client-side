@@ -23,7 +23,7 @@ const FeedbackAndRatings = () => {
         // for post rewiew in database 
         const newFeedback = { comment, rating, reviewerName, reviewerPhoto, campid }
         console.log(newFeedback)
-        //  await axiosLocalhost.post('/feedbacks', newFeedback);
+        
         axiosLocalhost.post('/feedbacks', newFeedback)
             .then(res => {
                 console.log(res.data)

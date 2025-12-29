@@ -7,6 +7,7 @@ import { LuView } from "react-icons/lu";
 import { GrStatusGood } from "react-icons/gr";
 import useUserEnrollCamp from "../../../../hooks/useUserEnrollCamp";
 import Review from "../Review/Review";
+import ViewUserFeedback from "../Review/ViewUserFeedback";
 
 
 const MyCamps = () => {
@@ -104,9 +105,28 @@ const MyCamps = () => {
                                                     <div className="flex items-center justify-between lg:gap-10 mt-5 mb-3">
 
                                                         <div className="flex items-center gap-2">
-                                                            <div className="bg-btnColor rounded-full p-2">
-                                                                <Review />
-                                                            </div>
+
+                                                            {
+                                                                campInfo?.rating ?
+                                                                    <>
+                                                                        <div className="bg-btnColor rounded-full p-2">
+                                                                            <ViewUserFeedback
+                                                                                rating={campInfo?.rating}
+                                                                                comment={campInfo?.comment}
+                                                                            />
+
+                                                                        </div>
+                                                                    </>
+                                                                    :
+                                                                    <>
+                                                                        <div className="bg-btnColor rounded-full p-2">
+                                                                            <Review
+                                                                                enrollCampId={campInfo?._id}
+                                                                            />
+                                                                        </div>
+                                                                    </>
+                                                            }
+
                                                             <Link
                                                                 to={`/camp-details/${campInfo?.enrollCampId}`}
                                                                 className="bg-btnColor rounded-full p-2">
