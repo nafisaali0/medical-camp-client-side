@@ -88,7 +88,11 @@ const MyCamps = () => {
                                                     key={index}
                                                     className="w-full absolute left-0 -mt-3 bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
                                                 >
-                                                    <div className="space-y-1">
+                                                    <div className="space-y-2">
+                                                        <h1 className="text-sm font-medium text-textDark">
+                                                            <span className="font-semibold">Transaction Id: </span>
+                                                            {campInfo?.transactionId}
+                                                        </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Time: </span>
                                                             {campInfo?.enrollCampTime}
@@ -129,6 +133,7 @@ const MyCamps = () => {
 
                                                             <Link
                                                                 to={`/camp-details/${campInfo?.enrollCampId}`}
+                                                                target="blank"
                                                                 className="bg-btnColor rounded-full p-2">
                                                                 <LuView
                                                                     className="text-[18px] text-white cursor-pointer"
