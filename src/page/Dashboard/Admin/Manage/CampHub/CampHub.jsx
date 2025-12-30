@@ -138,7 +138,7 @@ const CampHub = () => {
                                             cardOpen && cardIndex === index && (
                                                 <div
                                                     key={index}
-                                                    className="w-full absolute left-0 mt-2 bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
+                                                    className="w-full absolute left-0 -mt-6 bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
                                                 >
                                                     <div className="space-y-1">
                                                         <h1 className="text-sm font-semibold text-primaryDark flex items-center gap-1 mb-2">
