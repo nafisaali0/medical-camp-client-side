@@ -13,6 +13,7 @@ const TodayCamp = () => {
     const [cardOpen, setCardOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(null)
     const [todayCamp, setTodayCamp] = useState()
+    console.log(todayCamp)
     const todayDate = moment().format('YYYY-MM-DD');
 
     function handleCardDropDown(index) {
@@ -61,9 +62,9 @@ const TodayCamp = () => {
             <div className="bg-white p-4 rounded-xl border border-borderColour">
 
                 {
-                    todayCamp === 0 ?
+                    todayCamp == 0 ?
                         <>
-                            <div className="flex flex-col justify-center items-center gap-1">
+                            <div className="flex flex-col justify-center items-center gap-1 p-10">
                                 <h1 className="text-xl font-semibold text-textDark">No Camp Today</h1>
                                 <h1 className="text-lg font-medium text-grayText">{todayDate}</h1>
                             </div>
