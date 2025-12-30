@@ -34,8 +34,6 @@ const DetailCamp = () => {
             alert("Already in Enroll Camp");
         } else {
             setButtonDisabled(true);
-            // e.preventDefault();
-            // alert("Not working");
         }
 
     };
