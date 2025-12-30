@@ -8,6 +8,7 @@ import { MdDeleteOutline, MdFormatListBulletedAdd, MdOutlineUpdate } from "react
 import { ImBasecamp } from "react-icons/im"
 import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost"
 import Swal from "sweetalert2"
+import { BiCategoryAlt } from "react-icons/bi"
 
 
 const CampHub = () => {
@@ -129,10 +130,6 @@ const CampHub = () => {
                                             <div className="space-y-1 mb-3">
                                                 <div className="flex items-center gap-1">
                                                     <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
-                                                    <p className="text-sm font-medium text-textDark">{campInfo?.campCategory}</p>
-                                                </div>
-                                                <div className="flex items-center gap-1">
-                                                    <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
                                                     <p className="text-sm font-medium text-textDark">{campInfo?.campDate}</p>
                                                 </div>
                                             </div>
@@ -144,6 +141,12 @@ const CampHub = () => {
                                                     className="w-full absolute left-0 mt-2 bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
                                                 >
                                                     <div className="space-y-1">
+                                                        <h1 className="text-sm font-semibold text-primaryDark flex items-center gap-1 mb-2">
+                                                            <span className="font-semibold">
+                                                                <BiCategoryAlt className="text-primaryDark text-lg" />
+                                                            </span>
+                                                            {campInfo?.campCategory}
+                                                        </h1>
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Time: </span>
                                                             {campInfo?.campTime}
