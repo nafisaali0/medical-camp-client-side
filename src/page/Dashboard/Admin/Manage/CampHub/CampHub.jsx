@@ -112,7 +112,7 @@ const CampHub = () => {
                                     <div key={index} className="relative">
                                         <div
                                             onClick={() => handleCardDropDown(index)}
-                                            className="h-24 px-3 py-2 border border-borderColour rounded-xl shadow-lg space-y-2">
+                                            className="h-24 px-3 py-3 border border-borderColour rounded-xl shadow-lg space-y-2">
                                             <div className="flex items-center justify-between">
                                                 <div>
                                                     <h1 className="text-sm font-semibold text-textDark">{campInfo?.campName}</h1>
@@ -126,7 +126,11 @@ const CampHub = () => {
                                                     }
                                                 </div>
                                             </div>
-                                            <div>
+                                            <div className="space-y-1 mb-3">
+                                                <div className="flex items-center gap-1">
+                                                    <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
+                                                    <p className="text-sm font-medium text-textDark">{campInfo?.campCategory}</p>
+                                                </div>
                                                 <div className="flex items-center gap-1">
                                                     <span><CiCalendarDate className="text-[22px] text-textDark cursor-pointer" /></span>
                                                     <p className="text-sm font-medium text-textDark">{campInfo?.campDate}</p>
