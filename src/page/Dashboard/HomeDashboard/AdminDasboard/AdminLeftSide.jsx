@@ -19,7 +19,7 @@ const AdminLeftSide = ({ currentUser }) => {
 
   return (
     <>
-      <div className="w-auto xl:w-[800px]">
+      <div className="xl:w-[800px]">
 
         <div className="bg-white p-4 rounded-xl border border-borderColour flex justify-between">
 

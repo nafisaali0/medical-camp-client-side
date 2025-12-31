@@ -63,18 +63,18 @@ const CampHub = () => {
                 <div className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
-                        <div className="flex items-center gap-2">
-                            <SiManageiq className="text-[22px]" />
-                            <h1 className="text-textDark text-lg font-medium">Manage Camps</h1>
+                        <div className="flex items-center gap-1 md:gap-2">
+                            <SiManageiq className="text-[10px] text-base md:text-[20px]" />
+                            <h1 className="text-textDark text-xs font-normal md:text-lg md:font-medium">Manage Camps</h1>
                         </div>
 
                         <div>
                             <Link to={'/dashboard/create-camp'}>
                                 <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
                                     <span>
-                                        <IoMdAdd className="text-[16px] lg:text-[20px]" />
+                                        <IoMdAdd className="text-[10px] lg:text-[20px]" />
                                     </span>
-                                    Add New Camp
+                                    <h1 className="text-xs font-normal">Add New Camp</h1>
                                 </button>
                             </Link>
                         </div>
@@ -88,7 +88,7 @@ const CampHub = () => {
 
                         <div className="flex items-center gap-2">
                             <ImBasecamp className="text-[22px]" />
-                            <h1 className="text-textDark text-lg font-medium">All Camps</h1>
+                            <h1 className="text-textDark text-md font-medium">All Camps</h1>
                         </div>
 
                         <div>

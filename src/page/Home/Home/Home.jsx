@@ -15,10 +15,10 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <div className="max-w-[1300px] mx-auto my-10 p-5 overflow-hidden space-y-20">
-                <Services></Services>
                 <PopularCamp></PopularCamp>
-                <Category></Category>
+                <Services></Services>
                 <Testimonials></Testimonials>
+                <Category></Category>
             </div>
         </div>
     );
