@@ -3,7 +3,6 @@ import { IoMdTime } from "react-icons/io";
 import { GoPeople } from "react-icons/go";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
-import useAllEnrollCamp from "../../../hooks/useAllEnrollCamp";
 // Import Swiper 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -11,10 +10,12 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import './popularCampStyle.css';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import useUniqueEnrollCamp from "../../../hooks/useUniqueEnrollCamp";
+import ParticipentCount from "../../../components/ParticipentCount";
 
 const PopularCamp = () => {
 
-    const [allEnrollCamp] = useAllEnrollCamp();
+    const { popularCamp } = useUniqueEnrollCamp();
 
     return (
         <>
@@ -44,19 +45,12 @@ const PopularCamp = () => {
                     className="mySwiper"
                 >
                     {
-                        allEnrollCamp?.slice(0, 3).map((enrolledCamp) =>
+                        popularCamp?.slice(0, 4).map((enrolledCamp) =>
                             <>
                                 <SwiperSlide>
 
                                     <div className="relative rounded-3xl bg-white shadow-lg hover:shadow-xl">
                                         <div className="relative w-full h-[250px]">
-                                            {/* <figure>
-                                                <img
-                                                    src={enrolledCamp?.enrollCampImage}
-                                                    className="rounded-t-3xl"
-                                                />
-                                                <div className="absolute w-full h-full inset-0 bg-black/0 rounded-t-3xl"></div>
-                                            </figure> */}
                                             <figure>
                                                 <img
                                                     src={enrolledCamp?.enrollCampImage}
@@ -73,15 +67,23 @@ const PopularCamp = () => {
                                         <div className="pt-10 md:pt-0 p-3 m-0 md:-mt-3 rounded-t-3xl rounded-b-3xl bg-white border-2 border-white">
                                             <div className="flex flex-col items-start gap-4 mt-7 md:mt-14">
                                                 <div className="w-full space-y-3">
+
+                                                    <div className="flex items-start gap-2">
+                                                        <GoPeople className="text-[25px] text-btnColor" />
+                                                        <h1 className="text-sm font-normal text-textDark">
+                                                            <span className="font-bold">Participent: </span>
+                                                            <ParticipentCount
+                                                                enrollCampId={enrolledCamp?.enrollCampId} />
+                                                        </h1>
+                                                    </div>
+
                                                     <div className="flex gap-2 items-start">
                                                         <IoMdTime className="text-[25px] text-btnColor" />
                                                         <h1 className="text-sm font-normal text-textDark">
-
                                                             <span className="font-bold">Date & Time: </span>
-                                                            12.3.25
+                                                            {enrolledCamp?.enrollCampDate}
                                                             <span className="mx-1 text-textDark font-bold">|</span>
                                                             {enrolledCamp?.enrollCampTime}
-
                                                         </h1>
                                                     </div>
 
@@ -108,6 +110,7 @@ const PopularCamp = () => {
                                                             {enrolledCamp?.price}
                                                         </h1>
                                                     </div>
+
                                                 </div>
                                             </div>
 

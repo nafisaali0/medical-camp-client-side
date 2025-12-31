@@ -2,7 +2,7 @@ import { FaUsers } from "react-icons/fa"
 import useAllEnrollCamp from "../../../../../hooks/useAllEnrollCamp";
 
 const ParticipentDetails = ({ enrollCampId }) => {
-    
+
     const [allEnrollCamp] = useAllEnrollCamp();
     const enrollmentUserDetails = allEnrollCamp
         .filter(item => item.enrollCampId === enrollCampId)
@@ -15,8 +15,6 @@ const ParticipentDetails = ({ enrollCampId }) => {
         <>
             {/* The button to open modal */}
             <label htmlFor={enrollCampId}>
-                {/* <FaUsers title="View Details" className="cursor-pointer" /> */}
-
                 <div className="flex items-center gap-2">
                     <div
                         className="bg-btnColor rounded-full p-2">

@@ -1,23 +1,22 @@
 import { Link } from "react-router-dom"
-// import useCamp from "../../../../../hooks/useCamp";
 import { MdFormatListBulletedAdd, MdOutlineConfirmationNumber } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CiCalendarDate, CiCircleChevDown, CiCircleChevUp } from "react-icons/ci";
 import { LuView } from "react-icons/lu";
 import { GrStatusGood } from "react-icons/gr";
 import useAllEnrollCamp from "../../../../../hooks/useAllEnrollCamp";
 import ParticipentDetails from "./ParticipentDetails";
+import useUniqueEnrollCamp from "../../../../../hooks/useUniqueEnrollCamp";
 
 const EnrollCamps = () => {
 
-    // const [camp] = useCamp();
     const [allEnrollCamp] = useAllEnrollCamp();
     const [cardOpen, setCardOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(null)
-    const [uniqueEnrollCamps, setUniqueEnrollCamps] = useState(null)
+    const { popularCamp } = useUniqueEnrollCamp();
 
     function handleCardDropDown(index) {
-        // console.log(cardIndex)
+        
         if (cardIndex === index) {
             setCardOpen(!cardOpen);
         } else {
@@ -26,20 +25,6 @@ const EnrollCamps = () => {
         }
     }
 
-    useEffect(() => {
-
-        if (!allEnrollCamp) return;
-        const uniqueEnrollCamp = allEnrollCamp.filter((obj, index, category) =>
-            index === category.findIndex((t) => (
-                t.enrollCampId === obj.enrollCampId
-            ))
-
-        );
-        setUniqueEnrollCamps(uniqueEnrollCamp);
-
-    }, [allEnrollCamp]);
-
-    // console.log(uniqueEnrollCamps)
     return (
         <>
             <div className="space-y-8">
@@ -66,7 +51,7 @@ const EnrollCamps = () => {
                 <div className="bg-white px-4 py-10 rounded-xl border border-borderColour">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                         {
-                            uniqueEnrollCamps?.map((enrollCampInfo, index) =>
+                            popularCamp?.map((enrollCampInfo, index) =>
                                 <>
                                     <div key={index} className="relative">
                                         <div
