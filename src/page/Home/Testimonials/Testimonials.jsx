@@ -18,8 +18,9 @@ const Testimonials = () => {
 
     return (
         <>
-            <div>
-                <div className="mb-10 text-textDark">
+            <div data-aos="fade-right">
+                <div
+                    className="mb-10 text-textDark">
                     <h1 className="text-3xl font-bold text-center">What Participant Are Saying</h1>
                 </div>
                 <div>
@@ -55,7 +56,9 @@ const Testimonials = () => {
                             feedbacks?.slice(0, 6)?.map((review, index) =>
                                 <>
                                     <SwiperSlide key={index}>
-                                        <div key={index} className="p-5 h-64 bg-white rounded-t-2xl rounded-xl shadow-lg hover:shadow-xl">
+                                        <div
+                                            key={index}
+                                            className="p-5 h-64 bg-white rounded-t-2xl rounded-xl shadow-lg hover:shadow-xl">
                                             <div className="flex justify-between items-start">
                                                 <div className="flex gap-4 items-center">
                                                     <div className="avatar">

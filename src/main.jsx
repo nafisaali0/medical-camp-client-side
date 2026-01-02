@@ -1,5 +1,6 @@
 import React from 'react'
 import AOS from 'aos';
+import 'aos/dist/aos.css'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider } from "react-router-dom";
@@ -12,20 +13,13 @@ import {
 } from '@tanstack/react-query'
 
 const queryClient = new QueryClient()
+AOS.init({
+  duration: 1400,
+  // duration: 1200,
+})
 
-AOS.init()
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
-  //   <AuthProviders>
-  //     <QueryClientProvider client={queryClient}>
-  //       <HelmetProvider>
-  //         <RouterProvider router={router} />
-  //       </HelmetProvider>
-  //     </QueryClientProvider>
-  //   </AuthProviders>
-  // </React.StrictMode>,
-
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProviders>
@@ -35,5 +29,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </AuthProviders>
     </QueryClientProvider>
   </React.StrictMode>
-
 )

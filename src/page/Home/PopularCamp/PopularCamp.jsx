@@ -18,8 +18,9 @@ const PopularCamp = () => {
 
     return (
         <>
-            <div>
-                <div className="mb-10">
+            <div data-aos="fade-left">
+                <div
+                    className="mb-10">
                     <h1 className="text-3xl text-textDark font-bold text-center">Popular Camps</h1>
                 </div>
 
@@ -44,7 +45,7 @@ const PopularCamp = () => {
                     className="mySwiper"
                 >
                     {
-                        popularCamp?.slice(0, 4).map((enrolledCamp) =>
+                        popularCamp?.slice(0, 3)?.map((enrolledCamp) =>
                             <>
                                 <SwiperSlide>
 

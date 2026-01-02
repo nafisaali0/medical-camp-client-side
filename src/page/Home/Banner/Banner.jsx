@@ -18,15 +18,21 @@ const Banner = () => {
                         <div className='md:flex-1 w-full md:w-1/2'>
 
                             <div className='flex flex-col items-center md:items-start text-center md:text-start'>
-                                <h1 className="text-6xl lg:text-7xl font-bold text-gradient">
+                                <h1
+                                    data-aos="fade-right"
+                                    className="text-6xl lg:text-7xl font-bold text-gradient">
                                     Our Medical Mission for a Healthier
                                 </h1>
-                                <p className="text-md text-textDark font-semibold my-5 md:my-7 md:max-w-xl">
+                                <p
+                                    data-aos="fade-right" data-aos-delay="100"
+                                    className="text-md text-textDark font-semibold my-5 md:my-7 md:max-w-xl">
                                     Join us on a journey of compassion, making a meaningful impact in healthcare for a brighter future.
                                 </p>
                             </div>
 
-                            <div className="flex justify-center items-center md:items-start md:justify-start mt-3 md:mt-0">
+                            <div
+                                data-aos="fade-right" data-aos-delay="200"
+                                className="flex justify-center items-center md:items-start md:justify-start mt-3 md:mt-0">
                                 <Link to={"/available-camps"}>
                                     <button className="primaryBtn">
                                         See Camps
@@ -40,6 +46,7 @@ const Banner = () => {
                         </div>
 
                         <div
+                            data-aos="zoom-in" data-aos-delay="100"
                             className="hidden md:flex flex-1 w-1/2 h-[550px] relative overflow-hidden"
                             style={{
                                 backgroundImage: `url(${heroBG})`,

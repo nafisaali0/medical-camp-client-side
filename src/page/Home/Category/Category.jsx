@@ -30,7 +30,10 @@ const Category = () => {
 
     return (
         <>
-            <div className="max-w-[800px] mx-auto">
+            <div
+                data-aos="fade-left"
+                data-aos-delay="100"
+                className="max-w-[800px] mx-auto">
                 <div className="mb-10 text-textDark">
                     <h1 className="text-3xl font-bold text-center">Category</h1>
                 </div>
