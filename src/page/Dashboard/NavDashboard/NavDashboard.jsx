@@ -10,12 +10,24 @@ import { HiBars2, } from "react-icons/hi2";
 import { RxDashboard } from "react-icons/rx";
 import { ImBasecamp } from "react-icons/im";
 import { FaUsersViewfinder } from "react-icons/fa6";
+import useAuth from "../../../hooks/useAuth";
 
 const NavDashboard = ({ isOpen, setIsOpen }) => {
 
+    const { user, logOut } = useAuth();
     const location = useLocation();
     const ifActive = (path) => location.pathname === path;
     const [users] = useUsers();
+
+    const handleLogOut = () => {
+        logOut(user)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
 
     return (
         <>
@@ -111,26 +123,6 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                                                                 Enrollments
                                                             </span>
                                                         </Link>
-                                                        {/* <Link
-                                                            to="/dashboard/manage-camps"
-                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-camps') ? 'sideNavDropdown' : ''}`}>
-                                                            <SiBasecamp className={`lg:text-[20px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                            <span
-                                                                className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                                Camp Hub
-                                                            </span>
-                                                        </Link> */}
-                                                        {/* <Link
-                                                            to="/dashboard/manage-registered-camps"
-                                                            className={`flex justify-start items-center gap-2 rounded p-[11px] text-white ${ifActive('/dashboard/manage-registered-camps')
-                                                                ? 'sideNavDropdown'
-                                                                : ''}`}>
-                                                            <MdOutlineConfirmationNumber className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                                                            <span
-                                                                className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
-                                                                Enrollments
-                                                            </span>
-                                                        </Link> */}
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,6 +169,7 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                     <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
                         <BiLogOut className={`lg:text-[22px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
                         <span
+                            onClick={handleLogOut}
                             className={`lg:flex lg:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}>
                             LogOut
                         </span>

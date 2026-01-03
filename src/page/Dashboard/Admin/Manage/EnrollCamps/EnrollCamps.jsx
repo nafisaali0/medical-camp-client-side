@@ -28,7 +28,7 @@ const EnrollCamps = () => {
     return (
         <>
             <div className="space-y-8">
-                <div className="bg-white p-4 rounded-xl border border-borderColour">
+                <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
@@ -48,7 +48,7 @@ const EnrollCamps = () => {
                     </div>
                 </div>
 
-                <div className="bg-white px-4 py-10 rounded-xl border border-borderColour">
+                <div data-aos="fade-up" className="bg-white px-4 py-10 rounded-xl border border-borderColour">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                         {
                             popularCamp?.map((enrollCampInfo, index) =>

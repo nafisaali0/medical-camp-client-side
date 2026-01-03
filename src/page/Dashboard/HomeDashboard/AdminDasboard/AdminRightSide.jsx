@@ -81,7 +81,7 @@ const AdminRightSide = ({ currentUser }) => {
     return (
         <>
             <div className="flex-1 w-full">
-                <div className="bg-white p-4 rounded-xl shadow-lg mt-8">
+                <div data-aos="fade-down" className="bg-white p-4 rounded-xl shadow-lg mt-8">
                     <div className="flex flex-col justify-center items-center text-center">
                         <div className="-mt-12 flex justify-center items-center">
                             <figure>
@@ -112,7 +112,10 @@ const AdminRightSide = ({ currentUser }) => {
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-7">
+                    <div
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                        className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-7">
                         <div className="bg-white p-4 rounded-xl space-y-5">
                             <div className="flex justify-between items-center">
                                 <h1 className="text-textDark text-lg font-medium">Profile Details</h1>

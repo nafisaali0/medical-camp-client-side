@@ -17,7 +17,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
         <>
             <div>
 
-                <div className="bg-white p-4 rounded-xl border border-borderColour flex justify-between">
+                <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour flex justify-between">
 
                     <div className="flex justify-between flex-col flex-1">
                         <div>
@@ -49,11 +49,11 @@ const ParticipentLeftSide = ({ currentUser }) => {
                     </div>
                 </div>
 
-                <div className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
+                <div data-aos="fade-left" className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
 
                     <div className="flex items-center gap-1">
                         <ImBasecamp className="text-[16px] md:text-[22px]" />
-                        <h1 className="text-textDark text-xm md:text-lg font-medium">Your Camps</h1>
+                        <h1 className="text-textDark text-xm md:text-lg font-medium">My Camps</h1>
                     </div>
 
                     <div>

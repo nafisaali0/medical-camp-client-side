@@ -21,9 +21,12 @@ const AdminLeftSide = ({ currentUser }) => {
     <>
       <div className="xl:w-[800px]">
 
-        <div className="bg-white p-4 rounded-xl border border-borderColour flex justify-between">
+        <div
+          data-aos="fade-down"
+          className="bg-white p-4 rounded-xl border border-borderColour flex justify-between">
 
-          <div className="flex justify-between flex-col flex-1">
+          <div
+            className="flex justify-between flex-col flex-1">
             <div>
               <h1 className="text-textDark text-xl font-bold mb-1">
                 <Greetings />
@@ -56,7 +59,9 @@ const AdminLeftSide = ({ currentUser }) => {
 
         <div className="flex flex-col md:flex-row items-center gap-4 mt-7">
 
-          <div className="p-4 w-full bg-white rounded-xl">
+          <div
+            data-aos="fade-right"
+            className="p-4 w-full bg-white rounded-xl">
             <h1 className="text-xl font-semibold text-textDark">Total Camp</h1>
             <div className="flex items-center gap-3 mt-3">
               <div className="bg-btnColor rounded-xl p-2">
@@ -67,7 +72,9 @@ const AdminLeftSide = ({ currentUser }) => {
               <p className="text-lg font-semibold text-textDark">{camp?.length}</p>
             </div>
           </div>
-          <div className="p-4 w-full bg-white rounded-xl">
+          <div
+            data-aos="fade-up"
+            className="p-4 w-full bg-white rounded-xl">
             <h1 className="text-xl font-semibold text-textDark">Total Enroll Camp</h1>
             <div className="flex items-center gap-3 mt-3">
               <div className="bg-btnColor rounded-xl p-2">
@@ -78,7 +85,9 @@ const AdminLeftSide = ({ currentUser }) => {
               <p className="text-lg font-semibold text-textDark">{allEnrollCamp?.length}</p>
             </div>
           </div>
-          <div className="p-4 w-full bg-white rounded-xl">
+          <div
+            data-aos="fade-left"
+            className="p-4 w-full bg-white rounded-xl">
             <h1 className="text-xl font-semibold text-textDark">Total User</h1>
             <div className="flex items-center gap-3 mt-3">
               <div className="bg-btnColor rounded-xl p-2">

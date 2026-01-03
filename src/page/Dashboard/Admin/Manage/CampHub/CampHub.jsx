@@ -60,7 +60,9 @@ const CampHub = () => {
     return (
         <>
             <div className="space-y-8">
-                <div className="bg-white p-4 rounded-xl border border-borderColour">
+                <div
+                    data-aos="fade-right"
+                    className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-1 md:gap-2">
@@ -83,7 +85,7 @@ const CampHub = () => {
                 </div>
 
                 {/* All Camp */}
-                <div className="bg-white p-4 rounded-xl border border-borderColour">
+                <div data-aos="fade-left" data-aos-delay="100" className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
@@ -105,7 +107,7 @@ const CampHub = () => {
                     </div>
                 </div>
 
-                <div className="bg-white px-4 py-10 rounded-xl border border-borderColour">
+                <div data-aos="fade-up" data-aos-delay="200" className="bg-white px-4 py-10 rounded-xl border border-borderColour">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                         {
                             camp.map((campInfo, index) =>

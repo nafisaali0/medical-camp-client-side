@@ -75,7 +75,7 @@ const AvailableCamps = () => {
                                         defaultCamp !== 0 ?
                                             (
                                                 <>
-                                                    <div className="flex justify-between items-center mb-5">
+                                                    <div data-aos="fade-right" className="flex justify-between items-center mb-5">
 
                                                         <div className="flex items-center gap-2 border-2 border-btnColor rounded-full px-5 py-2">
                                                             <button className="text-sm font-semibold text-textDark">Sort by Price: </button>
@@ -105,7 +105,7 @@ const AvailableCamps = () => {
 
                                                     </div>
 
-                                                    <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5">
+                                                    <div data-aos="fade-left" className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5">
 
                                                         {
                                                             defaultCamp?.map((eachCamp, index) =>

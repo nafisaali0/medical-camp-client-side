@@ -39,10 +39,11 @@ const TodayCamp = () => {
 
     return (
         <>
-            <div className="bg-white p-4 rounded-xl border border-borderColour my-7">
+            <div data-aos="fade-right" data-aos-delay="100" className="bg-white p-4 rounded-xl border border-borderColour my-7">
                 <div className="flex justify-between">
 
-                    <div className="flex items-center gap-1">
+                    <div                      
+                        className="flex items-center gap-1">
                         <IoTodayOutline className="text-[16px] md:text-[22px]" />
                         <h1 className="text-textDark text-xm md:text-lg font-medium">Today Camps</h1>
                     </div>
@@ -59,7 +60,7 @@ const TodayCamp = () => {
                 </div>
             </div>
 
-            <div className="bg-white p-4 rounded-xl border border-borderColour">
+            <div data-aos="fade-up" data-aos-delay="200" className="bg-white p-4 rounded-xl border border-borderColour">
 
                 {
                     todayCamp == 0 ?

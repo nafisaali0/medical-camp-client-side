@@ -11,7 +11,7 @@ const CampEnrollment = () => {
             <div className="py-20 px-5 my-10 lg:my-16">
                 <div className="max-w-[1300px] mx-auto p-5 overflow-hidden">
                     <div className="flex flex-col lg:flex-row gap-5 lg:justify-between">
-                        <div>
+                        <div data-aos="fade-right">
                             <div className="w-auto lg:w-[900px] p-5 border border-borderColour rounded-xl shadow-lg hover:shadow-xl">
 
                                 <div>
@@ -35,7 +35,7 @@ const CampEnrollment = () => {
                             </div>
                         </div>
                         {/* right side */}
-                        <div className="flex-1 w-auto">
+                        <div data-aos="fade-left" className="flex-1 w-auto">
                             <div
                                 key={_id}
                                 className="card bg-primarylight/60 shadow-lg hover:shadow-xl">
@@ -67,7 +67,7 @@ const CampEnrollment = () => {
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         </>
     )
 }

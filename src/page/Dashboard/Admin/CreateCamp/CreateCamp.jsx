@@ -90,7 +90,7 @@ const CreateCamp = () => {
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
 
-                <div className="bg-white p-4 rounded-xl border border-borderColour">
+                <div data-aos="fade-right" className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
@@ -113,7 +113,7 @@ const CreateCamp = () => {
                 <div className="flex flex-col xl:flex-row gap-4 mt-5">
 
                     {/* left side */}
-                    <div className="w-auto lg:w-[800px] space-y-5">
+                    <div data-aos="fade-right" className="w-auto lg:w-[800px] space-y-5">
 
                         {/* part one */}
                         <div className="bg-white p-4 rounded-xl border border-borderColour space-y-5">
@@ -256,7 +256,7 @@ const CreateCamp = () => {
                     </div>
 
                     {/* right side */}
-                    <div className="w-auto flex-1 space-y-5">
+                    <div data-aos="fade-left" className="w-auto flex-1 space-y-5">
 
                         {/* part one - campImage */}
                         <div className="p-4 w-full bg-white rounded-xl">

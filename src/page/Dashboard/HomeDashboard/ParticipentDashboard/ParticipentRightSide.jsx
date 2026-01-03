@@ -80,7 +80,8 @@ const ParticipentRightSide = ({ currentUser }) => {
     return (
         <>
             <div className="flex gap-5 md:flex-row-reverse flex-col">
-                <div className="flex-1 w-full h-fit bg-white p-5 rounded-xl shadow-lg mt-16 relative">
+
+                <div data-aos="fade-left" className="flex-1 w-full h-fit bg-white p-5 rounded-xl shadow-lg mt-16 relative">
                     <div className="flex flex-col justify-center items-center text-center ">
                         <div className="-mt-14 flex justify-center items-center">
                             <figure>
@@ -108,7 +109,7 @@ const ParticipentRightSide = ({ currentUser }) => {
                     </div>
                 </div>
 
-                <div className="flex-1  w-full">
+                <div data-aos="fade-right" className="flex-1 w-full">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-7">
                             <div className="bg-white p-4 rounded-xl space-y-5">

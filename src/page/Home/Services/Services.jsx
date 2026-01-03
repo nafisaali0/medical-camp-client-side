@@ -10,9 +10,7 @@ const Services = () => {
         { id: 2, title: "Share Feedback", image: feedback },
     ]
     const aosAnimations = ["fade-right", "fade-up", "fade-left"];
-    // const aosAnimationsDelay = ["", 100, 200];
-
-    // data-aos={ aosAnimations[index] }
+    
     return (
         <div className="max-w-[800px] mx-auto">
             <div className="mb-10 text-textDark">

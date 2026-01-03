@@ -56,7 +56,7 @@ const DetailCamp = () => {
 
                 <div className="max-w-[1300px] mx-auto overflow-hidden">
 
-                    <div className="p-10 space-y-25 rounded-xl shadow-lg border border-borderColour">
+                    <div data-aos="fade-down" className="p-10 space-y-25 rounded-xl shadow-lg border border-borderColour">
                         <div className="flex flex-col xl:flex-row items-start justify-around gap-5">
 
                             <div className="relative xl:flex-1 w-full xl:h-[500px] xl:w-1/2 rounded-xl border-2 border-borderColour">
@@ -205,7 +205,7 @@ const DetailCamp = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 mt-20">
+                    <div data-aos="fade-up" className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 mt-20">
 
                         {
                             sameCategoryCamp?.map((eachCamp, index) =>
