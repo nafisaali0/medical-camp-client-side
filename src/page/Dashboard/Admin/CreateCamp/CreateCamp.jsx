@@ -2,11 +2,11 @@ import { useForm } from "react-hook-form"
 import { LuUpload } from "react-icons/lu"
 import { MdLibraryAddCheck } from "react-icons/md"
 import { SiBasecamp } from "react-icons/si"
-import Swal from "sweetalert2"
 import axios from "axios"
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost"
 import { useState } from "react"
 import moment from "moment"
+import { Bounce, Slide, toast } from "react-toastify"
 
 
 const CreateCamp = () => {
@@ -63,24 +63,30 @@ const CreateCamp = () => {
             const campPostRes = await axiosLocalhost.post('/camp', campDetails);
 
             if (campPostRes.data.insertedId) {
-
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "create camp successfully",
-                    showConfirmButton: false,
-                    timer: 1500
+                toast.success('Camp created successfully!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "light",
+                    transition: Slide,
                 });
-
                 reset();
             }
         } else {
-            Swal.fire({
-                position: "top-end",
-                icon: "warning",
-                title: "new camp not create",
-                showConfirmButton: false,
-                timer: 1500
+            toast.error('Unable to create camp!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
             });
         }
 

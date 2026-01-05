@@ -2,13 +2,12 @@ import { useForm } from "react-hook-form";
 import { LuUpload } from "react-icons/lu"
 import { MdOutlineUpdate } from "react-icons/md"
 import { SiBasecamp } from "react-icons/si"
-// import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
 import { useLoaderData } from "react-router-dom";
-import Swal from "sweetalert2";
 import moment from "moment";
 import axios from "axios";
 import { useState } from "react";
+import { Bounce, Slide, toast } from "react-toastify";
 
 const EditCamp = () => {
 
@@ -35,14 +34,17 @@ const EditCamp = () => {
             const camp_Image = res.data.data.display_url;
             setGetCampImage(camp_Image);
         } else {
-            Swal.fire({
-                position: "top-end",
-                icon: "warning",
-                title: "Image not updated",
-                showConfirmButton: false,
-                timer: 1500
+            toast.error('Unable to update image!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
             });
-
         }
     }
     const handleCategoryImage = async (e) => {
@@ -57,12 +59,17 @@ const EditCamp = () => {
             const category_Image = res.data.data.display_url;
             setGetCategoryImage(category_Image);
         } else {
-            Swal.fire({
-                position: "top-end",
-                icon: "warning",
-                title: "Image not updated",
-                showConfirmButton: false,
-                timer: 1500
+
+            toast.error('Unable to update image!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
             });
 
         }
@@ -88,30 +95,36 @@ const EditCamp = () => {
             campFee: parseFloat(data.campFee),
 
         }
-        // console.log(campDetails)
         const campRes = await axiosLocalhost.patch(`/camp/${_id}`, campDetails);
-        // console.log(campRes.data)
 
         if (campRes.data.modifiedCount > 0) {
 
             reset();
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `${data.campName} is updated camp.`,
-                showConfirmButton: false,
-                timer: 1500
+            toast.success('Camp updated successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: 1,
+                theme: "light",
+                transition: Slide,
             });
 
 
         } else {
 
-            Swal.fire({
-                position: "top-end",
-                icon: "warning",
-                title: "new camp not create",
-                showConfirmButton: false,
-                timer: 1500
+            toast.error('Unable to update camp!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
             });
 
         }
@@ -343,7 +356,7 @@ const EditCamp = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         {/* part three */}
                         <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 

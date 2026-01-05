@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 import { CiCalendarDate } from "react-icons/ci";
 import { MdOutlineUpdate } from "react-icons/md";
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
-import Swal from "sweetalert2";
 import { useState } from "react";
 import axios from "axios";
+import { Slide, toast } from "react-toastify";
 
 const AdminRightSide = ({ currentUser }) => {
 
@@ -33,15 +33,20 @@ const AdminRightSide = ({ currentUser }) => {
             }
             console.log(userInfo)
 
-            const updateImage = await axiosLocalhost.patch(`/users/${currentUser._id}`, userInfo)
+            const updateImage = await axiosLocalhost.patch(`/users/${currentUser?._id}`, userInfo)
 
             if (updateImage.data.modifiedCount > 0) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${currentUser?.userName} update your Image.`,
-                    showConfirmButton: false,
-                    timer: 2000
+
+                toast.success(`${currentUser?.userName} your image has been updated.`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "light",
+                    transition: Slide,
                 });
             }
 
@@ -60,19 +65,21 @@ const AdminRightSide = ({ currentUser }) => {
                 userAge: data.userAge,
                 userAddress: data.userAddress,
             }
-            // console.log(userInfo)
-            const updateUserDetails = await axiosLocalhost.patch(`/users/${currentUser._id}`, userInfo);
-            // console.log(updateUserDetails.data)
+            const updateUserDetails = await axiosLocalhost.patch(`/users/${currentUser?._id}`, userInfo);
 
             reset();
 
             if (updateUserDetails.data.modifiedCount > 0) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${currentUser?.userName} update your information.`,
-                    showConfirmButton: false,
-                    timer: 2000
+                toast.success('Profile updated successfully.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "light",
+                    transition: Slide,
                 });
             }
         }
@@ -189,4 +196,4 @@ const AdminRightSide = ({ currentUser }) => {
     )
 }
 
-export default AdminRightSide
+export default AdminRightSide;

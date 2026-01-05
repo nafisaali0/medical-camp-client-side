@@ -32,7 +32,7 @@ const SocialLogin = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     console.log('user create')
-                    toast.success('Welcome back! You’re now singed in.', {
+                    toast.success('You’re now singed in.', {
                         position: "top-right",
                         autoClose: 5000,
                         hideProgressBar: true,
@@ -48,7 +48,7 @@ const SocialLogin = () => {
             })
             .catch(error => {
                 console.log(error)
-                toast.error('Unable to sign in with Google. Please try again.', {
+                toast.error('Unable to sign in with Google!', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,

@@ -7,6 +7,7 @@ import { FaUsersViewfinder } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost";
+import { Slide, toast } from "react-toastify";
 
 const AllUsers = () => {
 
@@ -14,24 +15,26 @@ const AllUsers = () => {
     const { register, handleSubmit, reset } = useForm()
     const axiosLocalhost = useAxioslocalhost()
 
-    const onSubmit = async ({ userId, userRole, userName }) => {
+    const onSubmit = async ({ userId, userRole }) => {
 
         if (userId, userRole) {
 
             const userInfo = {
                 userRole: userRole,
             }
-            // console.log(userInfo)
             const updateRole = await axiosLocalhost.patch(`/users/${userId}`, userInfo);
-            // console.log(updateRole.data)
             reset();
             if (updateRole.data.modifiedCount > 0) {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: `${userName} role change to ${userRole}.`,
-                    showConfirmButton: false,
-                    timer: 2000
+                toast.success(`User role updated to  ${userRole}.`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "light",
+                    transition: Slide,
                 });
             }
         }

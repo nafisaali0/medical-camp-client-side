@@ -8,8 +8,8 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { useState, useEffect } from 'react';
 import useCamp from './../../hooks/useCamp';
 import useUsers from "../../hooks/useUsers";
-// import useAllEnrollCamp from "../../hooks/useAllEnrollCamp";
 import useUserEnrollCamp from "../../hooks/useUserEnrollCamp";
+import { Bounce, toast } from "react-toastify";
 
 const DetailCamp = () => {
 
@@ -27,11 +27,31 @@ const DetailCamp = () => {
         if (currentUser?.userRole === "Admin") {
             e.preventDefault();
             setButtonDisabled(true);
-            alert("Admin Cannot Enroll Camp");
+            toast.error('Admin cannot enroll in the camp.', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
         } else if (currentUser?.userRole === "Participant" && checkSameBlog === true) {
             e.preventDefault();
             setButtonDisabled(true);
-            alert("Already in Enroll Camp");
+            toast.error('You are already enrolled in this camp.', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
         } else {
             setButtonDisabled(true);
         }

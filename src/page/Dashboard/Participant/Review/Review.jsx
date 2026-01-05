@@ -1,7 +1,7 @@
-import Swal from "sweetalert2";
 import useAxioslocalhost from "../../../../hooks/useAxioslocalhost";
 import useUsers from "../../../../hooks/useUsers";
 import { MdRateReview } from "react-icons/md";
+import { Slide, toast } from "react-toastify";
 
 const Review = ({ enrollCampId }) => {
 
@@ -28,12 +28,16 @@ const Review = ({ enrollCampId }) => {
                 .then(res => {
                     console.log(res.data)
                     if (res.data.insertedId) {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: `Thank you for your feedback`,
-                            showConfirmButton: false,
-                            timer: 1600
+                        toast.success('Feedback received.', {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: true,
+                            closeOnClick: false,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: 1,
+                            theme: "light",
+                            transition: Slide,
                         });
                     }
                 })
@@ -42,13 +46,7 @@ const Review = ({ enrollCampId }) => {
             axiosLocalhost.patch(`/enrollCamp/${enrollCampId}`, newEnrollRating)
                 .then(res => {
                     if (res.data.modifiedCount > 0) {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: `Thank you for your feedback`,
-                            showConfirmButton: false,
-                            timer: 1600
-                        });
+                        console.log(res.data.modifiedCount)
                     }
                 })
         }

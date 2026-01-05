@@ -24,7 +24,7 @@ const Signin = () => {
 
                 const user = result.user;
                 console.log(user);
-                toast.success('Welcome back! You’re now singed in.', {
+                toast.success('You’re now singed in.', {
                     position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: true,
