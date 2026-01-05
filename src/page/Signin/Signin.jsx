@@ -3,20 +3,20 @@ import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
-import Swal from "sweetalert2";
 import { TfiEmail } from "react-icons/tfi";
 import { TbLockPassword } from "react-icons/tb";
 import background from "../../assets/images/background/bg_form6.png"
+import { Slide, toast } from "react-toastify";
 
 const Signin = () => {
 
-    const { register, handleSubmit, formState: { errors }, } = useForm(); 
+    const { register, handleSubmit, formState: { errors }, } = useForm();
     const { signInUser } = useAuth();
     const navigate = useNavigate();
 
 
     const onSubmit = (data) => {
-        
+
         // signin authentication
         signInUser(data.email, data.password)
 
@@ -24,17 +24,16 @@ const Signin = () => {
 
                 const user = result.user;
                 console.log(user);
-
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: 'User Signin Successful.',
-                    showClass: {
-                        popup: 'animate__animated animate__fadeInDown'
-                    },
-                    hideClass: {
-                        popup: 'animate__animated animate__fadeOutUp'
-                    }
+                toast.success('Welcome back! You’re now singed in.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "light",
+                    transition: Slide,
                 });
 
                 navigate('/')

@@ -1,15 +1,16 @@
-import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import useAxioslocalhost from "../hooks/useAxioslocalhost";
 import { FcGoogle } from "react-icons/fc";
 import moment from "moment";
+import { Bounce, Slide, toast } from "react-toastify";
 
 const SocialLogin = () => {
 
     const axiosLocalhost = useAxioslocalhost();
     const navigate = useNavigate()
     const { googleLogIn } = useAuth()
+
     const handleGoogle = () => {
 
         googleLogIn()
@@ -31,28 +32,35 @@ const SocialLogin = () => {
             .then(res => {
                 if (res.data.insertedId) {
                     console.log('user create')
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Sign Up successfully",
-                        showConfirmButton: false,
-                        timer: 1500
+                    toast.success('Welcome back! You’re now singed in.', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: 1,
+                        theme: "light",
+                        transition: Slide,
                     });
                     navigate('/')
                 }
             })
             .catch(error => {
                 console.log(error)
-                return (
-                    Swal.fire({
-                        position: "top-end",
-                        icon: 'error',
-                        title: 'Try Again',
-                        text: 'Can Not signin With Google',
-                        footer: { error }
-                    })
-                )
+                toast.error('Unable to sign in with Google. Please try again.', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                    transition: Bounce,
+                });
             })
+
 
     }
 
@@ -63,7 +71,6 @@ const SocialLogin = () => {
                 className="flex flex-row justify-center items-center gap-2 w-full border border-borderColour rounded-lg py-2 px-3">
                 <a>
                     <FcGoogle className="text-2xl" />
-                    {/* style={{ width: '20px', height: '20px' }} */}
                 </a>
                 <span className='text-sm font-medium text-textDark'>Sign up with google</span>
             </button>

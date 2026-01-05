@@ -1,13 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect } from "react";
 import { useState } from "react";
-import Swal from "sweetalert2";
 import moment from "moment";
 import { FaLocationCrosshairs, FaPhone, FaUser } from "react-icons/fa6";
 import { PiGenderIntersexBold } from "react-icons/pi";
 import { GiAges } from "react-icons/gi";
 import useAxioslocalhost from './../../hooks/useAxioslocalhost';
 import useUsers from "../../hooks/useUsers";
+import { Slide, toast } from "react-toastify";
 
 const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enrollCampFee, enrollCampDate, enrollCampVenue, enrollCampTime, enrollCampAge, enrollCampImage }) => {
 
@@ -80,7 +80,6 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
                 console.log('transaction id', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
 
-                //now save the payment in the database
                 const payment = {
 
                     price: totalPrice,
@@ -91,7 +90,7 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
                     enrollCampAge: enrollCampAge,
                     enrollCampVenue: enrollCampVenue,
                     enrollCampTime: enrollCampTime,
-                    enrollCampImage: enrollCampImage,                    
+                    enrollCampImage: enrollCampImage,
                     transactionId: paymentIntent?.id,
                     paymentStatus: 'paid',
                     enrollDate: date,
@@ -106,14 +105,17 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
                     userAddress: event.target.userAddress.value,
                 }
                 const res = await axiosLocalhost.post('/enrollCamp', payment);
-                // console.log('payment saved', res.data);
                 if (res.data?.insertedId) {
-                    Swal.fire({
-                        position: "top-end",
-                        icon: "success",
-                        title: "Payment successfully",
-                        showConfirmButton: false,
-                        timer: 1500
+                    toast.success('Enrollment successful!', {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: false,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: 1,
+                        theme: "light",
+                        transition: Slide,
                     });
                 }
             }

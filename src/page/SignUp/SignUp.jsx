@@ -3,13 +3,13 @@ import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
-import Swal from "sweetalert2";
 import useAxioslocalhost from "../../hooks/useAxioslocalhost";
 import { BsArrowLeftSquareFill, BsPerson } from "react-icons/bs";
 import { TfiEmail } from "react-icons/tfi";
 import { TbLockPassword } from "react-icons/tb";
 import background from "../../assets/images/background/bg_form6.png"
 import moment from "moment";
+import { Slide, toast } from "react-toastify";
 
 const SignUp = () => {
 
@@ -37,12 +37,16 @@ const SignUp = () => {
             if (res.data.insertedId) {
                 console.log('user create')
                 reset();
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Sign Up successfully",
-                    showConfirmButton: false,
-                    timer: 1500
+                toast.success('Account created successfully!', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: 1,
+                    theme: "light",
+                    transition: Slide,
                 });
                 navigate('/')
             }
@@ -88,7 +92,7 @@ const SignUp = () => {
             <Helmet>
                 <title>Amelia | Signup</title>
             </Helmet>
-            
+
             <div
                 className="w-full h-screen"
                 style={{
