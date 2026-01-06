@@ -94,245 +94,248 @@ const CreateCamp = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="overflow-hidden">
+                <form onSubmit={handleSubmit(onSubmit)}>
 
-                <div data-aos="fade-right" className="bg-white p-4 rounded-xl border border-borderColour">
-                    <div className="flex justify-between">
-
-                        <div className="flex items-center gap-2">
-                            <SiBasecamp className="text-[22px]" />
-                            <h1 className="text-textDark text-lg font-medium">Add A New Camp</h1>
-                        </div>
-
-                        <div>
-                            <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-lg font-normal text-white bg-btnColor rounded-xl cursor-pointer">
-                                <span>
-                                    <MdLibraryAddCheck className="text-[16px] lg:text-[20px]" />
-                                </span>
-                                Create
-                            </button>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div className="flex flex-col xl:flex-row gap-4 mt-5">
-
-                    {/* left side */}
-                    <div data-aos="fade-right" className="w-auto lg:w-[800px] space-y-5">
-
-                        {/* part one */}
-                        <div className="bg-white p-4 rounded-xl border border-borderColour space-y-5">
-                            <div>
-                                <h1 className="text-textDark text-lg font-medium">Generel Information</h1>
-                            </div>
-                            <div className="space-y-2">
-                                <h1 className="text-xm font-normal text-grayText">Camp Name</h1>
-                                <input
-                                    type="text"
-                                    className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                    placeholder="Camp Name"
-                                    {...register("campName")}
-                                    title="Health Checkup"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <h1 className="text-xm font-normal text-grayText">Services</h1>
-                                <input
-                                    type="text"
-                                    className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                    placeholder="Check up on pressure/diabetes"
-                                    {...register("campServices")}
-                                    title="Services"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <h1 className="text-xm font-normal text-grayText">Healthcare Professionals</h1>
-                                <input
-                                    type="text"
-                                    className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                    placeholder="Dr. Wasfia Rahman"
-                                    {...register("campProfessionals")}
-                                    title="Healthcare Professionals Name"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <h1 className="text-xm font-normal text-grayText">Category</h1>
-                                <input
-                                    type="category"
-                                    className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                    placeholder="Heart/Cancer"
-                                    {...register("campCategory")}
-                                    title="Category"
-                                />
-                            </div>
-                            <div className="space-y-2">
-                                <h1 className="text-xm font-normal text-grayText">Description</h1>
-                                <textarea
-                                    placeholder="Description"
-                                    {...register("campDetails")}
-                                    className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                ></textarea>
-                            </div>
-                        </div>
-
-                        {/* part two */}
-                        <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
-
-                            <div>
-                                <h1 className="text-textDark text-lg font-medium">Camp Details</h1>
-                            </div>
+                    <div data-aos="fade-right" className="bg-white p-4 rounded-xl border border-borderColour">
+                        <div className="flex justify-between">
 
                             <div className="flex items-center gap-2">
-
-                                <div className="space-y-2 w-full">
-                                    <h1 className="text-xm font-normal text-grayText">Date</h1>
-                                    <input
-                                        type="date"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                        placeholder="Date"
-                                        {...register("campDate")}
-                                        title="Date"
-                                    />
-                                </div>
-                                <div className="space-y-2 w-full">
-                                    <h1 className="text-xm font-normal text-grayText">Time</h1>
-                                    <input
-                                        type="time"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                        placeholder="Time"
-                                        {...register("campTime")}
-                                        title="Time"
-                                    />
-                                </div>
-                                <div className="space-y-2 w-full">
-                                    <h1 className="text-xm font-normal text-grayText">Venue</h1>
-                                    <input
-                                        type="location"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
-
-                                        placeholder="ParkHoliday,Gulshan,Dhaka"
-                                        {...register("campVenue")}
-                                        title="Venue"
-                                    />
-                                </div>
-
+                                <SiBasecamp className="text-[22px]" />
+                                <h1 className="text-textDark text-lg font-medium">Add A New Camp</h1>
                             </div>
-                        </div>
-
-                        {/* part three */}
-                        <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
 
                             <div>
-                                <h1 className="text-textDark text-lg font-medium">Target Group</h1>
+                                <button className="flex items-center gap-2 px-3 py-2 text-xm lg:text-lg font-normal text-white bg-btnColor rounded-xl cursor-pointer">
+                                    <span>
+                                        <MdLibraryAddCheck className="text-[16px] lg:text-[20px]" />
+                                    </span>
+                                    Create
+                                </button>
                             </div>
 
-                            <div className="flex items-center gap-2">
-
-                                <div className="space-y-2 w-full">
-                                    <h1 className="text-xm font-normal text-grayText">Age</h1>
-                                    <input
-                                        type="age"
-                                        placeholder="25-40/Adult/Child/Older"
-                                        {...register("campAge")}
-                                        title="Age"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                    />
-                                </div>
-                                <div className="space-y-2 w-full">
-                                    <h1 className="text-xm font-normal text-grayText">Gender</h1>
-                                    <input
-                                        type="gender"
-                                        placeholder="Male/Female"
-                                        {...register("campGender")}
-                                        title="Gender"
-                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-                                    />
-                                </div>
-
-                            </div>
                         </div>
                     </div>
 
-                    {/* right side */}
-                    <div data-aos="fade-left" className="w-auto flex-1 space-y-5">
+                    <div className="flex flex-col xl:flex-row gap-4 mt-5">
 
-                        {/* part one - campImage */}
-                        <div className="p-4 w-full bg-white rounded-xl">
-                            <div>
-                                <h1 className="text-textDark text-lg font-medium">Camp Media</h1>
-                            </div>
-                            <div className="mt-5">
-                                <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
-                                <div className="w-full h-52 border-2 border-dashed border-borderColour">
-                                    <img src={getCampImage} alt="" className="w-full h-full" />
+                        {/* left side */}
+                        <div data-aos="fade-right" className="w-full xl:w-[800px] space-y-5">
+
+                            {/* part one */}
+                            <div className="bg-white p-4 rounded-xl border border-borderColour space-y-5">
+                                <div>
+                                    <h1 className="text-textDark text-lg font-medium">Generel Information</h1>
                                 </div>
-                                <div onChange={handleCampImage} className="mt-5">
-                                    <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="campImageUpload">
-                                        <span>
-                                            <LuUpload className="text-[16px]" />
-                                        </span>
-                                        <input type="file" name="campImageFile" className="text-white hidden" id="campImageUpload" {...register("campImage")} />
-                                        <span>Upload Image</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* part two - categoryImage */}
-                        <div className="p-4 w-full bg-white rounded-xl">
-                            <div>
-                                <h1 className="text-textDark text-lg font-medium">Cetagory Media</h1>
-                            </div>
-                            <div className="mt-5">
-                                <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
-                                <div className="w-full h-48 border-2 border-dashed border-borderColour">
-                                    <img src={getCategoryImage} alt="" className="w-full h-full" />
-                                </div>
-                                <div onChange={handleCategoryImage} className="mt-5">
-                                    <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="categoryImageUpload">
-                                        <span>
-                                            <LuUpload className="text-[16px]" />
-                                        </span>
-                                        <input type="file" name="campCategoryImage" className="text-white hidden" id="categoryImageUpload" {...register("campCategoryImage")} />
-                                        <span>Upload Image</span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* part three */}
-                        <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
-
-                            <div>
-                                <h1 className="text-textDark text-lg font-medium">Camp Price</h1>
-                            </div>
-
-                            <div>
                                 <div className="space-y-2">
-                                    <h1 className="text-xm font-normal text-grayText">Enrollment Fee</h1>
+                                    <h1 className="text-xm font-normal text-grayText">Camp Name</h1>
                                     <input
-                                        type="fee"
+                                        type="text"
                                         className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
 
-                                        placeholder="200 BDT"
-                                        {...register("campFee")}
-                                        title="Enrollment Fee"
+                                        placeholder="Camp Name"
+                                        {...register("campName")}
+                                        title="Health Checkup"
                                     />
+                                </div>
+                                <div className="space-y-2">
+                                    <h1 className="text-xm font-normal text-grayText">Services</h1>
+                                    <input
+                                        type="text"
+                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+
+                                        placeholder="Check up on pressure/diabetes"
+                                        {...register("campServices")}
+                                        title="Services"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <h1 className="text-xm font-normal text-grayText">Healthcare Professionals</h1>
+                                    <input
+                                        type="text"
+                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+
+                                        placeholder="Dr. Wasfia Rahman"
+                                        {...register("campProfessionals")}
+                                        title="Healthcare Professionals Name"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <h1 className="text-xm font-normal text-grayText">Category</h1>
+                                    <input
+                                        type="category"
+                                        className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+
+                                        placeholder="Heart/Cancer"
+                                        {...register("campCategory")}
+                                        title="Category"
+                                    />
+                                </div>
+                                <div className="space-y-2">
+                                    <h1 className="text-xm font-normal text-grayText">Description</h1>
+                                    <textarea
+                                        placeholder="Description"
+                                        {...register("campDetails")}
+                                        className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+
+                                    ></textarea>
+                                </div>
+                            </div>
+
+                            {/* part two */}
+                            <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
+
+                                <div>
+                                    <h1 className="text-textDark text-lg font-medium">Camp Details</h1>
+                                </div>
+
+                                <div className="flex items-center gap-2">
+
+                                    <div className="space-y-2 w-full">
+                                        <h1 className="text-xm font-normal text-grayText">Date</h1>
+                                        <input
+                                            type="date"
+                                            className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+
+                                            placeholder="Date"
+                                            {...register("campDate")}
+                                            title="Date"
+                                        />
+                                    </div>
+                                    <div className="space-y-2 w-full">
+                                        <h1 className="text-xm font-normal text-grayText">Time</h1>
+                                        <input
+                                            type="time"
+                                            className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+
+                                            placeholder="Time"
+                                            {...register("campTime")}
+                                            title="Time"
+                                        />
+                                    </div>
+                                    <div className="space-y-2 w-full">
+                                        <h1 className="text-xm font-normal text-grayText">Venue</h1>
+                                        <input
+                                            type="location"
+                                            className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText placeholder:text-xs"
+
+                                            placeholder="ParkHoliday,Gulshan,Dhaka"
+                                            {...register("campVenue")}
+                                            title="Venue"
+                                        />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            {/* part three */}
+                            <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
+
+                                <div>
+                                    <h1 className="text-textDark text-lg font-medium">Target Group</h1>
+                                </div>
+
+                                <div className="flex items-center gap-2">
+
+                                    <div className="space-y-2 w-full">
+                                        <h1 className="text-xm font-normal text-grayText">Age</h1>
+                                        <input
+                                            type="age"
+                                            placeholder="25-40/Adult/Child/Older"
+                                            {...register("campAge")}
+                                            title="Age"
+                                            className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+                                        />
+                                    </div>
+                                    <div className="space-y-2 w-full">
+                                        <h1 className="text-xm font-normal text-grayText">Gender</h1>
+                                        <input
+                                            type="gender"
+                                            placeholder="Male/Female"
+                                            {...register("campGender")}
+                                            title="Gender"
+                                            className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+                                        />
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                </div>
-            </form>
+                        {/* right side */}
+                        <div data-aos="fade-left" className="w-full xl:flex-1 space-y-5">
+
+                            {/* part one - campImage */}
+                            <div className="p-4 w-full bg-white rounded-xl">
+                                <div>
+                                    <h1 className="text-textDark text-lg font-medium">Camp Media</h1>
+                                </div>
+                                <div className="mt-5">
+                                    <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
+                                    <div className="w-full h-52 border-2 border-dashed border-borderColour">
+                                        <img src={getCampImage} alt="" className="w-full h-full" />
+                                    </div>
+                                    <div onChange={handleCampImage} className="mt-5">
+                                        <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="campImageUpload">
+                                            <span>
+                                                <LuUpload className="text-[16px]" />
+                                            </span>
+                                            <input type="file" name="campImageFile" className="text-white hidden" id="campImageUpload" {...register("campImage")} />
+                                            <span>Upload Image</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* part two - categoryImage */}
+                            <div className="p-4 w-full bg-white rounded-xl">
+                                <div>
+                                    <h1 className="text-textDark text-lg font-medium">Cetagory Media</h1>
+                                </div>
+                                <div className="mt-5">
+                                    <h1 className="text-xm font-normal text-grayText mb-2">Image</h1>
+                                    <div className="w-full h-48 border-2 border-dashed border-borderColour">
+                                        <img src={getCategoryImage} alt="" className="w-full h-full" />
+                                    </div>
+                                    <div onChange={handleCategoryImage} className="mt-5">
+                                        <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="categoryImageUpload">
+                                            <span>
+                                                <LuUpload className="text-[16px]" />
+                                            </span>
+                                            <input type="file" name="campCategoryImage" className="text-white hidden" id="categoryImageUpload" {...register("campCategoryImage")} />
+                                            <span>Upload Image</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* part three */}
+                            <div className="w-full bg-white p-4 rounded-xl border border-borderColour space-y-5">
+
+                                <div>
+                                    <h1 className="text-textDark text-lg font-medium">Camp Price</h1>
+                                </div>
+
+                                <div>
+                                    <div className="space-y-2">
+                                        <h1 className="text-xm font-normal text-grayText">Enrollment Fee</h1>
+                                        <input
+                                            type="fee"
+                                            className="w-full p-2 text-xm outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
+
+                                            placeholder="200 BDT"
+                                            {...register("campFee")}
+                                            title="Enrollment Fee"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+
+            </div>
         </>
     )
 }
