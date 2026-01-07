@@ -174,29 +174,7 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                             LogOut
                         </span>
                     </div>
-                </div>
-
-                {/* <div className="flex flex-col justify-start items-start space-y-2">
-                    <Link
-                        to="/dashboard"
-                        className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
-                        <IoSettingsOutline className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`} />
-                        <span
-                            className={`md:flex md:text-md font-medium
-                            ${isOpen ? "flex text-xs" : "hidden"}`}
-                        >
-                            Settings
-                        </span>
-                    </Link>
-                    <div className="flex w-full justify-start items-center gap-2 rounded p-[11px] text-white sideNavBottom">
-                        <BiLogOut className={`md:text-[25px] ${isOpen ? "text-[20px]" : "text-[25px]"}`}/>
-                        <span
-                            className={`md:flex md:text-md font-medium ${isOpen ? "flex text-xs" : "hidden"}`}
-                        >
-                            LogOut
-                        </span>
-                    </div>
-                </div> */}
+                </div>              
 
             </div>
         </>

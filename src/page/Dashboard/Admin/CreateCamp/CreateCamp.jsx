@@ -94,7 +94,7 @@ const CreateCamp = () => {
 
     return (
         <>
-            <div className="overflow-hidden">
+            <div className="w-full max-w-full overflow-x-hidden">
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div data-aos="fade-right" className="bg-white p-4 rounded-xl border border-borderColour">
@@ -120,7 +120,7 @@ const CreateCamp = () => {
                     <div className="flex flex-col xl:flex-row gap-4 mt-5">
 
                         {/* left side */}
-                        <div data-aos="fade-right" className="w-full xl:w-[800px] space-y-5">
+                        <div data-aos="fade-right" className="w-full xl:max-w-[800px] space-y-5">
 
                             {/* part one */}
                             <div className="bg-white p-4 rounded-xl border border-borderColour space-y-5">
@@ -176,9 +176,7 @@ const CreateCamp = () => {
                                     <textarea
                                         placeholder="Description"
                                         {...register("campDetails")}
-                                        className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
-
-                                    ></textarea>
+                                        className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"></textarea>
                                 </div>
                             </div>
 
@@ -188,10 +186,10 @@ const CreateCamp = () => {
                                 <div>
                                     <h1 className="text-textDark text-lg font-medium">Camp Details</h1>
                                 </div>
+                                
+                                <div className="flex flex-col sm:flex-row gap-2">
 
-                                <div className="flex items-center gap-2">
-
-                                    <div className="space-y-2 w-full">
+                                    <div className="w-full space-y-2">
                                         <h1 className="text-xm font-normal text-grayText">Date</h1>
                                         <input
                                             type="date"
@@ -202,7 +200,7 @@ const CreateCamp = () => {
                                             title="Date"
                                         />
                                     </div>
-                                    <div className="space-y-2 w-full">
+                                    <div className="w-full space-y-2">
                                         <h1 className="text-xm font-normal text-grayText">Time</h1>
                                         <input
                                             type="time"
@@ -213,7 +211,7 @@ const CreateCamp = () => {
                                             title="Time"
                                         />
                                     </div>
-                                    <div className="space-y-2 w-full">
+                                    <div className="w-full space-y-2">
                                         <h1 className="text-xm font-normal text-grayText">Venue</h1>
                                         <input
                                             type="location"
