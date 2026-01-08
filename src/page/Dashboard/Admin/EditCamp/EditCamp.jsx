@@ -327,11 +327,11 @@ const EditCamp = () => {
                                         <img src={getCampImage} alt="" className="w-full h-full" />
                                     </div>
                                     <div onChange={handleCampImage} className="mt-5">
-                                        <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="fileUpload">
+                                        <label className="w-44 flex items-center gap-2 px-3 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer" htmlFor="campImageUpload">
                                             <span>
                                                 <LuUpload className="text-[16px]" />
                                             </span>
-                                            <input type="file" name="imageFile" className="text-white hidden" id="campImageUpload" {...register("campImage")} />
+                                            <input type="file" name="campImage" className="text-white hidden" id="campImageUpload" {...register("campImage")} />
                                             <span>Upload Image</span>
                                         </label>
                                     </div>
