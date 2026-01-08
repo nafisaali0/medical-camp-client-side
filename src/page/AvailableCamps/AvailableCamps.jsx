@@ -59,7 +59,7 @@ const AvailableCamps = () => {
 
     return (
         <>
-        
+
             <ShareHelmet HelmetTitle="AvailableCamps" />
 
             <div className="py-20 px-5 my-16">
@@ -104,7 +104,7 @@ const AvailableCamps = () => {
 
                                                     </div>
 
-                                                    <div data-aos="fade-left" className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5">
+                                                    <div className="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-3 gap-5">
 
                                                         {
                                                             defaultCamp?.map((eachCamp, index) =>
@@ -204,7 +204,7 @@ const AvailableCamps = () => {
 
                                                         </div>
 
-                                                        <div data-aos="fade-right" className="flex flex-col gap-5">
+                                                        <div className="flex flex-col gap-5">
 
                                                             {
                                                                 defaultCamp.map((eachCamp, index) =>
