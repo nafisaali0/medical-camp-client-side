@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost";
 import { Slide, toast } from "react-toastify";
+import ShareHelmet from "../../../../../components/ShareHelmet";
 
 const AllUsers = () => {
 
@@ -38,7 +39,7 @@ const AllUsers = () => {
                 });
             }
         }
-        
+
     };
 
     const handleDelete = userId => {
@@ -70,9 +71,12 @@ const AllUsers = () => {
 
     return (
         <>
+            <ShareHelmet HelmetTitle="Manage Users" />
+
             <div className="space-y-5 overflow-hidden">
 
                 <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour">
+
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
@@ -90,6 +94,7 @@ const AllUsers = () => {
                         </div>
 
                     </div>
+
                 </div>
 
                 <div data-aos="fade-up" className="bg-white px-4 py-10 rounded-xl border border-borderColour">

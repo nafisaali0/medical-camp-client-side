@@ -1,5 +1,4 @@
 import { Link, useLoaderData } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import { IoLocationOutline } from 'react-icons/io5';
 import { IoMdTime } from "react-icons/io";
 import { GoPeople } from "react-icons/go";
@@ -10,6 +9,7 @@ import useCamp from './../../hooks/useCamp';
 import useUsers from "../../hooks/useUsers";
 import useUserEnrollCamp from "../../hooks/useUserEnrollCamp";
 import { Bounce, toast } from "react-toastify";
+import ShareHelmet from "../../components/ShareHelmet";
 
 const DetailCamp = () => {
 
@@ -68,9 +68,8 @@ const DetailCamp = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>Amelia | Camp Details</title>
-            </Helmet> */}
+
+            <ShareHelmet HelmetTitle="Camp Details" />
 
             <div className="py-20 px-5 my-16">
 

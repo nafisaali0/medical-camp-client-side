@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import useCamp from "../../hooks/useCamp";
-import { Helmet } from "react-helmet-async";
 import { CiCalendarDate } from "react-icons/ci";
 import { IoArrowDownCircleOutline, IoArrowUpCircle, IoGridOutline } from "react-icons/io5";
 import { AiOutlineBars } from "react-icons/ai";
 import { useState } from "react";
 import useDefaultCamp from "../../hooks/useDefaultCamp";
 import Loader from './../../components/Loader';
+import ShareHelmet from "../../components/ShareHelmet";
 
 const AvailableCamps = () => {
 
@@ -59,9 +59,8 @@ const AvailableCamps = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>Amelia | AvailableCamps</title>
-            </Helmet> */}
+        
+            <ShareHelmet HelmetTitle="AvailableCamps" />
 
             <div className="py-20 px-5 my-16">
 

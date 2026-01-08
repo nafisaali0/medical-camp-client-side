@@ -1,3 +1,4 @@
+import ShareHelmet from "../../components/ShareHelmet";
 import Payment from "./Payment";
 import { Link, useLoaderData } from "react-router-dom";
 
@@ -8,9 +9,12 @@ const CampEnrollment = () => {
 
     return (
         <>
+            <ShareHelmet HelmetTitle="Camp Enrollment" />
+
             <div className="py-20 px-5 my-10 lg:my-16">
                 <div className="max-w-[1300px] mx-auto p-5 overflow-hidden">
                     <div className="flex flex-col lg:flex-row gap-5 lg:justify-between">
+
                         <div data-aos="fade-right">
                             <div className="w-auto lg:w-[900px] p-5 border border-borderColour rounded-xl shadow-lg hover:shadow-xl">
 
@@ -34,6 +38,7 @@ const CampEnrollment = () => {
 
                             </div>
                         </div>
+
                         {/* right side */}
                         <div data-aos="fade-left" className="flex-1 w-auto">
                             <div
@@ -65,6 +70,7 @@ const CampEnrollment = () => {
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

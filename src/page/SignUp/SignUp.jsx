@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
-import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import useAxioslocalhost from "../../hooks/useAxioslocalhost";
 import { BsArrowLeftSquareFill, BsPerson } from "react-icons/bs";
@@ -10,6 +9,7 @@ import { TbLockPassword } from "react-icons/tb";
 import background from "../../assets/images/background/bg_form6.png"
 import moment from "moment";
 import { Slide, toast } from "react-toastify";
+import ShareHelmet from "../../components/ShareHelmet";
 
 const SignUp = () => {
 
@@ -89,9 +89,8 @@ const SignUp = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>Amelia | Signup</title>
-            </Helmet> */}
+
+            <ShareHelmet HelmetTitle="Sign Up" />
 
             <div
                 className="w-full h-screen"
@@ -101,8 +100,11 @@ const SignUp = () => {
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                 }}>
+
                 <div className="py-20 px-5">
+
                     <div className="max-w-xl mx-auto p-5 overflow-hidden flex flex-col bg-white border border-borderColour shadow-lg rounded-xl py-10 px-12 space-y-4">
+                        
                         <div className="flex justify-between items-center mb-5 py-2">
 
                             <h5 className="text-textDark text-2xl font-medium">Join Our Health Campaign</h5>
@@ -114,6 +116,7 @@ const SignUp = () => {
                             </div>
 
                         </div>
+
                         <div className="flex-auto">
 
                             <form role="form" onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
@@ -162,6 +165,7 @@ const SignUp = () => {
                                 <div className="text-center">
                                     <p className="font-medium text-sm">or</p>
                                 </div>
+
                                 <div className="flex-auto">
                                     <SocialLogin />
                                 </div>

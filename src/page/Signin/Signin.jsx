@@ -1,19 +1,18 @@
 import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin";
 import { useForm } from "react-hook-form"
-import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import { TfiEmail } from "react-icons/tfi";
 import { TbLockPassword } from "react-icons/tb";
 import background from "../../assets/images/background/bg_form6.png"
 import { Slide, toast } from "react-toastify";
+import ShareHelmet from "../../components/ShareHelmet";
 
 const Signin = () => {
 
     const { register, handleSubmit, formState: { errors }, } = useForm();
     const { signInUser } = useAuth();
     const navigate = useNavigate();
-
 
     const onSubmit = (data) => {
 
@@ -44,9 +43,8 @@ const Signin = () => {
 
     return (
         <>
-            {/* <Helmet>
-                <title>Amelia | Signin</title>
-            </Helmet> */}
+
+            <ShareHelmet HelmetTitle="Sign In" />
 
             <div
                 className="w-full h-screen"
@@ -56,11 +54,15 @@ const Signin = () => {
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                 }}>
+
                 <div className="py-20 px-5">
+
                     <div className="max-w-xl mx-auto p-5 overflow-hidden flex flex-col bg-white border border-borderColour shadow-lg rounded-xl py-10 px-12 space-y-4">
+                        
                         <div className="mb-5">
                             <h5 className="text-textDark text-2xl font-medium">Welcome Back</h5>
                         </div>
+
                         <div className="flex-auto">
 
                             <form role="form" onSubmit={handleSubmit(onSubmit)} className='space-y-5'>
@@ -83,6 +85,7 @@ const Signin = () => {
                                 </div>
 
                                 <div className="flex flex-col">
+
                                     <div className="relative flex items-center">
                                         <TbLockPassword className="absolute left-3 text-grayText text-lg" />
                                         <input
@@ -99,6 +102,7 @@ const Signin = () => {
                                     <div className="text-grayText text-sm mt-2">
                                         {errors?.password?.type === 'required' && <p>Password is required</p>}
                                     </div>
+
                                 </div>
 
                                 <div>
@@ -121,7 +125,9 @@ const Signin = () => {
                                 <div className="flex-auto">
                                     <SocialLogin />
                                 </div>
+
                             </form>
+
                         </div>
                     </div>
                 </div>

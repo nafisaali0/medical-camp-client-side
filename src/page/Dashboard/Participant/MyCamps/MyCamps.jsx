@@ -8,6 +8,7 @@ import { GrStatusGood } from "react-icons/gr";
 import useUserEnrollCamp from "../../../../hooks/useUserEnrollCamp";
 import Review from "../Review/Review";
 import ViewUserFeedback from "../Review/ViewUserFeedback";
+import ShareHelmet from "../../../../components/ShareHelmet";
 
 
 const MyCamps = () => {
@@ -28,6 +29,9 @@ const MyCamps = () => {
 
     return (
         <>
+        
+            <ShareHelmet HelmetTitle="Enrolled Camps" />
+
             <div className="space-y-8">
 
                 <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour">
@@ -49,7 +53,7 @@ const MyCamps = () => {
                         </div>
 
                     </div>
-                    
+
                 </div>
 
                 <div data-aos="fade-up" className="bg-white px-4 py-10 rounded-xl border border-borderColour">

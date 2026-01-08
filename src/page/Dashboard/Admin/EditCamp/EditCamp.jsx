@@ -8,6 +8,7 @@ import moment from "moment";
 import axios from "axios";
 import { useState } from "react";
 import { Bounce, Slide, toast } from "react-toastify";
+import ShareHelmet from "../../../../components/ShareHelmet";
 
 const EditCamp = () => {
 
@@ -130,6 +131,9 @@ const EditCamp = () => {
 
     return (
         <>
+
+            <ShareHelmet HelmetTitle="Update Camp" />
+
             <div className="w-full max-w-full overflow-x-hidden">
                 <form onSubmit={handleSubmit(onSubmit)}>
 

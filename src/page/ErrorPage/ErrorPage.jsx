@@ -1,18 +1,16 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import { Helmet } from "react-helmet-async";
 import { FaAnglesLeft } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useRouteError } from "react-router-dom";
+import ShareHelmet from './../../components/ShareHelmet';
 
 const ErrorPage = () => {
-    
+
     const error = useRouteError();
 
     return (
         <>
-            {/* <Helmet>
-                <title>Amelia | ErrorPage</title>
-            </Helmet> */}
+            <ShareHelmet HelmetTitle="Error" />
 
             <div className="max-w-[1300px] mx-auto flex justify-center items-center flex-col">
 
@@ -21,7 +19,7 @@ const ErrorPage = () => {
                         src="https://lottie.host/c6a5d328-2f5b-418f-9cd0-aeffaec55c84/Y7yNBdMF4j.lottie"
                         loop
                         autoplay
-                        style={{ width: 450, height:450 }}
+                        style={{ width: 450, height: 450 }}
                     />
                     <div>
                         <div className="flex flex-col items-center mb-3">

@@ -7,15 +7,16 @@ import useAxioslocalhost from "../../../../hooks/useAxioslocalhost"
 import { useState } from "react"
 import moment from "moment"
 import { Bounce, Slide, toast } from "react-toastify"
+import ShareHelmet from './../../../../components/ShareHelmet';
 
 
 const CreateCamp = () => {
 
     const axiosLocalhost = useAxioslocalhost()
     const { register, handleSubmit, reset } = useForm()
-
     const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
     const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`
+
     const [getCampImage, setGetCampImage] = useState(null);
     const [getCategoryImage, setGetCategoryImage] = useState(null);
 
@@ -93,6 +94,8 @@ const CreateCamp = () => {
 
     return (
         <>
+            <ShareHelmet HelmetTitle="Create Camp" />
+
             <div className="w-full max-w-full overflow-x-hidden">
 
                 <form onSubmit={handleSubmit(onSubmit)}>

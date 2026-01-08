@@ -7,6 +7,7 @@ import { GrStatusGood } from "react-icons/gr";
 import useAllEnrollCamp from "../../../../../hooks/useAllEnrollCamp";
 import ParticipentDetails from "./ParticipentDetails";
 import useUniqueEnrollCamp from "../../../../../hooks/useUniqueEnrollCamp";
+import ShareHelmet from "../../../../../components/ShareHelmet";
 
 const EnrollCamps = () => {
 
@@ -27,8 +28,10 @@ const EnrollCamps = () => {
     }
 
     return (
-
         <>
+
+            <ShareHelmet HelmetTitle="Manage Enrolled Camps" />
+
             <div className="space-y-8">
                 <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">

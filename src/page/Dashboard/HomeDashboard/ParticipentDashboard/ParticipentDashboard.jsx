@@ -1,3 +1,4 @@
+import ShareHelmet from "../../../../components/ShareHelmet";
 import useUsers from "../../../../hooks/useUsers";
 import ParticipentLeftSide from "./ParticipentLeftSide";
 import ParticipentRightSide from "./ParticipentRightSide";
@@ -9,8 +10,11 @@ const ParticipentDashboard = () => {
 
     return (
         <>
+
+            <ShareHelmet HelmetTitle="Participent Dashboard" />
             <ParticipentLeftSide currentUser={currentUser} />
             <ParticipentRightSide currentUser={currentUser} />
+            
         </>
     )
 }

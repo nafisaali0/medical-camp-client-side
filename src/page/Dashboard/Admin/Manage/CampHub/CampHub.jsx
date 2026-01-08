@@ -9,6 +9,7 @@ import { ImBasecamp } from "react-icons/im"
 import useAxioslocalhost from "../../../../../hooks/useAxioslocalhost"
 import Swal from "sweetalert2"
 import { BiCategoryAlt } from "react-icons/bi"
+import ShareHelmet from './../../../../../components/ShareHelmet';
 
 
 const CampHub = () => {
@@ -59,8 +60,11 @@ const CampHub = () => {
 
     return (
         <>
+        
+            <ShareHelmet HelmetTitle="Manage Camps" />
+
             <div className="space-y-8">
-                
+
                 <div
                     data-aos="fade-right"
                     className="bg-white p-4 rounded-xl border border-borderColour">
