@@ -59,9 +59,9 @@ const AvailableCamps = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Amelia | AvailableCamps</title>
-            </Helmet>
+            </Helmet> */}
 
             <div className="py-20 px-5 my-16">
 
@@ -121,6 +121,7 @@ const AvailableCamps = () => {
                                                                                 className="w-full h-52 object-cover rounded-t-xl"
                                                                                 alt="camp" />
                                                                         </figure>
+
                                                                         <div className="card-body items-center text-center">
                                                                             <h2 className="card-title text-sm">{eachCamp?.campName}</h2>
                                                                             <h2>
@@ -138,8 +139,10 @@ const AvailableCamps = () => {
                                                                                 </Link>
                                                                             </div>
                                                                         </div>
+
                                                                     </div>
                                                                 </>
+
                                                             )
                                                         }
 
@@ -202,19 +205,19 @@ const AvailableCamps = () => {
 
                                                         </div>
 
-                                                        <div className="flex flex-col gap-5">
+                                                        <div data-aos="fade-right" className="flex flex-col gap-5">
 
                                                             {
                                                                 defaultCamp.map((eachCamp, index) =>
                                                                     <>
                                                                         <div
                                                                             key={index}
-                                                                            className="card card-side bg-primarylight/60 shadow-lg hover:shadow-xl">
+                                                                            className="card md:card-side bg-primarylight/60 shadow-lg hover:shadow-xl">
 
                                                                             <figure>
                                                                                 <img
                                                                                     src={eachCamp?.campImage}
-                                                                                    className="h-72 w-72"
+                                                                                    className="md:h-72 md:w-72 sm:w-full sm:h-52 sm:object-cover rounded-t-xl"
                                                                                     alt="Movie" />
                                                                             </figure>
 
@@ -223,19 +226,19 @@ const AvailableCamps = () => {
                                                                                     <span>
                                                                                         <CiCalendarDate className="text-[25px] text-btnColor" />
                                                                                     </span>
-                                                                                    {eachCamp.campDate}
+                                                                                    {eachCamp?.campDate}
                                                                                 </div>
                                                                                 <h2 className="card-title">{eachCamp?.campName}</h2>
                                                                                 <h2>
                                                                                     <span className="font-semibold">Price: </span>
-                                                                                    ৳ {eachCamp.campFee}
+                                                                                    ৳ {eachCamp?.campFee}
                                                                                 </h2>
                                                                                 <h2>
                                                                                     <span className="font-semibold">Target Audience: </span>
-                                                                                    {eachCamp.campAge}
+                                                                                    {eachCamp?.campAge}
                                                                                 </h2>
                                                                                 <div className="card-actions justify-start mt-5">
-                                                                                    <Link to={`/camp-details/${eachCamp._id}`}>
+                                                                                    <Link to={`/camp-details/${eachCamp?._id}`}>
                                                                                         <button className="primaryBtn">
                                                                                             View Details
                                                                                             <div className="arrow-wrapper">
@@ -245,6 +248,7 @@ const AvailableCamps = () => {
                                                                                     </Link>
                                                                                 </div>
                                                                             </div>
+
                                                                         </div>
                                                                     </>
                                                                 )}

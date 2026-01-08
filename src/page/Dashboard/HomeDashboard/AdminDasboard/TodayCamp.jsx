@@ -13,7 +13,6 @@ const TodayCamp = () => {
     const [cardOpen, setCardOpen] = useState(false)
     const [cardIndex, setCardIndex] = useState(null)
     const [todayCamp, setTodayCamp] = useState()
-    console.log(todayCamp)
     const todayDate = moment().format('YYYY-MM-DD');
 
     function handleCardDropDown(index) {
@@ -42,7 +41,7 @@ const TodayCamp = () => {
             <div data-aos="fade-right" data-aos-delay="100" className="bg-white p-4 rounded-xl border border-borderColour my-7">
                 <div className="flex justify-between">
 
-                    <div                      
+                    <div
                         className="flex items-center gap-1">
                         <IoTodayOutline className="text-[16px] md:text-[22px]" />
                         <h1 className="text-textDark text-xm md:text-lg font-medium">Today Camps</h1>
@@ -73,11 +72,13 @@ const TodayCamp = () => {
                         :
                         <>
                             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2">
+
                                 {
                                     todayCamp?.map((campInfo, index) =>
 
                                         <>
                                             <div key={index} className="relative">
+
                                                 <div
                                                     onClick={() => handleCardDropDown(index)}
                                                     className="h-28 px-3 py-2 border border-borderColour rounded-xl shadow-lg space-y-2">
@@ -106,8 +107,10 @@ const TodayCamp = () => {
                                                     </div>
 
                                                 </div>
+
                                                 {
                                                     cardOpen && cardIndex === index && (
+
                                                         <div
                                                             key={index}
                                                             className="w-auto absolute left-0 -mt-14  bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
@@ -143,12 +146,14 @@ const TodayCamp = () => {
                                                             </div>
 
                                                         </div>
+
                                                     )}
                                             </div>
                                         </>
 
 
                                     )}
+
                             </div>
                         </>
                 }

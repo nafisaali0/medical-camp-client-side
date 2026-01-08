@@ -5,15 +5,17 @@ import { Link } from "react-router-dom";
 import { useRouteError } from "react-router-dom";
 
 const ErrorPage = () => {
+    
     const error = useRouteError();
-    // console.error(error);
+
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Amelia | ErrorPage</title>
-            </Helmet>
+            </Helmet> */}
 
             <div className="max-w-[1300px] mx-auto flex justify-center items-center flex-col">
+
                 <div>
                     <DotLottieReact
                         src="https://lottie.host/c6a5d328-2f5b-418f-9cd0-aeffaec55c84/Y7yNBdMF4j.lottie"
@@ -42,6 +44,7 @@ const ErrorPage = () => {
                         </div>
                     </div>
                 </div>
+
             </div>
         </>
     );

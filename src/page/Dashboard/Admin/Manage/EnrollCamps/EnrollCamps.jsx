@@ -16,24 +16,26 @@ const EnrollCamps = () => {
     const { popularCamp } = useUniqueEnrollCamp();
 
     function handleCardDropDown(index) {
-        
+
         if (cardIndex === index) {
             setCardOpen(!cardOpen);
         } else {
             setCardIndex(index);
             setCardOpen(true);
         }
+
     }
 
     return (
+
         <>
             <div className="space-y-8">
                 <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour">
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
-                            <MdOutlineConfirmationNumber className="text-[22px]" />
-                            <h1 className="text-textDark text-lg font-medium">Manage Enroll Camps</h1>
+                            <MdOutlineConfirmationNumber className="text-[10px] text-base md:text-[20px]" />
+                            <h1 className="text-textDark text-xs md:text-lg font-bold md:font-medium">Manage Enroll Camps</h1>
                         </div>
 
                         <div>
@@ -41,7 +43,7 @@ const EnrollCamps = () => {
                                 <span>
                                     <MdFormatListBulletedAdd className="text-[16px] lg:text-[20px]" />
                                 </span>
-                                Total : {allEnrollCamp?.length}
+                                <h1 className="text-xs font-normal">Total : {allEnrollCamp?.length}</h1>
                             </button>
                         </div>
 

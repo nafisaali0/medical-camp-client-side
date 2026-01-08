@@ -174,7 +174,7 @@ const NavDashboard = ({ isOpen, setIsOpen }) => {
                             LogOut
                         </span>
                     </div>
-                </div>              
+                </div>
 
             </div>
         </>

@@ -89,9 +89,9 @@ const SignUp = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Amelia | Signup</title>
-            </Helmet>
+            </Helmet> */}
 
             <div
                 className="w-full h-screen"

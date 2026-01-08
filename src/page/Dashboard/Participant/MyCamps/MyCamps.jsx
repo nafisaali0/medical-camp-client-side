@@ -29,7 +29,9 @@ const MyCamps = () => {
     return (
         <>
             <div className="space-y-8">
+
                 <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour">
+
                     <div className="flex justify-between">
 
                         <div className="flex items-center gap-2">
@@ -47,14 +49,17 @@ const MyCamps = () => {
                         </div>
 
                     </div>
+                    
                 </div>
 
                 <div data-aos="fade-up" className="bg-white px-4 py-10 rounded-xl border border-borderColour">
+
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
                         {
                             userEnrollCamp?.map((campInfo, index) =>
                                 <>
                                     <div key={index} className="relative">
+
                                         <div
                                             onClick={() => handleCardDropDown(index)}
                                             className="h-24 px-3 py-2 border border-borderColour rounded-xl shadow-lg space-y-2">
@@ -82,12 +87,15 @@ const MyCamps = () => {
                                             </div>
 
                                         </div>
+
                                         {
                                             cardOpen && cardIndex === index && (
+
                                                 <div
                                                     key={index}
                                                     className="w-full absolute left-0 -mt-3 bg-white border border-borderColour rounded-xl shadow-lg p-2 animate-slideDown z-10"
                                                 >
+
                                                     <div className="space-y-2">
                                                         <h1 className="text-sm font-medium text-textDark">
                                                             <span className="font-semibold">Transaction Id: </span>
@@ -151,7 +159,9 @@ const MyCamps = () => {
                                                         </div>
 
                                                     </div>
+
                                                 </div>
+
                                             )}
                                     </div>
 
@@ -159,6 +169,7 @@ const MyCamps = () => {
 
                             )}
                     </div>
+
                 </div>
             </div>
         </>

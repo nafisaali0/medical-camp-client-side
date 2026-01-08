@@ -147,6 +147,7 @@ const CheckoutForm = ({ enrollCampId, enrollCampName, enrollCampCategory, enroll
                                     className="text-sm ease-soft block w-full rounded-lg border border-solid border-borderColour py-2 pl-10 pr-3 font-medium text-textSmallGray transition-all focus:border-borderColour focus:bg-mainTheme focus:text-grayText focus:outline-none"
                                 />
                             </div>
+                            
                         </div>
 
                         <div className="flex-1 w-full space-y-4">

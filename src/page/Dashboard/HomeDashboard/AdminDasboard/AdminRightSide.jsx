@@ -26,12 +26,10 @@ const AdminRightSide = ({ currentUser }) => {
         if (res.data.success) {
             const userImage = res.data.data.display_url;
             setGetImage(userImage);
-            // console.log(getImage)
 
             const userInfo = {
                 userImage: res.data.data.display_url,
             }
-            console.log(userInfo)
 
             const updateImage = await axiosLocalhost.patch(`/users/${currentUser?._id}`, userInfo)
 
@@ -48,6 +46,7 @@ const AdminRightSide = ({ currentUser }) => {
                     theme: "light",
                     transition: Slide,
                 });
+
             }
 
         } else {
@@ -65,8 +64,8 @@ const AdminRightSide = ({ currentUser }) => {
                 userAge: data.userAge,
                 userAddress: data.userAddress,
             }
-            const updateUserDetails = await axiosLocalhost.patch(`/users/${currentUser?._id}`, userInfo);
 
+            const updateUserDetails = await axiosLocalhost.patch(`/users/${currentUser?._id}`, userInfo);
             reset();
 
             if (updateUserDetails.data.modifiedCount > 0) {
@@ -82,14 +81,18 @@ const AdminRightSide = ({ currentUser }) => {
                     transition: Slide,
                 });
             }
+
         }
     };
 
     return (
         <>
             <div className="flex-1 w-full">
+
                 <div data-aos="fade-down" className="bg-white p-4 rounded-xl shadow-lg mt-8">
+
                     <div className="flex flex-col justify-center items-center text-center">
+                        
                         <div className="-mt-12 flex justify-center items-center">
                             <figure>
                                 <img
@@ -119,11 +122,14 @@ const AdminRightSide = ({ currentUser }) => {
                 </div>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
+
                     <div
                         data-aos="fade-up"
                         data-aos-delay="200"
                         className="w-full p-4 space-y-1 bg-white rounded-xl shadow-lg mt-7">
+
                         <div className="bg-white p-4 rounded-xl space-y-5">
+
                             <div className="flex justify-between items-center">
                                 <h1 className="text-textDark text-lg font-medium">Profile Details</h1>
                                 <button className="flex items-center gap-1 px-2 py-2 text-xm font-normal text-white bg-btnColor rounded-xl cursor-pointer">
@@ -133,6 +139,7 @@ const AdminRightSide = ({ currentUser }) => {
                                     Update
                                 </button>
                             </div>
+
                             <div className="space-y-2">
                                 <h1 className="text-xm font-normal text-grayText">Phone Number</h1>
                                 <input
@@ -145,6 +152,7 @@ const AdminRightSide = ({ currentUser }) => {
                                     title="Phone Number"
                                 />
                             </div>
+
                             <div className="space-y-2">
                                 <h1 className="text-xm font-normal text-grayText">Gender</h1>
                                 <input
@@ -157,6 +165,7 @@ const AdminRightSide = ({ currentUser }) => {
                                     title="Gender"
                                 />
                             </div>
+
                             <div className="space-y-2">
                                 <h1 className="text-xm font-normal text-grayText">Age</h1>
                                 <input
@@ -169,6 +178,7 @@ const AdminRightSide = ({ currentUser }) => {
                                     title="Age"
                                 />
                             </div>
+
                             <div className="space-y-2">
                                 <h1 className="text-xm font-normal text-grayText">Address</h1>
                                 <textarea
@@ -178,6 +188,7 @@ const AdminRightSide = ({ currentUser }) => {
                                     className="w-full h-24 p-2 text-xm font-normal outline-none rounded-lg border border-borderColour bg-borderColour/20 placeholder:text-grayText"
                                     required></textarea>
                             </div>
+
                             <div className="flex justify-between items-center">
                                 <div className="flex items-center gap-2">
                                     <CiCalendarDate className="text-lg text-textDark" />
@@ -187,8 +198,11 @@ const AdminRightSide = ({ currentUser }) => {
                                     <h1 className="text-lg font-medium text-grayText">{currentUser?.date}</h1>
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
+
                 </form>
 
             </div>

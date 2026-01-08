@@ -25,7 +25,6 @@ const CreateCamp = () => {
     const handleCategoryImage = (e) => {
         setGetCategoryImage(URL.createObjectURL(e.target.files[0]))
     }
-
     const onSubmit = async (data) => {
 
         // camp Image
@@ -95,6 +94,7 @@ const CreateCamp = () => {
     return (
         <>
             <div className="w-full max-w-full overflow-x-hidden">
+
                 <form onSubmit={handleSubmit(onSubmit)}>
 
                     <div data-aos="fade-right" className="bg-white p-4 rounded-xl border border-borderColour">
@@ -186,7 +186,7 @@ const CreateCamp = () => {
                                 <div>
                                     <h1 className="text-textDark text-lg font-medium">Camp Details</h1>
                                 </div>
-                                
+
                                 <div className="flex flex-col sm:flex-row gap-2">
 
                                     <div className="w-full space-y-2">
@@ -258,6 +258,7 @@ const CreateCamp = () => {
 
                                 </div>
                             </div>
+
                         </div>
 
                         {/* right side */}
@@ -328,9 +329,11 @@ const CreateCamp = () => {
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                     </div>
+
                 </form>
 
             </div>

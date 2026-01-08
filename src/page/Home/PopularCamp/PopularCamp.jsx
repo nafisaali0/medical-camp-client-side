@@ -19,6 +19,7 @@ const PopularCamp = () => {
     return (
         <>
             <div data-aos="fade-left">
+
                 <div
                     className="mb-10">
                     <h1 className="text-3xl text-textDark font-bold text-center">Popular Camps</h1>
@@ -50,6 +51,7 @@ const PopularCamp = () => {
                                 <SwiperSlide>
 
                                     <div className="relative rounded-3xl bg-white shadow-lg hover:shadow-xl">
+
                                         <div className="relative w-full h-[250px]">
                                             <figure>
                                                 <img
@@ -64,8 +66,10 @@ const PopularCamp = () => {
                                                 {enrolledCamp?.enrollCampName}
                                             </h2>
                                         </div>
+                                        
                                         <div className="pt-10 md:pt-0 p-3 m-0 md:-mt-3 rounded-t-3xl rounded-b-3xl bg-white border-2 border-white">
                                             <div className="flex flex-col items-start gap-4 mt-7 md:mt-14">
+                                               
                                                 <div className="w-full space-y-3">
 
                                                     <div className="flex gap-2 items-start">
@@ -96,6 +100,7 @@ const PopularCamp = () => {
                                                     </div>
 
                                                 </div>
+
                                             </div>
 
                                             <div className="card-actions justify-center my-3">
@@ -108,7 +113,9 @@ const PopularCamp = () => {
                                                     </button>
                                                 </Link>
                                             </div>
+
                                         </div>
+                                        
                                     </div>
 
                                 </SwiperSlide>

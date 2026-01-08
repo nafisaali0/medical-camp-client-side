@@ -5,7 +5,6 @@ import Loader from "../../../components/Loader";
 import { useEffect, useState } from "react";
 // import swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import "./categoryStyle.css"
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
@@ -34,6 +33,7 @@ const Category = () => {
                 data-aos="fade-left"
                 data-aos-delay="100"
                 className="max-w-[800px] mx-auto">
+                    
                 <div className="mb-10 text-textDark">
                     <h1 className="text-3xl font-bold text-center">Category</h1>
                 </div>
@@ -70,6 +70,7 @@ const Category = () => {
                         {
                             uniqueCategory?.map((uniqueCat, index) =>
                                 <>
+
                                     <SwiperSlide>
                                         <div className='flex justify-center items-center'>
 
@@ -86,7 +87,9 @@ const Category = () => {
                                                     className="mt-4 text-lg font-semibold text-textDark text-center cursor-pointer">
                                                     {uniqueCat?.campCategory}
                                                 </h1>
+
                                             </div>
+
                                         </div>
                                     </SwiperSlide>
 
@@ -95,7 +98,8 @@ const Category = () => {
                             )}
                     </Swiper>
                 </div>
-            </div >
+
+            </div>
         </>
     )
 }

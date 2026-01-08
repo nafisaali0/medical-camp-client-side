@@ -44,9 +44,9 @@ const Signin = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Amelia | Signin</title>
-            </Helmet>
+            </Helmet> */}
 
             <div
                 className="w-full h-screen"

@@ -13,6 +13,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
 
     const time = moment().format("LT");
     const [userEnrollCamp] = useUserEnrollCamp()
+    
     return (
         <>
             <div>
@@ -20,6 +21,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
                 <div data-aos="fade-down" className="bg-white p-4 rounded-xl border border-borderColour flex justify-between">
 
                     <div className="flex justify-between flex-col flex-1">
+
                         <div>
                             <h1 className="text-textDark text-xl font-bold mb-1">
                                 <Greetings />
@@ -36,6 +38,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
                                 {time}
                             </p>
                         </div>
+
                     </div>
 
                     <div
@@ -47,6 +50,7 @@ const ParticipentLeftSide = ({ currentUser }) => {
                             backgroundSize: "cover",
                         }}>
                     </div>
+
                 </div>
 
                 <div data-aos="fade-left" className="flex justify-between p-4 mt-7 bg-white rounded-xl border border-borderColour">
@@ -72,4 +76,4 @@ const ParticipentLeftSide = ({ currentUser }) => {
     )
 }
 
-export default ParticipentLeftSide
+export default ParticipentLeftSide;

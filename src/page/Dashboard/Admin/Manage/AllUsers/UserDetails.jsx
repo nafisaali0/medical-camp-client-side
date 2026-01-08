@@ -48,6 +48,7 @@ const UserDetails = ({ userInfo , userId }) => {
                     </div>
                 </div>
             </div>
+            
         </>
     )
 }

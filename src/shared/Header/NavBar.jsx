@@ -64,9 +64,13 @@ const NavBar = () => {
         <>
            
             <div className="fixed top-0 z-50 w-full bg-primarySemiDark/80 backdrop-blur-md">
+
                 <nav className="max-w-[1300px] mx-auto">
+
                     <div className="navbar">
+
                         <div className="navbar-start gap-3">
+
                             <div className="dropdown">
                                 <div tabIndex={0} role="button" className="lg:hidden">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#404f68"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -86,8 +90,11 @@ const NavBar = () => {
                                     />
                                 </Link>
                             </figure>
+
                         </div>
+
                         <div className="navbar-end">
+                            
                             <ul className="menu menu-horizontal px-1 gap-3 hidden lg:flex text-textDark">
                                 {navOptions}
                             </ul>
@@ -97,6 +104,7 @@ const NavBar = () => {
                                 user ?
 
                                     <div className="dropdown dropdown-end cursor-pointer ml-2">
+
                                         <div tabIndex={0} className="avatar">
                                             <div className="w-8 rounded-full">
                                                 <img src={user.photoURL ? user.photoURL : ``} />
@@ -105,8 +113,11 @@ const NavBar = () => {
                                         <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-primarySemiDark backdrop-blur-md rounded-box w-52">
                                             <li className="hover:bg-primaryDark/50 hover:rounded-xl" onClick={handleLogOut}><a>Logout</a></li>
                                         </ul>
+
                                     </div>
+
                                     :
+
                                     <>
                                         {/* signup btn */}
                                         <Link to={"/signup"}>
@@ -120,7 +131,9 @@ const NavBar = () => {
                                     </>
                             }
                         </div>
+                        
                     </div>
+
                 </nav>
             </div>
         </>

@@ -19,6 +19,7 @@ const Testimonials = () => {
     return (
         <>
             <div data-aos="fade-right">
+
                 <div
                     className="mb-10 text-textDark">
                     <h1 className="text-3xl font-bold text-center">What Participant Are Saying</h1>
@@ -56,6 +57,7 @@ const Testimonials = () => {
                             feedbacks?.slice(0, 6)?.map((review, index) =>
                                 <>
                                     <SwiperSlide key={index}>
+
                                         <div
                                             key={index}
                                             className="p-5 h-64 bg-white rounded-t-2xl rounded-xl shadow-lg hover:shadow-xl">
@@ -105,11 +107,13 @@ const Testimonials = () => {
                                                     ""
                                             }
                                         </div>
+
                                     </SwiperSlide>
                                 </>
                             )}
                     </Swiper>
                 </div>
+
             </div>
         </>
     );

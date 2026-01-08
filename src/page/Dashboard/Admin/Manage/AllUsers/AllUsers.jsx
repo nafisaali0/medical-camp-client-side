@@ -38,6 +38,7 @@ const AllUsers = () => {
                 });
             }
         }
+        
     };
 
     const handleDelete = userId => {

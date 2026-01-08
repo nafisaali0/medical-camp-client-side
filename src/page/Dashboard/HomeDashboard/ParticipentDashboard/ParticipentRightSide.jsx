@@ -63,8 +63,7 @@ const ParticipentRightSide = ({ currentUser }) => {
                 userAge: data.userAge,
                 userAddress: data.userAddress,
             }
-            const updateUserDetails = await axiosLocalhost.patch(`/users/${currentUser?._id}`, userInfo);
-           
+            const updateUserDetails = await axiosLocalhost.patch(`/users/${currentUser?._id}`, userInfo);           
             reset();
 
             if (updateUserDetails.data.modifiedCount > 0) {

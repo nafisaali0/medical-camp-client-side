@@ -68,9 +68,9 @@ const DetailCamp = () => {
 
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <title>Amelia | Camp Details</title>
-            </Helmet>
+            </Helmet> */}
 
             <div className="py-20 px-5 my-16">
 

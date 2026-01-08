@@ -60,6 +60,7 @@ const CampHub = () => {
     return (
         <>
             <div className="space-y-8">
+                
                 <div
                     data-aos="fade-right"
                     className="bg-white p-4 rounded-xl border border-borderColour">
@@ -67,7 +68,7 @@ const CampHub = () => {
 
                         <div className="flex items-center gap-1 md:gap-2">
                             <SiManageiq className="text-[10px] text-base md:text-[20px]" />
-                            <h1 className="text-textDark text-xs font-normal md:text-lg md:font-medium">Manage Camps</h1>
+                            <h1 className="text-textDark text-lg font-medium">Manage Camps</h1>
                         </div>
 
                         <div>
@@ -82,6 +83,7 @@ const CampHub = () => {
                         </div>
 
                     </div>
+
                 </div>
 
                 {/* All Camp */}
@@ -200,6 +202,7 @@ const CampHub = () => {
                     </div>
 
                 </div>
+
             </div>
         </>
     )
