@@ -46,6 +46,7 @@ const EditCamp = () => {
                 transition: Bounce,
             });
         }
+
     }
     const handleCategoryImage = async (e) => {
 
@@ -59,7 +60,6 @@ const EditCamp = () => {
             const category_Image = res.data.data.display_url;
             setGetCategoryImage(category_Image);
         } else {
-
             toast.error('Unable to update image!', {
                 position: "top-right",
                 autoClose: 5000,
@@ -74,7 +74,6 @@ const EditCamp = () => {
 
         }
     }
-
     const onSubmit = async (data) => {
 
         const campDetails = {
@@ -111,7 +110,6 @@ const EditCamp = () => {
                 theme: "light",
                 transition: Slide,
             });
-
 
         } else {
 
