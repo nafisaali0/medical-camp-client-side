@@ -43,24 +43,43 @@ Admins have full control over camps, users, enrollments, and roles.
 
 ### Home Page
 - Displays popular medical camps based on participant count
-- Dynamic category
-- Participent feedback
-- Responsive and clean UI
+- Dynamic categories
+- Participant feedback section
+- Fully responsive and clean UI
 
 ### Camp Page
-- View all available camps
+- View all available medical camps
 - Sort camps by:
   - Ascending order
   - Descending order
 - Access detailed information for each camp
 
-### Camp Details
-- View complete camp information
-- Secure enrollment using Stripe payment
+### Camp Details Page
+- View complete information about a specific camp
+- Proceed to secure checkout for enrollment
 
 ### Checkout Page
-- View selected camp information in side
-- Secure enrollment using Stripe payment
+- View selected camp summary
+- Secure enrollment using Stripe payment gateway
+
+---
+
+## User Dashboard (Participant)
+
+- View enrolled medical camps
+- Update user profile information
+
+---
+
+## Admin Dashboard
+
+- Create new medical camps
+- Update existing medical camps
+- Delete medical camps
+- View all enrolled camps by users
+- Manage users:
+  - Update user roles (Admin / Participant)
+  - Update admin profile
 
 ---
 
@@ -121,6 +140,17 @@ cd medical-camp-client
 
 ---
 
+## 🔐 Demo Admin Credentials
+
+For testing the admin dashboard features, you can use the following demo admin account:
+
+- **Email:** admin@gmail.com  
+- **Password:** admin@2026  
+
+> ⚠️ This account is provided for demonstration purposes only.
+
+---
+
 ## 🔑 Environment Variables
 
 Create a `.env.local` file in the **root directory of the frontend project**:
@@ -129,7 +159,7 @@ Create a `.env.local` file in the **root directory of the frontend project**:
 VITE_IMAGE_HOSTING_KEY=your_image_hosting_key
 ```
 ```env
-VITE_Payment_Gateway_PK=your_payment_hosting_key
+VITE_Payment_Gateway_PK=your_stripe_public_key
 ```
 ⚠️ The backend `.env` file contains database credentials. Check the backend repository for details.
 
