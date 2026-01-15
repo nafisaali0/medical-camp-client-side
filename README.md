@@ -127,8 +127,8 @@ VITE_IMAGE_HOSTING_KEY=your_image_hosting_key
 ```env
 VITE_Payment_Gateway_PK=your_payment_hosting_key
 ```
-```
-VITE_Payment_Gateway_PK=your_nafisa_hosting_key
+```bash
+VITE_Payment_Gateway_PK=your_payment_hosting_key
 ```
 ⚠️ The backend `.env` file contains database credentials. Check the backend repository for details.
 
