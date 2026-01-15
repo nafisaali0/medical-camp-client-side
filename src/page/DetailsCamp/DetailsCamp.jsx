@@ -216,7 +216,10 @@ const DetailCamp = () => {
                         </div>
                     </div>
 
-                    <div data-aos="fade-up" className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 mt-20">
+                    <div className="mt-20 mb-8">
+                        <h1 className="text-3xl font-medium text-textDark">Related Camps</h1>
+                    </div>
+                    <div data-aos="fade-up" className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5">
 
                         {
                             sameCategoryCamp?.map((eachCamp, index) =>

@@ -99,6 +99,7 @@ MEDICAL-CAMP-CLIENT/
 
 - View enrolled medical camps
 - Update user profile information
+- Give feedback
 
 ---
 

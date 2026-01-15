@@ -16,9 +16,6 @@ import {
 const queryClient = new QueryClient()
 AOS.init({
   duration: 1400,
-  // easing: 'ease-in',
-  // once: true,
-  // duration: 1200,
 })
 
 
