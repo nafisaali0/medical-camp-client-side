@@ -39,6 +39,37 @@ Admins have full control over camps, users, enrollments, and roles.
 
 ---
 
+## 📁 Project Structure
+
+```bash
+MEDICAL-CAMP-CLIENT/
+├── dist/
+├── node_modules/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── Firebase/
+│   ├── hooks/
+│   ├── Layout/
+│   ├── page/
+│   ├── Providers/
+│   ├── Routes/
+│   ├── shared/
+│   ├── index.css
+│   └── main.jsx
+├── .env.local
+├── .eslintrc.cjs
+├── .gitignore
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+└── vite.config.js
+```
+
 ## Features
 
 ### Home Page
