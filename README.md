@@ -135,7 +135,7 @@ VITE_Payment_Gateway_PK=your_payment_hosting_key
  ## 🖥️ Backend Repository
 
 The backend for Amelia is built with **Express.js** and **MongoDB**.  
-You can find it here: [JestBlog Backend](https://github.com/nafisaali0/medical-camp-server-side)
+You can find it here: [Amelia Backend](https://github.com/nafisaali0/medical-camp-server-side)
 
 
 ---
