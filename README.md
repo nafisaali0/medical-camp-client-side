@@ -43,6 +43,8 @@ Admins have full control over camps, users, enrollments, and roles.
 
 ### Home Page
 - Displays popular medical camps based on participant count
+- Dynamic category
+- Participent feedback
 - Responsive and clean UI
 
 ### Camp Page
@@ -56,13 +58,16 @@ Admins have full control over camps, users, enrollments, and roles.
 - View complete camp information
 - Secure enrollment using Stripe payment
 
+### Checkout Page
+- View selected camp information in side
+- Secure enrollment using Stripe payment
+
 ---
 
 ## User Dashboard (Participant)
 
 - View enrolled medical camps
 - Update user profile
-- Track participation history
 
 ---
 
@@ -114,7 +119,6 @@ cd medical-camp-client
 2. **Install dependencies**:
 ```npm install```
 
-
 ---
 
 ## 🔑 Environment Variables
@@ -127,22 +131,16 @@ VITE_IMAGE_HOSTING_KEY=your_image_hosting_key
 ```env
 VITE_Payment_Gateway_PK=your_payment_hosting_key
 ```
-```bash
-VITE_Payment_Gateway_PK=your_payment_hosting_key
-```
 ⚠️ The backend `.env` file contains database credentials. Check the backend repository for details.
-
 
 ---
 
- ## 🖥️ Backend Repository
+## 🖥️ Backend Repository
 
 The backend for Amelia is built with **Express.js** and **MongoDB**.  
 You can find it here: [Amelia Backend](https://github.com/nafisaali0/medical-camp-server-side)
 
-
 ---
-
 
 ## ▶️ Run the Application
 
