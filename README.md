@@ -108,7 +108,7 @@ Before running the project, make sure you have:
 
 ```bash
 git clone https://github.com/your-username/medical-camp-client-side.git
-cd jestblog
+cd medical-camp-client
 ```
 
 2. **Install dependencies**:
@@ -126,6 +126,9 @@ VITE_IMAGE_HOSTING_KEY=your_image_hosting_key
 ```
 ```env
 VITE_Payment_Gateway_PK=your_payment_hosting_key
+```
+```nafisa
+VITE_Payment_Gateway_PK=your_nafisa_hosting_key
 ```
 ⚠️ The backend `.env` file contains database credentials. Check the backend repository for details.
 
